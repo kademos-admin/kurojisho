@@ -1,0 +1,24 @@
+nodes: {Class: 3, File: 5, Function: 11, Module: 2, Package: 2, Repo: 1, Route: 3}
+calls:
+  - ["main.go::main", "internal/store/store.go::New", exact]
+  - ["server.go::Server.List", "server.go::Logger.Log", exact]
+  - ["server.go::Server.List", "server.go::Server.write", exact]
+  - ["server.go::Server.List", "internal/store/store.go::Store.All", name_match]
+  - ["server.go::Server.Create", "internal/store/store.go::Store.Add", name_match]
+  - ["internal/store/store.go::Store.Add", "internal/store/store.go::normalize", exact]
+dynamic_callers:
+  - "server.go::Server.Create"
+min_call_precision: 1.0
+routes:
+  - [ANY, "/items", "srv.List"]
+  - [POST, "/items", "srv.Create"]
+  - [ANY, "/health", health]
+inherits:
+  - ["server.go::Server", "server.go::Logger"]
+imports:
+  - ["main.go", "internal/store"]
+  - ["server.go", "internal/store"]
+packages:
+  - ["pkg:golang/github.com/gin-gonic/gin@v1.10.0", true, runtime]
+  - ["pkg:golang/golang.org/x/sys@v0.20.0", false, runtime]
+belongs_to: {}

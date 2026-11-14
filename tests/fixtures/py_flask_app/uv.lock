@@ -1,0 +1,28 @@
+version = 1
+
+[[package]]
+name = "shop"
+version = "0.1.0"
+source = { virtual = "." }
+dependencies = [{ name = "flask" }]
+
+[package.dev-dependencies]
+dev = [{ name = "pytest" }]
+
+[[package]]
+name = "flask"
+version = "3.0.3"
+dependencies = [{ name = "werkzeug" }]
+
+[[package]]
+name = "werkzeug"
+version = "3.0.3"
+
+[[package]]
+name = "pytest"
+version = "8.2.0"
+dependencies = [{ name = "pluggy" }]
+
+[[package]]
+name = "pluggy"
+version = "1.5.0"

@@ -1,0 +1,40 @@
+# Hand-labelled ground truth for py_flask_app. Keys are "<path>::<qualname>".
+nodes: {Asset: 2, Class: 3, File: 9, Function: 18, Module: 2, Package: 4, Repo: 1, Route: 4}
+# Every call that really happens inside the repo, with the resolution the tool should reach.
+calls:
+  - ["shop/app.py::<module>", "shop/services.py::make_service", exact]
+  - ["shop/app.py::get_order", "shop/services.py::OrderService.find", name_match]
+  - ["shop/app.py::search_orders", "shop/services.py::OrderService.search", exact]
+  - ["shop/app.py::run_plugin", "shop/services.py::OrderService.load_plugin", name_match]
+  - ["shop/services.py::OrderService.find", "shop/db.py::AuditedDatabase.query", name_match]
+  - ["shop/services.py::OrderService.search", "shop/db.py::AuditedDatabase.query", name_match]
+  - ["shop/db.py::AuditedDatabase.query", "shop/db.py::log_query", exact]
+  - ["shop/db.py::AuditedDatabase.query", "shop/db.py::Database.query", exact]
+  - ["shop/services.py::make_service", "shop/services.py::OrderService.__init__", exact]
+  - ["shop/services.py::make_service", "shop/db.py::Database.__init__", exact]
+  - ["tests/test_app.py::test_get_order", "shop/app.py::get_order", exact]
+# Callers that contain a call whose target cannot be known statically.
+dynamic_callers:
+  - "shop/app.py::_unused_helper"
+  - "shop/services.py::OrderService.export"
+  - "shop/services.py::OrderService.load_plugin"
+min_call_precision: 0.8
+routes:
+  - [GET, "/orders/<int:order_id>", get_order]
+  - [GET, "/orders/search", search_orders]
+  - [POST, "/orders/search", search_orders]
+  - [POST, "/plugins/<name>", run_plugin]
+inherits:
+  - ["shop/db.py::AuditedDatabase", "shop/db.py::Database"]
+imports:
+  - ["shop/app.py", "shop/services.py"]
+  - ["shop/services.py", "shop/db.py"]
+  - ["tests/test_app.py", "shop/app.py"]
+packages:
+  - ["pkg:pypi/flask@3.0.3", true, runtime]
+  - ["pkg:pypi/werkzeug@3.0.3", false, runtime]
+  - ["pkg:pypi/pytest@8.2.0", true, dev]
+  - ["pkg:pypi/pluggy@1.5.0", false, dev]
+belongs_to:
+  shop-api: ["shop/__init__.py", "shop/app.py", "shop/db.py", "shop/services.py"]
+  test-suite: ["tests/test_app.py"]

@@ -1,0 +1,25 @@
+nodes: {Class: 4, File: 5, Function: 11, Module: 7, Package: 2, Repo: 1, Route: 2}
+calls:
+  - ["src/main/java/com/demo/web/AccountController.java::<module>", "src/main/java/com/demo/core/AccountRepository.java::AccountRepository.create", exact]
+  - ["src/main/java/com/demo/web/AccountController.java::AccountController.get", "src/main/java/com/demo/core/AccountRepository.java::AccountRepository.find", name_match]
+  - ["src/main/java/com/demo/web/AccountController.java::AccountController.get", "src/main/java/com/demo/core/Repository.java::Repository.find", name_match]
+  - ["src/main/java/com/demo/web/AccountController.java::AccountController.get", "src/main/java/com/demo/web/AccountController.java::AccountController.format", exact]
+  - ["src/main/java/com/demo/core/AccountRepository.java::AccountRepository.find", "src/main/java/com/demo/core/BaseRepository.java::BaseRepository.audit", exact]
+  - ["src/main/java/com/demo/core/AccountRepository.java::AccountRepository.find", "src/main/java/com/demo/core/AccountRepository.java::AccountRepository.query", exact]
+  - ["src/main/java/com/demo/core/AccountRepository.java::AccountRepository.create", "src/main/java/com/demo/core/AccountRepository.java::AccountRepository.<init>", exact]
+dynamic_callers:
+  - "src/main/java/com/demo/web/AccountController.java::AccountController.action"
+min_call_precision: 1.0
+routes:
+  - [GET, "/accounts/{id}", "AccountController.get"]
+  - [POST, "/accounts/actions", "AccountController.action"]
+inherits:
+  - ["src/main/java/com/demo/core/AccountRepository.java::AccountRepository", "src/main/java/com/demo/core/BaseRepository.java::BaseRepository"]
+  - ["src/main/java/com/demo/core/BaseRepository.java::BaseRepository", "src/main/java/com/demo/core/Repository.java::Repository"]
+imports:
+  - ["src/main/java/com/demo/web/AccountController.java", "src/main/java/com/demo/core/AccountRepository.java"]
+  - ["src/main/java/com/demo/web/AccountController.java", "src/main/java/com/demo/core/Repository.java"]
+packages:
+  - ["pkg:maven/org.springframework/spring-webmvc@6.1.6", true, runtime]
+  - ["pkg:maven/org.junit.jupiter/junit-jupiter@5.10.2", true, test]
+belongs_to: {}

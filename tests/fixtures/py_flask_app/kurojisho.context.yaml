@@ -1,0 +1,11 @@
+assets:
+  - id: shop-api
+    paths: ["shop/**"]
+    tier: 1
+    data_classes: [PII, PCI]
+    exposure: internet
+    asvs_level: 3
+    regulatory: [PCI-DSS]
+  - id: test-suite
+    paths: ["tests"]
+defaults: { asvs_level: 2, tier: 3 }

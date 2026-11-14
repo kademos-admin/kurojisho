@@ -1,0 +1,31 @@
+nodes: {Class: 3, File: 6, Function: 15, Module: 2, Package: 4, Repo: 1, Route: 3}
+calls:
+  - ["src/server.js::<module>", "src/server.js::start", exact]
+  - ["src/routes/notes.ts::<module>", "src/store.ts::createStore", name_match]
+  - ["src/routes/notes.ts::listNote", "src/store.ts::MemoryStore.find", name_match]
+  - ["src/routes/notes.ts::listNote", "src/store.ts::audit", exact]
+  - ["src/routes/notes.ts::listNote", "src/routes/render.ts::page", exact]
+  - ["src/routes/notes.ts::createNote", "src/store.ts::AuditedStore.add", name_match]
+  - ["src/store.ts::AuditedStore.add", "src/store.ts::audit", exact]
+  - ["src/store.ts::AuditedStore.add", "src/store.ts::MemoryStore.add", exact]
+  - ["src/routes/render.ts::page", "src/routes/render.ts::escapeHtml", exact]
+dynamic_callers:
+  - "src/routes/notes.ts::createNote"
+  - "src/routes/render.ts::unsafe"
+min_call_precision: 0.8
+routes:
+  - [GET, "/notes/:id", listNote]
+  - [POST, "/notes", createNote]
+  - [DELETE, "/notes/:id", null]
+inherits:
+  - ["src/store.ts::AuditedStore", "src/store.ts::MemoryStore"]
+imports:
+  - ["src/server.js", "src/routes/notes.ts"]
+  - ["src/routes/notes.ts", "src/store.ts"]
+  - ["src/routes/notes.ts", "src/routes/render.ts"]
+packages:
+  - ["pkg:npm/express@4.19.2", true, runtime]
+  - ["pkg:npm/qs@6.11.0", false, runtime]
+  - ["pkg:npm/jest@29.7.0", true, dev]
+  - ["pkg:npm/jest-worker@29.7.0", false, dev]
+belongs_to: {}
