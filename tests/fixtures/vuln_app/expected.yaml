@@ -1,0 +1,25 @@
+# Hand-planted weaknesses in vuln_app. Each entry: rule, file, line, raw severity, CWE,
+# and the function the line sits in (null = module level).
+semgrep:
+  - [kurojisho.python.sql-string-built, api/app.py, 16, High, CWE-89, find_user]
+  - [kurojisho.python.code-eval, api/app.py, 22, High, CWE-95, calc]
+  - [kurojisho.python.shell-command, api/app.py, 28, High, CWE-78, ping]
+  - [kurojisho.python.unsafe-deserialization, api/app.py, 32, High, CWE-502, load_session]
+  - [kurojisho.python.weak-hash, api/app.py, 36, Medium, CWE-327, fingerprint]
+  - [kurojisho.python.tls-verification-disabled, api/app.py, 40, Medium, CWE-295, fetch]
+  - [kurojisho.python.flask-debug, api/app.py, 48, Medium, CWE-489, null]
+  - [kurojisho.javascript.shell-command, web/server.js, 7, High, CWE-78, null]
+  - [kurojisho.javascript.code-eval, web/server.js, 11, High, CWE-95, compute]
+  - [kurojisho.javascript.sql-string-built, web/server.js, 15, High, CWE-89, findOrder]
+  - [kurojisho.javascript.dom-html-injection, web/server.js, 19, Medium, CWE-79, render]
+  - [kurojisho.go.sql-string-built, svc/main.go, 13, High, CWE-89, lookup]
+  - [kurojisho.go.shell-command, svc/main.go, 17, High, CWE-78, run]
+  - [kurojisho.go.weak-hash, svc/main.go, 22, Medium, CWE-327, sum]
+  - [kurojisho.go.tls-verification-disabled, svc/main.go, 26, Medium, CWE-295, client]
+  - [kurojisho.java.sql-string-built, java/src/main/java/com/demo/Dao.java, 12, High, CWE-89, find]
+  - [kurojisho.java.shell-command, java/src/main/java/com/demo/Dao.java, 16, High, CWE-78, run]
+  - [kurojisho.java.unsafe-deserialization, java/src/main/java/com/demo/Dao.java, 20, High, CWE-502, load]
+  - [kurojisho.java.weak-hash, java/src/main/java/com/demo/Dao.java, 24, Medium, CWE-327, digest]
+# Lines that look similar but are safe; no tool may report them.
+clean_lines:
+  - [api/app.py, 44]

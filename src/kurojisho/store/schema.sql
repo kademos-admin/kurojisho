@@ -1,4 +1,5 @@
--- KuroJisho graph store, schema version 1.
+-- KuroJisho graph store, schema version 2. Every statement is idempotent, so applying
+-- this file to an older database upgrades it in place (additive changes only).
 CREATE TABLE IF NOT EXISTS meta (
     key   TEXT PRIMARY KEY,
     value TEXT NOT NULL
@@ -61,6 +62,26 @@ CREATE TABLE IF NOT EXISTS files (
     path         TEXT PRIMARY KEY,
     content_hash TEXT NOT NULL,
     facts        TEXT NOT NULL
+) WITHOUT ROWID;
+
+-- One row per scanner invocation (or decision not to invoke) in a scan.
+CREATE TABLE IF NOT EXISTS tool_runs (
+    scan_id     INTEGER NOT NULL REFERENCES scans(id),
+    tool        TEXT NOT NULL,
+    version     TEXT NOT NULL,
+    digest      TEXT NOT NULL,
+    status      TEXT NOT NULL,  -- ok | cached | failed | timeout | invalid_output | ...
+    exit_code   INTEGER,
+    duration_ms INTEGER NOT NULL DEFAULT 0,
+    findings    INTEGER NOT NULL DEFAULT 0,
+    PRIMARY KEY (scan_id, tool)
+) WITHOUT ROWID;
+
+-- Normalised results of tools whose inputs have not changed. Never holds secret findings.
+CREATE TABLE IF NOT EXISTS tool_cache (
+    tool      TEXT PRIMARY KEY,
+    cache_key TEXT NOT NULL,
+    payload   TEXT NOT NULL
 ) WITHOUT ROWID;
 
 CREATE VIEW IF NOT EXISTS nodes_seen AS

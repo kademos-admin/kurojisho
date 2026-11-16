@@ -8,6 +8,7 @@ from kurojisho.model.enums import (
     Provenance,
     Resolution,
     Scope,
+    Severity,
 )
 from kurojisho.model.nodes import Node, node_id, node_key
 from kurojisho.model.provenance import Evidence, canonical_json, stable_id
@@ -22,6 +23,7 @@ __all__ = [
     "Provenance",
     "Resolution",
     "Scope",
+    "Severity",
     "canonical_json",
     "node_id",
     "node_key",

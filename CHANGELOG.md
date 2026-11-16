@@ -5,6 +5,42 @@ All notable changes to this project are recorded here. The format follows
 
 ## [Unreleased]
 
+### Added (milestone 2: scanner orchestration and normalisation)
+
+- `tools.lock`: eleven scanners pinned by image digest with version and licence;
+  govulncheck is built at install time and must match a pinned binary checksum.
+  `kurojisho tools list | install | verify | accept-licence`.
+- Sandbox runner (Docker or Podman): target read-only, no network, non-root, no
+  capabilities, read-only root filesystem, CPU/memory/process/time limits, private output
+  directory.
+- Adapters: Semgrep CE with an original 20-rule pack, Bandit, gosec, Checkov, Trivy (fs and
+  config), OSV-Scanner, Grype, Syft, govulncheck, Gitleaks, TruffleHog. CodeQL adapter
+  behind `--enable codeql` and a recorded licence acceptance (no bundle pinned yet).
+- Tools are selected from the languages, manifests and IaC files found in the repository.
+- Finding, Secret, Advisory and CoverageGap nodes; LOCATED_IN (file and enclosing
+  function), DUPLICATE_OF (cross-tool dedupe) and AFFECTED_BY edges.
+- Intel cache refreshed by the host process: OSV, Trivy DB, Grype DB, Go vulnerability DB,
+  CISA KEV, EPSS, and NVD per CVE on request. `kurojisho intel refresh | status`.
+- `kurojisho scan` flags: `--no-tools`, `--tools`, `--skip`, `--enable`, `--offline`,
+  `--verify-secrets`, `--runtime`. `kurojisho import-sarif` for results produced elsewhere.
+- Syft SBOM fills package licences and adds packages the native parsers missed.
+
+### Changed
+
+- `kurojisho scan` now runs scanners by default; use `--no-tools` for the code graph only.
+- Store schema v2 (additive): `tool_runs` and `tool_cache` tables.
+
+### Security
+
+- Raw secret values never reach the database, WAL, logs, caches or exports: they are
+  fingerprinted in memory (salted SHA-256, per-database salt) and scrubbed from every
+  stored string; scanner output containing them is overwritten and deleted.
+- Suppressions controlled by the scanned repository (`nosemgrep`, `#nosec`,
+  `.gitleaksignore`, `.trivyignore`) are disabled, and config files that cannot be
+  disabled are reported as coverage gaps.
+- Downloads are HTTPS only and checked against a digest or checksum where the source
+  publishes one (Trivy DB, Grype DB, scanner images).
+
 ### Added (milestone 1: graph core and code ingest)
 
 - `kurojisho init`, `kurojisho scan <path>` and `kurojisho query`

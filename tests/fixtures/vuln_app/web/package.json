@@ -1,0 +1,9 @@
+{
+  "name": "vuln-web",
+  "version": "1.0.0",
+  "dependencies": {
+    "express": "4.16.0",
+    "lodash": "4.17.15",
+    "minimist": "1.2.0"
+  }
+}

@@ -1,0 +1,39 @@
+# KuroJisho starter rules for Go.
+rules:
+  - id: kurojisho.go.sql-string-built
+    languages: [go]
+    severity: ERROR
+    message: SQL statement built with concatenation or fmt.Sprintf is passed to a query call.
+    metadata: {cwe: ["CWE-89"], confidence: MEDIUM, category: security}
+    patterns:
+      - pattern-either:
+          - pattern: $DB.$METHOD("..." + $X, ...)
+          - pattern: $DB.$METHOD(fmt.Sprintf(...), ...)
+          - pattern: $DB.$METHOD($CTX, "..." + $X, ...)
+          - pattern: $DB.$METHOD($CTX, fmt.Sprintf(...), ...)
+      - metavariable-regex: {metavariable: $METHOD, regex: ^(Query|QueryRow|Exec|QueryContext|QueryRowContext|ExecContext)$}
+  - id: kurojisho.go.shell-command
+    languages: [go]
+    severity: ERROR
+    message: A shell is invoked with a command string; untrusted input leads to command injection.
+    metadata: {cwe: ["CWE-78"], confidence: MEDIUM, category: security}
+    pattern-either:
+      - pattern: exec.Command("sh", "-c", $X, ...)
+      - pattern: exec.Command("bash", "-c", $X, ...)
+      - pattern: exec.Command("/bin/sh", "-c", $X, ...)
+  - id: kurojisho.go.weak-hash
+    languages: [go]
+    severity: WARNING
+    message: MD5 and SHA-1 are broken for security purposes.
+    metadata: {cwe: ["CWE-327"], confidence: LOW, category: security}
+    pattern-either:
+      - pattern: md5.New()
+      - pattern: md5.Sum(...)
+      - pattern: sha1.New()
+      - pattern: sha1.Sum(...)
+  - id: kurojisho.go.tls-verification-disabled
+    languages: [go]
+    severity: WARNING
+    message: TLS certificate verification is disabled.
+    metadata: {cwe: ["CWE-295"], confidence: HIGH, category: security}
+    pattern: "tls.Config{..., InsecureSkipVerify: true, ...}"

@@ -1,0 +1,1075 @@
+{
+ "$schema": "https://docs.oasis-open.org/sarif/sarif/v2.1.0/os/schemas/sarif-schema-2.1.0.json",
+ "runs": [
+  {
+   "invocations": [
+    {
+     "executionSuccessful": true,
+     "toolExecutionNotifications": []
+    }
+   ],
+   "results": [
+    {
+     "fingerprints": {
+      "matchBasedId/v1": "requires login"
+     },
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": "/src/api/app.py",
+         "uriBaseId": "%SRCROOT%"
+        },
+        "region": {
+         "endColumn": 73,
+         "endLine": 16,
+         "snippet": {
+          "text": "    rows = db.execute(\"SELECT * FROM users WHERE name = '\" + name + \"'\")"
+         },
+         "startColumn": 12,
+         "startLine": 16
+        }
+       }
+      }
+     ],
+     "message": {
+      "text": "SQL statement built by string concatenation or formatting is passed to a query call."
+     },
+     "properties": {},
+     "ruleId": "rules.kurojisho.python.sql-string-built"
+    },
+    {
+     "fingerprints": {
+      "matchBasedId/v1": "requires login"
+     },
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": "/src/api/app.py",
+         "uriBaseId": "%SRCROOT%"
+        },
+        "region": {
+         "endColumn": 42,
+         "endLine": 22,
+         "snippet": {
+          "text": "    return str(eval(request.args[\"expr\"]))"
+         },
+         "startColumn": 16,
+         "startLine": 22
+        }
+       }
+      }
+     ],
+     "message": {
+      "text": "eval or exec runs a string as code; with untrusted input this is code execution."
+     },
+     "properties": {},
+     "ruleId": "rules.kurojisho.python.code-eval"
+    },
+    {
+     "fingerprints": {
+      "matchBasedId/v1": "requires login"
+     },
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": "/src/api/app.py",
+         "uriBaseId": "%SRCROOT%"
+        },
+        "region": {
+         "endColumn": 68,
+         "endLine": 28,
+         "snippet": {
+          "text": "    return subprocess.check_output(\"ping -c 1 \" + host, shell=True)"
+         },
+         "startColumn": 12,
+         "startLine": 28
+        }
+       }
+      }
+     ],
+     "message": {
+      "text": "Command is run through a shell; untrusted input leads to command injection."
+     },
+     "properties": {},
+     "ruleId": "rules.kurojisho.python.shell-command"
+    },
+    {
+     "fingerprints": {
+      "matchBasedId/v1": "requires login"
+     },
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": "/src/api/app.py",
+         "uriBaseId": "%SRCROOT%"
+        },
+        "region": {
+         "endColumn": 30,
+         "endLine": 32,
+         "snippet": {
+          "text": "    return pickle.loads(blob)"
+         },
+         "startColumn": 12,
+         "startLine": 32
+        }
+       }
+      }
+     ],
+     "message": {
+      "text": "Deserialising untrusted data with pickle or an unsafe YAML loader can run code."
+     },
+     "properties": {},
+     "ruleId": "rules.kurojisho.python.unsafe-deserialization"
+    },
+    {
+     "fingerprints": {
+      "matchBasedId/v1": "requires login"
+     },
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": "/src/api/app.py",
+         "uriBaseId": "%SRCROOT%"
+        },
+        "region": {
+         "endColumn": 29,
+         "endLine": 36,
+         "snippet": {
+          "text": "    return hashlib.md5(data).hexdigest()"
+         },
+         "startColumn": 12,
+         "startLine": 36
+        }
+       }
+      }
+     ],
+     "message": {
+      "text": "MD5 and SHA-1 are broken for security purposes."
+     },
+     "properties": {},
+     "ruleId": "rules.kurojisho.python.weak-hash"
+    },
+    {
+     "fingerprints": {
+      "matchBasedId/v1": "requires login"
+     },
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": "/src/api/app.py",
+         "uriBaseId": "%SRCROOT%"
+        },
+        "region": {
+         "endColumn": 43,
+         "endLine": 40,
+         "snippet": {
+          "text": "    return requests.get(url, verify=False).text"
+         },
+         "startColumn": 12,
+         "startLine": 40
+        }
+       }
+      }
+     ],
+     "message": {
+      "text": "TLS certificate verification is disabled."
+     },
+     "properties": {},
+     "ruleId": "rules.kurojisho.python.tls-verification-disabled"
+    },
+    {
+     "fingerprints": {
+      "matchBasedId/v1": "requires login"
+     },
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": "/src/api/app.py",
+         "uriBaseId": "%SRCROOT%"
+        },
+        "region": {
+         "endColumn": 24,
+         "endLine": 48,
+         "snippet": {
+          "text": "    app.run(debug=True)"
+         },
+         "startColumn": 5,
+         "startLine": 48
+        }
+       }
+      }
+     ],
+     "message": {
+      "text": "Flask debug mode exposes an interactive debugger that can run code."
+     },
+     "properties": {},
+     "ruleId": "rules.kurojisho.python.flask-debug"
+    },
+    {
+     "fingerprints": {
+      "matchBasedId/v1": "requires login"
+     },
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": "/src/java/src/main/java/com/demo/Dao.java",
+         "uriBaseId": "%SRCROOT%"
+        },
+        "region": {
+         "endColumn": 82,
+         "endLine": 12,
+         "snippet": {
+          "text": "        return st.executeQuery(\"SELECT * FROM users WHERE name = '\" + name + \"'\");"
+         },
+         "startColumn": 16,
+         "startLine": 12
+        }
+       }
+      }
+     ],
+     "message": {
+      "text": "SQL statement built by concatenation is passed to a JDBC call."
+     },
+     "properties": {},
+     "ruleId": "rules.kurojisho.java.sql-string-built"
+    },
+    {
+     "fingerprints": {
+      "matchBasedId/v1": "requires login"
+     },
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": "/src/java/src/main/java/com/demo/Dao.java",
+         "uriBaseId": "%SRCROOT%"
+        },
+        "region": {
+         "endColumn": 50,
+         "endLine": 16,
+         "snippet": {
+          "text": "        return Runtime.getRuntime().exec(command);"
+         },
+         "startColumn": 16,
+         "startLine": 16
+        }
+       }
+      }
+     ],
+     "message": {
+      "text": "A process is started from a non-constant command; untrusted input leads to command injection."
+     },
+     "properties": {},
+     "ruleId": "rules.kurojisho.java.shell-command"
+    },
+    {
+     "fingerprints": {
+      "matchBasedId/v1": "requires login"
+     },
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": "/src/java/src/main/java/com/demo/Dao.java",
+         "uriBaseId": "%SRCROOT%"
+        },
+        "region": {
+         "endColumn": 31,
+         "endLine": 20,
+         "snippet": {
+          "text": "        return in.readObject();"
+         },
+         "startColumn": 16,
+         "startLine": 20
+        }
+       }
+      }
+     ],
+     "message": {
+      "text": "Java native deserialisation of untrusted data can run code."
+     },
+     "properties": {},
+     "ruleId": "rules.kurojisho.java.unsafe-deserialization"
+    },
+    {
+     "fingerprints": {
+      "matchBasedId/v1": "requires login"
+     },
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": "/src/java/src/main/java/com/demo/Dao.java",
+         "uriBaseId": "%SRCROOT%"
+        },
+        "region": {
+         "endColumn": 48,
+         "endLine": 24,
+         "snippet": {
+          "text": "        return MessageDigest.getInstance(\"MD5\").digest(data);"
+         },
+         "startColumn": 16,
+         "startLine": 24
+        }
+       }
+      }
+     ],
+     "message": {
+      "text": "MD5 and SHA-1 are broken for security purposes."
+     },
+     "properties": {},
+     "ruleId": "rules.kurojisho.java.weak-hash"
+    },
+    {
+     "fingerprints": {
+      "matchBasedId/v1": "requires login"
+     },
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": "/src/svc/main.go",
+         "uriBaseId": "%SRCROOT%"
+        },
+        "region": {
+         "endColumn": 73,
+         "endLine": 13,
+         "snippet": {
+          "text": "\treturn db.Query(fmt.Sprintf(\"SELECT * FROM t WHERE name = '%s'\", name))"
+         },
+         "startColumn": 9,
+         "startLine": 13
+        }
+       }
+      }
+     ],
+     "message": {
+      "text": "SQL statement built with concatenation or fmt.Sprintf is passed to a query call."
+     },
+     "properties": {},
+     "ruleId": "rules.kurojisho.go.sql-string-built"
+    },
+    {
+     "fingerprints": {
+      "matchBasedId/v1": "requires login"
+     },
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": "/src/svc/main.go",
+         "uriBaseId": "%SRCROOT%"
+        },
+        "region": {
+         "endColumn": 62,
+         "endLine": 17,
+         "snippet": {
+          "text": "\tout, _ := exec.Command(\"sh\", \"-c\", r.URL.Query().Get(\"cmd\")).Output()"
+         },
+         "startColumn": 12,
+         "startLine": 17
+        }
+       }
+      }
+     ],
+     "message": {
+      "text": "A shell is invoked with a command string; untrusted input leads to command injection."
+     },
+     "properties": {},
+     "ruleId": "rules.kurojisho.go.shell-command"
+    },
+    {
+     "fingerprints": {
+      "matchBasedId/v1": "requires login"
+     },
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": "/src/svc/main.go",
+         "uriBaseId": "%SRCROOT%"
+        },
+        "region": {
+         "endColumn": 22,
+         "endLine": 22,
+         "snippet": {
+          "text": "\treturn md5.Sum(data)"
+         },
+         "startColumn": 9,
+         "startLine": 22
+        }
+       }
+      }
+     ],
+     "message": {
+      "text": "MD5 and SHA-1 are broken for security purposes."
+     },
+     "properties": {},
+     "ruleId": "rules.kurojisho.go.weak-hash"
+    },
+    {
+     "fingerprints": {
+      "matchBasedId/v1": "requires login"
+     },
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": "/src/svc/main.go",
+         "uriBaseId": "%SRCROOT%"
+        },
+        "region": {
+         "endColumn": 103,
+         "endLine": 26,
+         "snippet": {
+          "text": "\treturn &http.Client{Transport: &http.Transport{TLSClientConfig: &tls.Config{InsecureSkipVerify: true}}}"
+         },
+         "startColumn": 67,
+         "startLine": 26
+        }
+       }
+      }
+     ],
+     "message": {
+      "text": "TLS certificate verification is disabled."
+     },
+     "properties": {},
+     "ruleId": "rules.kurojisho.go.tls-verification-disabled"
+    },
+    {
+     "fingerprints": {
+      "matchBasedId/v1": "requires login"
+     },
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": "/src/web/server.js",
+         "uriBaseId": "%SRCROOT%"
+        },
+        "region": {
+         "endColumn": 62,
+         "endLine": 7,
+         "snippet": {
+          "text": "  cp.exec(\"ls \" + req.query.dir, (err, out) => res.send(out));"
+         },
+         "startColumn": 3,
+         "startLine": 7
+        }
+       }
+      }
+     ],
+     "message": {
+      "text": "Command string is run through a shell; untrusted input leads to command injection."
+     },
+     "properties": {},
+     "ruleId": "rules.kurojisho.javascript.shell-command"
+    },
+    {
+     "fingerprints": {
+      "matchBasedId/v1": "requires login"
+     },
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": "/src/web/server.js",
+         "uriBaseId": "%SRCROOT%"
+        },
+        "region": {
+         "endColumn": 20,
+         "endLine": 11,
+         "snippet": {
+          "text": "  return eval(expr);"
+         },
+         "startColumn": 10,
+         "startLine": 11
+        }
+       }
+      }
+     ],
+     "message": {
+      "text": "eval or the Function constructor runs a string as code."
+     },
+     "properties": {},
+     "ruleId": "rules.kurojisho.javascript.code-eval"
+    },
+    {
+     "fingerprints": {
+      "matchBasedId/v1": "requires login"
+     },
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": "/src/web/server.js",
+         "uriBaseId": "%SRCROOT%"
+        },
+        "region": {
+         "endColumn": 59,
+         "endLine": 15,
+         "snippet": {
+          "text": "  return db.query(\"SELECT * FROM orders WHERE id = \" + id);"
+         },
+         "startColumn": 10,
+         "startLine": 15
+        }
+       }
+      }
+     ],
+     "message": {
+      "text": "SQL statement built by concatenation or interpolation is passed to a query call."
+     },
+     "properties": {},
+     "ruleId": "rules.kurojisho.javascript.sql-string-built"
+    },
+    {
+     "fingerprints": {
+      "matchBasedId/v1": "requires login"
+     },
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": "/src/web/server.js",
+         "uriBaseId": "%SRCROOT%"
+        },
+        "region": {
+         "endColumn": 22,
+         "endLine": 19,
+         "snippet": {
+          "text": "  el.innerHTML = html;"
+         },
+         "startColumn": 3,
+         "startLine": 19
+        }
+       }
+      }
+     ],
+     "message": {
+      "text": "Assigning non-constant markup to innerHTML or document.write allows script injection."
+     },
+     "properties": {},
+     "ruleId": "rules.kurojisho.javascript.dom-html-injection"
+    }
+   ],
+   "tool": {
+    "driver": {
+     "name": "Semgrep OSS",
+     "rules": [
+      {
+       "defaultConfiguration": {
+        "level": "error"
+       },
+       "fullDescription": {
+        "text": "A shell is invoked with a command string; untrusted input leads to command injection."
+       },
+       "help": {
+        "markdown": "A shell is invoked with a command string; untrusted input leads to command injection.",
+        "text": "A shell is invoked with a command string; untrusted input leads to command injection."
+       },
+       "id": "rules.kurojisho.go.shell-command",
+       "name": "rules.kurojisho.go.shell-command",
+       "properties": {
+        "precision": "very-high",
+        "tags": [
+         "CWE-78",
+         "MEDIUM CONFIDENCE",
+         "security"
+        ]
+       },
+       "shortDescription": {
+        "text": "Semgrep Finding: rules.kurojisho.go.shell-command"
+       }
+      },
+      {
+       "defaultConfiguration": {
+        "level": "error"
+       },
+       "fullDescription": {
+        "text": "SQL statement built with concatenation or fmt.Sprintf is passed to a query call."
+       },
+       "help": {
+        "markdown": "SQL statement built with concatenation or fmt.Sprintf is passed to a query call.",
+        "text": "SQL statement built with concatenation or fmt.Sprintf is passed to a query call."
+       },
+       "id": "rules.kurojisho.go.sql-string-built",
+       "name": "rules.kurojisho.go.sql-string-built",
+       "properties": {
+        "precision": "very-high",
+        "tags": [
+         "CWE-89",
+         "MEDIUM CONFIDENCE",
+         "security"
+        ]
+       },
+       "shortDescription": {
+        "text": "Semgrep Finding: rules.kurojisho.go.sql-string-built"
+       }
+      },
+      {
+       "defaultConfiguration": {
+        "level": "warning"
+       },
+       "fullDescription": {
+        "text": "TLS certificate verification is disabled."
+       },
+       "help": {
+        "markdown": "TLS certificate verification is disabled.",
+        "text": "TLS certificate verification is disabled."
+       },
+       "id": "rules.kurojisho.go.tls-verification-disabled",
+       "name": "rules.kurojisho.go.tls-verification-disabled",
+       "properties": {
+        "precision": "very-high",
+        "tags": [
+         "CWE-295",
+         "HIGH CONFIDENCE",
+         "security"
+        ]
+       },
+       "shortDescription": {
+        "text": "Semgrep Finding: rules.kurojisho.go.tls-verification-disabled"
+       }
+      },
+      {
+       "defaultConfiguration": {
+        "level": "warning"
+       },
+       "fullDescription": {
+        "text": "MD5 and SHA-1 are broken for security purposes."
+       },
+       "help": {
+        "markdown": "MD5 and SHA-1 are broken for security purposes.",
+        "text": "MD5 and SHA-1 are broken for security purposes."
+       },
+       "id": "rules.kurojisho.go.weak-hash",
+       "name": "rules.kurojisho.go.weak-hash",
+       "properties": {
+        "precision": "very-high",
+        "tags": [
+         "CWE-327",
+         "LOW CONFIDENCE",
+         "security"
+        ]
+       },
+       "shortDescription": {
+        "text": "Semgrep Finding: rules.kurojisho.go.weak-hash"
+       }
+      },
+      {
+       "defaultConfiguration": {
+        "level": "error"
+       },
+       "fullDescription": {
+        "text": "A process is started from a non-constant command; untrusted input leads to command injection."
+       },
+       "help": {
+        "markdown": "A process is started from a non-constant command; untrusted input leads to command injection.",
+        "text": "A process is started from a non-constant command; untrusted input leads to command injection."
+       },
+       "id": "rules.kurojisho.java.shell-command",
+       "name": "rules.kurojisho.java.shell-command",
+       "properties": {
+        "precision": "very-high",
+        "tags": [
+         "CWE-78",
+         "LOW CONFIDENCE",
+         "security"
+        ]
+       },
+       "shortDescription": {
+        "text": "Semgrep Finding: rules.kurojisho.java.shell-command"
+       }
+      },
+      {
+       "defaultConfiguration": {
+        "level": "error"
+       },
+       "fullDescription": {
+        "text": "SQL statement built by concatenation is passed to a JDBC call."
+       },
+       "help": {
+        "markdown": "SQL statement built by concatenation is passed to a JDBC call.",
+        "text": "SQL statement built by concatenation is passed to a JDBC call."
+       },
+       "id": "rules.kurojisho.java.sql-string-built",
+       "name": "rules.kurojisho.java.sql-string-built",
+       "properties": {
+        "precision": "very-high",
+        "tags": [
+         "CWE-89",
+         "MEDIUM CONFIDENCE",
+         "security"
+        ]
+       },
+       "shortDescription": {
+        "text": "Semgrep Finding: rules.kurojisho.java.sql-string-built"
+       }
+      },
+      {
+       "defaultConfiguration": {
+        "level": "error"
+       },
+       "fullDescription": {
+        "text": "Java native deserialisation of untrusted data can run code."
+       },
+       "help": {
+        "markdown": "Java native deserialisation of untrusted data can run code.",
+        "text": "Java native deserialisation of untrusted data can run code."
+       },
+       "id": "rules.kurojisho.java.unsafe-deserialization",
+       "name": "rules.kurojisho.java.unsafe-deserialization",
+       "properties": {
+        "precision": "very-high",
+        "tags": [
+         "CWE-502",
+         "LOW CONFIDENCE",
+         "security"
+        ]
+       },
+       "shortDescription": {
+        "text": "Semgrep Finding: rules.kurojisho.java.unsafe-deserialization"
+       }
+      },
+      {
+       "defaultConfiguration": {
+        "level": "warning"
+       },
+       "fullDescription": {
+        "text": "MD5 and SHA-1 are broken for security purposes."
+       },
+       "help": {
+        "markdown": "MD5 and SHA-1 are broken for security purposes.",
+        "text": "MD5 and SHA-1 are broken for security purposes."
+       },
+       "id": "rules.kurojisho.java.weak-hash",
+       "name": "rules.kurojisho.java.weak-hash",
+       "properties": {
+        "precision": "very-high",
+        "tags": [
+         "CWE-327",
+         "LOW CONFIDENCE",
+         "security"
+        ]
+       },
+       "shortDescription": {
+        "text": "Semgrep Finding: rules.kurojisho.java.weak-hash"
+       }
+      },
+      {
+       "defaultConfiguration": {
+        "level": "error"
+       },
+       "fullDescription": {
+        "text": "eval or the Function constructor runs a string as code."
+       },
+       "help": {
+        "markdown": "eval or the Function constructor runs a string as code.",
+        "text": "eval or the Function constructor runs a string as code."
+       },
+       "id": "rules.kurojisho.javascript.code-eval",
+       "name": "rules.kurojisho.javascript.code-eval",
+       "properties": {
+        "precision": "very-high",
+        "tags": [
+         "CWE-95",
+         "MEDIUM CONFIDENCE",
+         "security"
+        ]
+       },
+       "shortDescription": {
+        "text": "Semgrep Finding: rules.kurojisho.javascript.code-eval"
+       }
+      },
+      {
+       "defaultConfiguration": {
+        "level": "warning"
+       },
+       "fullDescription": {
+        "text": "Assigning non-constant markup to innerHTML or document.write allows script injection."
+       },
+       "help": {
+        "markdown": "Assigning non-constant markup to innerHTML or document.write allows script injection.",
+        "text": "Assigning non-constant markup to innerHTML or document.write allows script injection."
+       },
+       "id": "rules.kurojisho.javascript.dom-html-injection",
+       "name": "rules.kurojisho.javascript.dom-html-injection",
+       "properties": {
+        "precision": "very-high",
+        "tags": [
+         "CWE-79",
+         "LOW CONFIDENCE",
+         "security"
+        ]
+       },
+       "shortDescription": {
+        "text": "Semgrep Finding: rules.kurojisho.javascript.dom-html-injection"
+       }
+      },
+      {
+       "defaultConfiguration": {
+        "level": "error"
+       },
+       "fullDescription": {
+        "text": "Command string is run through a shell; untrusted input leads to command injection."
+       },
+       "help": {
+        "markdown": "Command string is run through a shell; untrusted input leads to command injection.",
+        "text": "Command string is run through a shell; untrusted input leads to command injection."
+       },
+       "id": "rules.kurojisho.javascript.shell-command",
+       "name": "rules.kurojisho.javascript.shell-command",
+       "properties": {
+        "precision": "very-high",
+        "tags": [
+         "CWE-78",
+         "MEDIUM CONFIDENCE",
+         "security"
+        ]
+       },
+       "shortDescription": {
+        "text": "Semgrep Finding: rules.kurojisho.javascript.shell-command"
+       }
+      },
+      {
+       "defaultConfiguration": {
+        "level": "error"
+       },
+       "fullDescription": {
+        "text": "SQL statement built by concatenation or interpolation is passed to a query call."
+       },
+       "help": {
+        "markdown": "SQL statement built by concatenation or interpolation is passed to a query call.",
+        "text": "SQL statement built by concatenation or interpolation is passed to a query call."
+       },
+       "id": "rules.kurojisho.javascript.sql-string-built",
+       "name": "rules.kurojisho.javascript.sql-string-built",
+       "properties": {
+        "precision": "very-high",
+        "tags": [
+         "CWE-89",
+         "MEDIUM CONFIDENCE",
+         "security"
+        ]
+       },
+       "shortDescription": {
+        "text": "Semgrep Finding: rules.kurojisho.javascript.sql-string-built"
+       }
+      },
+      {
+       "defaultConfiguration": {
+        "level": "warning"
+       },
+       "fullDescription": {
+        "text": "TLS certificate verification is disabled."
+       },
+       "help": {
+        "markdown": "TLS certificate verification is disabled.",
+        "text": "TLS certificate verification is disabled."
+       },
+       "id": "rules.kurojisho.javascript.tls-verification-disabled",
+       "name": "rules.kurojisho.javascript.tls-verification-disabled",
+       "properties": {
+        "precision": "very-high",
+        "tags": [
+         "CWE-295",
+         "HIGH CONFIDENCE",
+         "security"
+        ]
+       },
+       "shortDescription": {
+        "text": "Semgrep Finding: rules.kurojisho.javascript.tls-verification-disabled"
+       }
+      },
+      {
+       "defaultConfiguration": {
+        "level": "error"
+       },
+       "fullDescription": {
+        "text": "eval or exec runs a string as code; with untrusted input this is code execution."
+       },
+       "help": {
+        "markdown": "eval or exec runs a string as code; with untrusted input this is code execution.",
+        "text": "eval or exec runs a string as code; with untrusted input this is code execution."
+       },
+       "id": "rules.kurojisho.python.code-eval",
+       "name": "rules.kurojisho.python.code-eval",
+       "properties": {
+        "precision": "very-high",
+        "tags": [
+         "CWE-95",
+         "MEDIUM CONFIDENCE",
+         "security"
+        ]
+       },
+       "shortDescription": {
+        "text": "Semgrep Finding: rules.kurojisho.python.code-eval"
+       }
+      },
+      {
+       "defaultConfiguration": {
+        "level": "warning"
+       },
+       "fullDescription": {
+        "text": "Flask debug mode exposes an interactive debugger that can run code."
+       },
+       "help": {
+        "markdown": "Flask debug mode exposes an interactive debugger that can run code.",
+        "text": "Flask debug mode exposes an interactive debugger that can run code."
+       },
+       "id": "rules.kurojisho.python.flask-debug",
+       "name": "rules.kurojisho.python.flask-debug",
+       "properties": {
+        "precision": "very-high",
+        "tags": [
+         "CWE-489",
+         "HIGH CONFIDENCE",
+         "security"
+        ]
+       },
+       "shortDescription": {
+        "text": "Semgrep Finding: rules.kurojisho.python.flask-debug"
+       }
+      },
+      {
+       "defaultConfiguration": {
+        "level": "error"
+       },
+       "fullDescription": {
+        "text": "Command is run through a shell; untrusted input leads to command injection."
+       },
+       "help": {
+        "markdown": "Command is run through a shell; untrusted input leads to command injection.",
+        "text": "Command is run through a shell; untrusted input leads to command injection."
+       },
+       "id": "rules.kurojisho.python.shell-command",
+       "name": "rules.kurojisho.python.shell-command",
+       "properties": {
+        "precision": "very-high",
+        "tags": [
+         "CWE-78",
+         "MEDIUM CONFIDENCE",
+         "security"
+        ]
+       },
+       "shortDescription": {
+        "text": "Semgrep Finding: rules.kurojisho.python.shell-command"
+       }
+      },
+      {
+       "defaultConfiguration": {
+        "level": "error"
+       },
+       "fullDescription": {
+        "text": "SQL statement built by string concatenation or formatting is passed to a query call."
+       },
+       "help": {
+        "markdown": "SQL statement built by string concatenation or formatting is passed to a query call.",
+        "text": "SQL statement built by string concatenation or formatting is passed to a query call."
+       },
+       "id": "rules.kurojisho.python.sql-string-built",
+       "name": "rules.kurojisho.python.sql-string-built",
+       "properties": {
+        "precision": "very-high",
+        "tags": [
+         "CWE-89",
+         "MEDIUM CONFIDENCE",
+         "security"
+        ]
+       },
+       "shortDescription": {
+        "text": "Semgrep Finding: rules.kurojisho.python.sql-string-built"
+       }
+      },
+      {
+       "defaultConfiguration": {
+        "level": "warning"
+       },
+       "fullDescription": {
+        "text": "TLS certificate verification is disabled."
+       },
+       "help": {
+        "markdown": "TLS certificate verification is disabled.",
+        "text": "TLS certificate verification is disabled."
+       },
+       "id": "rules.kurojisho.python.tls-verification-disabled",
+       "name": "rules.kurojisho.python.tls-verification-disabled",
+       "properties": {
+        "precision": "very-high",
+        "tags": [
+         "CWE-295",
+         "HIGH CONFIDENCE",
+         "security"
+        ]
+       },
+       "shortDescription": {
+        "text": "Semgrep Finding: rules.kurojisho.python.tls-verification-disabled"
+       }
+      },
+      {
+       "defaultConfiguration": {
+        "level": "error"
+       },
+       "fullDescription": {
+        "text": "Deserialising untrusted data with pickle or an unsafe YAML loader can run code."
+       },
+       "help": {
+        "markdown": "Deserialising untrusted data with pickle or an unsafe YAML loader can run code.",
+        "text": "Deserialising untrusted data with pickle or an unsafe YAML loader can run code."
+       },
+       "id": "rules.kurojisho.python.unsafe-deserialization",
+       "name": "rules.kurojisho.python.unsafe-deserialization",
+       "properties": {
+        "precision": "very-high",
+        "tags": [
+         "CWE-502",
+         "MEDIUM CONFIDENCE",
+         "security"
+        ]
+       },
+       "shortDescription": {
+        "text": "Semgrep Finding: rules.kurojisho.python.unsafe-deserialization"
+       }
+      },
+      {
+       "defaultConfiguration": {
+        "level": "warning"
+       },
+       "fullDescription": {
+        "text": "MD5 and SHA-1 are broken for security purposes."
+       },
+       "help": {
+        "markdown": "MD5 and SHA-1 are broken for security purposes.",
+        "text": "MD5 and SHA-1 are broken for security purposes."
+       },
+       "id": "rules.kurojisho.python.weak-hash",
+       "name": "rules.kurojisho.python.weak-hash",
+       "properties": {
+        "precision": "very-high",
+        "tags": [
+         "CWE-327",
+         "LOW CONFIDENCE",
+         "security"
+        ]
+       },
+       "shortDescription": {
+        "text": "Semgrep Finding: rules.kurojisho.python.weak-hash"
+       }
+      }
+     ],
+     "semanticVersion": "1.184.0"
+    }
+   }
+  }
+ ],
+ "version": "2.1.0"
+}

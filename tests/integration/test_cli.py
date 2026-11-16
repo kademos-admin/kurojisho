@@ -44,16 +44,16 @@ def test_init_creates_state_and_keeps_existing_context(tmp_path: Path) -> None:
     context.write_text("assets: []\n")
     assert "context file kept" in run("init", str(tmp_path))
     assert context.read_text() == "assets: []\n"
-    run("scan", str(tmp_path))  # the starter template is a valid, empty context
+    run("scan", "--no-tools", str(tmp_path))  # the starter template is a valid, empty context
     assert "not a directory" in run("init", str(tmp_path / "missing"), code=2)
 
 
 def test_scan_then_query_round_trip(repo: Path) -> None:
-    first = json.loads(run("scan", ".", "--json"))
+    first = json.loads(run("scan", "--no-tools", ".", "--json"))
     assert first["scan_id"] == 1 and first["files_parsed"] == 6 and first["nodes_inserted"] == 43
-    again = json.loads(run("scan", str(repo), "--json"))
+    again = json.loads(run("scan", "--no-tools", str(repo), "--json"))
     assert again["scan_id"] == 2 and again["files_parsed"] == 0 and again["nodes_inserted"] == 0
-    assert "scan #3" in run("scan", ".", "--full")
+    assert "scan #3" in run("scan", "--no-tools", ".", "--full")
 
     stats = json.loads(run("query", "stats", "--json"))
     assert stats["nodes"]["Function"] == 18 and stats["call_resolution"]["exact"] >= 5
@@ -100,28 +100,28 @@ def test_scan_then_query_round_trip(repo: Path) -> None:
 
 
 def test_export_is_stable_and_can_be_written_to_a_file(repo: Path, tmp_path: Path) -> None:
-    run("scan", ".")
+    run("scan", "--no-tools", ".")
     printed = run("query", "export")
     target = tmp_path / "graph.json"
     run("query", "export", "-o", str(target), "--repo", str(repo))
     assert target.read_text() == printed
     data = json.loads(printed)
     assert len(data["nodes"]) == 43 and len(data["edges"]) == 65
-    run("scan", ".")
+    run("scan", "--no-tools", ".")
     assert run("query", "export") == printed
 
 
 def test_errors_are_reported_with_exit_code_2(repo: Path, tmp_path: Path) -> None:
     assert "no graph" in run("query", "stats", code=2)
-    assert "not a directory" in run("scan", str(tmp_path / "nope"), code=2)
-    run("scan", ".")
+    assert "not a directory" in run("scan", "--no-tools", str(tmp_path / "nope"), code=2)
+    run("scan", "--no-tools", ".")
     assert "no node matches" in run("query", "show", "does-not-exist", code=2)
     assert "ambiguous" in run("query", "callers", "query", code=2)
     (repo / "kurojisho.context.yaml").write_text("assets: [{id: a}]")
-    assert "paths" in run("scan", ".", code=2)
+    assert "paths" in run("scan", "--no-tools", ".", code=2)
     (repo / "kurojisho.context.yaml").unlink()
     missing = str(tmp_path / "c.yaml")
-    assert "cannot read context" in run("scan", ".", "--context", missing, code=2)
+    assert "cannot read context" in run("scan", "--no-tools", ".", "--context", missing, code=2)
 
 
 def test_explicit_db_and_parse_error_warning(tmp_path: Path) -> None:
@@ -129,7 +129,7 @@ def test_explicit_db_and_parse_error_warning(tmp_path: Path) -> None:
     root.mkdir()
     (root / "bad.py").write_text("def broken(:\n")
     db = tmp_path / "custom.db"
-    result = runner.invoke(app, ["scan", str(root), "--db", str(db)])
+    result = runner.invoke(app, ["scan", "--no-tools", str(root), "--db", str(db)])
     assert result.exit_code == 0 and db.is_file()
     assert "syntax" in result.output
     assert not (root / ".kurojisho").exists()

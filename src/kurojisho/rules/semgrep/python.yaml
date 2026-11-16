@@ -1,0 +1,67 @@
+# KuroJisho starter rules for Python. Deliberately small and high-signal; original work,
+# not derived from the Semgrep Registry.
+rules:
+  - id: kurojisho.python.sql-string-built
+    languages: [python]
+    severity: ERROR
+    message: SQL statement built by string concatenation or formatting is passed to a query call.
+    metadata: {cwe: ["CWE-89"], confidence: MEDIUM, category: security}
+    patterns:
+      - pattern-either:
+          - pattern: $DB.$METHOD("..." + $X, ...)
+          - pattern: $DB.$METHOD($A + $B + "...", ...)
+          - pattern: $DB.$METHOD("..." % $X, ...)
+          - pattern: $DB.$METHOD("...".format(...), ...)
+          - pattern: $DB.$METHOD(f"...{$X}...", ...)
+      - metavariable-regex: {metavariable: $METHOD, regex: ^(execute|executemany|executescript|query|raw)$}
+  - id: kurojisho.python.code-eval
+    languages: [python]
+    severity: ERROR
+    message: eval or exec runs a string as code; with untrusted input this is code execution.
+    metadata: {cwe: ["CWE-95"], confidence: MEDIUM, category: security}
+    patterns:
+      - pattern-either:
+          - pattern: eval($X, ...)
+          - pattern: exec($X, ...)
+      - pattern-not: eval("...", ...)
+      - pattern-not: exec("...", ...)
+  - id: kurojisho.python.shell-command
+    languages: [python]
+    severity: ERROR
+    message: Command is run through a shell; untrusted input leads to command injection.
+    metadata: {cwe: ["CWE-78"], confidence: MEDIUM, category: security}
+    pattern-either:
+      - pattern: subprocess.$F(..., shell=True, ...)
+      - pattern: os.system($X)
+      - pattern: os.popen($X, ...)
+  - id: kurojisho.python.unsafe-deserialization
+    languages: [python]
+    severity: ERROR
+    message: Deserialising untrusted data with pickle or an unsafe YAML loader can run code.
+    metadata: {cwe: ["CWE-502"], confidence: MEDIUM, category: security}
+    pattern-either:
+      - pattern: pickle.loads(...)
+      - pattern: pickle.load(...)
+      - pattern: yaml.load($X)
+      - pattern: yaml.load($X, Loader=yaml.Loader)
+      - pattern: yaml.unsafe_load(...)
+  - id: kurojisho.python.weak-hash
+    languages: [python]
+    severity: WARNING
+    message: MD5 and SHA-1 are broken for security purposes.
+    metadata: {cwe: ["CWE-327"], confidence: LOW, category: security}
+    pattern-either:
+      - pattern: hashlib.md5(...)
+      - pattern: hashlib.sha1(...)
+  - id: kurojisho.python.tls-verification-disabled
+    languages: [python]
+    severity: WARNING
+    message: TLS certificate verification is disabled.
+    metadata: {cwe: ["CWE-295"], confidence: HIGH, category: security}
+    pattern: requests.$M(..., verify=False, ...)
+  - id: kurojisho.python.flask-debug
+    languages: [python]
+    severity: WARNING
+    message: Flask debug mode exposes an interactive debugger that can run code.
+    metadata: {cwe: ["CWE-489"], confidence: HIGH, category: security}
+    pattern: $APP.run(..., debug=True, ...)

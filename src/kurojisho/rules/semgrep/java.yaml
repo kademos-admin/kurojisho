@@ -1,0 +1,35 @@
+# KuroJisho starter rules for Java.
+rules:
+  - id: kurojisho.java.sql-string-built
+    languages: [java]
+    severity: ERROR
+    message: SQL statement built by concatenation is passed to a JDBC call.
+    metadata: {cwe: ["CWE-89"], confidence: MEDIUM, category: security}
+    patterns:
+      - pattern-either:
+          - pattern: $ST.$METHOD("..." + $X, ...)
+          - pattern: $ST.$METHOD($Q + $X, ...)
+      - metavariable-regex: {metavariable: $METHOD, regex: ^(executeQuery|executeUpdate|execute|prepareStatement|createQuery|createNativeQuery)$}
+  - id: kurojisho.java.shell-command
+    languages: [java]
+    severity: ERROR
+    message: A process is started from a non-constant command; untrusted input leads to command injection.
+    metadata: {cwe: ["CWE-78"], confidence: LOW, category: security}
+    patterns:
+      - pattern: Runtime.getRuntime().exec($X, ...)
+      - pattern-not: Runtime.getRuntime().exec("...", ...)
+  - id: kurojisho.java.unsafe-deserialization
+    languages: [java]
+    severity: ERROR
+    message: Java native deserialisation of untrusted data can run code.
+    metadata: {cwe: ["CWE-502"], confidence: LOW, category: security}
+    pattern: (ObjectInputStream $IN).readObject()
+  - id: kurojisho.java.weak-hash
+    languages: [java]
+    severity: WARNING
+    message: MD5 and SHA-1 are broken for security purposes.
+    metadata: {cwe: ["CWE-327"], confidence: LOW, category: security}
+    pattern-either:
+      - pattern: MessageDigest.getInstance("MD5")
+      - pattern: MessageDigest.getInstance("SHA-1")
+      - pattern: MessageDigest.getInstance("SHA1")

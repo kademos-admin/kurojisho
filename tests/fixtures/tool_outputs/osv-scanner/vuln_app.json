@@ -1,0 +1,4727 @@
+{
+ "experimental_config": {
+  "licenses": {
+   "allowlist": null,
+   "summary": false
+  }
+ },
+ "results": [
+  {
+   "packages": [
+    {
+     "groups": [
+      {
+       "aliases": [
+        "CVE-2018-1000656",
+        "GHSA-562c-5r94-xh97",
+        "PYSEC-2018-66"
+       ],
+       "ids": [
+        "PYSEC-2018-66",
+        "GHSA-562c-5r94-xh97"
+       ],
+       "max_severity": "8.7"
+      },
+      {
+       "aliases": [
+        "CVE-2019-1010083",
+        "GHSA-5wv5-4vpf-pj6m",
+        "PYSEC-2019-179"
+       ],
+       "ids": [
+        "PYSEC-2019-179",
+        "GHSA-5wv5-4vpf-pj6m"
+       ],
+       "max_severity": "8.7"
+      },
+      {
+       "aliases": [
+        "CVE-2023-30861",
+        "GHSA-m2qf-hxjv-5gpq",
+        "PYSEC-2023-62"
+       ],
+       "ids": [
+        "PYSEC-2023-62",
+        "GHSA-m2qf-hxjv-5gpq"
+       ],
+       "max_severity": "8.7"
+      },
+      {
+       "aliases": [
+        "CVE-2026-27205",
+        "GHSA-68rp-wp8r-4726",
+        "PYSEC-2026-2151"
+       ],
+       "ids": [
+        "PYSEC-2026-2151",
+        "GHSA-68rp-wp8r-4726"
+       ],
+       "max_severity": "4.3"
+      }
+     ],
+     "package": {
+      "ecosystem": "PyPI",
+      "name": "flask",
+      "purl": "pkg:pypi/flask@0.12.2",
+      "version": "0.12.2"
+     },
+     "vulnerabilities": [
+      {
+       "affected": [
+        {
+         "package": {
+          "ecosystem": "PyPI",
+          "name": "flask",
+          "purl": "pkg:pypi/flask"
+         },
+         "ranges": [
+          {
+           "events": [
+            {
+             "introduced": "0"
+            },
+            {
+             "fixed": "0.12.3"
+            }
+           ],
+           "type": "ECOSYSTEM"
+          }
+         ]
+        }
+       ],
+       "aliases": [
+        "CVE-2018-1000656",
+        "GHSA-562c-5r94-xh97"
+       ],
+       "id": "PYSEC-2018-66",
+       "modified": "2023-11-08T03:59:39.887416Z",
+       "published": "2018-08-20T19:31:00Z",
+       "schema_version": "1.7.3"
+      },
+      {
+       "affected": [
+        {
+         "package": {
+          "ecosystem": "PyPI",
+          "name": "flask",
+          "purl": "pkg:pypi/flask"
+         },
+         "ranges": [
+          {
+           "events": [
+            {
+             "introduced": "0"
+            },
+            {
+             "fixed": "1.0"
+            }
+           ],
+           "type": "ECOSYSTEM"
+          }
+         ]
+        }
+       ],
+       "aliases": [
+        "CVE-2019-1010083",
+        "GHSA-5wv5-4vpf-pj6m"
+       ],
+       "id": "PYSEC-2019-179",
+       "modified": "2023-11-08T04:00:40.602062Z",
+       "published": "2019-07-17T14:15:00Z",
+       "schema_version": "1.7.3"
+      },
+      {
+       "affected": [
+        {
+         "package": {
+          "ecosystem": "PyPI",
+          "name": "flask",
+          "purl": "pkg:pypi/flask"
+         },
+         "ranges": [
+          {
+           "events": [
+            {
+             "introduced": "0"
+            },
+            {
+             "fixed": "70f906c51ce49c485f1d355703e9cc3386b1cc2b"
+            },
+            {
+             "fixed": "afd63b16170b7c047f5758eb910c416511e9c965"
+            }
+           ],
+           "repo": "https://github.com/pallets/flask",
+           "type": "GIT"
+          },
+          {
+           "events": [
+            {
+             "introduced": "0"
+            },
+            {
+             "fixed": "2.2.5"
+            },
+            {
+             "introduced": "2.3.0"
+            },
+            {
+             "fixed": "2.3.2"
+            }
+           ],
+           "type": "ECOSYSTEM"
+          }
+         ]
+        }
+       ],
+       "aliases": [
+        "CVE-2023-30861",
+        "GHSA-m2qf-hxjv-5gpq"
+       ],
+       "id": "PYSEC-2023-62",
+       "modified": "2023-11-08T04:12:28.231927Z",
+       "published": "2023-05-02T18:15:00Z",
+       "schema_version": "1.7.3"
+      },
+      {
+       "affected": [
+        {
+         "ecosystem_specific": {},
+         "package": {
+          "ecosystem": "PyPI",
+          "name": "flask",
+          "purl": "pkg:pypi/flask"
+         },
+         "ranges": [
+          {
+           "events": [
+            {
+             "introduced": "0"
+            },
+            {
+             "fixed": "3.1.3"
+            }
+           ],
+           "type": "ECOSYSTEM"
+          }
+         ]
+        }
+       ],
+       "aliases": [
+        "CVE-2026-27205",
+        "GHSA-68rp-wp8r-4726"
+       ],
+       "id": "PYSEC-2026-2151",
+       "modified": "2026-07-13T07:15:25.033843440Z",
+       "published": "2026-02-21T06:17:00.910Z",
+       "schema_version": "1.7.5",
+       "severity": [
+        {
+         "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:L/I:N/A:N",
+         "type": "CVSS_V3"
+        }
+       ]
+      },
+      {
+       "affected": [
+        {
+         "package": {
+          "ecosystem": "PyPI",
+          "name": "flask",
+          "purl": "pkg:pypi/flask"
+         },
+         "ranges": [
+          {
+           "events": [
+            {
+             "introduced": "0"
+            },
+            {
+             "fixed": "0.12.3"
+            }
+           ],
+           "type": "ECOSYSTEM"
+          }
+         ]
+        }
+       ],
+       "aliases": [
+        "CVE-2018-1000656",
+        "PYSEC-2018-66"
+       ],
+       "id": "GHSA-562c-5r94-xh97",
+       "modified": "2025-02-21T05:29:40.872529Z",
+       "published": "2018-08-23T19:10:40Z",
+       "schema_version": "1.9.0",
+       "severity": [
+        {
+         "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+         "type": "CVSS_V3"
+        },
+        {
+         "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N",
+         "type": "CVSS_V4"
+        }
+       ],
+       "summary": "Flask is vulnerable to Denial of Service via incorrect encoding of JSON data"
+      },
+      {
+       "affected": [
+        {
+         "package": {
+          "ecosystem": "PyPI",
+          "name": "flask",
+          "purl": "pkg:pypi/flask"
+         },
+         "ranges": [
+          {
+           "events": [
+            {
+             "introduced": "0"
+            },
+            {
+             "fixed": "1.0"
+            }
+           ],
+           "type": "ECOSYSTEM"
+          }
+         ]
+        }
+       ],
+       "aliases": [
+        "CVE-2019-1010083",
+        "PYSEC-2019-179"
+       ],
+       "id": "GHSA-5wv5-4vpf-pj6m",
+       "modified": "2024-09-20T21:24:25.140560Z",
+       "published": "2019-07-19T16:12:46Z",
+       "schema_version": "1.9.0",
+       "severity": [
+        {
+         "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+         "type": "CVSS_V3"
+        },
+        {
+         "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N",
+         "type": "CVSS_V4"
+        }
+       ],
+       "summary": "Pallets Project Flask is vulnerable to Denial of Service via Unexpected memory usage"
+      },
+      {
+       "affected": [
+        {
+         "package": {
+          "ecosystem": "PyPI",
+          "name": "flask",
+          "purl": "pkg:pypi/flask"
+         },
+         "ranges": [
+          {
+           "events": [
+            {
+             "introduced": "0"
+            },
+            {
+             "fixed": "3.1.3"
+            }
+           ],
+           "type": "ECOSYSTEM"
+          }
+         ]
+        }
+       ],
+       "aliases": [
+        "CVE-2026-27205",
+        "PYSEC-2026-2151"
+       ],
+       "id": "GHSA-68rp-wp8r-4726",
+       "modified": "2026-09-10T03:49:54.354981590Z",
+       "published": "2026-02-19T20:45:41Z",
+       "schema_version": "1.9.0",
+       "severity": [
+        {
+         "score": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:P/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N",
+         "type": "CVSS_V4"
+        }
+       ],
+       "summary": "Flask session does not add `Vary: Cookie` header when accessed in some ways"
+      },
+      {
+       "affected": [
+        {
+         "package": {
+          "ecosystem": "PyPI",
+          "name": "flask",
+          "purl": "pkg:pypi/flask"
+         },
+         "ranges": [
+          {
+           "events": [
+            {
+             "introduced": "2.3.0"
+            },
+            {
+             "fixed": "2.3.2"
+            }
+           ],
+           "type": "ECOSYSTEM"
+          }
+         ]
+        },
+        {
+         "package": {
+          "ecosystem": "PyPI",
+          "name": "flask",
+          "purl": "pkg:pypi/flask"
+         },
+         "ranges": [
+          {
+           "events": [
+            {
+             "introduced": "0"
+            },
+            {
+             "fixed": "2.2.5"
+            }
+           ],
+           "type": "ECOSYSTEM"
+          }
+         ]
+        }
+       ],
+       "aliases": [
+        "CVE-2023-30861",
+        "PYSEC-2023-62"
+       ],
+       "id": "GHSA-m2qf-hxjv-5gpq",
+       "modified": "2026-09-10T03:50:01.763387498Z",
+       "published": "2023-05-01T19:22:20Z",
+       "schema_version": "1.9.0",
+       "severity": [
+        {
+         "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
+         "type": "CVSS_V3"
+        },
+        {
+         "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N",
+         "type": "CVSS_V4"
+        }
+       ],
+       "summary": "Flask vulnerable to possible disclosure of permanent session cookie due to missing Vary: Cookie header"
+      }
+     ]
+    },
+    {
+     "groups": [
+      {
+       "aliases": [
+        "CVE-2019-10906",
+        "GHSA-462w-v97r-4m45",
+        "PYSEC-2019-217"
+       ],
+       "ids": [
+        "PYSEC-2019-217",
+        "GHSA-462w-v97r-4m45"
+       ],
+       "max_severity": "8.6"
+      },
+      {
+       "aliases": [
+        "CVE-2020-28493",
+        "GHSA-g3rq-g295-4j3m",
+        "PYSEC-2021-66",
+        "SNYK-PYTHON-JINJA2-1012994"
+       ],
+       "ids": [
+        "PYSEC-2021-66",
+        "GHSA-g3rq-g295-4j3m"
+       ],
+       "max_severity": "6.9"
+      },
+      {
+       "aliases": [
+        "CVE-2025-27516",
+        "GHSA-cpwx-vrp4-4pq7",
+        "PYSEC-2026-1471"
+       ],
+       "ids": [
+        "PYSEC-2026-1471",
+        "GHSA-cpwx-vrp4-4pq7"
+       ],
+       "max_severity": "5.4"
+      },
+      {
+       "aliases": [
+        "CVE-2024-22195",
+        "GHSA-h5c8-rqwp-cp95",
+        "PYSEC-2026-1473"
+       ],
+       "ids": [
+        "PYSEC-2026-1473",
+        "GHSA-h5c8-rqwp-cp95"
+       ],
+       "max_severity": "5.4"
+      },
+      {
+       "aliases": [
+        "CVE-2024-34064",
+        "GHSA-h75v-3vvj-5mfj",
+        "PYSEC-2026-1474"
+       ],
+       "ids": [
+        "PYSEC-2026-1474",
+        "GHSA-h75v-3vvj-5mfj"
+       ],
+       "max_severity": "5.4"
+      },
+      {
+       "aliases": [
+        "CVE-2024-56326",
+        "GHSA-q2x7-8rv6-6q7h",
+        "PYSEC-2026-1475"
+       ],
+       "ids": [
+        "PYSEC-2026-1475",
+        "GHSA-q2x7-8rv6-6q7h"
+       ],
+       "max_severity": "7.8"
+      }
+     ],
+     "package": {
+      "ecosystem": "PyPI",
+      "name": "jinja2",
+      "purl": "pkg:pypi/jinja2@2.10",
+      "version": "2.10"
+     },
+     "vulnerabilities": [
+      {
+       "affected": [
+        {
+         "package": {
+          "ecosystem": "PyPI",
+          "name": "jinja2",
+          "purl": "pkg:pypi/jinja2"
+         },
+         "ranges": [
+          {
+           "events": [
+            {
+             "introduced": "0"
+            },
+            {
+             "fixed": "2.10.1"
+            }
+           ],
+           "type": "ECOSYSTEM"
+          }
+         ]
+        }
+       ],
+       "aliases": [
+        "CVE-2019-10906",
+        "GHSA-462w-v97r-4m45"
+       ],
+       "id": "PYSEC-2019-217",
+       "modified": "2023-11-08T04:00:58.644982Z",
+       "published": "2019-04-07T00:29:00Z",
+       "schema_version": "1.7.3"
+      },
+      {
+       "affected": [
+        {
+         "package": {
+          "ecosystem": "PyPI",
+          "name": "jinja2",
+          "purl": "pkg:pypi/jinja2"
+         },
+         "ranges": [
+          {
+           "events": [
+            {
+             "introduced": "0"
+            },
+            {
+             "fixed": "2.11.3"
+            }
+           ],
+           "type": "ECOSYSTEM"
+          }
+         ]
+        }
+       ],
+       "aliases": [
+        "CVE-2020-28493",
+        "GHSA-g3rq-g295-4j3m",
+        "SNYK-PYTHON-JINJA2-1012994"
+       ],
+       "id": "PYSEC-2021-66",
+       "modified": "2023-11-08T04:03:28.543308Z",
+       "published": "2021-02-01T20:15:00Z",
+       "schema_version": "1.7.3"
+      },
+      {
+       "affected": [
+        {
+         "package": {
+          "ecosystem": "PyPI",
+          "name": "jinja2",
+          "purl": "pkg:pypi/jinja2"
+         },
+         "ranges": [
+          {
+           "events": [
+            {
+             "introduced": "0"
+            },
+            {
+             "fixed": "3.1.6"
+            }
+           ],
+           "type": "ECOSYSTEM"
+          }
+         ]
+        }
+       ],
+       "aliases": [
+        "CVE-2025-27516",
+        "GHSA-cpwx-vrp4-4pq7"
+       ],
+       "id": "PYSEC-2026-1471",
+       "modified": "2026-07-07T17:46:43.358335981Z",
+       "published": "2026-07-07T14:34:50.446969Z",
+       "schema_version": "1.7.5",
+       "severity": [
+        {
+         "score": "CVSS:4.0/AV:L/AC:L/AT:P/PR:L/UI:P/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N",
+         "type": "CVSS_V4"
+        }
+       ],
+       "summary": "Jinja2 vulnerable to sandbox breakout through attr filter selecting format method"
+      },
+      {
+       "affected": [
+        {
+         "package": {
+          "ecosystem": "PyPI",
+          "name": "jinja2",
+          "purl": "pkg:pypi/jinja2"
+         },
+         "ranges": [
+          {
+           "events": [
+            {
+             "introduced": "0"
+            },
+            {
+             "fixed": "3.1.3"
+            }
+           ],
+           "type": "ECOSYSTEM"
+          }
+         ]
+        }
+       ],
+       "aliases": [
+        "CVE-2024-22195",
+        "GHSA-h5c8-rqwp-cp95"
+       ],
+       "id": "PYSEC-2026-1473",
+       "modified": "2026-07-07T17:46:13.853151947Z",
+       "published": "2026-07-07T11:45:29.949639Z",
+       "schema_version": "1.7.5",
+       "severity": [
+        {
+         "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:L/I:L/A:N",
+         "type": "CVSS_V3"
+        }
+       ],
+       "summary": "Jinja vulnerable to HTML attribute injection when passing user input as keys to xmlattr filter"
+      },
+      {
+       "affected": [
+        {
+         "package": {
+          "ecosystem": "PyPI",
+          "name": "jinja2",
+          "purl": "pkg:pypi/jinja2"
+         },
+         "ranges": [
+          {
+           "events": [
+            {
+             "introduced": "0"
+            },
+            {
+             "fixed": "3.1.4"
+            }
+           ],
+           "type": "ECOSYSTEM"
+          }
+         ]
+        }
+       ],
+       "aliases": [
+        "CVE-2024-34064",
+        "GHSA-h75v-3vvj-5mfj"
+       ],
+       "id": "PYSEC-2026-1474",
+       "modified": "2026-07-07T17:46:13.832160246Z",
+       "published": "2026-07-07T11:45:41.875280Z",
+       "schema_version": "1.7.5",
+       "severity": [
+        {
+         "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:L/I:L/A:N",
+         "type": "CVSS_V3"
+        }
+       ],
+       "summary": "Jinja vulnerable to HTML attribute injection when passing user input as keys to xmlattr filter"
+      },
+      {
+       "affected": [
+        {
+         "package": {
+          "ecosystem": "PyPI",
+          "name": "jinja2",
+          "purl": "pkg:pypi/jinja2"
+         },
+         "ranges": [
+          {
+           "events": [
+            {
+             "introduced": "0"
+            },
+            {
+             "fixed": "3.1.5"
+            }
+           ],
+           "type": "ECOSYSTEM"
+          }
+         ]
+        }
+       ],
+       "aliases": [
+        "CVE-2024-56326",
+        "GHSA-q2x7-8rv6-6q7h"
+       ],
+       "id": "PYSEC-2026-1475",
+       "modified": "2026-07-07T17:46:13.842466429Z",
+       "published": "2026-07-07T14:34:47.732576Z",
+       "schema_version": "1.7.5",
+       "severity": [
+        {
+         "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+         "type": "CVSS_V3"
+        },
+        {
+         "score": "CVSS:4.0/AV:L/AC:L/AT:P/PR:L/UI:P/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N",
+         "type": "CVSS_V4"
+        }
+       ],
+       "summary": "Jinja has a sandbox breakout through indirect reference to format method"
+      },
+      {
+       "affected": [
+        {
+         "package": {
+          "ecosystem": "PyPI",
+          "name": "jinja2",
+          "purl": "pkg:pypi/jinja2"
+         },
+         "ranges": [
+          {
+           "events": [
+            {
+             "introduced": "0"
+            },
+            {
+             "fixed": "2.10.1"
+            }
+           ],
+           "type": "ECOSYSTEM"
+          }
+         ]
+        }
+       ],
+       "aliases": [
+        "CVE-2019-10906",
+        "PYSEC-2019-217"
+       ],
+       "id": "GHSA-462w-v97r-4m45",
+       "modified": "2024-09-24T21:03:59.802687Z",
+       "published": "2019-04-10T14:30:24Z",
+       "schema_version": "1.9.0",
+       "severity": [
+        {
+         "score": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:N/A:N",
+         "type": "CVSS_V3"
+        },
+        {
+         "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:N/SC:H/SI:N/SA:N",
+         "type": "CVSS_V4"
+        }
+       ],
+       "summary": "Jinja2 sandbox escape via string formatting"
+      },
+      {
+       "affected": [
+        {
+         "package": {
+          "ecosystem": "PyPI",
+          "name": "jinja2",
+          "purl": "pkg:pypi/jinja2"
+         },
+         "ranges": [
+          {
+           "events": [
+            {
+             "introduced": "0"
+            },
+            {
+             "fixed": "3.1.6"
+            }
+           ],
+           "type": "ECOSYSTEM"
+          }
+         ]
+        }
+       ],
+       "aliases": [
+        "CVE-2025-27516",
+        "PYSEC-2026-1471"
+       ],
+       "id": "GHSA-cpwx-vrp4-4pq7",
+       "modified": "2026-09-10T03:49:48.526758681Z",
+       "published": "2025-03-05T20:40:14Z",
+       "schema_version": "1.9.0",
+       "severity": [
+        {
+         "score": "CVSS:4.0/AV:L/AC:L/AT:P/PR:L/UI:P/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N",
+         "type": "CVSS_V4"
+        }
+       ],
+       "summary": "Jinja2 vulnerable to sandbox breakout through attr filter selecting format method"
+      },
+      {
+       "affected": [
+        {
+         "package": {
+          "ecosystem": "PyPI",
+          "name": "jinja2",
+          "purl": "pkg:pypi/jinja2"
+         },
+         "ranges": [
+          {
+           "events": [
+            {
+             "introduced": "0"
+            },
+            {
+             "fixed": "2.11.3"
+            }
+           ],
+           "type": "ECOSYSTEM"
+          }
+         ]
+        }
+       ],
+       "aliases": [
+        "CVE-2020-28493",
+        "PYSEC-2021-66",
+        "SNYK-PYTHON-JINJA2-1012994"
+       ],
+       "id": "GHSA-g3rq-g295-4j3m",
+       "modified": "2025-02-14T05:26:14.565160Z",
+       "published": "2021-03-19T21:28:05Z",
+       "schema_version": "1.9.0",
+       "severity": [
+        {
+         "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L",
+         "type": "CVSS_V3"
+        },
+        {
+         "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N",
+         "type": "CVSS_V4"
+        }
+       ],
+       "summary": "Regular Expression Denial of Service (ReDoS) in Jinja2"
+      },
+      {
+       "affected": [
+        {
+         "package": {
+          "ecosystem": "PyPI",
+          "name": "jinja2",
+          "purl": "pkg:pypi/jinja2"
+         },
+         "ranges": [
+          {
+           "events": [
+            {
+             "introduced": "0"
+            },
+            {
+             "fixed": "3.1.3"
+            }
+           ],
+           "type": "ECOSYSTEM"
+          }
+         ]
+        }
+       ],
+       "aliases": [
+        "CVE-2024-22195",
+        "PYSEC-2026-1473"
+       ],
+       "id": "GHSA-h5c8-rqwp-cp95",
+       "modified": "2026-09-10T03:50:00.236017440Z",
+       "published": "2024-01-11T15:20:48Z",
+       "schema_version": "1.9.0",
+       "severity": [
+        {
+         "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:L/I:L/A:N",
+         "type": "CVSS_V3"
+        }
+       ],
+       "summary": "Jinja vulnerable to HTML attribute injection when passing user input as keys to xmlattr filter"
+      },
+      {
+       "affected": [
+        {
+         "package": {
+          "ecosystem": "PyPI",
+          "name": "jinja2",
+          "purl": "pkg:pypi/jinja2"
+         },
+         "ranges": [
+          {
+           "events": [
+            {
+             "introduced": "0"
+            },
+            {
+             "fixed": "3.1.4"
+            }
+           ],
+           "type": "ECOSYSTEM"
+          }
+         ]
+        }
+       ],
+       "aliases": [
+        "CVE-2024-34064",
+        "PYSEC-2026-1474"
+       ],
+       "id": "GHSA-h75v-3vvj-5mfj",
+       "modified": "2026-09-10T03:50:13.786450101Z",
+       "published": "2024-05-06T14:20:59Z",
+       "schema_version": "1.9.0",
+       "severity": [
+        {
+         "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:L/I:L/A:N",
+         "type": "CVSS_V3"
+        }
+       ],
+       "summary": "Jinja vulnerable to HTML attribute injection when passing user input as keys to xmlattr filter"
+      },
+      {
+       "affected": [
+        {
+         "package": {
+          "ecosystem": "PyPI",
+          "name": "jinja2",
+          "purl": "pkg:pypi/jinja2"
+         },
+         "ranges": [
+          {
+           "events": [
+            {
+             "introduced": "0"
+            },
+            {
+             "fixed": "3.1.5"
+            }
+           ],
+           "type": "ECOSYSTEM"
+          }
+         ]
+        }
+       ],
+       "aliases": [
+        "CVE-2024-56326",
+        "PYSEC-2026-1475"
+       ],
+       "id": "GHSA-q2x7-8rv6-6q7h",
+       "modified": "2026-09-10T03:50:21.662855250Z",
+       "published": "2024-12-23T17:56:08Z",
+       "schema_version": "1.9.0",
+       "severity": [
+        {
+         "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+         "type": "CVSS_V3"
+        },
+        {
+         "score": "CVSS:4.0/AV:L/AC:L/AT:P/PR:L/UI:P/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N",
+         "type": "CVSS_V4"
+        }
+       ],
+       "summary": "Jinja has a sandbox breakout through indirect reference to format method"
+      }
+     ]
+    },
+    {
+     "groups": [
+      {
+       "aliases": [
+        "CVE-2020-1747",
+        "GHSA-6757-jp84-gxfx",
+        "PYSEC-2020-96"
+       ],
+       "ids": [
+        "PYSEC-2020-96",
+        "GHSA-6757-jp84-gxfx"
+       ],
+       "max_severity": "9.8"
+      },
+      {
+       "aliases": [
+        "CVE-2020-14343",
+        "GHSA-8q59-q68h-6hv4",
+        "PYSEC-2021-142"
+       ],
+       "ids": [
+        "PYSEC-2021-142",
+        "GHSA-8q59-q68h-6hv4"
+       ],
+       "max_severity": "9.8"
+      }
+     ],
+     "package": {
+      "ecosystem": "PyPI",
+      "name": "pyyaml",
+      "purl": "pkg:pypi/pyyaml@5.3",
+      "version": "5.3"
+     },
+     "vulnerabilities": [
+      {
+       "affected": [
+        {
+         "package": {
+          "ecosystem": "PyPI",
+          "name": "pyyaml",
+          "purl": "pkg:pypi/pyyaml"
+         },
+         "ranges": [
+          {
+           "events": [
+            {
+             "introduced": "5.1"
+            },
+            {
+             "fixed": "5.3.1"
+            }
+           ],
+           "type": "ECOSYSTEM"
+          }
+         ]
+        }
+       ],
+       "aliases": [
+        "CVE-2020-1747",
+        "GHSA-6757-jp84-gxfx"
+       ],
+       "id": "PYSEC-2020-96",
+       "modified": "2026-05-04T08:57:14.897560893Z",
+       "published": "2020-03-24T15:15:00Z",
+       "schema_version": "1.7.5"
+      },
+      {
+       "affected": [
+        {
+         "package": {
+          "ecosystem": "PyPI",
+          "name": "pyyaml",
+          "purl": "pkg:pypi/pyyaml"
+         },
+         "ranges": [
+          {
+           "events": [
+            {
+             "introduced": "0"
+            },
+            {
+             "fixed": "5.4"
+            }
+           ],
+           "type": "ECOSYSTEM"
+          }
+         ]
+        }
+       ],
+       "aliases": [
+        "CVE-2020-14343",
+        "GHSA-8q59-q68h-6hv4"
+       ],
+       "id": "PYSEC-2021-142",
+       "modified": "2023-11-08T04:02:26.414885Z",
+       "published": "2021-02-09T21:15:00Z",
+       "schema_version": "1.7.3"
+      },
+      {
+       "affected": [
+        {
+         "package": {
+          "ecosystem": "PyPI",
+          "name": "pyyaml",
+          "purl": "pkg:pypi/pyyaml"
+         },
+         "ranges": [
+          {
+           "events": [
+            {
+             "introduced": "5.1b7"
+            },
+            {
+             "fixed": "5.3.1"
+            }
+           ],
+           "type": "ECOSYSTEM"
+          }
+         ]
+        }
+       ],
+       "aliases": [
+        "CVE-2020-1747",
+        "PYSEC-2020-96"
+       ],
+       "id": "GHSA-6757-jp84-gxfx",
+       "modified": "2026-05-04T08:57:14.897560893Z",
+       "published": "2021-04-20T16:14:24Z",
+       "schema_version": "1.9.0",
+       "severity": [
+        {
+         "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+         "type": "CVSS_V3"
+        },
+        {
+         "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N",
+         "type": "CVSS_V4"
+        }
+       ],
+       "summary": "Improper Input Validation in PyYAML"
+      },
+      {
+       "affected": [
+        {
+         "package": {
+          "ecosystem": "PyPI",
+          "name": "pyyaml",
+          "purl": "pkg:pypi/pyyaml"
+         },
+         "ranges": [
+          {
+           "events": [
+            {
+             "introduced": "0"
+            },
+            {
+             "fixed": "5.4"
+            }
+           ],
+           "type": "ECOSYSTEM"
+          }
+         ]
+        }
+       ],
+       "aliases": [
+        "CVE-2020-14343",
+        "PYSEC-2021-142"
+       ],
+       "id": "GHSA-8q59-q68h-6hv4",
+       "modified": "2026-02-04T03:33:10.792778Z",
+       "published": "2021-03-25T21:26:26Z",
+       "related": [
+        "CVE-2026-24009"
+       ],
+       "schema_version": "1.9.0",
+       "severity": [
+        {
+         "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+         "type": "CVSS_V3"
+        },
+        {
+         "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N",
+         "type": "CVSS_V4"
+        }
+       ],
+       "summary": "Improper Input Validation in PyYAML"
+      }
+     ]
+    },
+    {
+     "groups": [
+      {
+       "aliases": [
+        "CVE-2018-18074",
+        "GHSA-x84v-xcm2-53pg",
+        "PYSEC-2018-28"
+       ],
+       "ids": [
+        "PYSEC-2018-28",
+        "GHSA-x84v-xcm2-53pg"
+       ],
+       "max_severity": "7.5"
+      },
+      {
+       "aliases": [
+        "CVE-2023-32681",
+        "GHSA-j8r2-6x86-q33q",
+        "PYSEC-2023-74"
+       ],
+       "ids": [
+        "PYSEC-2023-74",
+        "GHSA-j8r2-6x86-q33q"
+       ],
+       "max_severity": "6.1"
+      },
+      {
+       "aliases": [
+        "CVE-2024-47081",
+        "GHSA-9hjg-9r4m-mvj7",
+        "PYSEC-2026-1872"
+       ],
+       "ids": [
+        "PYSEC-2026-1872",
+        "GHSA-9hjg-9r4m-mvj7"
+       ],
+       "max_severity": "5.3"
+      },
+      {
+       "aliases": [
+        "CVE-2024-35195",
+        "GHSA-9wx4-h78v-vm56",
+        "PYSEC-2026-1873"
+       ],
+       "ids": [
+        "PYSEC-2026-1873",
+        "GHSA-9wx4-h78v-vm56"
+       ],
+       "max_severity": "5.6"
+      },
+      {
+       "aliases": [
+        "CVE-2026-25645",
+        "GHSA-gc5v-m9x4-r6x2",
+        "PYSEC-2026-2275"
+       ],
+       "ids": [
+        "PYSEC-2026-2275",
+        "GHSA-gc5v-m9x4-r6x2"
+       ],
+       "max_severity": "5.5"
+      }
+     ],
+     "package": {
+      "ecosystem": "PyPI",
+      "name": "requests",
+      "purl": "pkg:pypi/requests@2.19.1",
+      "version": "2.19.1"
+     },
+     "vulnerabilities": [
+      {
+       "affected": [
+        {
+         "package": {
+          "ecosystem": "PyPI",
+          "name": "requests",
+          "purl": "pkg:pypi/requests"
+         },
+         "ranges": [
+          {
+           "events": [
+            {
+             "introduced": "0"
+            },
+            {
+             "fixed": "c45d7c49ea75133e52ab22a8e9e13173938e36ff"
+            }
+           ],
+           "repo": "https://github.com/requests/requests",
+           "type": "GIT"
+          },
+          {
+           "events": [
+            {
+             "introduced": "0"
+            },
+            {
+             "fixed": "2.20.0"
+            }
+           ],
+           "type": "ECOSYSTEM"
+          }
+         ]
+        }
+       ],
+       "aliases": [
+        "CVE-2018-18074",
+        "GHSA-x84v-xcm2-53pg"
+       ],
+       "id": "PYSEC-2018-28",
+       "modified": "2023-11-08T04:00:04.815794Z",
+       "published": "2018-10-09T17:29:00Z",
+       "schema_version": "1.7.3"
+      },
+      {
+       "affected": [
+        {
+         "package": {
+          "ecosystem": "PyPI",
+          "name": "requests",
+          "purl": "pkg:pypi/requests"
+         },
+         "ranges": [
+          {
+           "events": [
+            {
+             "introduced": "0"
+            },
+            {
+             "fixed": "74ea7cf7a6a27a4eeb2ae24e162bcc942a6706d5"
+            }
+           ],
+           "repo": "https://github.com/psf/requests",
+           "type": "GIT"
+          },
+          {
+           "events": [
+            {
+             "introduced": "2.3.0"
+            },
+            {
+             "fixed": "2.31.0"
+            }
+           ],
+           "type": "ECOSYSTEM"
+          }
+         ]
+        }
+       ],
+       "aliases": [
+        "CVE-2023-32681",
+        "GHSA-j8r2-6x86-q33q"
+       ],
+       "id": "PYSEC-2023-74",
+       "modified": "2023-11-08T04:12:35.436175Z",
+       "published": "2023-05-26T18:15:00Z",
+       "schema_version": "1.7.3"
+      },
+      {
+       "affected": [
+        {
+         "package": {
+          "ecosystem": "PyPI",
+          "name": "requests",
+          "purl": "pkg:pypi/requests"
+         },
+         "ranges": [
+          {
+           "events": [
+            {
+             "introduced": "0"
+            },
+            {
+             "fixed": "2.32.4"
+            }
+           ],
+           "type": "ECOSYSTEM"
+          }
+         ]
+        }
+       ],
+       "aliases": [
+        "CVE-2024-47081",
+        "GHSA-9hjg-9r4m-mvj7"
+       ],
+       "id": "PYSEC-2026-1872",
+       "modified": "2026-07-07T17:47:00.332079836Z",
+       "published": "2026-07-07T16:02:54.151964Z",
+       "schema_version": "1.7.5",
+       "severity": [
+        {
+         "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:H/I:N/A:N",
+         "type": "CVSS_V3"
+        }
+       ],
+       "summary": "Requests vulnerable to .netrc credentials leak via malicious URLs"
+      },
+      {
+       "affected": [
+        {
+         "package": {
+          "ecosystem": "PyPI",
+          "name": "requests",
+          "purl": "pkg:pypi/requests"
+         },
+         "ranges": [
+          {
+           "events": [
+            {
+             "introduced": "0"
+            },
+            {
+             "fixed": "2.32.0"
+            }
+           ],
+           "type": "ECOSYSTEM"
+          }
+         ]
+        }
+       ],
+       "aliases": [
+        "CVE-2024-35195",
+        "GHSA-9wx4-h78v-vm56"
+       ],
+       "id": "PYSEC-2026-1873",
+       "modified": "2026-07-07T17:46:36.762141019Z",
+       "published": "2026-07-07T11:45:42.890131Z",
+       "schema_version": "1.7.5",
+       "severity": [
+        {
+         "score": "CVSS:3.1/AV:L/AC:H/PR:H/UI:R/S:U/C:H/I:H/A:N",
+         "type": "CVSS_V3"
+        }
+       ],
+       "summary": "Requests `Session` object does not verify requests after making first request with verify=False"
+      },
+      {
+       "affected": [
+        {
+         "ecosystem_specific": {},
+         "package": {
+          "ecosystem": "PyPI",
+          "name": "requests",
+          "purl": "pkg:pypi/requests"
+         },
+         "ranges": [
+          {
+           "events": [
+            {
+             "introduced": "0"
+            },
+            {
+             "fixed": "2.33.0"
+            }
+           ],
+           "type": "ECOSYSTEM"
+          }
+         ]
+        }
+       ],
+       "aliases": [
+        "CVE-2026-25645",
+        "GHSA-gc5v-m9x4-r6x2"
+       ],
+       "id": "PYSEC-2026-2275",
+       "modified": "2026-07-13T07:15:43.964902190Z",
+       "published": "2026-03-25T17:16:52.970Z",
+       "schema_version": "1.7.5",
+       "severity": [
+        {
+         "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:H/A:N",
+         "type": "CVSS_V3"
+        }
+       ]
+      },
+      {
+       "affected": [
+        {
+         "package": {
+          "ecosystem": "PyPI",
+          "name": "requests",
+          "purl": "pkg:pypi/requests"
+         },
+         "ranges": [
+          {
+           "events": [
+            {
+             "introduced": "0"
+            },
+            {
+             "fixed": "2.32.4"
+            }
+           ],
+           "type": "ECOSYSTEM"
+          }
+         ]
+        }
+       ],
+       "aliases": [
+        "CVE-2024-47081",
+        "PYSEC-2026-1872"
+       ],
+       "id": "GHSA-9hjg-9r4m-mvj7",
+       "modified": "2026-10-19T20:00:04.716114530Z",
+       "published": "2025-06-09T19:06:08Z",
+       "schema_version": "1.9.0",
+       "severity": [
+        {
+         "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:H/I:N/A:N",
+         "type": "CVSS_V3"
+        }
+       ],
+       "summary": "Requests vulnerable to .netrc credentials leak via malicious URLs"
+      },
+      {
+       "affected": [
+        {
+         "package": {
+          "ecosystem": "PyPI",
+          "name": "requests",
+          "purl": "pkg:pypi/requests"
+         },
+         "ranges": [
+          {
+           "events": [
+            {
+             "introduced": "0"
+            },
+            {
+             "fixed": "2.32.0"
+            }
+           ],
+           "type": "ECOSYSTEM"
+          }
+         ]
+        }
+       ],
+       "aliases": [
+        "CVE-2024-35195",
+        "PYSEC-2026-1873"
+       ],
+       "id": "GHSA-9wx4-h78v-vm56",
+       "modified": "2026-09-10T03:50:13.740879755Z",
+       "published": "2024-05-20T20:15:00Z",
+       "schema_version": "1.9.0",
+       "severity": [
+        {
+         "score": "CVSS:3.1/AV:L/AC:H/PR:H/UI:R/S:U/C:H/I:H/A:N",
+         "type": "CVSS_V3"
+        }
+       ],
+       "summary": "Requests `Session` object does not verify requests after making first request with verify=False"
+      },
+      {
+       "affected": [
+        {
+         "package": {
+          "ecosystem": "PyPI",
+          "name": "requests",
+          "purl": "pkg:pypi/requests"
+         },
+         "ranges": [
+          {
+           "events": [
+            {
+             "introduced": "0"
+            },
+            {
+             "fixed": "2.33.0"
+            }
+           ],
+           "type": "ECOSYSTEM"
+          }
+         ]
+        }
+       ],
+       "aliases": [
+        "CVE-2026-25645",
+        "PYSEC-2026-2275"
+       ],
+       "id": "GHSA-gc5v-m9x4-r6x2",
+       "modified": "2026-09-10T03:50:39.207922076Z",
+       "published": "2026-03-25T16:56:28Z",
+       "schema_version": "1.9.0",
+       "severity": [
+        {
+         "score": "CVSS:3.1/AV:L/AC:H/PR:L/UI:R/S:U/C:N/I:H/A:N",
+         "type": "CVSS_V3"
+        }
+       ],
+       "summary": "Requests has Insecure Temp File Reuse in its extract_zipped_paths() utility function"
+      },
+      {
+       "affected": [
+        {
+         "package": {
+          "ecosystem": "PyPI",
+          "name": "requests",
+          "purl": "pkg:pypi/requests"
+         },
+         "ranges": [
+          {
+           "events": [
+            {
+             "introduced": "2.3.0"
+            },
+            {
+             "fixed": "2.31.0"
+            }
+           ],
+           "type": "ECOSYSTEM"
+          }
+         ]
+        }
+       ],
+       "aliases": [
+        "CVE-2023-32681",
+        "PYSEC-2023-74"
+       ],
+       "id": "GHSA-j8r2-6x86-q33q",
+       "modified": "2026-09-10T03:50:01.756149727Z",
+       "published": "2023-05-22T20:36:32Z",
+       "schema_version": "1.9.0",
+       "severity": [
+        {
+         "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:C/C:H/I:N/A:N",
+         "type": "CVSS_V3"
+        }
+       ],
+       "summary": "Unintended leak of Proxy-Authorization header in requests"
+      },
+      {
+       "affected": [
+        {
+         "package": {
+          "ecosystem": "PyPI",
+          "name": "requests",
+          "purl": "pkg:pypi/requests"
+         },
+         "ranges": [
+          {
+           "events": [
+            {
+             "introduced": "0"
+            },
+            {
+             "fixed": "2.20.0"
+            }
+           ],
+           "type": "ECOSYSTEM"
+          }
+         ]
+        }
+       ],
+       "aliases": [
+        "CVE-2018-18074",
+        "PYSEC-2018-28"
+       ],
+       "id": "GHSA-x84v-xcm2-53pg",
+       "modified": "2024-10-21T21:42:55.896669Z",
+       "published": "2018-10-29T19:06:46Z",
+       "schema_version": "1.9.0",
+       "severity": [
+        {
+         "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
+         "type": "CVSS_V3"
+        }
+       ],
+       "summary": "Insufficiently Protected Credentials in Requests"
+      }
+     ]
+    }
+   ],
+   "source": {
+    "path": "/src/api/requirements.txt",
+    "type": "lockfile"
+   }
+  },
+  {
+   "packages": [
+    {
+     "groups": [
+      {
+       "aliases": [
+        "CVE-2015-6420",
+        "GHSA-6hgm-866r-3cjv"
+       ],
+       "ids": [
+        "GHSA-6hgm-866r-3cjv"
+       ],
+       "max_severity": ""
+      },
+      {
+       "aliases": [
+        "CVE-2015-7501",
+        "GHSA-fjq5-5j5f-mvxh"
+       ],
+       "ids": [
+        "GHSA-fjq5-5j5f-mvxh"
+       ],
+       "max_severity": "9.8"
+      }
+     ],
+     "package": {
+      "ecosystem": "Maven",
+      "name": "commons-collections:commons-collections",
+      "purl": "pkg:maven/commons-collections/commons-collections@3.2.1",
+      "version": "3.2.1"
+     },
+     "vulnerabilities": [
+      {
+       "affected": [
+        {
+         "package": {
+          "ecosystem": "Maven",
+          "name": "org.apache.commons:commons-collections4",
+          "purl": "pkg:maven/org.apache.commons/commons-collections4"
+         },
+         "ranges": [
+          {
+           "events": [
+            {
+             "introduced": "0"
+            },
+            {
+             "fixed": "4.1"
+            }
+           ],
+           "type": "ECOSYSTEM"
+          }
+         ]
+        },
+        {
+         "package": {
+          "ecosystem": "Maven",
+          "name": "commons-collections:commons-collections",
+          "purl": "pkg:maven/commons-collections/commons-collections"
+         },
+         "ranges": [
+          {
+           "events": [
+            {
+             "introduced": "0"
+            },
+            {
+             "fixed": "3.2.2"
+            }
+           ],
+           "type": "ECOSYSTEM"
+          }
+         ]
+        },
+        {
+         "package": {
+          "ecosystem": "Maven",
+          "name": "net.sourceforge.collections:collections-generic",
+          "purl": "pkg:maven/net.sourceforge.collections/collections-generic"
+         },
+         "ranges": [
+          {
+           "events": [
+            {
+             "introduced": "0"
+            },
+            {
+             "last_affected": "4.0.1"
+            }
+           ],
+           "type": "ECOSYSTEM"
+          }
+         ]
+        },
+        {
+         "package": {
+          "ecosystem": "Maven",
+          "name": "org.apache.servicemix.bundles:org.apache.servicemix.bundles.collections-generic",
+          "purl": "pkg:maven/org.apache.servicemix.bundles/org.apache.servicemix.bundles.collections-generic"
+         },
+         "ranges": [
+          {
+           "events": [
+            {
+             "introduced": "0"
+            },
+            {
+             "last_affected": "4.01"
+            }
+           ],
+           "type": "ECOSYSTEM"
+          }
+         ]
+        },
+        {
+         "package": {
+          "ecosystem": "Maven",
+          "name": "org.apache.servicemix.bundles:org.apache.servicemix.bundles.commons-collections",
+          "purl": "pkg:maven/org.apache.servicemix.bundles/org.apache.servicemix.bundles.commons-collections"
+         },
+         "ranges": [
+          {
+           "events": [
+            {
+             "introduced": "0"
+            },
+            {
+             "last_affected": "3.2.1"
+            }
+           ],
+           "type": "ECOSYSTEM"
+          }
+         ]
+        }
+       ],
+       "aliases": [
+        "CVE-2015-6420"
+       ],
+       "id": "GHSA-6hgm-866r-3cjv",
+       "modified": "2024-11-28T05:40:45.267146Z",
+       "published": "2020-06-15T20:36:20Z",
+       "schema_version": "1.9.0",
+       "summary": "Insecure Deserialization in Apache Commons Collection"
+      },
+      {
+       "affected": [
+        {
+         "package": {
+          "ecosystem": "Maven",
+          "name": "commons-collections:commons-collections",
+          "purl": "pkg:maven/commons-collections/commons-collections"
+         },
+         "ranges": [
+          {
+           "events": [
+            {
+             "introduced": "0"
+            },
+            {
+             "fixed": "3.2.2"
+            }
+           ],
+           "type": "ECOSYSTEM"
+          }
+         ]
+        },
+        {
+         "package": {
+          "ecosystem": "Maven",
+          "name": "org.apache.commons:commons-collections4",
+          "purl": "pkg:maven/org.apache.commons/commons-collections4"
+         },
+         "ranges": [
+          {
+           "events": [
+            {
+             "introduced": "0"
+            },
+            {
+             "fixed": "4.1"
+            }
+           ],
+           "type": "ECOSYSTEM"
+          }
+         ]
+        },
+        {
+         "package": {
+          "ecosystem": "Maven",
+          "name": "org.apache.servicemix.bundles:org.apache.servicemix.bundles.commons-collections",
+          "purl": "pkg:maven/org.apache.servicemix.bundles/org.apache.servicemix.bundles.commons-collections"
+         },
+         "ranges": [
+          {
+           "events": [
+            {
+             "introduced": "3.2.1"
+            }
+           ],
+           "type": "ECOSYSTEM"
+          }
+         ]
+        },
+        {
+         "package": {
+          "ecosystem": "Maven",
+          "name": "net.sourceforge.collections:collections-generic",
+          "purl": "pkg:maven/net.sourceforge.collections/collections-generic"
+         }
+        },
+        {
+         "package": {
+          "ecosystem": "Maven",
+          "name": "org.apache.servicemix.bundles:org.apache.servicemix.bundles.collections-generic",
+          "purl": "pkg:maven/org.apache.servicemix.bundles/org.apache.servicemix.bundles.collections-generic"
+         },
+         "ranges": [
+          {
+           "events": [
+            {
+             "introduced": "4.01"
+            }
+           ],
+           "type": "ECOSYSTEM"
+          }
+         ]
+        }
+       ],
+       "aliases": [
+        "CVE-2015-7501"
+       ],
+       "id": "GHSA-fjq5-5j5f-mvxh",
+       "modified": "2024-02-17T05:22:18.562352Z",
+       "published": "2022-05-13T01:25:20Z",
+       "schema_version": "1.9.0",
+       "severity": [
+        {
+         "score": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+         "type": "CVSS_V3"
+        }
+       ],
+       "summary": "Deserialization of Untrusted Data in Apache commons collections"
+      }
+     ]
+    },
+    {
+     "groups": [
+      {
+       "aliases": [
+        "CVE-2026-34480",
+        "GHSA-3pxv-7cmr-fjr4"
+       ],
+       "ids": [
+        "GHSA-3pxv-7cmr-fjr4"
+       ],
+       "max_severity": "6.9"
+      },
+      {
+       "aliases": [
+        "CVE-2026-34477",
+        "GHSA-6hg6-v5c8-fphq"
+       ],
+       "ids": [
+        "GHSA-6hg6-v5c8-fphq"
+       ],
+       "max_severity": "6.3"
+      },
+      {
+       "aliases": [
+        "CVE-2021-45046",
+        "GHSA-7rjr-3q55-vv33"
+       ],
+       "ids": [
+        "GHSA-7rjr-3q55-vv33"
+       ],
+       "max_severity": "9.0"
+      },
+      {
+       "aliases": [
+        "CVE-2021-44832",
+        "GHSA-8489-44mv-ggj8"
+       ],
+       "ids": [
+        "GHSA-8489-44mv-ggj8"
+       ],
+       "max_severity": "6.6"
+      },
+      {
+       "aliases": [
+        "CVE-2026-34479",
+        "GHSA-h383-gmxw-35v2"
+       ],
+       "ids": [
+        "GHSA-h383-gmxw-35v2"
+       ],
+       "max_severity": "6.9"
+      },
+      {
+       "aliases": [
+        "CVE-2021-44228",
+        "GHSA-jfh8-c2jp-5v3q"
+       ],
+       "ids": [
+        "GHSA-jfh8-c2jp-5v3q"
+       ],
+       "max_severity": "10.0"
+      },
+      {
+       "aliases": [
+        "CVE-2021-45105",
+        "GHSA-p6xc-xr62-6r2g"
+       ],
+       "ids": [
+        "GHSA-p6xc-xr62-6r2g"
+       ],
+       "max_severity": "8.6"
+      },
+      {
+       "aliases": [
+        "CVE-2025-68161",
+        "GHSA-vc5p-v9hr-52mj"
+       ],
+       "ids": [
+        "GHSA-vc5p-v9hr-52mj"
+       ],
+       "max_severity": "6.3"
+      }
+     ],
+     "package": {
+      "ecosystem": "Maven",
+      "name": "org.apache.logging.log4j:log4j-core",
+      "purl": "pkg:maven/org.apache.logging.log4j/log4j-core@2.14.1",
+      "version": "2.14.1"
+     },
+     "vulnerabilities": [
+      {
+       "affected": [
+        {
+         "package": {
+          "ecosystem": "Maven",
+          "name": "org.apache.logging.log4j:log4j-core",
+          "purl": "pkg:maven/org.apache.logging.log4j/log4j-core"
+         },
+         "ranges": [
+          {
+           "events": [
+            {
+             "introduced": "2.0-alpha1"
+            },
+            {
+             "fixed": "2.25.4"
+            }
+           ],
+           "type": "ECOSYSTEM"
+          }
+         ]
+        },
+        {
+         "package": {
+          "ecosystem": "Maven",
+          "name": "org.apache.logging.log4j:log4j-core",
+          "purl": "pkg:maven/org.apache.logging.log4j/log4j-core"
+         },
+         "ranges": [
+          {
+           "events": [
+            {
+             "introduced": "3.0.0-alpha1"
+            },
+            {
+             "last_affected": "3.0.0-beta3"
+            }
+           ],
+           "type": "ECOSYSTEM"
+          }
+         ]
+        }
+       ],
+       "aliases": [
+        "CVE-2026-34480"
+       ],
+       "id": "GHSA-3pxv-7cmr-fjr4",
+       "modified": "2026-09-10T03:50:42.492278990Z",
+       "published": "2026-04-10T18:31:17Z",
+       "schema_version": "1.9.0",
+       "severity": [
+        {
+         "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:N/SC:N/SI:L/SA:N",
+         "type": "CVSS_V4"
+        }
+       ],
+       "summary": "Apache Log4j Core: Silent log event loss in XmlLayout due to unescaped XML 1.0 forbidden characters"
+      },
+      {
+       "affected": [
+        {
+         "package": {
+          "ecosystem": "Maven",
+          "name": "org.apache.logging.log4j:log4j-core",
+          "purl": "pkg:maven/org.apache.logging.log4j/log4j-core"
+         },
+         "ranges": [
+          {
+           "events": [
+            {
+             "introduced": "2.12.0"
+            },
+            {
+             "fixed": "2.25.4"
+            }
+           ],
+           "type": "ECOSYSTEM"
+          }
+         ]
+        },
+        {
+         "package": {
+          "ecosystem": "Maven",
+          "name": "org.apache.logging.log4j:log4j-core",
+          "purl": "pkg:maven/org.apache.logging.log4j/log4j-core"
+         },
+         "ranges": [
+          {
+           "events": [
+            {
+             "introduced": "3.0.0-alpha1"
+            },
+            {
+             "last_affected": "3.0.0-beta3"
+            }
+           ],
+           "type": "ECOSYSTEM"
+          }
+         ]
+        }
+       ],
+       "aliases": [
+        "CVE-2026-34477"
+       ],
+       "id": "GHSA-6hg6-v5c8-fphq",
+       "modified": "2026-09-10T03:50:43.570169134Z",
+       "published": "2026-04-10T18:31:17Z",
+       "schema_version": "1.9.0",
+       "severity": [
+        {
+         "score": "CVSS:4.0/AV:N/AC:H/AT:N/PR:N/UI:N/VC:L/VI:N/VA:N/SC:N/SI:L/SA:N",
+         "type": "CVSS_V4"
+        }
+       ],
+       "summary": "Apache Log4j Core: `verifyHostName` attribute silently ignored in TLS configuration"
+      },
+      {
+       "affected": [
+        {
+         "package": {
+          "ecosystem": "Maven",
+          "name": "org.apache.logging.log4j:log4j-core",
+          "purl": "pkg:maven/org.apache.logging.log4j/log4j-core"
+         },
+         "ranges": [
+          {
+           "events": [
+            {
+             "introduced": "2.13.0"
+            },
+            {
+             "fixed": "2.16.0"
+            }
+           ],
+           "type": "ECOSYSTEM"
+          }
+         ]
+        },
+        {
+         "package": {
+          "ecosystem": "Maven",
+          "name": "org.apache.logging.log4j:log4j-core",
+          "purl": "pkg:maven/org.apache.logging.log4j/log4j-core"
+         },
+         "ranges": [
+          {
+           "events": [
+            {
+             "introduced": "2.4.0"
+            },
+            {
+             "fixed": "2.12.2"
+            }
+           ],
+           "type": "ECOSYSTEM"
+          }
+         ]
+        },
+        {
+         "package": {
+          "ecosystem": "Maven",
+          "name": "org.ops4j.pax.logging:pax-logging-log4j2",
+          "purl": "pkg:maven/org.ops4j.pax.logging/pax-logging-log4j2"
+         },
+         "ranges": [
+          {
+           "events": [
+            {
+             "introduced": "1.8.0"
+            },
+            {
+             "fixed": "1.9.2"
+            }
+           ],
+           "type": "ECOSYSTEM"
+          }
+         ]
+        },
+        {
+         "package": {
+          "ecosystem": "Maven",
+          "name": "org.ops4j.pax.logging:pax-logging-log4j2",
+          "purl": "pkg:maven/org.ops4j.pax.logging/pax-logging-log4j2"
+         },
+         "ranges": [
+          {
+           "events": [
+            {
+             "introduced": "1.10.0"
+            },
+            {
+             "fixed": "1.10.8"
+            }
+           ],
+           "type": "ECOSYSTEM"
+          }
+         ]
+        },
+        {
+         "package": {
+          "ecosystem": "Maven",
+          "name": "org.ops4j.pax.logging:pax-logging-log4j2",
+          "purl": "pkg:maven/org.ops4j.pax.logging/pax-logging-log4j2"
+         },
+         "ranges": [
+          {
+           "events": [
+            {
+             "introduced": "1.11.0"
+            },
+            {
+             "fixed": "1.11.11"
+            }
+           ],
+           "type": "ECOSYSTEM"
+          }
+         ]
+        },
+        {
+         "package": {
+          "ecosystem": "Maven",
+          "name": "org.ops4j.pax.logging:pax-logging-log4j2",
+          "purl": "pkg:maven/org.ops4j.pax.logging/pax-logging-log4j2"
+         },
+         "ranges": [
+          {
+           "events": [
+            {
+             "introduced": "2.0.0"
+            },
+            {
+             "fixed": "2.0.12"
+            }
+           ],
+           "type": "ECOSYSTEM"
+          }
+         ]
+        },
+        {
+         "package": {
+          "ecosystem": "Maven",
+          "name": "org.apache.logging.log4j:log4j-core",
+          "purl": "pkg:maven/org.apache.logging.log4j/log4j-core"
+         },
+         "ranges": [
+          {
+           "events": [
+            {
+             "introduced": "0"
+            },
+            {
+             "fixed": "2.3.1"
+            }
+           ],
+           "type": "ECOSYSTEM"
+          }
+         ]
+        }
+       ],
+       "aliases": [
+        "CVE-2021-45046"
+       ],
+       "id": "GHSA-7rjr-3q55-vv33",
+       "modified": "2026-10-02T20:30:05.438504645Z",
+       "published": "2021-12-14T18:01:28Z",
+       "schema_version": "1.9.0",
+       "severity": [
+        {
+         "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:C/C:H/I:H/A:H",
+         "type": "CVSS_V3"
+        }
+       ],
+       "summary": "Incomplete fix for Apache Log4j vulnerability"
+      },
+      {
+       "affected": [
+        {
+         "package": {
+          "ecosystem": "Maven",
+          "name": "org.apache.logging.log4j:log4j-core",
+          "purl": "pkg:maven/org.apache.logging.log4j/log4j-core"
+         },
+         "ranges": [
+          {
+           "events": [
+            {
+             "introduced": "2.0-beta7"
+            },
+            {
+             "fixed": "2.3.2"
+            }
+           ],
+           "type": "ECOSYSTEM"
+          }
+         ]
+        },
+        {
+         "package": {
+          "ecosystem": "Maven",
+          "name": "org.apache.logging.log4j:log4j-core",
+          "purl": "pkg:maven/org.apache.logging.log4j/log4j-core"
+         },
+         "ranges": [
+          {
+           "events": [
+            {
+             "introduced": "2.4"
+            },
+            {
+             "fixed": "2.12.4"
+            }
+           ],
+           "type": "ECOSYSTEM"
+          }
+         ]
+        },
+        {
+         "package": {
+          "ecosystem": "Maven",
+          "name": "org.apache.logging.log4j:log4j-core",
+          "purl": "pkg:maven/org.apache.logging.log4j/log4j-core"
+         },
+         "ranges": [
+          {
+           "events": [
+            {
+             "introduced": "2.13.0"
+            },
+            {
+             "fixed": "2.17.1"
+            }
+           ],
+           "type": "ECOSYSTEM"
+          }
+         ]
+        },
+        {
+         "package": {
+          "ecosystem": "Maven",
+          "name": "org.ops4j.pax.logging:pax-logging-log4j2",
+          "purl": "pkg:maven/org.ops4j.pax.logging/pax-logging-log4j2"
+         },
+         "ranges": [
+          {
+           "events": [
+            {
+             "introduced": "1.8.0"
+            },
+            {
+             "fixed": "1.9.2"
+            }
+           ],
+           "type": "ECOSYSTEM"
+          }
+         ]
+        },
+        {
+         "package": {
+          "ecosystem": "Maven",
+          "name": "org.ops4j.pax.logging:pax-logging-log4j2",
+          "purl": "pkg:maven/org.ops4j.pax.logging/pax-logging-log4j2"
+         },
+         "ranges": [
+          {
+           "events": [
+            {
+             "introduced": "1.10.0"
+            },
+            {
+             "fixed": "1.10.9"
+            }
+           ],
+           "type": "ECOSYSTEM"
+          }
+         ]
+        },
+        {
+         "package": {
+          "ecosystem": "Maven",
+          "name": "org.ops4j.pax.logging:pax-logging-log4j2",
+          "purl": "pkg:maven/org.ops4j.pax.logging/pax-logging-log4j2"
+         },
+         "ranges": [
+          {
+           "events": [
+            {
+             "introduced": "1.11.0"
+            },
+            {
+             "fixed": "1.11.13"
+            }
+           ],
+           "type": "ECOSYSTEM"
+          }
+         ]
+        },
+        {
+         "package": {
+          "ecosystem": "Maven",
+          "name": "org.ops4j.pax.logging:pax-logging-log4j2",
+          "purl": "pkg:maven/org.ops4j.pax.logging/pax-logging-log4j2"
+         },
+         "ranges": [
+          {
+           "events": [
+            {
+             "introduced": "2.0.0"
+            },
+            {
+             "fixed": "2.0.14"
+            }
+           ],
+           "type": "ECOSYSTEM"
+          }
+         ]
+        }
+       ],
+       "aliases": [
+        "CVE-2021-44832"
+       ],
+       "id": "GHSA-8489-44mv-ggj8",
+       "modified": "2026-06-09T10:45:14.253296471Z",
+       "published": "2022-01-04T16:14:20Z",
+       "schema_version": "1.9.0",
+       "severity": [
+        {
+         "score": "CVSS:3.1/AV:N/AC:H/PR:H/UI:N/S:U/C:H/I:H/A:H",
+         "type": "CVSS_V3"
+        }
+       ],
+       "summary": "Improper Input Validation and Injection in Apache Log4j2"
+      },
+      {
+       "affected": [
+        {
+         "package": {
+          "ecosystem": "Maven",
+          "name": "org.apache.logging.log4j:log4j-core",
+          "purl": "pkg:maven/org.apache.logging.log4j/log4j-core"
+         },
+         "ranges": [
+          {
+           "events": [
+            {
+             "introduced": "2.7"
+            },
+            {
+             "fixed": "2.25.4"
+            }
+           ],
+           "type": "ECOSYSTEM"
+          }
+         ]
+        },
+        {
+         "package": {
+          "ecosystem": "Maven",
+          "name": "org.apache.logging.log4j:log4j-core",
+          "purl": "pkg:maven/org.apache.logging.log4j/log4j-core"
+         },
+         "ranges": [
+          {
+           "events": [
+            {
+             "introduced": "3.0.0-beta1"
+            },
+            {
+             "last_affected": "3.0.0-beta2"
+            }
+           ],
+           "type": "ECOSYSTEM"
+          }
+         ]
+        }
+       ],
+       "aliases": [
+        "CVE-2026-34479"
+       ],
+       "id": "GHSA-h383-gmxw-35v2",
+       "modified": "2026-10-26T15:30:05.719203570Z",
+       "published": "2026-04-10T18:31:18Z",
+       "schema_version": "1.9.0",
+       "severity": [
+        {
+         "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:N/SC:N/SI:L/SA:N",
+         "type": "CVSS_V4"
+        }
+       ],
+       "summary": "Apache Log4j 1 to Log4j 2 bridge: silent log event loss in Log4j1XmlLayout due to unescaped XML 1.0 forbidden characters"
+      },
+      {
+       "affected": [
+        {
+         "package": {
+          "ecosystem": "Maven",
+          "name": "org.apache.logging.log4j:log4j-core",
+          "purl": "pkg:maven/org.apache.logging.log4j/log4j-core"
+         },
+         "ranges": [
+          {
+           "events": [
+            {
+             "introduced": "2.13.0"
+            },
+            {
+             "fixed": "2.15.0"
+            }
+           ],
+           "type": "ECOSYSTEM"
+          }
+         ]
+        },
+        {
+         "package": {
+          "ecosystem": "Maven",
+          "name": "org.apache.logging.log4j:log4j-core",
+          "purl": "pkg:maven/org.apache.logging.log4j/log4j-core"
+         },
+         "ranges": [
+          {
+           "events": [
+            {
+             "introduced": "2.0-beta9"
+            },
+            {
+             "fixed": "2.3.1"
+            }
+           ],
+           "type": "ECOSYSTEM"
+          }
+         ]
+        },
+        {
+         "package": {
+          "ecosystem": "Maven",
+          "name": "org.apache.logging.log4j:log4j-core",
+          "purl": "pkg:maven/org.apache.logging.log4j/log4j-core"
+         },
+         "ranges": [
+          {
+           "events": [
+            {
+             "introduced": "2.4"
+            },
+            {
+             "fixed": "2.12.2"
+            }
+           ],
+           "type": "ECOSYSTEM"
+          }
+         ]
+        },
+        {
+         "package": {
+          "ecosystem": "Maven",
+          "name": "com.guicedee.services:log4j-core",
+          "purl": "pkg:maven/com.guicedee.services/log4j-core"
+         },
+         "ranges": [
+          {
+           "events": [
+            {
+             "introduced": "0"
+            },
+            {
+             "last_affected": "1.2.1.2-jre17"
+            }
+           ],
+           "type": "ECOSYSTEM"
+          }
+         ]
+        },
+        {
+         "package": {
+          "ecosystem": "Maven",
+          "name": "org.xbib.elasticsearch:log4j",
+          "purl": "pkg:maven/org.xbib.elasticsearch/log4j"
+         }
+        },
+        {
+         "package": {
+          "ecosystem": "Maven",
+          "name": "uk.co.nichesolutions.logging.log4j:log4j-core",
+          "purl": "pkg:maven/uk.co.nichesolutions.logging.log4j/log4j-core"
+         }
+        },
+        {
+         "package": {
+          "ecosystem": "Maven",
+          "name": "org.ops4j.pax.logging:pax-logging-log4j2",
+          "purl": "pkg:maven/org.ops4j.pax.logging/pax-logging-log4j2"
+         },
+         "ranges": [
+          {
+           "events": [
+            {
+             "introduced": "1.8.0"
+            },
+            {
+             "fixed": "1.9.2"
+            }
+           ],
+           "type": "ECOSYSTEM"
+          }
+         ]
+        },
+        {
+         "package": {
+          "ecosystem": "Maven",
+          "name": "org.ops4j.pax.logging:pax-logging-log4j2",
+          "purl": "pkg:maven/org.ops4j.pax.logging/pax-logging-log4j2"
+         },
+         "ranges": [
+          {
+           "events": [
+            {
+             "introduced": "1.10.0"
+            },
+            {
+             "fixed": "1.10.8"
+            }
+           ],
+           "type": "ECOSYSTEM"
+          }
+         ]
+        },
+        {
+         "package": {
+          "ecosystem": "Maven",
+          "name": "org.ops4j.pax.logging:pax-logging-log4j2",
+          "purl": "pkg:maven/org.ops4j.pax.logging/pax-logging-log4j2"
+         },
+         "ranges": [
+          {
+           "events": [
+            {
+             "introduced": "1.11.0"
+            },
+            {
+             "fixed": "1.11.10"
+            }
+           ],
+           "type": "ECOSYSTEM"
+          }
+         ]
+        },
+        {
+         "package": {
+          "ecosystem": "Maven",
+          "name": "org.ops4j.pax.logging:pax-logging-log4j2",
+          "purl": "pkg:maven/org.ops4j.pax.logging/pax-logging-log4j2"
+         },
+         "ranges": [
+          {
+           "events": [
+            {
+             "introduced": "2.0.0"
+            },
+            {
+             "fixed": "2.0.11"
+            }
+           ],
+           "type": "ECOSYSTEM"
+          }
+         ]
+        }
+       ],
+       "aliases": [
+        "CVE-2021-44228"
+       ],
+       "id": "GHSA-jfh8-c2jp-5v3q",
+       "modified": "2025-10-22T19:37:02.616807Z",
+       "published": "2021-12-10T00:40:56Z",
+       "schema_version": "1.9.0",
+       "severity": [
+        {
+         "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H/E:H",
+         "type": "CVSS_V3"
+        }
+       ],
+       "summary": "Remote code injection in Log4j"
+      },
+      {
+       "affected": [
+        {
+         "package": {
+          "ecosystem": "Maven",
+          "name": "org.apache.logging.log4j:log4j-core",
+          "purl": "pkg:maven/org.apache.logging.log4j/log4j-core"
+         },
+         "ranges": [
+          {
+           "events": [
+            {
+             "introduced": "2.4.0"
+            },
+            {
+             "fixed": "2.12.3"
+            }
+           ],
+           "type": "ECOSYSTEM"
+          }
+         ]
+        },
+        {
+         "package": {
+          "ecosystem": "Maven",
+          "name": "org.apache.logging.log4j:log4j-core",
+          "purl": "pkg:maven/org.apache.logging.log4j/log4j-core"
+         },
+         "ranges": [
+          {
+           "events": [
+            {
+             "introduced": "2.13.0"
+            },
+            {
+             "fixed": "2.17.0"
+            }
+           ],
+           "type": "ECOSYSTEM"
+          }
+         ]
+        },
+        {
+         "package": {
+          "ecosystem": "Maven",
+          "name": "org.apache.logging.log4j:log4j-core",
+          "purl": "pkg:maven/org.apache.logging.log4j/log4j-core"
+         },
+         "ranges": [
+          {
+           "events": [
+            {
+             "introduced": "0"
+            },
+            {
+             "fixed": "2.3.1"
+            }
+           ],
+           "type": "ECOSYSTEM"
+          }
+         ]
+        },
+        {
+         "package": {
+          "ecosystem": "Maven",
+          "name": "org.ops4j.pax.logging:pax-logging-log4j2",
+          "purl": "pkg:maven/org.ops4j.pax.logging/pax-logging-log4j2"
+         },
+         "ranges": [
+          {
+           "events": [
+            {
+             "introduced": "1.8.0"
+            },
+            {
+             "fixed": "1.9.2"
+            }
+           ],
+           "type": "ECOSYSTEM"
+          }
+         ]
+        },
+        {
+         "package": {
+          "ecosystem": "Maven",
+          "name": "org.ops4j.pax.logging:pax-logging-log4j2",
+          "purl": "pkg:maven/org.ops4j.pax.logging/pax-logging-log4j2"
+         },
+         "ranges": [
+          {
+           "events": [
+            {
+             "introduced": "1.10.0"
+            },
+            {
+             "fixed": "1.10.9"
+            }
+           ],
+           "type": "ECOSYSTEM"
+          }
+         ]
+        },
+        {
+         "package": {
+          "ecosystem": "Maven",
+          "name": "org.ops4j.pax.logging:pax-logging-log4j2",
+          "purl": "pkg:maven/org.ops4j.pax.logging/pax-logging-log4j2"
+         },
+         "ranges": [
+          {
+           "events": [
+            {
+             "introduced": "1.11.0"
+            },
+            {
+             "fixed": "1.11.12"
+            }
+           ],
+           "type": "ECOSYSTEM"
+          }
+         ]
+        },
+        {
+         "package": {
+          "ecosystem": "Maven",
+          "name": "org.ops4j.pax.logging:pax-logging-log4j2",
+          "purl": "pkg:maven/org.ops4j.pax.logging/pax-logging-log4j2"
+         },
+         "ranges": [
+          {
+           "events": [
+            {
+             "introduced": "2.0.0"
+            },
+            {
+             "fixed": "2.0.13"
+            }
+           ],
+           "type": "ECOSYSTEM"
+          }
+         ]
+        }
+       ],
+       "aliases": [
+        "CVE-2021-45105"
+       ],
+       "id": "GHSA-p6xc-xr62-6r2g",
+       "modified": "2026-06-09T10:30:14.432177927Z",
+       "published": "2021-12-18T18:00:07Z",
+       "schema_version": "1.9.0",
+       "severity": [
+        {
+         "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:N/I:N/A:H",
+         "type": "CVSS_V3"
+        }
+       ],
+       "summary": "Apache Log4j2 vulnerable to Improper Input Validation and Uncontrolled Recursion"
+      },
+      {
+       "affected": [
+        {
+         "package": {
+          "ecosystem": "Maven",
+          "name": "org.apache.logging.log4j:log4j-core",
+          "purl": "pkg:maven/org.apache.logging.log4j/log4j-core"
+         },
+         "ranges": [
+          {
+           "events": [
+            {
+             "introduced": "2.0-beta9"
+            },
+            {
+             "fixed": "2.25.3"
+            }
+           ],
+           "type": "ECOSYSTEM"
+          }
+         ]
+        }
+       ],
+       "aliases": [
+        "CVE-2025-68161"
+       ],
+       "id": "GHSA-vc5p-v9hr-52mj",
+       "modified": "2026-09-10T03:50:32.126499218Z",
+       "published": "2025-12-18T21:31:44Z",
+       "schema_version": "1.9.0",
+       "severity": [
+        {
+         "score": "CVSS:4.0/AV:N/AC:H/AT:N/PR:N/UI:N/VC:L/VI:N/VA:N/SC:N/SI:L/SA:N",
+         "type": "CVSS_V4"
+        }
+       ],
+       "summary": "Apache Log4j does not verify the TLS hostname in its Socket Appender"
+      }
+     ]
+    }
+   ],
+   "source": {
+    "path": "/src/java/pom.xml",
+    "type": "lockfile"
+   }
+  },
+  {
+   "packages": [
+    {
+     "groups": [
+      {
+       "aliases": [
+        "CVE-2020-28483",
+        "GHSA-h395-qcrw-5vmq",
+        "GO-2021-0052",
+        "SNYK-GOLANG-GITHUBCOMGINGONICGIN-1041736"
+       ],
+       "experimental_analysis": {
+        "GO-2021-0052": {
+         "called": false,
+         "unimportant": false
+        }
+       },
+       "ids": [
+        "GO-2021-0052",
+        "GHSA-h395-qcrw-5vmq"
+       ],
+       "max_severity": "7.1"
+      },
+      {
+       "aliases": [
+        "CVE-2023-29401",
+        "GHSA-2c4m-59x9-fr2g",
+        "GO-2023-1737"
+       ],
+       "experimental_analysis": {
+        "GO-2023-1737": {
+         "called": false,
+         "unimportant": false
+        }
+       },
+       "ids": [
+        "GO-2023-1737",
+        "GHSA-2c4m-59x9-fr2g"
+       ],
+       "max_severity": "4.3"
+      },
+      {
+       "aliases": [
+        "CVE-2023-26125",
+        "GHSA-3vp4-m3rf-835h"
+       ],
+       "ids": [
+        "GHSA-3vp4-m3rf-835h"
+       ],
+       "max_severity": "5.6"
+      }
+     ],
+     "package": {
+      "ecosystem": "Go",
+      "name": "github.com/gin-gonic/gin",
+      "purl": "pkg:golang/github.com/gin-gonic/gin@1.6.0",
+      "version": "1.6.0"
+     },
+     "vulnerabilities": [
+      {
+       "affected": [
+        {
+         "ecosystem_specific": {
+          "imports": [
+           {
+            "path": "github.com/gin-gonic/gin",
+            "symbols": [
+             "Context.ClientIP",
+             "Context.Next",
+             "Context.RemoteIP",
+             "Engine.HandleContext",
+             "Engine.Run",
+             "Engine.RunFd",
+             "Engine.RunListener",
+             "Engine.RunTLS",
+             "Engine.RunUnix",
+             "Engine.ServeHTTP"
+            ]
+           }
+          ]
+         },
+         "package": {
+          "ecosystem": "Go",
+          "name": "github.com/gin-gonic/gin",
+          "purl": "pkg:golang/github.com/gin-gonic/gin"
+         },
+         "ranges": [
+          {
+           "events": [
+            {
+             "introduced": "0"
+            },
+            {
+             "fixed": "1.7.7"
+            }
+           ],
+           "type": "SEMVER"
+          }
+         ]
+        }
+       ],
+       "aliases": [
+        "CVE-2020-28483",
+        "GHSA-h395-qcrw-5vmq",
+        "SNYK-GOLANG-GITHUBCOMGINGONICGIN-1041736"
+       ],
+       "credits": [
+        {
+         "name": "@sorenisanerd"
+        }
+       ],
+       "id": "GO-2021-0052",
+       "modified": "2026-07-08T05:56:36.895132392Z",
+       "published": "2021-04-14T20:04:52Z",
+       "schema_version": "1.7.5",
+       "summary": "Inconsistent interpretation of HTTP Requests in github.com/gin-gonic/gin"
+      },
+      {
+       "affected": [
+        {
+         "ecosystem_specific": {
+          "imports": [
+           {
+            "path": "github.com/gin-gonic/gin",
+            "symbols": [
+             "Context.FileAttachment"
+            ]
+           }
+          ]
+         },
+         "package": {
+          "ecosystem": "Go",
+          "name": "github.com/gin-gonic/gin",
+          "purl": "pkg:golang/github.com/gin-gonic/gin"
+         },
+         "ranges": [
+          {
+           "events": [
+            {
+             "introduced": "1.3.1-0.20190301021747-ccb9e902956d"
+            },
+            {
+             "fixed": "1.9.1"
+            }
+           ],
+           "type": "SEMVER"
+          }
+         ]
+        }
+       ],
+       "aliases": [
+        "CVE-2023-29401",
+        "GHSA-2c4m-59x9-fr2g"
+       ],
+       "credits": [
+        {
+         "name": "motoyasu-saburi"
+        }
+       ],
+       "id": "GO-2023-1737",
+       "modified": "2024-05-20T16:03:47Z",
+       "published": "2023-05-11T18:59:56Z",
+       "schema_version": "1.7.3",
+       "summary": "Improper handling of filenames in Content-Disposition HTTP header in github.com/gin-gonic/gin"
+      },
+      {
+       "affected": [
+        {
+         "package": {
+          "ecosystem": "Go",
+          "name": "github.com/gin-gonic/gin",
+          "purl": "pkg:golang/github.com/gin-gonic/gin"
+         },
+         "ranges": [
+          {
+           "events": [
+            {
+             "introduced": "1.3.1-0.20190301021747-ccb9e902956d"
+            },
+            {
+             "fixed": "1.9.1"
+            }
+           ],
+           "type": "SEMVER"
+          }
+         ]
+        }
+       ],
+       "aliases": [
+        "CVE-2023-29401",
+        "GO-2023-1737"
+       ],
+       "id": "GHSA-2c4m-59x9-fr2g",
+       "modified": "2023-11-08T04:12:18.674169Z",
+       "published": "2023-05-12T20:19:25Z",
+       "schema_version": "1.9.0",
+       "severity": [
+        {
+         "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:L/A:N",
+         "type": "CVSS_V3"
+        }
+       ],
+       "summary": "Gin Web Framework does not properly sanitize filename parameter of Context.FileAttachment function"
+      },
+      {
+       "affected": [
+        {
+         "package": {
+          "ecosystem": "Go",
+          "name": "github.com/gin-gonic/gin",
+          "purl": "pkg:golang/github.com/gin-gonic/gin"
+         },
+         "ranges": [
+          {
+           "events": [
+            {
+             "introduced": "0"
+            },
+            {
+             "fixed": "1.9.0"
+            }
+           ],
+           "type": "SEMVER"
+          }
+         ]
+        }
+       ],
+       "aliases": [
+        "CVE-2023-26125"
+       ],
+       "id": "GHSA-3vp4-m3rf-835h",
+       "modified": "2023-11-08T04:11:58.943766Z",
+       "published": "2023-05-04T06:30:12Z",
+       "schema_version": "1.9.0",
+       "severity": [
+        {
+         "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:L/A:L",
+         "type": "CVSS_V3"
+        }
+       ],
+       "summary": "Improper input validation in github.com/gin-gonic/gin"
+      },
+      {
+       "affected": [
+        {
+         "package": {
+          "ecosystem": "Go",
+          "name": "github.com/gin-gonic/gin",
+          "purl": "pkg:golang/github.com/gin-gonic/gin"
+         },
+         "ranges": [
+          {
+           "events": [
+            {
+             "introduced": "0"
+            },
+            {
+             "fixed": "1.7.7"
+            }
+           ],
+           "type": "SEMVER"
+          }
+         ]
+        }
+       ],
+       "aliases": [
+        "CVE-2020-28483",
+        "GO-2021-0052",
+        "SNYK-GOLANG-GITHUBCOMGINGONICGIN-1041736"
+       ],
+       "id": "GHSA-h395-qcrw-5vmq",
+       "modified": "2026-09-10T03:49:05.801847827Z",
+       "published": "2021-06-23T17:53:21Z",
+       "schema_version": "1.9.0",
+       "severity": [
+        {
+         "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:L/A:N",
+         "type": "CVSS_V3"
+        }
+       ],
+       "summary": "Inconsistent Interpretation of HTTP Requests in github.com/gin-gonic/gin"
+      }
+     ]
+    },
+    {
+     "groups": [
+      {
+       "aliases": [
+        "CVE-2020-14040",
+        "GHSA-5rcv-m4m3-hfh7",
+        "GO-2020-0015"
+       ],
+       "experimental_analysis": {
+        "GO-2020-0015": {
+         "called": false,
+         "unimportant": false
+        }
+       },
+       "ids": [
+        "GO-2020-0015",
+        "GHSA-5rcv-m4m3-hfh7"
+       ],
+       "max_severity": "7.5"
+      },
+      {
+       "aliases": [
+        "CVE-2021-38561",
+        "GHSA-ppp9-7jff-5vj2",
+        "GO-2021-0113"
+       ],
+       "experimental_analysis": {
+        "GO-2021-0113": {
+         "called": false,
+         "unimportant": false
+        }
+       },
+       "ids": [
+        "GO-2021-0113",
+        "GHSA-ppp9-7jff-5vj2"
+       ],
+       "max_severity": "7.5"
+      },
+      {
+       "aliases": [
+        "CVE-2022-32149",
+        "GHSA-69ch-w2m2-3vjp",
+        "GO-2022-1059"
+       ],
+       "experimental_analysis": {
+        "GO-2022-1059": {
+         "called": false,
+         "unimportant": false
+        }
+       },
+       "ids": [
+        "GO-2022-1059",
+        "GHSA-69ch-w2m2-3vjp"
+       ],
+       "max_severity": "7.5"
+      },
+      {
+       "aliases": [
+        "CVE-2026-56852",
+        "GO-2026-5970"
+       ],
+       "experimental_analysis": {
+        "GO-2026-5970": {
+         "called": false,
+         "unimportant": false
+        }
+       },
+       "ids": [
+        "GO-2026-5970"
+       ],
+       "max_severity": ""
+      },
+      {
+       "aliases": [
+        "CVE-2026-56851",
+        "GO-2026-6629"
+       ],
+       "experimental_analysis": {
+        "GO-2026-6629": {
+         "called": false,
+         "unimportant": false
+        }
+       },
+       "ids": [
+        "GO-2026-6629"
+       ],
+       "max_severity": ""
+      }
+     ],
+     "package": {
+      "ecosystem": "Go",
+      "name": "golang.org/x/text",
+      "purl": "pkg:golang/golang.org/x/text@0.3.0",
+      "version": "0.3.0"
+     },
+     "vulnerabilities": [
+      {
+       "affected": [
+        {
+         "ecosystem_specific": {
+          "imports": [
+           {
+            "path": "golang.org/x/text/encoding/unicode",
+            "symbols": [
+             "bomOverride.Transform",
+             "utf16Decoder.Transform"
+            ]
+           },
+           {
+            "path": "golang.org/x/text/transform",
+            "symbols": [
+             "String"
+            ]
+           }
+          ]
+         },
+         "package": {
+          "ecosystem": "Go",
+          "name": "golang.org/x/text",
+          "purl": "pkg:golang/golang.org/x/text"
+         },
+         "ranges": [
+          {
+           "events": [
+            {
+             "introduced": "0"
+            },
+            {
+             "fixed": "0.3.3"
+            }
+           ],
+           "type": "SEMVER"
+          }
+         ]
+        }
+       ],
+       "aliases": [
+        "CVE-2020-14040",
+        "GHSA-5rcv-m4m3-hfh7"
+       ],
+       "credits": [
+        {
+         "name": "@abacabadabacaba"
+        },
+        {
+         "name": "Anton Gyllenberg"
+        }
+       ],
+       "id": "GO-2020-0015",
+       "modified": "2026-02-04T03:02:32.031255Z",
+       "published": "2021-04-14T20:04:52Z",
+       "related": [
+        "CGA-36h4-wcvc-55j4"
+       ],
+       "schema_version": "1.7.3",
+       "summary": "Infinite loop when decoding some inputs in golang.org/x/text"
+      },
+      {
+       "affected": [
+        {
+         "ecosystem_specific": {
+          "imports": [
+           {
+            "path": "golang.org/x/text/language",
+            "symbols": [
+             "MatchStrings",
+             "MustParse",
+             "Parse",
+             "ParseAcceptLanguage"
+            ]
+           }
+          ]
+         },
+         "package": {
+          "ecosystem": "Go",
+          "name": "golang.org/x/text",
+          "purl": "pkg:golang/golang.org/x/text"
+         },
+         "ranges": [
+          {
+           "events": [
+            {
+             "introduced": "0"
+            },
+            {
+             "fixed": "0.3.7"
+            }
+           ],
+           "type": "SEMVER"
+          }
+         ]
+        }
+       ],
+       "aliases": [
+        "CVE-2021-38561",
+        "GHSA-ppp9-7jff-5vj2"
+       ],
+       "credits": [
+        {
+         "name": "Guido Vranken"
+        }
+       ],
+       "id": "GO-2021-0113",
+       "modified": "2026-02-04T02:31:07.297346Z",
+       "published": "2021-10-06T17:51:21Z",
+       "related": [
+        "CGA-rxmv-qq37-m2jc",
+        "RHBA-2023:1649",
+        "RHSA-2023:0407"
+       ],
+       "schema_version": "1.7.3",
+       "summary": "Out-of-bounds read in golang.org/x/text/language"
+      },
+      {
+       "affected": [
+        {
+         "ecosystem_specific": {
+          "imports": [
+           {
+            "path": "golang.org/x/text/language",
+            "symbols": [
+             "MatchStrings",
+             "ParseAcceptLanguage"
+            ]
+           }
+          ]
+         },
+         "package": {
+          "ecosystem": "Go",
+          "name": "golang.org/x/text",
+          "purl": "pkg:golang/golang.org/x/text"
+         },
+         "ranges": [
+          {
+           "events": [
+            {
+             "introduced": "0"
+            },
+            {
+             "fixed": "0.3.8"
+            }
+           ],
+           "type": "SEMVER"
+          }
+         ]
+        }
+       ],
+       "aliases": [
+        "CVE-2022-32149",
+        "GHSA-69ch-w2m2-3vjp"
+       ],
+       "credits": [
+        {
+         "name": "Adam Korczynski (ADA Logics)"
+        },
+        {
+         "name": "OSS-Fuzz"
+        }
+       ],
+       "id": "GO-2022-1059",
+       "modified": "2026-02-04T03:39:03.311488Z",
+       "published": "2022-10-11T18:16:24Z",
+       "related": [
+        "CGA-wf56-6rqf-4crj"
+       ],
+       "schema_version": "1.7.3",
+       "summary": "Denial of service via crafted Accept-Language header in golang.org/x/text/language"
+      },
+      {
+       "affected": [
+        {
+         "ecosystem_specific": {
+          "imports": [
+           {
+            "path": "golang.org/x/text/unicode/norm",
+            "symbols": [
+             "Form.Append",
+             "Form.AppendString",
+             "Form.Bytes",
+             "Form.FirstBoundary",
+             "Form.FirstBoundaryInString",
+             "Form.IsNormal",
+             "Form.IsNormalString",
+             "Form.LastBoundary",
+             "Form.NextBoundary",
+             "Form.NextBoundaryInString",
+             "Form.Properties",
+             "Form.PropertiesString",
+             "Form.QuickSpan",
+             "Form.QuickSpanString",
+             "Form.Span",
+             "Form.SpanString",
+             "Form.String",
+             "Form.Transform",
+             "Iter.Init",
+             "Iter.InitString",
+             "Iter.Next",
+             "Iter.Seek",
+             "nextComposed",
+             "normReader.Read",
+             "normWriter.Write"
+            ]
+           }
+          ]
+         },
+         "package": {
+          "ecosystem": "Go",
+          "name": "golang.org/x/text",
+          "purl": "pkg:golang/golang.org/x/text"
+         },
+         "ranges": [
+          {
+           "events": [
+            {
+             "introduced": "0"
+            },
+            {
+             "fixed": "0.39.0"
+            }
+           ],
+           "type": "SEMVER"
+          }
+         ]
+        }
+       ],
+       "aliases": [
+        "CVE-2026-56852"
+       ],
+       "credits": [
+        {
+         "name": "Viky Choi (\"vikychoi\" on GitHub)"
+        }
+       ],
+       "id": "GO-2026-5970",
+       "modified": "2026-11-14T13:12:13.157756222Z",
+       "published": "2026-07-14T17:29:56Z",
+       "related": [
+        "RHSA-2026:40964",
+        "RHSA-2026:41020",
+        "RHSA-2026:42083",
+        "RHSA-2026:42230",
+        "RHSA-2026:42241",
+        "RHSA-2026:43015",
+        "RHSA-2026:43119",
+        "RHSA-2026:43311",
+        "RHSA-2026:43554",
+        "RHSA-2026:43581",
+        "RHSA-2026:43716",
+        "RHSA-2026:43797",
+        "RHSA-2026:43799",
+        "RHSA-2026:43801",
+        "RHSA-2026:43803",
+        "RHSA-2026:43852",
+        "RHSA-2026:43866",
+        "RHSA-2026:43873",
+        "RHSA-2026:43906",
+        "RHSA-2026:44151",
+        "RHSA-2026:44152",
+        "RHSA-2026:44162",
+        "RHSA-2026:44430",
+        "RHSA-2026:44451",
+        "RHSA-2026:44479",
+        "RHSA-2026:46953",
+        "RHSA-2026:46960",
+        "RHSA-2026:46988",
+        "RHSA-2026:48306",
+        "RHSA-2026:49317",
+        "RHSA-2026:49360",
+        "RHSA-2026:51065",
+        "RHSA-2026:52912",
+        "RHSA-2026:54364",
+        "RHSA-2026:54549",
+        "RHSA-2026:69258",
+        "RHSA-2026:99826",
+        "RHSA-2026:99827"
+       ],
+       "schema_version": "1.8.0",
+       "summary": "Infinite loop on invalid input in golang.org/x/text"
+      },
+      {
+       "affected": [
+        {
+         "ecosystem_specific": {
+          "imports": [
+           {
+            "path": "golang.org/x/text/secure/precis",
+            "symbols": [
+             "Profile.Append",
+             "Profile.AppendCompareKey",
+             "Profile.Bytes",
+             "Profile.Compare",
+             "Profile.CompareKey",
+             "Profile.NewTransformer",
+             "Profile.String",
+             "Transformer.Bytes",
+             "Transformer.String",
+             "Transformer.Transform",
+             "nickAdditionalMapping.Transform"
+            ]
+           }
+          ]
+         },
+         "package": {
+          "ecosystem": "Go",
+          "name": "golang.org/x/text",
+          "purl": "pkg:golang/golang.org/x/text"
+         },
+         "ranges": [
+          {
+           "events": [
+            {
+             "introduced": "0"
+            },
+            {
+             "fixed": "0.41.0"
+            }
+           ],
+           "type": "SEMVER"
+          }
+         ]
+        }
+       ],
+       "aliases": [
+        "CVE-2026-56851"
+       ],
+       "credits": [
+        {
+         "name": "Omkhar Arasaratnam (GitHub: omkhar)"
+        }
+       ],
+       "id": "GO-2026-6629",
+       "modified": "2026-11-14T13:12:14.100810021Z",
+       "published": "2026-10-07T14:09:43Z",
+       "related": [
+        "RHSA-2026:70537",
+        "RHSA-2026:70700",
+        "RHSA-2026:72750",
+        "RHSA-2026:73401",
+        "RHSA-2026:73522",
+        "RHSA-2026:73523",
+        "RHSA-2026:73524",
+        "RHSA-2026:74536",
+        "RHSA-2026:74861",
+        "RHSA-2026:74948",
+        "RHSA-2026:75151",
+        "RHSA-2026:76430",
+        "RHSA-2026:76448",
+        "RHSA-2026:76606",
+        "RHSA-2026:76677"
+       ],
+       "schema_version": "1.9.0",
+       "summary": "Panic parsing crafted input in x/text/secure/precis in golang.org/x/text"
+      },
+      {
+       "affected": [
+        {
+         "package": {
+          "ecosystem": "Go",
+          "name": "golang.org/x/text",
+          "purl": "pkg:golang/golang.org/x/text"
+         },
+         "ranges": [
+          {
+           "events": [
+            {
+             "introduced": "0"
+            },
+            {
+             "fixed": "0.3.3"
+            }
+           ],
+           "type": "SEMVER"
+          }
+         ]
+        }
+       ],
+       "aliases": [
+        "CVE-2020-14040",
+        "GO-2020-0015"
+       ],
+       "id": "GHSA-5rcv-m4m3-hfh7",
+       "modified": "2026-09-10T03:49:04.603920760Z",
+       "published": "2021-05-18T18:34:35Z",
+       "schema_version": "1.9.0",
+       "severity": [
+        {
+         "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H/E:P/RL:O/RC:C",
+         "type": "CVSS_V3"
+        }
+       ],
+       "summary": "golang.org/x/text Infinite loop"
+      },
+      {
+       "affected": [
+        {
+         "package": {
+          "ecosystem": "Go",
+          "name": "golang.org/x/text",
+          "purl": "pkg:golang/golang.org/x/text"
+         },
+         "ranges": [
+          {
+           "events": [
+            {
+             "introduced": "0"
+            },
+            {
+             "fixed": "0.3.8"
+            }
+           ],
+           "type": "SEMVER"
+          }
+         ]
+        }
+       ],
+       "aliases": [
+        "CVE-2022-32149",
+        "GO-2022-1059"
+       ],
+       "id": "GHSA-69ch-w2m2-3vjp",
+       "modified": "2026-09-10T03:49:46.240531909Z",
+       "published": "2022-10-14T19:00:40Z",
+       "schema_version": "1.9.0",
+       "severity": [
+        {
+         "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+         "type": "CVSS_V3"
+        }
+       ],
+       "summary": "golang.org/x/text/language Denial of service via crafted Accept-Language header"
+      },
+      {
+       "affected": [
+        {
+         "package": {
+          "ecosystem": "Go",
+          "name": "golang.org/x/text",
+          "purl": "pkg:golang/golang.org/x/text"
+         },
+         "ranges": [
+          {
+           "events": [
+            {
+             "introduced": "0"
+            },
+            {
+             "fixed": "0.3.7"
+            }
+           ],
+           "type": "SEMVER"
+          }
+         ]
+        }
+       ],
+       "aliases": [
+        "CVE-2021-38561",
+        "GO-2021-0113"
+       ],
+       "id": "GHSA-ppp9-7jff-5vj2",
+       "modified": "2026-09-10T03:49:50.331764985Z",
+       "published": "2022-12-26T06:30:22Z",
+       "schema_version": "1.9.0",
+       "severity": [
+        {
+         "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+         "type": "CVSS_V3"
+        }
+       ],
+       "summary": "golang.org/x/text/language Out-of-bounds Read vulnerability"
+      }
+     ]
+    }
+   ],
+   "source": {
+    "path": "/src/svc/go.mod",
+    "type": "lockfile"
+   }
+  },
+  {
+   "packages": [
+    {
+     "groups": [
+      {
+       "aliases": [
+        "CVE-2024-43796",
+        "GHSA-qw6h-vgh9-j6wx"
+       ],
+       "ids": [
+        "GHSA-qw6h-vgh9-j6wx"
+       ],
+       "max_severity": "5.0"
+      },
+      {
+       "aliases": [
+        "CVE-2024-29041",
+        "GHSA-rv95-896h-c2vc"
+       ],
+       "ids": [
+        "GHSA-rv95-896h-c2vc"
+       ],
+       "max_severity": "6.1"
+      }
+     ],
+     "package": {
+      "ecosystem": "npm",
+      "name": "express",
+      "purl": "pkg:npm/express@4.16.0?source=PUBLIC_REGISTRY",
+      "version": "4.16.0"
+     },
+     "vulnerabilities": [
+      {
+       "affected": [
+        {
+         "package": {
+          "ecosystem": "npm",
+          "name": "express",
+          "purl": "pkg:npm/express"
+         },
+         "ranges": [
+          {
+           "events": [
+            {
+             "introduced": "0"
+            },
+            {
+             "fixed": "4.20.0"
+            }
+           ],
+           "type": "SEMVER"
+          }
+         ]
+        },
+        {
+         "package": {
+          "ecosystem": "npm",
+          "name": "express",
+          "purl": "pkg:npm/express"
+         },
+         "ranges": [
+          {
+           "events": [
+            {
+             "introduced": "5.0.0-alpha.1"
+            },
+            {
+             "fixed": "5.0.0"
+            }
+           ],
+           "type": "SEMVER"
+          }
+         ]
+        }
+       ],
+       "aliases": [
+        "CVE-2024-43796"
+       ],
+       "id": "GHSA-qw6h-vgh9-j6wx",
+       "modified": "2026-09-10T03:50:18.298562940Z",
+       "published": "2024-09-10T19:41:04Z",
+       "schema_version": "1.9.0",
+       "severity": [
+        {
+         "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:L/I:L/A:L",
+         "type": "CVSS_V3"
+        },
+        {
+         "score": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:P/VC:N/VI:N/VA:N/SC:L/SI:L/SA:L",
+         "type": "CVSS_V4"
+        }
+       ],
+       "summary": "express vulnerable to XSS via response.redirect()"
+      },
+      {
+       "affected": [
+        {
+         "package": {
+          "ecosystem": "npm",
+          "name": "express",
+          "purl": "pkg:npm/express"
+         },
+         "ranges": [
+          {
+           "events": [
+            {
+             "introduced": "0"
+            },
+            {
+             "fixed": "4.19.2"
+            }
+           ],
+           "type": "SEMVER"
+          }
+         ]
+        },
+        {
+         "package": {
+          "ecosystem": "npm",
+          "name": "express",
+          "purl": "pkg:npm/express"
+         },
+         "ranges": [
+          {
+           "events": [
+            {
+             "introduced": "5.0.0-alpha.1"
+            },
+            {
+             "fixed": "5.0.0-beta.3"
+            }
+           ],
+           "type": "SEMVER"
+          }
+         ]
+        }
+       ],
+       "aliases": [
+        "CVE-2024-29041"
+       ],
+       "id": "GHSA-rv95-896h-c2vc",
+       "modified": "2026-09-10T03:50:10.750068508Z",
+       "published": "2024-03-25T19:40:26Z",
+       "schema_version": "1.9.0",
+       "severity": [
+        {
+         "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N",
+         "type": "CVSS_V3"
+        }
+       ],
+       "summary": "Express.js Open Redirect in malformed URLs"
+      }
+     ]
+    },
+    {
+     "groups": [
+      {
+       "aliases": [
+        "CVE-2020-28500",
+        "GHSA-29mw-wpgm-hmr9"
+       ],
+       "ids": [
+        "GHSA-29mw-wpgm-hmr9"
+       ],
+       "max_severity": "5.3"
+      },
+      {
+       "aliases": [
+        "CVE-2021-23337",
+        "GHSA-35jh-r3h4-6jhm"
+       ],
+       "ids": [
+        "GHSA-35jh-r3h4-6jhm"
+       ],
+       "max_severity": "7.2"
+      },
+      {
+       "aliases": [
+        "CVE-2020-8203",
+        "GHSA-p6mc-m468-83gw"
+       ],
+       "ids": [
+        "GHSA-p6mc-m468-83gw"
+       ],
+       "max_severity": "7.4"
+      },
+      {
+       "aliases": [
+        "CVE-2026-4800",
+        "GHSA-r5fr-rjxr-66jc"
+       ],
+       "ids": [
+        "GHSA-r5fr-rjxr-66jc"
+       ],
+       "max_severity": "8.1"
+      },
+      {
+       "aliases": [
+        "CVE-2025-13465",
+        "GHSA-xxjr-mmjv-4gpg"
+       ],
+       "ids": [
+        "GHSA-xxjr-mmjv-4gpg"
+       ],
+       "max_severity": "6.9"
+      }
+     ],
+     "package": {
+      "ecosystem": "npm",
+      "name": "lodash",
+      "purl": "pkg:npm/lodash@4.17.15?source=PUBLIC_REGISTRY",
+      "version": "4.17.15"
+     },
+     "vulnerabilities": [
+      {
+       "affected": [
+        {
+         "package": {
+          "ecosystem": "npm",
+          "name": "lodash",
+          "purl": "pkg:npm/lodash"
+         },
+         "ranges": [
+          {
+           "events": [
+            {
+             "introduced": "4.0.0"
+            },
+            {
+             "fixed": "4.17.21"
+            }
+           ],
+           "type": "SEMVER"
+          }
+         ]
+        },
+        {
+         "package": {
+          "ecosystem": "npm",
+          "name": "lodash-es",
+          "purl": "pkg:npm/lodash-es"
+         },
+         "ranges": [
+          {
+           "events": [
+            {
+             "introduced": "4.0.0"
+            },
+            {
+             "fixed": "4.17.21"
+            }
+           ],
+           "type": "SEMVER"
+          }
+         ]
+        },
+        {
+         "package": {
+          "ecosystem": "npm",
+          "name": "lodash.trimend",
+          "purl": "pkg:npm/lodash.trimend"
+         },
+         "ranges": [
+          {
+           "events": [
+            {
+             "introduced": "4.0.0"
+            },
+            {
+             "last_affected": "4.5.1"
+            }
+           ],
+           "type": "SEMVER"
+          }
+         ]
+        },
+        {
+         "package": {
+          "ecosystem": "npm",
+          "name": "lodash.trim",
+          "purl": "pkg:npm/lodash.trim"
+         },
+         "ranges": [
+          {
+           "events": [
+            {
+             "introduced": "4.0.0"
+            },
+            {
+             "last_affected": "4.5.1"
+            }
+           ],
+           "type": "SEMVER"
+          }
+         ]
+        },
+        {
+         "package": {
+          "ecosystem": "RubyGems",
+          "name": "lodash-rails",
+          "purl": "pkg:gem/lodash-rails"
+         },
+         "ranges": [
+          {
+           "events": [
+            {
+             "introduced": "4.0.0"
+            },
+            {
+             "fixed": "4.17.21"
+            }
+           ],
+           "type": "ECOSYSTEM"
+          }
+         ]
+        }
+       ],
+       "aliases": [
+        "CVE-2020-28500"
+       ],
+       "id": "GHSA-29mw-wpgm-hmr9",
+       "modified": "2025-09-29T21:12:31.102523Z",
+       "published": "2022-01-06T20:30:46Z",
+       "schema_version": "1.9.0",
+       "severity": [
+        {
+         "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L",
+         "type": "CVSS_V3"
+        }
+       ],
+       "summary": "Regular Expression Denial of Service (ReDoS) in lodash"
+      },
+      {
+       "affected": [
+        {
+         "package": {
+          "ecosystem": "npm",
+          "name": "lodash",
+          "purl": "pkg:npm/lodash"
+         },
+         "ranges": [
+          {
+           "events": [
+            {
+             "introduced": "0"
+            },
+            {
+             "fixed": "4.17.21"
+            }
+           ],
+           "type": "SEMVER"
+          }
+         ]
+        },
+        {
+         "package": {
+          "ecosystem": "npm",
+          "name": "lodash-es",
+          "purl": "pkg:npm/lodash-es"
+         },
+         "ranges": [
+          {
+           "events": [
+            {
+             "introduced": "0"
+            },
+            {
+             "fixed": "4.17.21"
+            }
+           ],
+           "type": "SEMVER"
+          }
+         ]
+        },
+        {
+         "package": {
+          "ecosystem": "npm",
+          "name": "lodash.template",
+          "purl": "pkg:npm/lodash.template"
+         },
+         "ranges": [
+          {
+           "events": [
+            {
+             "introduced": "0"
+            },
+            {
+             "last_affected": "4.5.0"
+            }
+           ],
+           "type": "SEMVER"
+          }
+         ]
+        },
+        {
+         "package": {
+          "ecosystem": "npm",
+          "name": "lodash-template",
+          "purl": "pkg:npm/lodash-template"
+         },
+         "ranges": [
+          {
+           "events": [
+            {
+             "introduced": "0"
+            },
+            {
+             "last_affected": "1.0.0"
+            }
+           ],
+           "type": "SEMVER"
+          }
+         ]
+        },
+        {
+         "package": {
+          "ecosystem": "RubyGems",
+          "name": "lodash-rails",
+          "purl": "pkg:gem/lodash-rails"
+         },
+         "ranges": [
+          {
+           "events": [
+            {
+             "introduced": "0"
+            },
+            {
+             "fixed": "4.17.21"
+            }
+           ],
+           "type": "ECOSYSTEM"
+          }
+         ]
+        }
+       ],
+       "aliases": [
+        "CVE-2021-23337"
+       ],
+       "id": "GHSA-35jh-r3h4-6jhm",
+       "modified": "2026-10-17T02:55:38.085813876Z",
+       "published": "2021-05-06T16:05:51Z",
+       "schema_version": "1.9.0",
+       "severity": [
+        {
+         "score": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H",
+         "type": "CVSS_V3"
+        }
+       ],
+       "summary": "Command Injection in lodash"
+      },
+      {
+       "affected": [
+        {
+         "package": {
+          "ecosystem": "npm",
+          "name": "lodash",
+          "purl": "pkg:npm/lodash"
+         },
+         "ranges": [
+          {
+           "events": [
+            {
+             "introduced": "3.7.0"
+            },
+            {
+             "fixed": "4.17.19"
+            }
+           ],
+           "type": "SEMVER"
+          }
+         ]
+        },
+        {
+         "package": {
+          "ecosystem": "npm",
+          "name": "lodash-es",
+          "purl": "pkg:npm/lodash-es"
+         },
+         "ranges": [
+          {
+           "events": [
+            {
+             "introduced": "3.7.0"
+            },
+            {
+             "fixed": "4.17.20"
+            }
+           ],
+           "type": "SEMVER"
+          }
+         ]
+        },
+        {
+         "package": {
+          "ecosystem": "npm",
+          "name": "lodash.pick",
+          "purl": "pkg:npm/lodash.pick"
+         },
+         "ranges": [
+          {
+           "events": [
+            {
+             "introduced": "4.0.0"
+            },
+            {
+             "last_affected": "4.4.0"
+            }
+           ],
+           "type": "SEMVER"
+          }
+         ]
+        },
+        {
+         "package": {
+          "ecosystem": "npm",
+          "name": "lodash.set",
+          "purl": "pkg:npm/lodash.set"
+         },
+         "ranges": [
+          {
+           "events": [
+            {
+             "introduced": "3.7.0"
+            },
+            {
+             "last_affected": "4.3.2"
+            }
+           ],
+           "type": "SEMVER"
+          }
+         ]
+        },
+        {
+         "package": {
+          "ecosystem": "npm",
+          "name": "lodash.setwith",
+          "purl": "pkg:npm/lodash.setwith"
+         },
+         "ranges": [
+          {
+           "events": [
+            {
+             "introduced": "0"
+            },
+            {
+             "last_affected": "4.3.2"
+            }
+           ],
+           "type": "SEMVER"
+          }
+         ]
+        },
+        {
+         "package": {
+          "ecosystem": "npm",
+          "name": "lodash.update",
+          "purl": "pkg:npm/lodash.update"
+         },
+         "ranges": [
+          {
+           "events": [
+            {
+             "introduced": "0"
+            },
+            {
+             "last_affected": "4.10.2"
+            }
+           ],
+           "type": "SEMVER"
+          }
+         ]
+        },
+        {
+         "package": {
+          "ecosystem": "npm",
+          "name": "lodash.updatewith",
+          "purl": "pkg:npm/lodash.updatewith"
+         },
+         "ranges": [
+          {
+           "events": [
+            {
+             "introduced": "0"
+            },
+            {
+             "last_affected": "4.10.2"
+            }
+           ],
+           "type": "SEMVER"
+          }
+         ]
+        },
+        {
+         "package": {
+          "ecosystem": "RubyGems",
+          "name": "lodash-rails",
+          "purl": "pkg:gem/lodash-rails"
+         },
+         "ranges": [
+          {
+           "events": [
+            {
+             "introduced": "3.7.0"
+            },
+            {
+             "fixed": "4.17.19"
+            }
+           ],
+           "type": "ECOSYSTEM"
+          }
+         ]
+        }
+       ],
+       "aliases": [
+        "CVE-2020-8203"
+       ],
+       "id": "GHSA-p6mc-m468-83gw",
+       "modified": "2025-08-12T21:56:17.174859Z",
+       "published": "2020-07-15T19:15:48Z",
+       "schema_version": "1.9.0",
+       "severity": [
+        {
+         "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:H/A:H",
+         "type": "CVSS_V3"
+        }
+       ],
+       "summary": "Prototype Pollution in lodash"
+      },
+      {
+       "affected": [
+        {
+         "package": {
+          "ecosystem": "npm",
+          "name": "lodash",
+          "purl": "pkg:npm/lodash"
+         },
+         "ranges": [
+          {
+           "events": [
+            {
+             "introduced": "4.0.0"
+            },
+            {
+             "fixed": "4.18.0"
+            }
+           ],
+           "type": "SEMVER"
+          }
+         ]
+        },
+        {
+         "package": {
+          "ecosystem": "npm",
+          "name": "lodash-es",
+          "purl": "pkg:npm/lodash-es"
+         },
+         "ranges": [
+          {
+           "events": [
+            {
+             "introduced": "4.0.0"
+            },
+            {
+             "fixed": "4.18.0"
+            }
+           ],
+           "type": "SEMVER"
+          }
+         ]
+        },
+        {
+         "package": {
+          "ecosystem": "npm",
+          "name": "lodash-amd",
+          "purl": "pkg:npm/lodash-amd"
+         },
+         "ranges": [
+          {
+           "events": [
+            {
+             "introduced": "4.0.0"
+            },
+            {
+             "fixed": "4.18.0"
+            }
+           ],
+           "type": "SEMVER"
+          }
+         ]
+        },
+        {
+         "package": {
+          "ecosystem": "npm",
+          "name": "lodash.template",
+          "purl": "pkg:npm/lodash.template"
+         },
+         "ranges": [
+          {
+           "events": [
+            {
+             "introduced": "4.0.0"
+            },
+            {
+             "fixed": "4.18.0"
+            }
+           ],
+           "type": "SEMVER"
+          }
+         ]
+        }
+       ],
+       "aliases": [
+        "CVE-2026-4800"
+       ],
+       "id": "GHSA-r5fr-rjxr-66jc",
+       "modified": "2026-10-17T02:56:15.633068434Z",
+       "published": "2026-04-01T23:51:12Z",
+       "schema_version": "1.9.0",
+       "severity": [
+        {
+         "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H",
+         "type": "CVSS_V3"
+        }
+       ],
+       "summary": "lodash vulnerable to Code Injection via `_.template` imports key names"
+      },
+      {
+       "affected": [
+        {
+         "package": {
+          "ecosystem": "npm",
+          "name": "lodash",
+          "purl": "pkg:npm/lodash"
+         },
+         "ranges": [
+          {
+           "events": [
+            {
+             "introduced": "4.0.0"
+            },
+            {
+             "fixed": "4.17.23"
+            }
+           ],
+           "type": "SEMVER"
+          }
+         ]
+        },
+        {
+         "package": {
+          "ecosystem": "npm",
+          "name": "lodash-amd",
+          "purl": "pkg:npm/lodash-amd"
+         },
+         "ranges": [
+          {
+           "events": [
+            {
+             "introduced": "4.0.0"
+            },
+            {
+             "fixed": "4.17.23"
+            }
+           ],
+           "type": "SEMVER"
+          }
+         ]
+        },
+        {
+         "package": {
+          "ecosystem": "npm",
+          "name": "lodash-es",
+          "purl": "pkg:npm/lodash-es"
+         },
+         "ranges": [
+          {
+           "events": [
+            {
+             "introduced": "4.0.0"
+            },
+            {
+             "fixed": "4.17.23"
+            }
+           ],
+           "type": "SEMVER"
+          }
+         ]
+        },
+        {
+         "package": {
+          "ecosystem": "npm",
+          "name": "lodash.omit",
+          "purl": "pkg:npm/lodash.omit"
+         },
+         "ranges": [
+          {
+           "events": [
+            {
+             "introduced": "4.0.0"
+            },
+            {
+             "fixed": "4.18.0"
+            }
+           ],
+           "type": "SEMVER"
+          }
+         ]
+        },
+        {
+         "package": {
+          "ecosystem": "npm",
+          "name": "lodash.unset",
+          "purl": "pkg:npm/lodash.unset"
+         },
+         "ranges": [
+          {
+           "events": [
+            {
+             "introduced": "4.0.0"
+            },
+            {
+             "fixed": "4.18.0"
+            }
+           ],
+           "type": "SEMVER"
+          }
+         ]
+        }
+       ],
+       "aliases": [
+        "CVE-2025-13465"
+       ],
+       "id": "GHSA-xxjr-mmjv-4gpg",
+       "modified": "2026-11-04T03:15:10.832238351Z",
+       "published": "2026-01-21T23:01:22Z",
+       "schema_version": "1.9.2",
+       "severity": [
+        {
+         "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:L",
+         "type": "CVSS_V3"
+        },
+        {
+         "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:L/VA:L/SC:H/SI:H/SA:H/E:P",
+         "type": "CVSS_V4"
+        }
+       ],
+       "summary": "Lodash has Prototype Pollution Vulnerability in `_.unset`, `_.omit`, and `_.pullAt` functions"
+      }
+     ]
+    },
+    {
+     "groups": [
+      {
+       "aliases": [
+        "CVE-2020-7598",
+        "GHSA-vh95-rmgr-6w4m"
+       ],
+       "ids": [
+        "GHSA-vh95-rmgr-6w4m"
+       ],
+       "max_severity": "5.6"
+      },
+      {
+       "aliases": [
+        "CVE-2021-44906",
+        "GHSA-xvch-5gv4-984h"
+       ],
+       "ids": [
+        "GHSA-xvch-5gv4-984h"
+       ],
+       "max_severity": "9.8"
+      }
+     ],
+     "package": {
+      "ecosystem": "npm",
+      "name": "minimist",
+      "purl": "pkg:npm/minimist@1.2.0?source=PUBLIC_REGISTRY",
+      "version": "1.2.0"
+     },
+     "vulnerabilities": [
+      {
+       "affected": [
+        {
+         "package": {
+          "ecosystem": "npm",
+          "name": "minimist",
+          "purl": "pkg:npm/minimist"
+         },
+         "ranges": [
+          {
+           "events": [
+            {
+             "introduced": "0"
+            },
+            {
+             "fixed": "0.2.1"
+            }
+           ],
+           "type": "SEMVER"
+          }
+         ]
+        },
+        {
+         "package": {
+          "ecosystem": "npm",
+          "name": "minimist",
+          "purl": "pkg:npm/minimist"
+         },
+         "ranges": [
+          {
+           "events": [
+            {
+             "introduced": "1.0.0"
+            },
+            {
+             "fixed": "1.2.3"
+            }
+           ],
+           "type": "SEMVER"
+          }
+         ]
+        }
+       ],
+       "aliases": [
+        "CVE-2020-7598"
+       ],
+       "id": "GHSA-vh95-rmgr-6w4m",
+       "modified": "2026-03-13T22:11:31.390433Z",
+       "published": "2020-04-03T21:48:32Z",
+       "schema_version": "1.9.0",
+       "severity": [
+        {
+         "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:L/A:L",
+         "type": "CVSS_V3"
+        }
+       ],
+       "summary": "Prototype Pollution in minimist"
+      },
+      {
+       "affected": [
+        {
+         "package": {
+          "ecosystem": "npm",
+          "name": "minimist",
+          "purl": "pkg:npm/minimist"
+         },
+         "ranges": [
+          {
+           "events": [
+            {
+             "introduced": "1.0.0"
+            },
+            {
+             "fixed": "1.2.6"
+            }
+           ],
+           "type": "SEMVER"
+          }
+         ]
+        },
+        {
+         "package": {
+          "ecosystem": "npm",
+          "name": "minimist",
+          "purl": "pkg:npm/minimist"
+         },
+         "ranges": [
+          {
+           "events": [
+            {
+             "introduced": "0"
+            },
+            {
+             "fixed": "0.2.4"
+            }
+           ],
+           "type": "SEMVER"
+          }
+         ]
+        }
+       ],
+       "aliases": [
+        "CVE-2021-44906"
+       ],
+       "id": "GHSA-xvch-5gv4-984h",
+       "modified": "2026-03-13T22:11:59.523514Z",
+       "published": "2022-03-18T00:01:09Z",
+       "schema_version": "1.9.0",
+       "severity": [
+        {
+         "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+         "type": "CVSS_V3"
+        }
+       ],
+       "summary": "Prototype Pollution in minimist"
+      }
+     ]
+    }
+   ],
+   "source": {
+    "path": "/src/web/package-lock.json",
+    "type": "lockfile"
+   }
+  }
+ ]
+}

@@ -5,9 +5,10 @@ from __future__ import annotations
 import hashlib
 import posixpath
 from collections import Counter
+from collections.abc import Callable
 from dataclasses import asdict, dataclass, field, replace
 from pathlib import Path
-from typing import Any
+from typing import Any, Protocol
 
 from kurojisho import __version__
 from kurojisho.clock import Clock, isoformat
@@ -28,6 +29,36 @@ WALKER = "walker"
 
 class ScanError(RuntimeError):
     """The scan could not start. Nothing has been written."""
+
+
+class Scrubs(Protocol):
+    """Anything that can remove known secret values before data is persisted."""
+
+    def text(self, value: str) -> str: ...
+    def node(self, node: Node) -> Node: ...
+    def edge(self, edge: Edge) -> Edge: ...
+
+
+@dataclass
+class IngestState:
+    """What ingest built, handed to an extension before anything is written."""
+
+    root: Path
+    entries: dict[str, FileEntry]
+    hashes: dict[str, str]
+    nodes: list[Node]
+    edges: list[Edge]
+    result: ScanResult
+
+
+@dataclass
+class Extension:
+    """Extra graph content (findings, coverage gaps) to commit in the same transaction."""
+
+    nodes: list[Node] = field(default_factory=list)
+    edges: list[Edge] = field(default_factory=list)
+    scrubber: Scrubs | None = None
+    after_apply: Callable[[Store, int], None] | None = None
 
 
 @dataclass
@@ -227,6 +258,7 @@ def scan(
     *,
     context_path: Path | None = None,
     full: bool = False,
+    extend: Callable[[IngestState], Extension] | None = None,
 ) -> ScanResult:
     """Bring the stored graph in line with the tree at ``root``.
 
@@ -260,6 +292,28 @@ def scan(
     nodes += code.nodes + package_nodes + asset_nodes
     edges += code.edges + package_edges + asset_edges
 
+    extension = Extension()
+    if extend is not None:
+        extension = extend(IngestState(root, entries, hashes, nodes, edges, result))
+        nodes += extension.nodes
+        edges += extension.edges
+    scrub = extension.scrubber
+    if scrub is not None:
+        # A secret a scanner found may also sit in something ingest extracted.
+        cleaned = [scrub.node(n) for n in nodes]
+        moved = {
+            old.id: new.id for old, new in zip(nodes, cleaned, strict=True) if old.id != new.id
+        }
+        nodes = cleaned
+        edges = [scrub.edge(e) for e in edges]
+        if moved:  # a scrubbed key changes the node id; keep edges attached
+            edges = [
+                e.model_copy(
+                    update={"src": moved.get(e.src, e.src), "dst": moved.get(e.dst, e.dst)}
+                )
+                for e in edges
+            ]
+
     with store.transaction():
         result.scan_id = store.begin_scan(
             commit_sha=result.commit_sha,
@@ -269,9 +323,12 @@ def scan(
         )
         result.writes = store.apply(nodes, edges, result.scan_id)
         for path in result.files_parsed:
-            store.put_file(path, hashes[path], facts[path].to_json())
+            cached = facts[path].to_json()
+            store.put_file(path, hashes[path], scrub.text(cached) if scrub else cached)
         for path in sorted(set(cache) - set(facts)):
             store.delete_file(path)
         store.set_meta("extractor_version", EXTRACTOR_VERSION)
+        if extension.after_apply is not None:
+            extension.after_apply(store, result.scan_id)
         store.finish_scan(result.scan_id, result.summary())
     return result

@@ -1,0 +1,6353 @@
+{
+ "descriptor": {
+  "configuration": {
+   "SortBy": {
+    "sort-by": "risk"
+   },
+   "add-cpes-if-none": false,
+   "alerts": {
+    "enable-eol-distro-warnings": true
+   },
+   "by-cve": false,
+   "check-for-app-update": false,
+   "db": {
+    "auto-update": false,
+    "ca-cert": "",
+    "cache-dir": "/db",
+    "max-allowed-built-age": 432000000000000,
+    "max-update-check-frequency": 7200000000000,
+    "require-update-check": false,
+    "update-available-timeout": 30000000000,
+    "update-download-timeout": 300000000000,
+    "update-url": "https://grype.anchore.io/databases",
+    "validate-age": false,
+    "validate-by-hash-on-start": true
+   },
+   "default-image-pull-source": "",
+   "dev": {
+    "db": {
+     "debug": false
+    }
+   },
+   "distro": "",
+   "exclude": [],
+   "exp": {},
+   "externalSources": {
+    "enable": false,
+    "maven": {
+     "baseUrl": "https://search.maven.org/solrsearch/select",
+     "rateLimit": 300000000,
+     "searchUpstreamBySha1": true
+    }
+   },
+   "fail-on-severity": "",
+   "file": "/out/grype.json",
+   "fix-channel": {
+    "redhat-eus": {
+     "apply": "auto"
+    },
+    "ubuntu-esm": {
+     "apply": "auto"
+    }
+   },
+   "from": null,
+   "ignore": [
+    {
+     "fix-state": "",
+     "include-aliases": false,
+     "match-type": "exact-indirect-match",
+     "namespace": "",
+     "package": {
+      "language": "",
+      "location": "",
+      "name": "kernel-headers",
+      "type": "rpm",
+      "upstream-name": "kernel",
+      "version": ""
+     },
+     "reason": "",
+     "vex-justification": "",
+     "vex-status": "",
+     "vulnerability": ""
+    },
+    {
+     "fix-state": "",
+     "include-aliases": false,
+     "match-type": "exact-indirect-match",
+     "namespace": "",
+     "package": {
+      "language": "",
+      "location": "",
+      "name": "linux(-.*)?-headers-.*",
+      "type": "deb",
+      "upstream-name": "linux.*",
+      "version": ""
+     },
+     "reason": "",
+     "vex-justification": "",
+     "vex-status": "",
+     "vulnerability": ""
+    },
+    {
+     "fix-state": "",
+     "include-aliases": false,
+     "match-type": "exact-indirect-match",
+     "namespace": "",
+     "package": {
+      "language": "",
+      "location": "",
+      "name": "linux-libc-dev",
+      "type": "deb",
+      "upstream-name": "linux",
+      "version": ""
+     },
+     "reason": "",
+     "vex-justification": "",
+     "vex-status": "",
+     "vulnerability": ""
+    },
+    {
+     "fix-state": "",
+     "include-aliases": false,
+     "match-type": "exact-indirect-match",
+     "namespace": "",
+     "package": {
+      "language": "",
+      "location": "",
+      "name": "linux-kbuild-.*",
+      "type": "deb",
+      "upstream-name": "linux.*",
+      "version": ""
+     },
+     "reason": "",
+     "vex-justification": "",
+     "vex-status": "",
+     "vulnerability": ""
+    }
+   ],
+   "ignore-wontfix": "",
+   "include-matcher-suppressions": false,
+   "match": {
+    "dotnet": {
+     "using-cpes": false
+    },
+    "dpkg": {
+     "missing-epoch-strategy": "zero",
+     "use-cpes-for-eol": false,
+     "using-cpes": false
+    },
+    "golang": {
+     "allow-main-module-pseudo-version-comparison": false,
+     "always-use-cpe-for-stdlib": false,
+     "using-cpes": false
+    },
+    "hex": {
+     "using-cpes": false
+    },
+    "java": {
+     "using-cpes": false
+    },
+    "javascript": {
+     "using-cpes": false
+    },
+    "jvm": {
+     "using-cpes": true
+    },
+    "python": {
+     "using-cpes": false
+    },
+    "rpm": {
+     "missing-epoch-strategy": "auto",
+     "use-cpes-for-eol": false,
+     "using-cpes": false
+    },
+    "ruby": {
+     "using-cpes": false
+    },
+    "rust": {
+     "using-cpes": false
+    },
+    "stock": {
+     "using-cpes": true
+    }
+   },
+   "match-upstream-kernel-headers": false,
+   "name": "",
+   "only-fixed": false,
+   "only-notfixed": false,
+   "output": [
+    "json"
+   ],
+   "output-template-file": "",
+   "platform": "",
+   "pretty": false,
+   "registry": {
+    "ca-cert": "",
+    "insecure-skip-tls-verify": false,
+    "insecure-use-http": false
+   },
+   "search": {
+    "indexed-archives": true,
+    "scope": "squashed",
+    "unindexed-archives": false
+   },
+   "show-suppressed": false,
+   "timestamp": true,
+   "vex-add": [],
+   "vex-documents": []
+  },
+  "db": {
+   "providers": {
+    "alma": {
+     "captured": "2026-11-14T00:21:54Z",
+     "input": "xxh64:38d2b2f79ee3cc47"
+    },
+    "alpine": {
+     "captured": "2026-11-14T00:20:37Z",
+     "input": "xxh64:38d86e5b2b43badc"
+    },
+    "amazon": {
+     "captured": "2026-11-14T00:20:38Z",
+     "input": "xxh64:5adfdbe496fe1339"
+    },
+    "arch": {
+     "captured": "2026-11-14T00:23:15Z",
+     "input": "xxh64:26c037ddaa6a55eb"
+    },
+    "bitnami": {
+     "captured": "2026-11-14T00:20:38Z",
+     "input": "xxh64:9c151427b662ef6c"
+    },
+    "chainguard": {
+     "captured": "2026-11-14T00:20:49Z",
+     "input": "xxh64:52a5193f9b77d279"
+    },
+    "chainguard-libraries": {
+     "captured": "2026-11-14T00:20:44Z",
+     "input": "xxh64:53ef7be0ac554dea"
+    },
+    "debian": {
+     "captured": "2026-11-14T00:20:44Z",
+     "input": "xxh64:99dc67dc19403527"
+    },
+    "echo": {
+     "captured": "2026-11-14T00:21:06Z",
+     "input": "xxh64:cbbfce7c7f6ab898"
+    },
+    "eol": {
+     "captured": "2026-11-14T00:21:30Z",
+     "input": "xxh64:ffde365b89c82e35"
+    },
+    "epss": {
+     "captured": "2026-11-14T00:21:17Z",
+     "input": "xxh64:87da1053039ef4e1"
+    },
+    "fedora": {
+     "captured": "2026-11-14T00:21:03Z",
+     "input": "xxh64:76294693cf12164a"
+    },
+    "github": {
+     "captured": "2026-11-14T00:21:30Z",
+     "input": "xxh64:1a744f357a2e25b0"
+    },
+    "govulndb": {
+     "captured": "2026-11-14T00:21:10Z",
+     "input": "xxh64:657df8c877a14193"
+    },
+    "hummingbird": {
+     "captured": "2026-11-14T00:22:56Z",
+     "input": "xxh64:001e94419c6e1f26"
+    },
+    "kev": {
+     "captured": "2026-11-14T00:20:57Z",
+     "input": "xxh64:4568728f33b4c2af"
+    },
+    "mariner": {
+     "captured": "2026-11-14T00:21:25Z",
+     "input": "xxh64:80fb2dc93cdb9d89"
+    },
+    "minimos": {
+     "captured": "2026-11-14T00:20:43Z",
+     "input": "xxh64:869e703849ba8479"
+    },
+    "nvd": {
+     "captured": "2026-11-14T00:21:35Z",
+     "input": "xxh64:92104e06c6cbc268"
+    },
+    "oracle": {
+     "captured": "2026-11-14T00:20:33Z",
+     "input": "xxh64:0719d876023dad58"
+    },
+    "photon": {
+     "captured": "2026-11-14T00:20:40Z",
+     "input": "xxh64:80e8b35f361eb0ca"
+    },
+    "rhel": {
+     "captured": "2026-11-14T00:22:02Z",
+     "input": "xxh64:37da11065e771859"
+    },
+    "secureos": {
+     "captured": "2026-11-14T00:20:41Z",
+     "input": "xxh64:0b63d7fb9a7c9254"
+    },
+    "sles": {
+     "captured": "2026-11-14T00:22:30Z",
+     "input": "xxh64:705a4a5d17a8b510"
+    },
+    "ubuntu": {
+     "captured": "2026-11-14T00:21:31Z",
+     "input": "xxh64:228874c27267483f"
+    },
+    "wolfi": {
+     "captured": "2026-11-14T00:20:37Z",
+     "input": "xxh64:b9b5b6e4366c5a78"
+    }
+   },
+   "status": {
+    "built": "2026-11-14T06:19:25Z",
+    "from": "manual import",
+    "path": "/db/6/vulnerability.db",
+    "schemaVersion": "v6.1.10",
+    "valid": true
+   }
+  },
+  "name": "grype",
+  "timestamp": "2026-11-14T21:20:41.519859697Z",
+  "version": "0.121.3"
+ },
+ "distro": {
+  "idLike": null,
+  "name": "",
+  "version": ""
+ },
+ "matches": [
+  {
+   "artifact": {
+    "cpes": [
+     "cpe:2.3:a:apache:log4j-core:2.14.1:*:*:*:*:*:*:*",
+     "cpe:2.3:a:apache:log4j_core:2.14.1:*:*:*:*:*:*:*",
+     "cpe:2.3:a:apache:log4j:2.14.1:*:*:*:*:*:*:*"
+    ],
+    "id": "54ed79f658568eef",
+    "language": "java",
+    "licenses": [],
+    "locations": [
+     {
+      "accessPath": "/java/pom.xml",
+      "annotations": {
+       "evidence": "primary"
+      },
+      "path": "/java/pom.xml"
+     }
+    ],
+    "metadata": {
+     "archiveDigests": null,
+     "manifestName": "",
+     "pomArtifactID": "log4j-core",
+     "pomGroupID": "org.apache.logging.log4j",
+     "virtualPath": ""
+    },
+    "metadataType": "JavaMetadata",
+    "name": "log4j-core",
+    "purl": "pkg:maven/org.apache.logging.log4j/log4j-core@2.14.1",
+    "type": "java-archive",
+    "upstreams": [],
+    "version": "2.14.1"
+   },
+   "relatedVulnerabilities": [
+    {
+     "cvss": [
+      {
+       "metrics": {
+        "baseScore": 10,
+        "exploitabilityScore": 3.9,
+        "impactScore": 6.1
+       },
+       "source": "nvd@nist.gov",
+       "type": "Primary",
+       "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H",
+       "vendorMetadata": {},
+       "version": "3.1"
+      },
+      {
+       "metrics": {
+        "baseScore": 9.3,
+        "exploitabilityScore": 8.6,
+        "impactScore": 10.1
+       },
+       "source": "nvd@nist.gov",
+       "type": "Primary",
+       "vector": "AV:N/AC:M/Au:N/C:C/I:C/A:C",
+       "vendorMetadata": {},
+       "version": "2.0"
+      },
+      {
+       "metrics": {
+        "baseScore": 10,
+        "exploitabilityScore": 3.9,
+        "impactScore": 6.1
+       },
+       "source": "134c704f-9b21-4f2e-91b3-4a467353bcc0",
+       "type": "Secondary",
+       "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H",
+       "vendorMetadata": {},
+       "version": "3.1"
+      }
+     ],
+     "cwes": [
+      {
+       "cve": "CVE-2021-44228",
+       "cwe": "CWE-20",
+       "source": "security@apache.org",
+       "type": "Secondary"
+      },
+      {
+       "cve": "CVE-2021-44228",
+       "cwe": "CWE-400",
+       "source": "security@apache.org",
+       "type": "Secondary"
+      },
+      {
+       "cve": "CVE-2021-44228",
+       "cwe": "CWE-502",
+       "source": "security@apache.org",
+       "type": "Secondary"
+      },
+      {
+       "cve": "CVE-2021-44228",
+       "cwe": "CWE-917",
+       "source": "nvd@nist.gov",
+       "type": "Secondary"
+      }
+     ],
+     "dataSource": "https://nvd.nist.gov/vuln/detail/CVE-2021-44228",
+     "epss": [
+      {
+       "cve": "CVE-2021-44228",
+       "date": "2026-11-13",
+       "epss": 0.99999,
+       "percentile": 1
+      }
+     ],
+     "id": "CVE-2021-44228",
+     "knownExploited": [
+      {
+       "cve": "CVE-2021-44228",
+       "cwes": [
+        "CWE-20",
+        "CWE-400",
+        "CWE-502"
+       ],
+       "dateAdded": "2021-12-10",
+       "dueDate": "2021-12-24",
+       "knownRansomwareCampaignUse": "known",
+       "product": "Log4j2",
+       "requiredAction": "For all affected software assets for which updates exist, the only acceptable remediation actions are: 1) Apply updates; OR 2) remove affected assets from agency networks. Temporary mitigations using one of the measures provided at https://www.cisa.gov/uscert/ed-22-02-apache-log4j-recommended-mitigation-measures are only acceptable until updates are available.",
+       "vendorProject": "Apache"
+      }
+     ],
+     "namespace": "nvd:cpe",
+     "severity": "Critical"
+    }
+   ],
+   "vulnerability": {
+    "advisories": [],
+    "cvss": [
+     {
+      "metrics": {
+       "baseScore": 10,
+       "exploitabilityScore": 3.9,
+       "impactScore": 6.1
+      },
+      "type": "Secondary",
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H/E:H",
+      "vendorMetadata": {},
+      "version": "3.1"
+     }
+    ],
+    "cwes": [
+     {
+      "cve": "CVE-2021-44228",
+      "cwe": "CWE-20",
+      "source": "security@apache.org",
+      "type": "Secondary"
+     },
+     {
+      "cve": "CVE-2021-44228",
+      "cwe": "CWE-400",
+      "source": "security@apache.org",
+      "type": "Secondary"
+     },
+     {
+      "cve": "CVE-2021-44228",
+      "cwe": "CWE-502",
+      "source": "security@apache.org",
+      "type": "Secondary"
+     },
+     {
+      "cve": "CVE-2021-44228",
+      "cwe": "CWE-917",
+      "source": "nvd@nist.gov",
+      "type": "Secondary"
+     }
+    ],
+    "dataSource": "https://github.com/advisories/GHSA-jfh8-c2jp-5v3q",
+    "epss": [
+     {
+      "cve": "CVE-2021-44228",
+      "date": "2026-11-13",
+      "epss": 0.99999,
+      "percentile": 1
+     }
+    ],
+    "fix": {
+     "available": [
+      {
+       "date": "2021-12-10",
+       "kind": "first-observed",
+       "version": "2.15.0"
+      }
+     ],
+     "state": "fixed"
+    },
+    "id": "GHSA-jfh8-c2jp-5v3q",
+    "knownExploited": [
+     {
+      "cve": "CVE-2021-44228",
+      "cwes": [
+       "CWE-20",
+       "CWE-400",
+       "CWE-502"
+      ],
+      "dateAdded": "2021-12-10",
+      "dueDate": "2021-12-24",
+      "knownRansomwareCampaignUse": "known",
+      "product": "Log4j2",
+      "requiredAction": "For all affected software assets for which updates exist, the only acceptable remediation actions are: 1) Apply updates; OR 2) remove affected assets from agency networks. Temporary mitigations using one of the measures provided at https://www.cisa.gov/uscert/ed-22-02-apache-log4j-recommended-mitigation-measures are only acceptable until updates are available.",
+      "vendorProject": "Apache"
+     }
+    ],
+    "namespace": "github:language:java",
+    "risk": 100,
+    "severity": "Critical"
+   }
+  },
+  {
+   "artifact": {
+    "cpes": [
+     "cpe:2.3:a:apache:log4j-core:2.14.1:*:*:*:*:*:*:*",
+     "cpe:2.3:a:apache:log4j_core:2.14.1:*:*:*:*:*:*:*",
+     "cpe:2.3:a:apache:log4j:2.14.1:*:*:*:*:*:*:*"
+    ],
+    "id": "54ed79f658568eef",
+    "language": "java",
+    "licenses": [],
+    "locations": [
+     {
+      "accessPath": "/java/pom.xml",
+      "annotations": {
+       "evidence": "primary"
+      },
+      "path": "/java/pom.xml"
+     }
+    ],
+    "metadata": {
+     "archiveDigests": null,
+     "manifestName": "",
+     "pomArtifactID": "log4j-core",
+     "pomGroupID": "org.apache.logging.log4j",
+     "virtualPath": ""
+    },
+    "metadataType": "JavaMetadata",
+    "name": "log4j-core",
+    "purl": "pkg:maven/org.apache.logging.log4j/log4j-core@2.14.1",
+    "type": "java-archive",
+    "upstreams": [],
+    "version": "2.14.1"
+   },
+   "relatedVulnerabilities": [
+    {
+     "cvss": [
+      {
+       "metrics": {
+        "baseScore": 9,
+        "exploitabilityScore": 2.3,
+        "impactScore": 6.1
+       },
+       "source": "nvd@nist.gov",
+       "type": "Primary",
+       "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:C/C:H/I:H/A:H",
+       "vendorMetadata": {},
+       "version": "3.1"
+      },
+      {
+       "metrics": {
+        "baseScore": 5.1,
+        "exploitabilityScore": 5,
+        "impactScore": 6.5
+       },
+       "source": "nvd@nist.gov",
+       "type": "Primary",
+       "vector": "AV:N/AC:H/Au:N/C:P/I:P/A:P",
+       "vendorMetadata": {},
+       "version": "2.0"
+      },
+      {
+       "metrics": {
+        "baseScore": 9,
+        "exploitabilityScore": 2.3,
+        "impactScore": 6.1
+       },
+       "source": "134c704f-9b21-4f2e-91b3-4a467353bcc0",
+       "type": "Secondary",
+       "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:C/C:H/I:H/A:H",
+       "vendorMetadata": {},
+       "version": "3.1"
+      }
+     ],
+     "cwes": [
+      {
+       "cve": "CVE-2021-45046",
+       "cwe": "CWE-917",
+       "source": "security@apache.org",
+       "type": "Secondary"
+      },
+      {
+       "cve": "CVE-2021-45046",
+       "cwe": "CWE-917",
+       "source": "nvd@nist.gov",
+       "type": "Primary"
+      }
+     ],
+     "dataSource": "https://nvd.nist.gov/vuln/detail/CVE-2021-45046",
+     "epss": [
+      {
+       "cve": "CVE-2021-45046",
+       "date": "2026-11-13",
+       "epss": 0.99977,
+       "percentile": 0.9998
+      }
+     ],
+     "id": "CVE-2021-45046",
+     "knownExploited": [
+      {
+       "cve": "CVE-2021-45046",
+       "cwes": [
+        "CWE-917"
+       ],
+       "dateAdded": "2023-05-01",
+       "dueDate": "2023-05-22",
+       "knownRansomwareCampaignUse": "known",
+       "product": "Log4j2",
+       "requiredAction": "Apply updates per vendor instructions.",
+       "vendorProject": "Apache"
+      }
+     ],
+     "namespace": "nvd:cpe",
+     "severity": "Critical"
+    }
+   ],
+   "vulnerability": {
+    "advisories": [],
+    "cvss": [
+     {
+      "metrics": {
+       "baseScore": 9,
+       "exploitabilityScore": 2.3,
+       "impactScore": 6.1
+      },
+      "type": "Secondary",
+      "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:C/C:H/I:H/A:H",
+      "vendorMetadata": {},
+      "version": "3.1"
+     }
+    ],
+    "cwes": [
+     {
+      "cve": "CVE-2021-45046",
+      "cwe": "CWE-917",
+      "source": "security@apache.org",
+      "type": "Secondary"
+     },
+     {
+      "cve": "CVE-2021-45046",
+      "cwe": "CWE-917",
+      "source": "nvd@nist.gov",
+      "type": "Primary"
+     }
+    ],
+    "dataSource": "https://github.com/advisories/GHSA-7rjr-3q55-vv33",
+    "epss": [
+     {
+      "cve": "CVE-2021-45046",
+      "date": "2026-11-13",
+      "epss": 0.99977,
+      "percentile": 0.9998
+     }
+    ],
+    "fix": {
+     "available": [
+      {
+       "date": "2021-12-15",
+       "kind": "first-observed",
+       "version": "2.16.0"
+      }
+     ],
+     "state": "fixed"
+    },
+    "id": "GHSA-7rjr-3q55-vv33",
+    "knownExploited": [
+     {
+      "cve": "CVE-2021-45046",
+      "cwes": [
+       "CWE-917"
+      ],
+      "dateAdded": "2023-05-01",
+      "dueDate": "2023-05-22",
+      "knownRansomwareCampaignUse": "known",
+      "product": "Log4j2",
+      "requiredAction": "Apply updates per vendor instructions.",
+      "vendorProject": "Apache"
+     }
+    ],
+    "namespace": "github:language:java",
+    "risk": 99.00000000000001,
+    "severity": "Critical"
+   }
+  },
+  {
+   "artifact": {
+    "cpes": [
+     "cpe:2.3:a:apache:log4j-core:2.14.1:*:*:*:*:*:*:*",
+     "cpe:2.3:a:apache:log4j_core:2.14.1:*:*:*:*:*:*:*",
+     "cpe:2.3:a:apache:log4j:2.14.1:*:*:*:*:*:*:*"
+    ],
+    "id": "54ed79f658568eef",
+    "language": "java",
+    "licenses": [],
+    "locations": [
+     {
+      "accessPath": "/java/pom.xml",
+      "annotations": {
+       "evidence": "primary"
+      },
+      "path": "/java/pom.xml"
+     }
+    ],
+    "metadata": {
+     "archiveDigests": null,
+     "manifestName": "",
+     "pomArtifactID": "log4j-core",
+     "pomGroupID": "org.apache.logging.log4j",
+     "virtualPath": ""
+    },
+    "metadataType": "JavaMetadata",
+    "name": "log4j-core",
+    "purl": "pkg:maven/org.apache.logging.log4j/log4j-core@2.14.1",
+    "type": "java-archive",
+    "upstreams": [],
+    "version": "2.14.1"
+   },
+   "relatedVulnerabilities": [
+    {
+     "cvss": [
+      {
+       "metrics": {
+        "baseScore": 5.9,
+        "exploitabilityScore": 2.3,
+        "impactScore": 3.6
+       },
+       "source": "nvd@nist.gov",
+       "type": "Primary",
+       "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H",
+       "vendorMetadata": {},
+       "version": "3.1"
+      },
+      {
+       "metrics": {
+        "baseScore": 4.3,
+        "exploitabilityScore": 8.6,
+        "impactScore": 2.9
+       },
+       "source": "nvd@nist.gov",
+       "type": "Primary",
+       "vector": "AV:N/AC:M/Au:N/C:N/I:N/A:P",
+       "vendorMetadata": {},
+       "version": "2.0"
+      },
+      {
+       "metrics": {
+        "baseScore": 5.9,
+        "exploitabilityScore": 2.3,
+        "impactScore": 3.6
+       },
+       "source": "134c704f-9b21-4f2e-91b3-4a467353bcc0",
+       "type": "Secondary",
+       "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H",
+       "vendorMetadata": {},
+       "version": "3.1"
+      }
+     ],
+     "cwes": [
+      {
+       "cve": "CVE-2021-45105",
+       "cwe": "CWE-20",
+       "source": "security@apache.org",
+       "type": "Secondary"
+      },
+      {
+       "cve": "CVE-2021-45105",
+       "cwe": "CWE-674",
+       "source": "security@apache.org",
+       "type": "Secondary"
+      },
+      {
+       "cve": "CVE-2021-45105",
+       "cwe": "CWE-20",
+       "source": "nvd@nist.gov",
+       "type": "Primary"
+      },
+      {
+       "cve": "CVE-2021-45105",
+       "cwe": "CWE-674",
+       "source": "nvd@nist.gov",
+       "type": "Primary"
+      }
+     ],
+     "dataSource": "https://nvd.nist.gov/vuln/detail/CVE-2021-45105",
+     "epss": [
+      {
+       "cve": "CVE-2021-45105",
+       "date": "2026-11-13",
+       "epss": 0.99999,
+       "percentile": 0.99991
+      }
+     ],
+     "id": "CVE-2021-45105",
+     "namespace": "nvd:cpe",
+     "severity": "Medium"
+    }
+   ],
+   "vulnerability": {
+    "advisories": [],
+    "cvss": [
+     {
+      "metrics": {
+       "baseScore": 8.6,
+       "exploitabilityScore": 3.9,
+       "impactScore": 4
+      },
+      "type": "Secondary",
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:N/I:N/A:H",
+      "vendorMetadata": {},
+      "version": "3.1"
+     }
+    ],
+    "cwes": [
+     {
+      "cve": "CVE-2021-45105",
+      "cwe": "CWE-20",
+      "source": "security@apache.org",
+      "type": "Secondary"
+     },
+     {
+      "cve": "CVE-2021-45105",
+      "cwe": "CWE-674",
+      "source": "security@apache.org",
+      "type": "Secondary"
+     },
+     {
+      "cve": "CVE-2021-45105",
+      "cwe": "CWE-20",
+      "source": "nvd@nist.gov",
+      "type": "Primary"
+     },
+     {
+      "cve": "CVE-2021-45105",
+      "cwe": "CWE-674",
+      "source": "nvd@nist.gov",
+      "type": "Primary"
+     }
+    ],
+    "dataSource": "https://github.com/advisories/GHSA-p6xc-xr62-6r2g",
+    "epss": [
+     {
+      "cve": "CVE-2021-45105",
+      "date": "2026-11-13",
+      "epss": 0.99999,
+      "percentile": 0.99991
+     }
+    ],
+    "fix": {
+     "available": [
+      {
+       "date": "2021-12-19",
+       "kind": "first-observed",
+       "version": "2.17.0"
+      }
+     ],
+     "state": "fixed"
+    },
+    "id": "GHSA-p6xc-xr62-6r2g",
+    "namespace": "github:language:java",
+    "risk": 80.499195,
+    "severity": "High"
+   }
+  },
+  {
+   "artifact": {
+    "cpes": [
+     "cpe:2.3:a:commons-collections:commons-collections:3.2.1:*:*:*:*:*:*:*",
+     "cpe:2.3:a:commons-collections:commons_collections:3.2.1:*:*:*:*:*:*:*",
+     "cpe:2.3:a:commons_collections:commons-collections:3.2.1:*:*:*:*:*:*:*",
+     "cpe:2.3:a:commons_collections:commons_collections:3.2.1:*:*:*:*:*:*:*",
+     "cpe:2.3:a:commons:commons-collections:3.2.1:*:*:*:*:*:*:*",
+     "cpe:2.3:a:commons:commons_collections:3.2.1:*:*:*:*:*:*:*"
+    ],
+    "id": "d5518da92c8ef960",
+    "language": "java",
+    "licenses": [],
+    "locations": [
+     {
+      "accessPath": "/java/pom.xml",
+      "annotations": {
+       "evidence": "primary"
+      },
+      "path": "/java/pom.xml"
+     }
+    ],
+    "metadata": {
+     "archiveDigests": null,
+     "manifestName": "",
+     "pomArtifactID": "commons-collections",
+     "pomGroupID": "commons-collections",
+     "virtualPath": ""
+    },
+    "metadataType": "JavaMetadata",
+    "name": "commons-collections",
+    "purl": "pkg:maven/commons-collections/commons-collections@3.2.1",
+    "type": "java-archive",
+    "upstreams": [],
+    "version": "3.2.1"
+   },
+   "relatedVulnerabilities": [
+    {
+     "cvss": [
+      {
+       "metrics": {
+        "baseScore": 9.8,
+        "exploitabilityScore": 3.9,
+        "impactScore": 5.9
+       },
+       "source": "nvd@nist.gov",
+       "type": "Primary",
+       "vector": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+       "vendorMetadata": {},
+       "version": "3.0"
+      },
+      {
+       "metrics": {
+        "baseScore": 10,
+        "exploitabilityScore": 10,
+        "impactScore": 10.1
+       },
+       "source": "nvd@nist.gov",
+       "type": "Primary",
+       "vector": "AV:N/AC:L/Au:N/C:C/I:C/A:C",
+       "vendorMetadata": {},
+       "version": "2.0"
+      }
+     ],
+     "cwes": [
+      {
+       "cve": "CVE-2015-7501",
+       "cwe": "CWE-502",
+       "source": "nvd@nist.gov",
+       "type": "Primary"
+      }
+     ],
+     "dataSource": "https://nvd.nist.gov/vuln/detail/CVE-2015-7501",
+     "epss": [
+      {
+       "cve": "CVE-2015-7501",
+       "date": "2026-11-13",
+       "epss": 0.85562,
+       "percentile": 0.99727
+      }
+     ],
+     "id": "CVE-2015-7501",
+     "namespace": "nvd:cpe",
+     "severity": "Critical"
+    }
+   ],
+   "vulnerability": {
+    "advisories": [],
+    "cvss": [
+     {
+      "metrics": {
+       "baseScore": 9.8,
+       "exploitabilityScore": 3.9,
+       "impactScore": 5.9
+      },
+      "type": "Secondary",
+      "vector": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "vendorMetadata": {},
+      "version": "3.0"
+     }
+    ],
+    "cwes": [
+     {
+      "cve": "CVE-2015-7501",
+      "cwe": "CWE-502",
+      "source": "nvd@nist.gov",
+      "type": "Primary"
+     }
+    ],
+    "dataSource": "https://github.com/advisories/GHSA-fjq5-5j5f-mvxh",
+    "epss": [
+     {
+      "cve": "CVE-2015-7501",
+      "date": "2026-11-13",
+      "epss": 0.85562,
+      "percentile": 0.99727
+     }
+    ],
+    "fix": {
+     "available": [
+      {
+       "date": "2022-11-04",
+       "kind": "first-observed",
+       "version": "3.2.2"
+      }
+     ],
+     "state": "fixed"
+    },
+    "id": "GHSA-fjq5-5j5f-mvxh",
+    "namespace": "github:language:java",
+    "risk": 80.42828,
+    "severity": "Critical"
+   }
+  },
+  {
+   "artifact": {
+    "cpes": [
+     "cpe:2.3:a:apache:log4j-core:2.14.1:*:*:*:*:*:*:*",
+     "cpe:2.3:a:apache:log4j_core:2.14.1:*:*:*:*:*:*:*",
+     "cpe:2.3:a:apache:log4j:2.14.1:*:*:*:*:*:*:*"
+    ],
+    "id": "54ed79f658568eef",
+    "language": "java",
+    "licenses": [],
+    "locations": [
+     {
+      "accessPath": "/java/pom.xml",
+      "annotations": {
+       "evidence": "primary"
+      },
+      "path": "/java/pom.xml"
+     }
+    ],
+    "metadata": {
+     "archiveDigests": null,
+     "manifestName": "",
+     "pomArtifactID": "log4j-core",
+     "pomGroupID": "org.apache.logging.log4j",
+     "virtualPath": ""
+    },
+    "metadataType": "JavaMetadata",
+    "name": "log4j-core",
+    "purl": "pkg:maven/org.apache.logging.log4j/log4j-core@2.14.1",
+    "type": "java-archive",
+    "upstreams": [],
+    "version": "2.14.1"
+   },
+   "relatedVulnerabilities": [
+    {
+     "cvss": [
+      {
+       "metrics": {
+        "baseScore": 6.6,
+        "exploitabilityScore": 0.8,
+        "impactScore": 5.9
+       },
+       "source": "nvd@nist.gov",
+       "type": "Primary",
+       "vector": "CVSS:3.1/AV:N/AC:H/PR:H/UI:N/S:U/C:H/I:H/A:H",
+       "vendorMetadata": {},
+       "version": "3.1"
+      },
+      {
+       "metrics": {
+        "baseScore": 8.5,
+        "exploitabilityScore": 6.9,
+        "impactScore": 10.1
+       },
+       "source": "nvd@nist.gov",
+       "type": "Primary",
+       "vector": "AV:N/AC:M/Au:S/C:C/I:C/A:C",
+       "vendorMetadata": {},
+       "version": "2.0"
+      },
+      {
+       "metrics": {
+        "baseScore": 6.6,
+        "exploitabilityScore": 0.8,
+        "impactScore": 5.9
+       },
+       "source": "134c704f-9b21-4f2e-91b3-4a467353bcc0",
+       "type": "Secondary",
+       "vector": "CVSS:3.1/AV:N/AC:H/PR:H/UI:N/S:U/C:H/I:H/A:H",
+       "vendorMetadata": {},
+       "version": "3.1"
+      }
+     ],
+     "cwes": [
+      {
+       "cve": "CVE-2021-44832",
+       "cwe": "CWE-20",
+       "source": "security@apache.org",
+       "type": "Secondary"
+      },
+      {
+       "cve": "CVE-2021-44832",
+       "cwe": "CWE-74",
+       "source": "security@apache.org",
+       "type": "Secondary"
+      },
+      {
+       "cve": "CVE-2021-44832",
+       "cwe": "CWE-20",
+       "source": "nvd@nist.gov",
+       "type": "Primary"
+      }
+     ],
+     "dataSource": "https://nvd.nist.gov/vuln/detail/CVE-2021-44832",
+     "epss": [
+      {
+       "cve": "CVE-2021-44832",
+       "date": "2026-11-13",
+       "epss": 0.97906,
+       "percentile": 0.99909
+      }
+     ],
+     "id": "CVE-2021-44832",
+     "namespace": "nvd:cpe",
+     "severity": "Medium"
+    }
+   ],
+   "vulnerability": {
+    "advisories": [],
+    "cvss": [
+     {
+      "metrics": {
+       "baseScore": 6.6,
+       "exploitabilityScore": 0.8,
+       "impactScore": 5.9
+      },
+      "type": "Secondary",
+      "vector": "CVSS:3.1/AV:N/AC:H/PR:H/UI:N/S:U/C:H/I:H/A:H",
+      "vendorMetadata": {},
+      "version": "3.1"
+     }
+    ],
+    "cwes": [
+     {
+      "cve": "CVE-2021-44832",
+      "cwe": "CWE-20",
+      "source": "security@apache.org",
+      "type": "Secondary"
+     },
+     {
+      "cve": "CVE-2021-44832",
+      "cwe": "CWE-74",
+      "source": "security@apache.org",
+      "type": "Secondary"
+     },
+     {
+      "cve": "CVE-2021-44832",
+      "cwe": "CWE-20",
+      "source": "nvd@nist.gov",
+      "type": "Primary"
+     }
+    ],
+    "dataSource": "https://github.com/advisories/GHSA-8489-44mv-ggj8",
+    "epss": [
+     {
+      "cve": "CVE-2021-44832",
+      "date": "2026-11-13",
+      "epss": 0.97906,
+      "percentile": 0.99909
+     }
+    ],
+    "fix": {
+     "available": [
+      {
+       "date": "2022-01-05",
+       "kind": "first-observed",
+       "version": "2.17.1"
+      }
+     ],
+     "state": "fixed"
+    },
+    "id": "GHSA-8489-44mv-ggj8",
+    "namespace": "github:language:java",
+    "risk": 56.78548,
+    "severity": "Medium"
+   }
+  },
+  {
+   "artifact": {
+    "cpes": [
+     "cpe:2.3:a:commons-collections:commons-collections:3.2.1:*:*:*:*:*:*:*",
+     "cpe:2.3:a:commons-collections:commons_collections:3.2.1:*:*:*:*:*:*:*",
+     "cpe:2.3:a:commons_collections:commons-collections:3.2.1:*:*:*:*:*:*:*",
+     "cpe:2.3:a:commons_collections:commons_collections:3.2.1:*:*:*:*:*:*:*",
+     "cpe:2.3:a:commons:commons-collections:3.2.1:*:*:*:*:*:*:*",
+     "cpe:2.3:a:commons:commons_collections:3.2.1:*:*:*:*:*:*:*"
+    ],
+    "id": "d5518da92c8ef960",
+    "language": "java",
+    "licenses": [],
+    "locations": [
+     {
+      "accessPath": "/java/pom.xml",
+      "annotations": {
+       "evidence": "primary"
+      },
+      "path": "/java/pom.xml"
+     }
+    ],
+    "metadata": {
+     "archiveDigests": null,
+     "manifestName": "",
+     "pomArtifactID": "commons-collections",
+     "pomGroupID": "commons-collections",
+     "virtualPath": ""
+    },
+    "metadataType": "JavaMetadata",
+    "name": "commons-collections",
+    "purl": "pkg:maven/commons-collections/commons-collections@3.2.1",
+    "type": "java-archive",
+    "upstreams": [],
+    "version": "3.2.1"
+   },
+   "relatedVulnerabilities": [
+    {
+     "cvss": [
+      {
+       "metrics": {
+        "baseScore": 9.8,
+        "exploitabilityScore": 3.9,
+        "impactScore": 5.9
+       },
+       "source": "nvd@nist.gov",
+       "type": "Primary",
+       "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+       "vendorMetadata": {},
+       "version": "3.1"
+      },
+      {
+       "metrics": {
+        "baseScore": 7.5,
+        "exploitabilityScore": 10,
+        "impactScore": 6.5
+       },
+       "source": "nvd@nist.gov",
+       "type": "Primary",
+       "vector": "AV:N/AC:L/Au:N/C:P/I:P/A:P",
+       "vendorMetadata": {},
+       "version": "2.0"
+      },
+      {
+       "metrics": {
+        "baseScore": 9.8,
+        "exploitabilityScore": 3.9,
+        "impactScore": 5.9
+       },
+       "source": "134c704f-9b21-4f2e-91b3-4a467353bcc0",
+       "type": "Secondary",
+       "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+       "vendorMetadata": {},
+       "version": "3.1"
+      }
+     ],
+     "cwes": [
+      {
+       "cve": "CVE-2015-6420",
+       "cwe": "CWE-502",
+       "source": "nvd@nist.gov",
+       "type": "Primary"
+      },
+      {
+       "cve": "CVE-2015-6420",
+       "cwe": "CWE-502",
+       "source": "134c704f-9b21-4f2e-91b3-4a467353bcc0",
+       "type": "Secondary"
+      }
+     ],
+     "dataSource": "https://nvd.nist.gov/vuln/detail/CVE-2015-6420",
+     "epss": [
+      {
+       "cve": "CVE-2015-6420",
+       "date": "2026-11-13",
+       "epss": 0.24233,
+       "percentile": 0.97889
+      }
+     ],
+     "id": "CVE-2015-6420",
+     "namespace": "nvd:cpe",
+     "severity": "Critical"
+    }
+   ],
+   "vulnerability": {
+    "advisories": [],
+    "cvss": [],
+    "cwes": [
+     {
+      "cve": "CVE-2015-6420",
+      "cwe": "CWE-502",
+      "source": "nvd@nist.gov",
+      "type": "Primary"
+     },
+     {
+      "cve": "CVE-2015-6420",
+      "cwe": "CWE-502",
+      "source": "134c704f-9b21-4f2e-91b3-4a467353bcc0",
+      "type": "Secondary"
+     }
+    ],
+    "dataSource": "https://github.com/advisories/GHSA-6hgm-866r-3cjv",
+    "epss": [
+     {
+      "cve": "CVE-2015-6420",
+      "date": "2026-11-13",
+      "epss": 0.24233,
+      "percentile": 0.97889
+     }
+    ],
+    "fix": {
+     "available": [
+      {
+       "date": "2020-07-28",
+       "kind": "first-observed",
+       "version": "3.2.2"
+      }
+     ],
+     "state": "fixed"
+    },
+    "id": "GHSA-6hgm-866r-3cjv",
+    "namespace": "github:language:java",
+    "risk": 18.17475,
+    "severity": "High"
+   }
+  },
+  {
+   "artifact": {
+    "cpes": [
+     "cpe:2.3:a:lodash:lodash:4.17.15:*:*:*:*:node.js:*:*"
+    ],
+    "id": "a151c8b31f96bea6",
+    "language": "javascript",
+    "licenses": [],
+    "locations": [
+     {
+      "accessPath": "/web/package-lock.json",
+      "annotations": {
+       "evidence": "primary"
+      },
+      "path": "/web/package-lock.json"
+     }
+    ],
+    "name": "lodash",
+    "purl": "pkg:npm/lodash@4.17.15",
+    "type": "npm",
+    "upstreams": [],
+    "version": "4.17.15"
+   },
+   "relatedVulnerabilities": [
+    {
+     "cvss": [
+      {
+       "metrics": {
+        "baseScore": 7.2,
+        "exploitabilityScore": 1.3,
+        "impactScore": 5.9
+       },
+       "source": "nvd@nist.gov",
+       "type": "Primary",
+       "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H",
+       "vendorMetadata": {},
+       "version": "3.1"
+      },
+      {
+       "metrics": {
+        "baseScore": 6.5,
+        "exploitabilityScore": 8,
+        "impactScore": 6.5
+       },
+       "source": "nvd@nist.gov",
+       "type": "Primary",
+       "vector": "AV:N/AC:L/Au:S/C:P/I:P/A:P",
+       "vendorMetadata": {},
+       "version": "2.0"
+      },
+      {
+       "metrics": {
+        "baseScore": 7.2,
+        "exploitabilityScore": 1.3,
+        "impactScore": 5.9
+       },
+       "source": "report@snyk.io",
+       "type": "Secondary",
+       "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H",
+       "vendorMetadata": {},
+       "version": "3.1"
+      }
+     ],
+     "cwes": [
+      {
+       "cve": "CVE-2021-23337",
+       "cwe": "CWE-94",
+       "source": "nvd@nist.gov",
+       "type": "Primary"
+      }
+     ],
+     "dataSource": "https://nvd.nist.gov/vuln/detail/CVE-2021-23337",
+     "epss": [
+      {
+       "cve": "CVE-2021-23337",
+       "date": "2026-11-13",
+       "epss": 0.20158,
+       "percentile": 0.97499
+      }
+     ],
+     "id": "CVE-2021-23337",
+     "namespace": "nvd:cpe",
+     "severity": "High"
+    }
+   ],
+   "vulnerability": {
+    "advisories": [],
+    "cvss": [
+     {
+      "metrics": {
+       "baseScore": 7.2,
+       "exploitabilityScore": 1.3,
+       "impactScore": 5.9
+      },
+      "type": "Secondary",
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H",
+      "vendorMetadata": {},
+      "version": "3.1"
+     }
+    ],
+    "cwes": [
+     {
+      "cve": "CVE-2021-23337",
+      "cwe": "CWE-94",
+      "source": "nvd@nist.gov",
+      "type": "Primary"
+     }
+    ],
+    "dataSource": "https://github.com/advisories/GHSA-35jh-r3h4-6jhm",
+    "epss": [
+     {
+      "cve": "CVE-2021-23337",
+      "date": "2026-11-13",
+      "epss": 0.20158,
+      "percentile": 0.97499
+     }
+    ],
+    "fix": {
+     "available": [
+      {
+       "date": "2021-05-07",
+       "kind": "first-observed",
+       "version": "4.17.21"
+      }
+     ],
+     "state": "fixed"
+    },
+    "id": "GHSA-35jh-r3h4-6jhm",
+    "namespace": "github:language:javascript",
+    "risk": 14.81613,
+    "severity": "High"
+   }
+  },
+  {
+   "artifact": {
+    "cpes": [
+     "cpe:2.3:a:python-pyyaml:python-pyyaml:5.3:*:*:*:*:*:*:*",
+     "cpe:2.3:a:python-pyyaml:python_pyyaml:5.3:*:*:*:*:*:*:*",
+     "cpe:2.3:a:python_pyyaml:python-pyyaml:5.3:*:*:*:*:*:*:*",
+     "cpe:2.3:a:python_pyyaml:python_pyyaml:5.3:*:*:*:*:*:*:*",
+     "cpe:2.3:a:python-pyyaml:pyyaml:5.3:*:*:*:*:*:*:*",
+     "cpe:2.3:a:python:python-pyyaml:5.3:*:*:*:*:*:*:*",
+     "cpe:2.3:a:python:python_pyyaml:5.3:*:*:*:*:*:*:*",
+     "cpe:2.3:a:python_pyyaml:pyyaml:5.3:*:*:*:*:*:*:*",
+     "cpe:2.3:a:pyyaml:python-pyyaml:5.3:*:*:*:*:*:*:*",
+     "cpe:2.3:a:pyyaml:python_pyyaml:5.3:*:*:*:*:*:*:*",
+     "cpe:2.3:a:python:pyyaml:5.3:*:*:*:*:*:*:*",
+     "cpe:2.3:a:pyyaml:pyyaml:5.3:*:*:*:*:*:*:*"
+    ],
+    "id": "fdf8eaf53351f59f",
+    "language": "python",
+    "licenses": [],
+    "locations": [
+     {
+      "accessPath": "/api/requirements.txt",
+      "annotations": {
+       "evidence": "primary"
+      },
+      "path": "/api/requirements.txt"
+     }
+    ],
+    "name": "pyyaml",
+    "purl": "pkg:pypi/pyyaml@5.3",
+    "type": "python",
+    "upstreams": [],
+    "version": "5.3"
+   },
+   "relatedVulnerabilities": [
+    {
+     "cvss": [
+      {
+       "metrics": {
+        "baseScore": 9.8,
+        "exploitabilityScore": 3.9,
+        "impactScore": 5.9
+       },
+       "source": "nvd@nist.gov",
+       "type": "Primary",
+       "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+       "vendorMetadata": {},
+       "version": "3.1"
+      },
+      {
+       "metrics": {
+        "baseScore": 10,
+        "exploitabilityScore": 10,
+        "impactScore": 10.1
+       },
+       "source": "nvd@nist.gov",
+       "type": "Primary",
+       "vector": "AV:N/AC:L/Au:N/C:C/I:C/A:C",
+       "vendorMetadata": {},
+       "version": "2.0"
+      }
+     ],
+     "cwes": [
+      {
+       "cve": "CVE-2020-14343",
+       "cwe": "CWE-20",
+       "source": "secalert@redhat.com",
+       "type": "Secondary"
+      },
+      {
+       "cve": "CVE-2020-14343",
+       "cwe": "CWE-20",
+       "source": "nvd@nist.gov",
+       "type": "Primary"
+      }
+     ],
+     "dataSource": "https://nvd.nist.gov/vuln/detail/CVE-2020-14343",
+     "epss": [
+      {
+       "cve": "CVE-2020-14343",
+       "date": "2026-11-13",
+       "epss": 0.0624,
+       "percentile": 0.93655
+      }
+     ],
+     "id": "CVE-2020-14343",
+     "namespace": "nvd:cpe",
+     "severity": "Critical"
+    }
+   ],
+   "vulnerability": {
+    "advisories": [],
+    "cvss": [
+     {
+      "metrics": {
+       "baseScore": 9.8,
+       "exploitabilityScore": 3.9,
+       "impactScore": 5.9
+      },
+      "type": "Secondary",
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "vendorMetadata": {},
+      "version": "3.1"
+     },
+     {
+      "metrics": {
+       "baseScore": 9.3
+      },
+      "type": "Secondary",
+      "vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N",
+      "vendorMetadata": {},
+      "version": "4.0"
+     }
+    ],
+    "cwes": [
+     {
+      "cve": "CVE-2020-14343",
+      "cwe": "CWE-20",
+      "source": "secalert@redhat.com",
+      "type": "Secondary"
+     },
+     {
+      "cve": "CVE-2020-14343",
+      "cwe": "CWE-20",
+      "source": "nvd@nist.gov",
+      "type": "Primary"
+     }
+    ],
+    "dataSource": "https://github.com/advisories/GHSA-8q59-q68h-6hv4",
+    "epss": [
+     {
+      "cve": "CVE-2020-14343",
+      "date": "2026-11-13",
+      "epss": 0.0624,
+      "percentile": 0.93655
+     }
+    ],
+    "fix": {
+     "available": [
+      {
+       "date": "2021-03-26",
+       "kind": "first-observed",
+       "version": "5.4"
+      }
+     ],
+     "state": "fixed"
+    },
+    "id": "GHSA-8q59-q68h-6hv4",
+    "namespace": "github:language:python",
+    "risk": 5.787599999999999,
+    "severity": "Critical"
+   }
+  },
+  {
+   "artifact": {
+    "cpes": [
+     "cpe:2.3:a:python:requests:2.19.1:*:*:*:*:*:*:*"
+    ],
+    "id": "0b9ed2e1df212aee",
+    "language": "python",
+    "licenses": [],
+    "locations": [
+     {
+      "accessPath": "/api/requirements.txt",
+      "annotations": {
+       "evidence": "primary"
+      },
+      "path": "/api/requirements.txt"
+     }
+    ],
+    "name": "requests",
+    "purl": "pkg:pypi/requests@2.19.1",
+    "type": "python",
+    "upstreams": [],
+    "version": "2.19.1"
+   },
+   "relatedVulnerabilities": [
+    {
+     "cvss": [
+      {
+       "metrics": {
+        "baseScore": 7.5,
+        "exploitabilityScore": 3.9,
+        "impactScore": 3.6
+       },
+       "source": "nvd@nist.gov",
+       "type": "Primary",
+       "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
+       "vendorMetadata": {},
+       "version": "3.1"
+      },
+      {
+       "metrics": {
+        "baseScore": 5,
+        "exploitabilityScore": 10,
+        "impactScore": 2.9
+       },
+       "source": "nvd@nist.gov",
+       "type": "Primary",
+       "vector": "AV:N/AC:L/Au:N/C:P/I:N/A:N",
+       "vendorMetadata": {},
+       "version": "2.0"
+      }
+     ],
+     "cwes": [
+      {
+       "cve": "CVE-2018-18074",
+       "cwe": "CWE-522",
+       "source": "nvd@nist.gov",
+       "type": "Primary"
+      }
+     ],
+     "dataSource": "https://nvd.nist.gov/vuln/detail/CVE-2018-18074",
+     "epss": [
+      {
+       "cve": "CVE-2018-18074",
+       "date": "2026-11-13",
+       "epss": 0.06925,
+       "percentile": 0.94198
+      }
+     ],
+     "id": "CVE-2018-18074",
+     "namespace": "nvd:cpe",
+     "severity": "High"
+    }
+   ],
+   "vulnerability": {
+    "advisories": [],
+    "cvss": [
+     {
+      "metrics": {
+       "baseScore": 7.5,
+       "exploitabilityScore": 3.9,
+       "impactScore": 3.6
+      },
+      "type": "Secondary",
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
+      "vendorMetadata": {},
+      "version": "3.1"
+     }
+    ],
+    "cwes": [
+     {
+      "cve": "CVE-2018-18074",
+      "cwe": "CWE-522",
+      "source": "nvd@nist.gov",
+      "type": "Primary"
+     }
+    ],
+    "dataSource": "https://github.com/advisories/GHSA-x84v-xcm2-53pg",
+    "epss": [
+     {
+      "cve": "CVE-2018-18074",
+      "date": "2026-11-13",
+      "epss": 0.06925,
+      "percentile": 0.94198
+     }
+    ],
+    "fix": {
+     "available": [
+      {
+       "date": "2021-03-30",
+       "kind": "first-observed",
+       "version": "2.20.0"
+      }
+     ],
+     "state": "fixed"
+    },
+    "id": "GHSA-x84v-xcm2-53pg",
+    "namespace": "github:language:python",
+    "risk": 5.1937500000000005,
+    "severity": "High"
+   }
+  },
+  {
+   "artifact": {
+    "cpes": [
+     "cpe:2.3:a:python-pyyaml:python-pyyaml:5.3:*:*:*:*:*:*:*",
+     "cpe:2.3:a:python-pyyaml:python_pyyaml:5.3:*:*:*:*:*:*:*",
+     "cpe:2.3:a:python_pyyaml:python-pyyaml:5.3:*:*:*:*:*:*:*",
+     "cpe:2.3:a:python_pyyaml:python_pyyaml:5.3:*:*:*:*:*:*:*",
+     "cpe:2.3:a:python-pyyaml:pyyaml:5.3:*:*:*:*:*:*:*",
+     "cpe:2.3:a:python:python-pyyaml:5.3:*:*:*:*:*:*:*",
+     "cpe:2.3:a:python:python_pyyaml:5.3:*:*:*:*:*:*:*",
+     "cpe:2.3:a:python_pyyaml:pyyaml:5.3:*:*:*:*:*:*:*",
+     "cpe:2.3:a:pyyaml:python-pyyaml:5.3:*:*:*:*:*:*:*",
+     "cpe:2.3:a:pyyaml:python_pyyaml:5.3:*:*:*:*:*:*:*",
+     "cpe:2.3:a:python:pyyaml:5.3:*:*:*:*:*:*:*",
+     "cpe:2.3:a:pyyaml:pyyaml:5.3:*:*:*:*:*:*:*"
+    ],
+    "id": "fdf8eaf53351f59f",
+    "language": "python",
+    "licenses": [],
+    "locations": [
+     {
+      "accessPath": "/api/requirements.txt",
+      "annotations": {
+       "evidence": "primary"
+      },
+      "path": "/api/requirements.txt"
+     }
+    ],
+    "name": "pyyaml",
+    "purl": "pkg:pypi/pyyaml@5.3",
+    "type": "python",
+    "upstreams": [],
+    "version": "5.3"
+   },
+   "relatedVulnerabilities": [
+    {
+     "cvss": [
+      {
+       "metrics": {
+        "baseScore": 9.8,
+        "exploitabilityScore": 3.9,
+        "impactScore": 5.9
+       },
+       "source": "nvd@nist.gov",
+       "type": "Primary",
+       "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+       "vendorMetadata": {},
+       "version": "3.1"
+      },
+      {
+       "metrics": {
+        "baseScore": 10,
+        "exploitabilityScore": 10,
+        "impactScore": 10.1
+       },
+       "source": "nvd@nist.gov",
+       "type": "Primary",
+       "vector": "AV:N/AC:L/Au:N/C:C/I:C/A:C",
+       "vendorMetadata": {},
+       "version": "2.0"
+      },
+      {
+       "metrics": {
+        "baseScore": 9.8,
+        "exploitabilityScore": 3.9,
+        "impactScore": 5.9
+       },
+       "source": "secalert@redhat.com",
+       "type": "Secondary",
+       "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+       "vendorMetadata": {},
+       "version": "3.1"
+      }
+     ],
+     "cwes": [
+      {
+       "cve": "CVE-2020-1747",
+       "cwe": "CWE-20",
+       "source": "secalert@redhat.com",
+       "type": "Secondary"
+      },
+      {
+       "cve": "CVE-2020-1747",
+       "cwe": "CWE-20",
+       "source": "nvd@nist.gov",
+       "type": "Secondary"
+      }
+     ],
+     "dataSource": "https://nvd.nist.gov/vuln/detail/CVE-2020-1747",
+     "epss": [
+      {
+       "cve": "CVE-2020-1747",
+       "date": "2026-11-13",
+       "epss": 0.05442,
+       "percentile": 0.92849
+      }
+     ],
+     "id": "CVE-2020-1747",
+     "namespace": "nvd:cpe",
+     "severity": "Critical"
+    }
+   ],
+   "vulnerability": {
+    "advisories": [],
+    "cvss": [
+     {
+      "metrics": {
+       "baseScore": 9.8,
+       "exploitabilityScore": 3.9,
+       "impactScore": 5.9
+      },
+      "type": "Secondary",
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "vendorMetadata": {},
+      "version": "3.1"
+     },
+     {
+      "metrics": {
+       "baseScore": 9.3
+      },
+      "type": "Secondary",
+      "vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N",
+      "vendorMetadata": {},
+      "version": "4.0"
+     }
+    ],
+    "cwes": [
+     {
+      "cve": "CVE-2020-1747",
+      "cwe": "CWE-20",
+      "source": "secalert@redhat.com",
+      "type": "Secondary"
+     },
+     {
+      "cve": "CVE-2020-1747",
+      "cwe": "CWE-20",
+      "source": "nvd@nist.gov",
+      "type": "Secondary"
+     }
+    ],
+    "dataSource": "https://github.com/advisories/GHSA-6757-jp84-gxfx",
+    "epss": [
+     {
+      "cve": "CVE-2020-1747",
+      "date": "2026-11-13",
+      "epss": 0.05442,
+      "percentile": 0.92849
+     }
+    ],
+    "fix": {
+     "available": [
+      {
+       "date": "2021-04-22",
+       "kind": "first-observed",
+       "version": "5.3.1"
+      }
+     ],
+     "state": "fixed"
+    },
+    "id": "GHSA-6757-jp84-gxfx",
+    "namespace": "github:language:python",
+    "risk": 5.047455,
+    "severity": "Critical"
+   }
+  },
+  {
+   "artifact": {
+    "cpes": [
+     "cpe:2.3:a:minimist:minimist:1.2.0:*:*:*:*:*:*:*"
+    ],
+    "id": "6c99a219756828a7",
+    "language": "javascript",
+    "licenses": [],
+    "locations": [
+     {
+      "accessPath": "/web/package-lock.json",
+      "annotations": {
+       "evidence": "primary"
+      },
+      "path": "/web/package-lock.json"
+     }
+    ],
+    "name": "minimist",
+    "purl": "pkg:npm/minimist@1.2.0",
+    "type": "npm",
+    "upstreams": [],
+    "version": "1.2.0"
+   },
+   "relatedVulnerabilities": [
+    {
+     "cvss": [
+      {
+       "metrics": {
+        "baseScore": 9.8,
+        "exploitabilityScore": 3.9,
+        "impactScore": 5.9
+       },
+       "source": "nvd@nist.gov",
+       "type": "Primary",
+       "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+       "vendorMetadata": {},
+       "version": "3.1"
+      },
+      {
+       "metrics": {
+        "baseScore": 7.5,
+        "exploitabilityScore": 10,
+        "impactScore": 6.5
+       },
+       "source": "nvd@nist.gov",
+       "type": "Primary",
+       "vector": "AV:N/AC:L/Au:N/C:P/I:P/A:P",
+       "vendorMetadata": {},
+       "version": "2.0"
+      }
+     ],
+     "cwes": [
+      {
+       "cve": "CVE-2021-44906",
+       "cwe": "CWE-1321",
+       "source": "nvd@nist.gov",
+       "type": "Primary"
+      }
+     ],
+     "dataSource": "https://nvd.nist.gov/vuln/detail/CVE-2021-44906",
+     "epss": [
+      {
+       "cve": "CVE-2021-44906",
+       "date": "2026-11-13",
+       "epss": 0.04581,
+       "percentile": 0.91769
+      }
+     ],
+     "id": "CVE-2021-44906",
+     "namespace": "nvd:cpe",
+     "severity": "Critical"
+    }
+   ],
+   "vulnerability": {
+    "advisories": [],
+    "cvss": [
+     {
+      "metrics": {
+       "baseScore": 9.8,
+       "exploitabilityScore": 3.9,
+       "impactScore": 5.9
+      },
+      "type": "Secondary",
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "vendorMetadata": {},
+      "version": "3.1"
+     }
+    ],
+    "cwes": [
+     {
+      "cve": "CVE-2021-44906",
+      "cwe": "CWE-1321",
+      "source": "nvd@nist.gov",
+      "type": "Primary"
+     }
+    ],
+    "dataSource": "https://github.com/advisories/GHSA-xvch-5gv4-984h",
+    "epss": [
+     {
+      "cve": "CVE-2021-44906",
+      "date": "2026-11-13",
+      "epss": 0.04581,
+      "percentile": 0.91769
+     }
+    ],
+    "fix": {
+     "available": [
+      {
+       "date": "2022-03-24",
+       "kind": "first-observed",
+       "version": "1.2.6"
+      }
+     ],
+     "state": "fixed"
+    },
+    "id": "GHSA-xvch-5gv4-984h",
+    "namespace": "github:language:javascript",
+    "risk": 4.30614,
+    "severity": "Critical"
+   }
+  },
+  {
+   "artifact": {
+    "cpes": [
+     "cpe:2.3:a:lodash:lodash:4.17.15:*:*:*:*:node.js:*:*"
+    ],
+    "id": "a151c8b31f96bea6",
+    "language": "javascript",
+    "licenses": [],
+    "locations": [
+     {
+      "accessPath": "/web/package-lock.json",
+      "annotations": {
+       "evidence": "primary"
+      },
+      "path": "/web/package-lock.json"
+     }
+    ],
+    "name": "lodash",
+    "purl": "pkg:npm/lodash@4.17.15",
+    "type": "npm",
+    "upstreams": [],
+    "version": "4.17.15"
+   },
+   "relatedVulnerabilities": [
+    {
+     "cvss": [
+      {
+       "metrics": {
+        "baseScore": 7.4,
+        "exploitabilityScore": 2.3,
+        "impactScore": 5.2
+       },
+       "source": "nvd@nist.gov",
+       "type": "Primary",
+       "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:H/A:H",
+       "vendorMetadata": {},
+       "version": "3.1"
+      },
+      {
+       "metrics": {
+        "baseScore": 5.8,
+        "exploitabilityScore": 8.6,
+        "impactScore": 5
+       },
+       "source": "nvd@nist.gov",
+       "type": "Primary",
+       "vector": "AV:N/AC:M/Au:N/C:N/I:P/A:P",
+       "vendorMetadata": {},
+       "version": "2.0"
+      }
+     ],
+     "cwes": [
+      {
+       "cve": "CVE-2020-8203",
+       "cwe": "CWE-770",
+       "source": "support@hackerone.com",
+       "type": "Secondary"
+      },
+      {
+       "cve": "CVE-2020-8203",
+       "cwe": "CWE-1321",
+       "source": "nvd@nist.gov",
+       "type": "Primary"
+      }
+     ],
+     "dataSource": "https://nvd.nist.gov/vuln/detail/CVE-2020-8203",
+     "epss": [
+      {
+       "cve": "CVE-2020-8203",
+       "date": "2026-11-13",
+       "epss": 0.05213,
+       "percentile": 0.92625
+      }
+     ],
+     "id": "CVE-2020-8203",
+     "namespace": "nvd:cpe",
+     "severity": "High"
+    }
+   ],
+   "vulnerability": {
+    "advisories": [],
+    "cvss": [
+     {
+      "metrics": {
+       "baseScore": 7.4,
+       "exploitabilityScore": 2.3,
+       "impactScore": 5.2
+      },
+      "type": "Secondary",
+      "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:H/A:H",
+      "vendorMetadata": {},
+      "version": "3.1"
+     }
+    ],
+    "cwes": [
+     {
+      "cve": "CVE-2020-8203",
+      "cwe": "CWE-770",
+      "source": "support@hackerone.com",
+      "type": "Secondary"
+     },
+     {
+      "cve": "CVE-2020-8203",
+      "cwe": "CWE-1321",
+      "source": "nvd@nist.gov",
+      "type": "Primary"
+     }
+    ],
+    "dataSource": "https://github.com/advisories/GHSA-p6mc-m468-83gw",
+    "epss": [
+     {
+      "cve": "CVE-2020-8203",
+      "date": "2026-11-13",
+      "epss": 0.05213,
+      "percentile": 0.92625
+     }
+    ],
+    "fix": {
+     "available": [
+      {
+       "date": "2020-07-28",
+       "kind": "first-observed",
+       "version": "4.17.19"
+      }
+     ],
+     "state": "fixed"
+    },
+    "id": "GHSA-p6mc-m468-83gw",
+    "namespace": "github:language:javascript",
+    "risk": 3.883685,
+    "severity": "High"
+   }
+  },
+  {
+   "artifact": {
+    "cpes": [
+     "cpe:2.3:a:lodash:lodash:4.17.15:*:*:*:*:node.js:*:*"
+    ],
+    "id": "a151c8b31f96bea6",
+    "language": "javascript",
+    "licenses": [],
+    "locations": [
+     {
+      "accessPath": "/web/package-lock.json",
+      "annotations": {
+       "evidence": "primary"
+      },
+      "path": "/web/package-lock.json"
+     }
+    ],
+    "name": "lodash",
+    "purl": "pkg:npm/lodash@4.17.15",
+    "type": "npm",
+    "upstreams": [],
+    "version": "4.17.15"
+   },
+   "relatedVulnerabilities": [
+    {
+     "cvss": [
+      {
+       "metrics": {
+        "baseScore": 5.3,
+        "exploitabilityScore": 3.9,
+        "impactScore": 1.5
+       },
+       "source": "nvd@nist.gov",
+       "type": "Primary",
+       "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L",
+       "vendorMetadata": {},
+       "version": "3.1"
+      },
+      {
+       "metrics": {
+        "baseScore": 5,
+        "exploitabilityScore": 10,
+        "impactScore": 2.9
+       },
+       "source": "nvd@nist.gov",
+       "type": "Primary",
+       "vector": "AV:N/AC:L/Au:N/C:N/I:N/A:P",
+       "vendorMetadata": {},
+       "version": "2.0"
+      },
+      {
+       "metrics": {
+        "baseScore": 5.3,
+        "exploitabilityScore": 3.9,
+        "impactScore": 1.5
+       },
+       "source": "report@snyk.io",
+       "type": "Secondary",
+       "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L",
+       "vendorMetadata": {},
+       "version": "3.1"
+      }
+     ],
+     "cwes": [
+      {
+       "cve": "CVE-2020-28500",
+       "cwe": "NVD-CWE-Other",
+       "source": "nvd@nist.gov",
+       "type": "Primary"
+      }
+     ],
+     "dataSource": "https://nvd.nist.gov/vuln/detail/CVE-2020-28500",
+     "epss": [
+      {
+       "cve": "CVE-2020-28500",
+       "date": "2026-11-13",
+       "epss": 0.07424,
+       "percentile": 0.94536
+      }
+     ],
+     "id": "CVE-2020-28500",
+     "namespace": "nvd:cpe",
+     "severity": "Medium"
+    }
+   ],
+   "vulnerability": {
+    "advisories": [],
+    "cvss": [
+     {
+      "metrics": {
+       "baseScore": 5.3,
+       "exploitabilityScore": 3.9,
+       "impactScore": 1.5
+      },
+      "type": "Secondary",
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L",
+      "vendorMetadata": {},
+      "version": "3.1"
+     }
+    ],
+    "cwes": [
+     {
+      "cve": "CVE-2020-28500",
+      "cwe": "NVD-CWE-Other",
+      "source": "nvd@nist.gov",
+      "type": "Primary"
+     }
+    ],
+    "dataSource": "https://github.com/advisories/GHSA-29mw-wpgm-hmr9",
+    "epss": [
+     {
+      "cve": "CVE-2020-28500",
+      "date": "2026-11-13",
+      "epss": 0.07424,
+      "percentile": 0.94536
+     }
+    ],
+    "fix": {
+     "available": [
+      {
+       "date": "2022-01-07",
+       "kind": "first-observed",
+       "version": "4.17.21"
+      }
+     ],
+     "state": "fixed"
+    },
+    "id": "GHSA-29mw-wpgm-hmr9",
+    "namespace": "github:language:javascript",
+    "risk": 3.82336,
+    "severity": "Medium"
+   }
+  },
+  {
+   "artifact": {
+    "cpes": [
+     "cpe:2.3:a:python-flask:python-flask:0.12.2:*:*:*:*:*:*:*",
+     "cpe:2.3:a:python-flask:python_flask:0.12.2:*:*:*:*:*:*:*",
+     "cpe:2.3:a:python_flask:python-flask:0.12.2:*:*:*:*:*:*:*",
+     "cpe:2.3:a:python_flask:python_flask:0.12.2:*:*:*:*:*:*:*",
+     "cpe:2.3:a:python:python-flask:0.12.2:*:*:*:*:*:*:*",
+     "cpe:2.3:a:python:python_flask:0.12.2:*:*:*:*:*:*:*",
+     "cpe:2.3:a:flask:python-flask:0.12.2:*:*:*:*:*:*:*",
+     "cpe:2.3:a:flask:python_flask:0.12.2:*:*:*:*:*:*:*",
+     "cpe:2.3:a:python-flask:flask:0.12.2:*:*:*:*:*:*:*",
+     "cpe:2.3:a:python_flask:flask:0.12.2:*:*:*:*:*:*:*",
+     "cpe:2.3:a:python:flask:0.12.2:*:*:*:*:*:*:*",
+     "cpe:2.3:a:flask:flask:0.12.2:*:*:*:*:*:*:*"
+    ],
+    "id": "299833eafc3e5576",
+    "language": "python",
+    "licenses": [],
+    "locations": [
+     {
+      "accessPath": "/api/requirements.txt",
+      "annotations": {
+       "evidence": "primary"
+      },
+      "path": "/api/requirements.txt"
+     }
+    ],
+    "name": "flask",
+    "purl": "pkg:pypi/flask@0.12.2",
+    "type": "python",
+    "upstreams": [],
+    "version": "0.12.2"
+   },
+   "relatedVulnerabilities": [
+    {
+     "cvss": [
+      {
+       "metrics": {
+        "baseScore": 7.5,
+        "exploitabilityScore": 3.9,
+        "impactScore": 3.6
+       },
+       "source": "nvd@nist.gov",
+       "type": "Primary",
+       "vector": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+       "vendorMetadata": {},
+       "version": "3.0"
+      },
+      {
+       "metrics": {
+        "baseScore": 5,
+        "exploitabilityScore": 10,
+        "impactScore": 2.9
+       },
+       "source": "nvd@nist.gov",
+       "type": "Primary",
+       "vector": "AV:N/AC:L/Au:N/C:N/I:N/A:P",
+       "vendorMetadata": {},
+       "version": "2.0"
+      }
+     ],
+     "cwes": [
+      {
+       "cve": "CVE-2018-1000656",
+       "cwe": "CWE-20",
+       "source": "nvd@nist.gov",
+       "type": "Primary"
+      }
+     ],
+     "dataSource": "https://nvd.nist.gov/vuln/detail/CVE-2018-1000656",
+     "epss": [
+      {
+       "cve": "CVE-2018-1000656",
+       "date": "2026-11-13",
+       "epss": 0.03855,
+       "percentile": 0.90325
+      }
+     ],
+     "id": "CVE-2018-1000656",
+     "namespace": "nvd:cpe",
+     "severity": "High"
+    }
+   ],
+   "vulnerability": {
+    "advisories": [],
+    "cvss": [
+     {
+      "metrics": {
+       "baseScore": 7.5,
+       "exploitabilityScore": 3.9,
+       "impactScore": 3.6
+      },
+      "type": "Secondary",
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+      "vendorMetadata": {},
+      "version": "3.1"
+     },
+     {
+      "metrics": {
+       "baseScore": 8.7
+      },
+      "type": "Secondary",
+      "vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N",
+      "vendorMetadata": {},
+      "version": "4.0"
+     }
+    ],
+    "cwes": [
+     {
+      "cve": "CVE-2018-1000656",
+      "cwe": "CWE-20",
+      "source": "nvd@nist.gov",
+      "type": "Primary"
+     }
+    ],
+    "dataSource": "https://github.com/advisories/GHSA-562c-5r94-xh97",
+    "epss": [
+     {
+      "cve": "CVE-2018-1000656",
+      "date": "2026-11-13",
+      "epss": 0.03855,
+      "percentile": 0.90325
+     }
+    ],
+    "fix": {
+     "available": [
+      {
+       "date": "2020-07-28",
+       "kind": "first-observed",
+       "version": "0.12.3"
+      }
+     ],
+     "state": "fixed"
+    },
+    "id": "GHSA-562c-5r94-xh97",
+    "namespace": "github:language:python",
+    "risk": 3.0069000000000004,
+    "severity": "High"
+   }
+  },
+  {
+   "artifact": {
+    "cpes": [
+     "cpe:2.3:a:python-jinja2:python-jinja2:2.10:*:*:*:*:*:*:*",
+     "cpe:2.3:a:python-jinja2:python_jinja2:2.10:*:*:*:*:*:*:*",
+     "cpe:2.3:a:python_jinja2:python-jinja2:2.10:*:*:*:*:*:*:*",
+     "cpe:2.3:a:python_jinja2:python_jinja2:2.10:*:*:*:*:*:*:*",
+     "cpe:2.3:a:jinja2:python-jinja2:2.10:*:*:*:*:*:*:*",
+     "cpe:2.3:a:jinja2:python_jinja2:2.10:*:*:*:*:*:*:*",
+     "cpe:2.3:a:python-jinja2:jinja2:2.10:*:*:*:*:*:*:*",
+     "cpe:2.3:a:python:python-jinja2:2.10:*:*:*:*:*:*:*",
+     "cpe:2.3:a:python:python_jinja2:2.10:*:*:*:*:*:*:*",
+     "cpe:2.3:a:python_jinja2:jinja2:2.10:*:*:*:*:*:*:*",
+     "cpe:2.3:a:jinja2:jinja2:2.10:*:*:*:*:*:*:*",
+     "cpe:2.3:a:python:jinja2:2.10:*:*:*:*:*:*:*"
+    ],
+    "id": "cc54395109492b60",
+    "language": "python",
+    "licenses": [],
+    "locations": [
+     {
+      "accessPath": "/api/requirements.txt",
+      "annotations": {
+       "evidence": "primary"
+      },
+      "path": "/api/requirements.txt"
+     }
+    ],
+    "name": "jinja2",
+    "purl": "pkg:pypi/jinja2@2.10",
+    "type": "python",
+    "upstreams": [],
+    "version": "2.10"
+   },
+   "relatedVulnerabilities": [
+    {
+     "cvss": [
+      {
+       "metrics": {
+        "baseScore": 8.6,
+        "exploitabilityScore": 3.9,
+        "impactScore": 4
+       },
+       "source": "nvd@nist.gov",
+       "type": "Primary",
+       "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:N/A:N",
+       "vendorMetadata": {},
+       "version": "3.1"
+      },
+      {
+       "metrics": {
+        "baseScore": 5,
+        "exploitabilityScore": 10,
+        "impactScore": 2.9
+       },
+       "source": "nvd@nist.gov",
+       "type": "Primary",
+       "vector": "AV:N/AC:L/Au:N/C:P/I:N/A:N",
+       "vendorMetadata": {},
+       "version": "2.0"
+      }
+     ],
+     "dataSource": "https://nvd.nist.gov/vuln/detail/CVE-2019-10906",
+     "epss": [
+      {
+       "cve": "CVE-2019-10906",
+       "date": "2026-11-13",
+       "epss": 0.03603,
+       "percentile": 0.89642
+      }
+     ],
+     "id": "CVE-2019-10906",
+     "namespace": "nvd:cpe",
+     "severity": "High"
+    }
+   ],
+   "vulnerability": {
+    "advisories": [],
+    "cvss": [
+     {
+      "metrics": {
+       "baseScore": 8.6,
+       "exploitabilityScore": 3.9,
+       "impactScore": 4
+      },
+      "type": "Secondary",
+      "vector": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:N/A:N",
+      "vendorMetadata": {},
+      "version": "3.0"
+     },
+     {
+      "metrics": {
+       "baseScore": 7.7
+      },
+      "type": "Secondary",
+      "vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:N/SC:H/SI:N/SA:N",
+      "vendorMetadata": {},
+      "version": "4.0"
+     }
+    ],
+    "dataSource": "https://github.com/advisories/GHSA-462w-v97r-4m45",
+    "epss": [
+     {
+      "cve": "CVE-2019-10906",
+      "date": "2026-11-13",
+      "epss": 0.03603,
+      "percentile": 0.89642
+     }
+    ],
+    "fix": {
+     "available": [
+      {
+       "date": "2020-07-28",
+       "kind": "first-observed",
+       "version": "2.10.1"
+      }
+     ],
+     "state": "fixed"
+    },
+    "id": "GHSA-462w-v97r-4m45",
+    "namespace": "github:language:python",
+    "risk": 2.8193475,
+    "severity": "High"
+   }
+  },
+  {
+   "artifact": {
+    "cpes": [
+     "cpe:2.3:a:lodash:lodash:4.17.15:*:*:*:*:node.js:*:*"
+    ],
+    "id": "a151c8b31f96bea6",
+    "language": "javascript",
+    "licenses": [],
+    "locations": [
+     {
+      "accessPath": "/web/package-lock.json",
+      "annotations": {
+       "evidence": "primary"
+      },
+      "path": "/web/package-lock.json"
+     }
+    ],
+    "name": "lodash",
+    "purl": "pkg:npm/lodash@4.17.15",
+    "type": "npm",
+    "upstreams": [],
+    "version": "4.17.15"
+   },
+   "relatedVulnerabilities": [
+    {
+     "cvss": [
+      {
+       "metrics": {
+        "baseScore": 9.8,
+        "exploitabilityScore": 3.9,
+        "impactScore": 5.9
+       },
+       "source": "nvd@nist.gov",
+       "type": "Primary",
+       "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+       "vendorMetadata": {},
+       "version": "3.1"
+      },
+      {
+       "metrics": {
+        "baseScore": 8.1,
+        "exploitabilityScore": 2.3,
+        "impactScore": 5.9
+       },
+       "source": "0b0ca135-0b70-47e7-9f44-1890c2a1c46c",
+       "type": "Secondary",
+       "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H",
+       "vendorMetadata": {},
+       "version": "3.1"
+      },
+      {
+       "metrics": {
+        "baseScore": 8.1,
+        "exploitabilityScore": 2.3,
+        "impactScore": 5.9
+       },
+       "source": "ce714d77-add3-4f53-aff5-83d477b104bb",
+       "type": "Secondary",
+       "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H",
+       "vendorMetadata": {},
+       "version": "3.1"
+      }
+     ],
+     "cwes": [
+      {
+       "cve": "CVE-2026-4800",
+       "cwe": "CWE-94",
+       "source": "ce714d77-add3-4f53-aff5-83d477b104bb",
+       "type": "Secondary"
+      },
+      {
+       "cve": "CVE-2026-4800",
+       "cwe": "CWE-94",
+       "source": "0b0ca135-0b70-47e7-9f44-1890c2a1c46c",
+       "type": "Secondary"
+      }
+     ],
+     "dataSource": "https://nvd.nist.gov/vuln/detail/CVE-2026-4800",
+     "epss": [
+      {
+       "cve": "CVE-2026-4800",
+       "date": "2026-11-13",
+       "epss": 0.02808,
+       "percentile": 0.86723
+      }
+     ],
+     "id": "CVE-2026-4800",
+     "namespace": "nvd:cpe",
+     "severity": "Critical"
+    }
+   ],
+   "vulnerability": {
+    "advisories": [],
+    "cvss": [
+     {
+      "metrics": {
+       "baseScore": 8.1,
+       "exploitabilityScore": 2.3,
+       "impactScore": 5.9
+      },
+      "type": "Secondary",
+      "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "vendorMetadata": {},
+      "version": "3.1"
+     }
+    ],
+    "cwes": [
+     {
+      "cve": "CVE-2026-4800",
+      "cwe": "CWE-94",
+      "source": "ce714d77-add3-4f53-aff5-83d477b104bb",
+      "type": "Secondary"
+     },
+     {
+      "cve": "CVE-2026-4800",
+      "cwe": "CWE-94",
+      "source": "0b0ca135-0b70-47e7-9f44-1890c2a1c46c",
+      "type": "Secondary"
+     }
+    ],
+    "dataSource": "https://github.com/advisories/GHSA-r5fr-rjxr-66jc",
+    "epss": [
+     {
+      "cve": "CVE-2026-4800",
+      "date": "2026-11-13",
+      "epss": 0.02808,
+      "percentile": 0.86723
+     }
+    ],
+    "fix": {
+     "available": [
+      {
+       "date": "2026-04-02",
+       "kind": "first-observed",
+       "version": "4.18.0"
+      }
+     ],
+     "state": "fixed"
+    },
+    "id": "GHSA-r5fr-rjxr-66jc",
+    "namespace": "github:language:javascript",
+    "risk": 2.19024,
+    "severity": "High"
+   }
+  },
+  {
+   "artifact": {
+    "cpes": [
+     "cpe:2.3:a:python-jinja2:python-jinja2:2.10:*:*:*:*:*:*:*",
+     "cpe:2.3:a:python-jinja2:python_jinja2:2.10:*:*:*:*:*:*:*",
+     "cpe:2.3:a:python_jinja2:python-jinja2:2.10:*:*:*:*:*:*:*",
+     "cpe:2.3:a:python_jinja2:python_jinja2:2.10:*:*:*:*:*:*:*",
+     "cpe:2.3:a:jinja2:python-jinja2:2.10:*:*:*:*:*:*:*",
+     "cpe:2.3:a:jinja2:python_jinja2:2.10:*:*:*:*:*:*:*",
+     "cpe:2.3:a:python-jinja2:jinja2:2.10:*:*:*:*:*:*:*",
+     "cpe:2.3:a:python:python-jinja2:2.10:*:*:*:*:*:*:*",
+     "cpe:2.3:a:python:python_jinja2:2.10:*:*:*:*:*:*:*",
+     "cpe:2.3:a:python_jinja2:jinja2:2.10:*:*:*:*:*:*:*",
+     "cpe:2.3:a:jinja2:jinja2:2.10:*:*:*:*:*:*:*",
+     "cpe:2.3:a:python:jinja2:2.10:*:*:*:*:*:*:*"
+    ],
+    "id": "cc54395109492b60",
+    "language": "python",
+    "licenses": [],
+    "locations": [
+     {
+      "accessPath": "/api/requirements.txt",
+      "annotations": {
+       "evidence": "primary"
+      },
+      "path": "/api/requirements.txt"
+     }
+    ],
+    "name": "jinja2",
+    "purl": "pkg:pypi/jinja2@2.10",
+    "type": "python",
+    "upstreams": [],
+    "version": "2.10"
+   },
+   "relatedVulnerabilities": [
+    {
+     "cvss": [
+      {
+       "metrics": {
+        "baseScore": 5.3,
+        "exploitabilityScore": 3.9,
+        "impactScore": 1.5
+       },
+       "source": "nvd@nist.gov",
+       "type": "Primary",
+       "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L",
+       "vendorMetadata": {},
+       "version": "3.1"
+      },
+      {
+       "metrics": {
+        "baseScore": 5,
+        "exploitabilityScore": 10,
+        "impactScore": 2.9
+       },
+       "source": "nvd@nist.gov",
+       "type": "Primary",
+       "vector": "AV:N/AC:L/Au:N/C:N/I:N/A:P",
+       "vendorMetadata": {},
+       "version": "2.0"
+      },
+      {
+       "metrics": {
+        "baseScore": 5.3,
+        "exploitabilityScore": 3.9,
+        "impactScore": 1.5
+       },
+       "source": "report@snyk.io",
+       "type": "Secondary",
+       "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L",
+       "vendorMetadata": {},
+       "version": "3.1"
+      }
+     ],
+     "cwes": [
+      {
+       "cve": "CVE-2020-28493",
+       "cwe": "CWE-400",
+       "source": "nvd@nist.gov",
+       "type": "Primary"
+      }
+     ],
+     "dataSource": "https://nvd.nist.gov/vuln/detail/CVE-2020-28493",
+     "epss": [
+      {
+       "cve": "CVE-2020-28493",
+       "date": "2026-11-13",
+       "epss": 0.03589,
+       "percentile": 0.89607
+      }
+     ],
+     "id": "CVE-2020-28493",
+     "namespace": "nvd:cpe",
+     "severity": "Medium"
+    }
+   ],
+   "vulnerability": {
+    "advisories": [],
+    "cvss": [
+     {
+      "metrics": {
+       "baseScore": 5.3,
+       "exploitabilityScore": 3.9,
+       "impactScore": 1.5
+      },
+      "type": "Secondary",
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L",
+      "vendorMetadata": {},
+      "version": "3.1"
+     },
+     {
+      "metrics": {
+       "baseScore": 6.9
+      },
+      "type": "Secondary",
+      "vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N",
+      "vendorMetadata": {},
+      "version": "4.0"
+     }
+    ],
+    "cwes": [
+     {
+      "cve": "CVE-2020-28493",
+      "cwe": "CWE-400",
+      "source": "nvd@nist.gov",
+      "type": "Primary"
+     }
+    ],
+    "dataSource": "https://github.com/advisories/GHSA-g3rq-g295-4j3m",
+    "epss": [
+     {
+      "cve": "CVE-2020-28493",
+      "date": "2026-11-13",
+      "epss": 0.03589,
+      "percentile": 0.89607
+     }
+    ],
+    "fix": {
+     "available": [
+      {
+       "date": "2021-03-20",
+       "kind": "first-observed",
+       "version": "2.11.3"
+      }
+     ],
+     "state": "fixed"
+    },
+    "id": "GHSA-g3rq-g295-4j3m",
+    "namespace": "github:language:python",
+    "risk": 1.9918949999999997,
+    "severity": "Medium"
+   }
+  },
+  {
+   "artifact": {
+    "cpes": [
+     "cpe:2.3:a:python:requests:2.19.1:*:*:*:*:*:*:*"
+    ],
+    "id": "0b9ed2e1df212aee",
+    "language": "python",
+    "licenses": [],
+    "locations": [
+     {
+      "accessPath": "/api/requirements.txt",
+      "annotations": {
+       "evidence": "primary"
+      },
+      "path": "/api/requirements.txt"
+     }
+    ],
+    "name": "requests",
+    "purl": "pkg:pypi/requests@2.19.1",
+    "type": "python",
+    "upstreams": [],
+    "version": "2.19.1"
+   },
+   "relatedVulnerabilities": [
+    {
+     "cvss": [
+      {
+       "metrics": {
+        "baseScore": 6.1,
+        "exploitabilityScore": 1.7,
+        "impactScore": 4
+       },
+       "source": "nvd@nist.gov",
+       "type": "Primary",
+       "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:C/C:H/I:N/A:N",
+       "vendorMetadata": {},
+       "version": "3.1"
+      },
+      {
+       "metrics": {
+        "baseScore": 6.1,
+        "exploitabilityScore": 1.7,
+        "impactScore": 4
+       },
+       "source": "security-advisories@github.com",
+       "type": "Secondary",
+       "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:C/C:H/I:N/A:N",
+       "vendorMetadata": {},
+       "version": "3.1"
+      }
+     ],
+     "cwes": [
+      {
+       "cve": "CVE-2023-32681",
+       "cwe": "CWE-200",
+       "source": "security-advisories@github.com",
+       "type": "Secondary"
+      }
+     ],
+     "dataSource": "https://nvd.nist.gov/vuln/detail/CVE-2023-32681",
+     "epss": [
+      {
+       "cve": "CVE-2023-32681",
+       "date": "2026-11-13",
+       "epss": 0.02974,
+       "percentile": 0.87467
+      }
+     ],
+     "id": "CVE-2023-32681",
+     "namespace": "nvd:cpe",
+     "severity": "Medium"
+    }
+   ],
+   "vulnerability": {
+    "advisories": [],
+    "cvss": [
+     {
+      "metrics": {
+       "baseScore": 6.1,
+       "exploitabilityScore": 1.7,
+       "impactScore": 4
+      },
+      "type": "Secondary",
+      "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:C/C:H/I:N/A:N",
+      "vendorMetadata": {},
+      "version": "3.1"
+     }
+    ],
+    "cwes": [
+     {
+      "cve": "CVE-2023-32681",
+      "cwe": "CWE-200",
+      "source": "security-advisories@github.com",
+      "type": "Secondary"
+     }
+    ],
+    "dataSource": "https://github.com/advisories/GHSA-j8r2-6x86-q33q",
+    "epss": [
+     {
+      "cve": "CVE-2023-32681",
+      "date": "2026-11-13",
+      "epss": 0.02974,
+      "percentile": 0.87467
+     }
+    ],
+    "fix": {
+     "available": [
+      {
+       "date": "2023-05-23",
+       "kind": "first-observed",
+       "version": "2.31.0"
+      }
+     ],
+     "state": "fixed"
+    },
+    "id": "GHSA-j8r2-6x86-q33q",
+    "namespace": "github:language:python",
+    "risk": 1.6505699999999999,
+    "severity": "Medium"
+   }
+  },
+  {
+   "artifact": {
+    "cpes": [
+     "cpe:2.3:a:python-flask:python-flask:0.12.2:*:*:*:*:*:*:*",
+     "cpe:2.3:a:python-flask:python_flask:0.12.2:*:*:*:*:*:*:*",
+     "cpe:2.3:a:python_flask:python-flask:0.12.2:*:*:*:*:*:*:*",
+     "cpe:2.3:a:python_flask:python_flask:0.12.2:*:*:*:*:*:*:*",
+     "cpe:2.3:a:python:python-flask:0.12.2:*:*:*:*:*:*:*",
+     "cpe:2.3:a:python:python_flask:0.12.2:*:*:*:*:*:*:*",
+     "cpe:2.3:a:flask:python-flask:0.12.2:*:*:*:*:*:*:*",
+     "cpe:2.3:a:flask:python_flask:0.12.2:*:*:*:*:*:*:*",
+     "cpe:2.3:a:python-flask:flask:0.12.2:*:*:*:*:*:*:*",
+     "cpe:2.3:a:python_flask:flask:0.12.2:*:*:*:*:*:*:*",
+     "cpe:2.3:a:python:flask:0.12.2:*:*:*:*:*:*:*",
+     "cpe:2.3:a:flask:flask:0.12.2:*:*:*:*:*:*:*"
+    ],
+    "id": "299833eafc3e5576",
+    "language": "python",
+    "licenses": [],
+    "locations": [
+     {
+      "accessPath": "/api/requirements.txt",
+      "annotations": {
+       "evidence": "primary"
+      },
+      "path": "/api/requirements.txt"
+     }
+    ],
+    "name": "flask",
+    "purl": "pkg:pypi/flask@0.12.2",
+    "type": "python",
+    "upstreams": [],
+    "version": "0.12.2"
+   },
+   "relatedVulnerabilities": [
+    {
+     "cvss": [
+      {
+       "metrics": {
+        "baseScore": 7.5,
+        "exploitabilityScore": 3.9,
+        "impactScore": 3.6
+       },
+       "source": "nvd@nist.gov",
+       "type": "Primary",
+       "vector": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+       "vendorMetadata": {},
+       "version": "3.0"
+      },
+      {
+       "metrics": {
+        "baseScore": 5,
+        "exploitabilityScore": 10,
+        "impactScore": 2.9
+       },
+       "source": "nvd@nist.gov",
+       "type": "Primary",
+       "vector": "AV:N/AC:L/Au:N/C:N/I:N/A:P",
+       "vendorMetadata": {},
+       "version": "2.0"
+      }
+     ],
+     "dataSource": "https://nvd.nist.gov/vuln/detail/CVE-2019-1010083",
+     "epss": [
+      {
+       "cve": "CVE-2019-1010083",
+       "date": "2026-11-13",
+       "epss": 0.01832,
+       "percentile": 0.79233
+      }
+     ],
+     "id": "CVE-2019-1010083",
+     "namespace": "nvd:cpe",
+     "severity": "High"
+    }
+   ],
+   "vulnerability": {
+    "advisories": [],
+    "cvss": [
+     {
+      "metrics": {
+       "baseScore": 7.5,
+       "exploitabilityScore": 3.9,
+       "impactScore": 3.6
+      },
+      "type": "Secondary",
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+      "vendorMetadata": {},
+      "version": "3.1"
+     },
+     {
+      "metrics": {
+       "baseScore": 8.7
+      },
+      "type": "Secondary",
+      "vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N",
+      "vendorMetadata": {},
+      "version": "4.0"
+     }
+    ],
+    "dataSource": "https://github.com/advisories/GHSA-5wv5-4vpf-pj6m",
+    "epss": [
+     {
+      "cve": "CVE-2019-1010083",
+      "date": "2026-11-13",
+      "epss": 0.01832,
+      "percentile": 0.79233
+     }
+    ],
+    "fix": {
+     "available": [
+      {
+       "date": "2023-08-15",
+       "kind": "first-observed",
+       "version": "1.0"
+      }
+     ],
+     "state": "fixed"
+    },
+    "id": "GHSA-5wv5-4vpf-pj6m",
+    "namespace": "github:language:python",
+    "risk": 1.42896,
+    "severity": "High"
+   }
+  },
+  {
+   "artifact": {
+    "cpes": [
+     "cpe:2.3:a:golang:text:v0.3.0:*:*:*:*:*:*:*"
+    ],
+    "id": "a5b5b3d30dae7010",
+    "language": "go",
+    "licenses": [],
+    "locations": [
+     {
+      "accessPath": "/svc/go.mod",
+      "annotations": {
+       "evidence": "primary"
+      },
+      "path": "/svc/go.mod"
+     }
+    ],
+    "metadata": {},
+    "metadataType": "GolangModMetadata",
+    "name": "golang.org/x/text",
+    "purl": "pkg:golang/golang.org/x/text@v0.3.0",
+    "type": "go-module",
+    "upstreams": [],
+    "version": "v0.3.0"
+   },
+   "relatedVulnerabilities": [
+    {
+     "cvss": [
+      {
+       "metrics": {
+        "baseScore": 7.5,
+        "exploitabilityScore": 3.9,
+        "impactScore": 3.6
+       },
+       "source": "nvd@nist.gov",
+       "type": "Primary",
+       "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+       "vendorMetadata": {},
+       "version": "3.1"
+      },
+      {
+       "metrics": {
+        "baseScore": 7.5,
+        "exploitabilityScore": 3.9,
+        "impactScore": 3.6
+       },
+       "source": "134c704f-9b21-4f2e-91b3-4a467353bcc0",
+       "type": "Secondary",
+       "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+       "vendorMetadata": {},
+       "version": "3.1"
+      }
+     ],
+     "cwes": [
+      {
+       "cve": "CVE-2022-32149",
+       "cwe": "CWE-772",
+       "source": "nvd@nist.gov",
+       "type": "Primary"
+      }
+     ],
+     "dataSource": "https://nvd.nist.gov/vuln/detail/CVE-2022-32149",
+     "epss": [
+      {
+       "cve": "CVE-2022-32149",
+       "date": "2026-11-13",
+       "epss": 0.01841,
+       "percentile": 0.79331
+      }
+     ],
+     "id": "CVE-2022-32149",
+     "namespace": "nvd:cpe",
+     "severity": "High"
+    }
+   ],
+   "vulnerability": {
+    "advisories": [],
+    "cvss": [
+     {
+      "metrics": {
+       "baseScore": 7.5,
+       "exploitabilityScore": 3.9,
+       "impactScore": 3.6
+      },
+      "type": "Secondary",
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+      "vendorMetadata": {},
+      "version": "3.1"
+     }
+    ],
+    "cwes": [
+     {
+      "cve": "CVE-2022-32149",
+      "cwe": "CWE-772",
+      "source": "nvd@nist.gov",
+      "type": "Primary"
+     }
+    ],
+    "dataSource": "https://github.com/advisories/GHSA-69ch-w2m2-3vjp",
+    "epss": [
+     {
+      "cve": "CVE-2022-32149",
+      "date": "2026-11-13",
+      "epss": 0.01841,
+      "percentile": 0.79331
+     }
+    ],
+    "fix": {
+     "available": [
+      {
+       "date": "2023-02-23",
+       "kind": "first-observed",
+       "version": "0.3.8"
+      }
+     ],
+     "state": "fixed"
+    },
+    "id": "GHSA-69ch-w2m2-3vjp",
+    "namespace": "github:language:go",
+    "risk": 1.38075,
+    "severity": "High"
+   }
+  },
+  {
+   "artifact": {
+    "cpes": [
+     "cpe:2.3:a:golang:text:v0.3.0:*:*:*:*:*:*:*"
+    ],
+    "id": "a5b5b3d30dae7010",
+    "language": "go",
+    "licenses": [],
+    "locations": [
+     {
+      "accessPath": "/svc/go.mod",
+      "annotations": {
+       "evidence": "primary"
+      },
+      "path": "/svc/go.mod"
+     }
+    ],
+    "metadata": {},
+    "metadataType": "GolangModMetadata",
+    "name": "golang.org/x/text",
+    "purl": "pkg:golang/golang.org/x/text@v0.3.0",
+    "type": "go-module",
+    "upstreams": [],
+    "version": "v0.3.0"
+   },
+   "relatedVulnerabilities": [
+    {
+     "cvss": [
+      {
+       "metrics": {
+        "baseScore": 7.5,
+        "exploitabilityScore": 3.9,
+        "impactScore": 3.6
+       },
+       "source": "nvd@nist.gov",
+       "type": "Primary",
+       "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+       "vendorMetadata": {},
+       "version": "3.1"
+      },
+      {
+       "metrics": {
+        "baseScore": 5,
+        "exploitabilityScore": 10,
+        "impactScore": 2.9
+       },
+       "source": "nvd@nist.gov",
+       "type": "Primary",
+       "vector": "AV:N/AC:L/Au:N/C:N/I:N/A:P",
+       "vendorMetadata": {},
+       "version": "2.0"
+      }
+     ],
+     "cwes": [
+      {
+       "cve": "CVE-2020-14040",
+       "cwe": "CWE-835",
+       "source": "nvd@nist.gov",
+       "type": "Primary"
+      }
+     ],
+     "dataSource": "https://nvd.nist.gov/vuln/detail/CVE-2020-14040",
+     "epss": [
+      {
+       "cve": "CVE-2020-14040",
+       "date": "2026-11-13",
+       "epss": 0.01886,
+       "percentile": 0.79846
+      }
+     ],
+     "id": "CVE-2020-14040",
+     "namespace": "nvd:cpe",
+     "severity": "High"
+    }
+   ],
+   "vulnerability": {
+    "advisories": [],
+    "cvss": [
+     {
+      "metrics": {
+       "baseScore": 7.5,
+       "exploitabilityScore": 3.9,
+       "impactScore": 3.6
+      },
+      "type": "Secondary",
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H/E:P/RL:O/RC:C",
+      "vendorMetadata": {},
+      "version": "3.1"
+     }
+    ],
+    "cwes": [
+     {
+      "cve": "CVE-2020-14040",
+      "cwe": "CWE-835",
+      "source": "nvd@nist.gov",
+      "type": "Primary"
+     }
+    ],
+    "dataSource": "https://github.com/advisories/GHSA-5rcv-m4m3-hfh7",
+    "epss": [
+     {
+      "cve": "CVE-2020-14040",
+      "date": "2026-11-13",
+      "epss": 0.01886,
+      "percentile": 0.79846
+     }
+    ],
+    "fix": {
+     "available": [
+      {
+       "date": "2023-08-31",
+       "kind": "first-observed",
+       "version": "0.3.3"
+      }
+     ],
+     "state": "fixed"
+    },
+    "id": "GHSA-5rcv-m4m3-hfh7",
+    "namespace": "github:language:go",
+    "risk": 1.17875,
+    "severity": "Medium"
+   }
+  },
+  {
+   "artifact": {
+    "cpes": [
+     "cpe:2.3:a:golang:text:v0.3.0:*:*:*:*:*:*:*"
+    ],
+    "id": "a5b5b3d30dae7010",
+    "language": "go",
+    "licenses": [],
+    "locations": [
+     {
+      "accessPath": "/svc/go.mod",
+      "annotations": {
+       "evidence": "primary"
+      },
+      "path": "/svc/go.mod"
+     }
+    ],
+    "metadata": {},
+    "metadataType": "GolangModMetadata",
+    "name": "golang.org/x/text",
+    "purl": "pkg:golang/golang.org/x/text@v0.3.0",
+    "type": "go-module",
+    "upstreams": [],
+    "version": "v0.3.0"
+   },
+   "relatedVulnerabilities": [
+    {
+     "cvss": [
+      {
+       "metrics": {
+        "baseScore": 7.5,
+        "exploitabilityScore": 3.9,
+        "impactScore": 3.6
+       },
+       "source": "nvd@nist.gov",
+       "type": "Primary",
+       "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+       "vendorMetadata": {},
+       "version": "3.1"
+      },
+      {
+       "metrics": {
+        "baseScore": 7.5,
+        "exploitabilityScore": 3.9,
+        "impactScore": 3.6
+       },
+       "source": "134c704f-9b21-4f2e-91b3-4a467353bcc0",
+       "type": "Secondary",
+       "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+       "vendorMetadata": {},
+       "version": "3.1"
+      }
+     ],
+     "cwes": [
+      {
+       "cve": "CVE-2021-38561",
+       "cwe": "CWE-125",
+       "source": "nvd@nist.gov",
+       "type": "Primary"
+      },
+      {
+       "cve": "CVE-2021-38561",
+       "cwe": "CWE-125",
+       "source": "134c704f-9b21-4f2e-91b3-4a467353bcc0",
+       "type": "Secondary"
+      }
+     ],
+     "dataSource": "https://nvd.nist.gov/vuln/detail/CVE-2021-38561",
+     "epss": [
+      {
+       "cve": "CVE-2021-38561",
+       "date": "2026-11-13",
+       "epss": 0.01484,
+       "percentile": 0.74397
+      }
+     ],
+     "id": "CVE-2021-38561",
+     "namespace": "nvd:cpe",
+     "severity": "High"
+    }
+   ],
+   "vulnerability": {
+    "advisories": [],
+    "cvss": [
+     {
+      "metrics": {
+       "baseScore": 7.5,
+       "exploitabilityScore": 3.9,
+       "impactScore": 3.6
+      },
+      "type": "Secondary",
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+      "vendorMetadata": {},
+      "version": "3.1"
+     }
+    ],
+    "cwes": [
+     {
+      "cve": "CVE-2021-38561",
+      "cwe": "CWE-125",
+      "source": "nvd@nist.gov",
+      "type": "Primary"
+     },
+     {
+      "cve": "CVE-2021-38561",
+      "cwe": "CWE-125",
+      "source": "134c704f-9b21-4f2e-91b3-4a467353bcc0",
+      "type": "Secondary"
+     }
+    ],
+    "dataSource": "https://github.com/advisories/GHSA-ppp9-7jff-5vj2",
+    "epss": [
+     {
+      "cve": "CVE-2021-38561",
+      "date": "2026-11-13",
+      "epss": 0.01484,
+      "percentile": 0.74397
+     }
+    ],
+    "fix": {
+     "available": [
+      {
+       "date": "2023-02-26",
+       "kind": "first-observed",
+       "version": "0.3.7"
+      }
+     ],
+     "state": "fixed"
+    },
+    "id": "GHSA-ppp9-7jff-5vj2",
+    "namespace": "github:language:go",
+    "risk": 1.113,
+    "severity": "High"
+   }
+  },
+  {
+   "artifact": {
+    "cpes": [
+     "cpe:2.3:a:lodash:lodash:4.17.15:*:*:*:*:node.js:*:*"
+    ],
+    "id": "a151c8b31f96bea6",
+    "language": "javascript",
+    "licenses": [],
+    "locations": [
+     {
+      "accessPath": "/web/package-lock.json",
+      "annotations": {
+       "evidence": "primary"
+      },
+      "path": "/web/package-lock.json"
+     }
+    ],
+    "name": "lodash",
+    "purl": "pkg:npm/lodash@4.17.15",
+    "type": "npm",
+    "upstreams": [],
+    "version": "4.17.15"
+   },
+   "relatedVulnerabilities": [
+    {
+     "cvss": [
+      {
+       "metrics": {
+        "baseScore": 5.3,
+        "exploitabilityScore": 3.9,
+        "impactScore": 1.5
+       },
+       "source": "nvd@nist.gov",
+       "type": "Primary",
+       "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N",
+       "vendorMetadata": {},
+       "version": "3.1"
+      },
+      {
+       "metrics": {
+        "baseScore": 8.2,
+        "exploitabilityScore": 3.9,
+        "impactScore": 4.3
+       },
+       "source": "0b0ca135-0b70-47e7-9f44-1890c2a1c46c",
+       "type": "Secondary",
+       "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:H",
+       "vendorMetadata": {},
+       "version": "3.1"
+      },
+      {
+       "metrics": {
+        "baseScore": 6.9
+       },
+       "source": "ce714d77-add3-4f53-aff5-83d477b104bb",
+       "type": "Secondary",
+       "vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:L/VA:L/SC:H/SI:H/SA:H/E:P/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+       "vendorMetadata": {},
+       "version": "4.0"
+      }
+     ],
+     "cwes": [
+      {
+       "cve": "CVE-2025-13465",
+       "cwe": "CWE-1321",
+       "source": "ce714d77-add3-4f53-aff5-83d477b104bb",
+       "type": "Secondary"
+      },
+      {
+       "cve": "CVE-2025-13465",
+       "cwe": "CWE-1321",
+       "source": "0b0ca135-0b70-47e7-9f44-1890c2a1c46c",
+       "type": "Secondary"
+      }
+     ],
+     "dataSource": "https://nvd.nist.gov/vuln/detail/CVE-2025-13465",
+     "epss": [
+      {
+       "cve": "CVE-2025-13465",
+       "date": "2026-11-13",
+       "epss": 0.01823,
+       "percentile": 0.79116
+      }
+     ],
+     "id": "CVE-2025-13465",
+     "namespace": "nvd:cpe",
+     "severity": "Medium"
+    }
+   ],
+   "vulnerability": {
+    "advisories": [],
+    "cvss": [
+     {
+      "metrics": {
+       "baseScore": 6.5,
+       "exploitabilityScore": 3.9,
+       "impactScore": 2.6
+      },
+      "type": "Secondary",
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:L",
+      "vendorMetadata": {},
+      "version": "3.1"
+     },
+     {
+      "metrics": {
+       "baseScore": 6.9
+      },
+      "type": "Secondary",
+      "vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:L/VA:L/SC:H/SI:H/SA:H/E:P",
+      "vendorMetadata": {},
+      "version": "4.0"
+     }
+    ],
+    "cwes": [
+     {
+      "cve": "CVE-2025-13465",
+      "cwe": "CWE-1321",
+      "source": "ce714d77-add3-4f53-aff5-83d477b104bb",
+      "type": "Secondary"
+     },
+     {
+      "cve": "CVE-2025-13465",
+      "cwe": "CWE-1321",
+      "source": "0b0ca135-0b70-47e7-9f44-1890c2a1c46c",
+      "type": "Secondary"
+     }
+    ],
+    "dataSource": "https://github.com/advisories/GHSA-xxjr-mmjv-4gpg",
+    "epss": [
+     {
+      "cve": "CVE-2025-13465",
+      "date": "2026-11-13",
+      "epss": 0.01823,
+      "percentile": 0.79116
+     }
+    ],
+    "fix": {
+     "available": [
+      {
+       "date": "2026-01-22",
+       "kind": "first-observed",
+       "version": "4.17.23"
+      }
+     ],
+     "state": "fixed"
+    },
+    "id": "GHSA-xxjr-mmjv-4gpg",
+    "namespace": "github:language:javascript",
+    "risk": 1.066455,
+    "severity": "Medium"
+   }
+  },
+  {
+   "artifact": {
+    "cpes": [
+     "cpe:2.3:a:minimist:minimist:1.2.0:*:*:*:*:*:*:*"
+    ],
+    "id": "6c99a219756828a7",
+    "language": "javascript",
+    "licenses": [],
+    "locations": [
+     {
+      "accessPath": "/web/package-lock.json",
+      "annotations": {
+       "evidence": "primary"
+      },
+      "path": "/web/package-lock.json"
+     }
+    ],
+    "name": "minimist",
+    "purl": "pkg:npm/minimist@1.2.0",
+    "type": "npm",
+    "upstreams": [],
+    "version": "1.2.0"
+   },
+   "relatedVulnerabilities": [
+    {
+     "cvss": [
+      {
+       "metrics": {
+        "baseScore": 5.6,
+        "exploitabilityScore": 2.3,
+        "impactScore": 3.4
+       },
+       "source": "nvd@nist.gov",
+       "type": "Primary",
+       "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:L/A:L",
+       "vendorMetadata": {},
+       "version": "3.1"
+      },
+      {
+       "metrics": {
+        "baseScore": 6.8,
+        "exploitabilityScore": 8.6,
+        "impactScore": 6.5
+       },
+       "source": "nvd@nist.gov",
+       "type": "Primary",
+       "vector": "AV:N/AC:M/Au:N/C:P/I:P/A:P",
+       "vendorMetadata": {},
+       "version": "2.0"
+      }
+     ],
+     "cwes": [
+      {
+       "cve": "CVE-2020-7598",
+       "cwe": "CWE-1321",
+       "source": "nvd@nist.gov",
+       "type": "Primary"
+      }
+     ],
+     "dataSource": "https://nvd.nist.gov/vuln/detail/CVE-2020-7598",
+     "epss": [
+      {
+       "cve": "CVE-2020-7598",
+       "date": "2026-11-13",
+       "epss": 0.01931,
+       "percentile": 0.80346
+      }
+     ],
+     "id": "CVE-2020-7598",
+     "namespace": "nvd:cpe",
+     "severity": "Medium"
+    }
+   ],
+   "vulnerability": {
+    "advisories": [],
+    "cvss": [
+     {
+      "metrics": {
+       "baseScore": 5.6,
+       "exploitabilityScore": 2.3,
+       "impactScore": 3.4
+      },
+      "type": "Secondary",
+      "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:L/A:L",
+      "vendorMetadata": {},
+      "version": "3.1"
+     }
+    ],
+    "cwes": [
+     {
+      "cve": "CVE-2020-7598",
+      "cwe": "CWE-1321",
+      "source": "nvd@nist.gov",
+      "type": "Primary"
+     }
+    ],
+    "dataSource": "https://github.com/advisories/GHSA-vh95-rmgr-6w4m",
+    "epss": [
+     {
+      "cve": "CVE-2020-7598",
+      "date": "2026-11-13",
+      "epss": 0.01931,
+      "percentile": 0.80346
+     }
+    ],
+    "fix": {
+     "available": [
+      {
+       "date": "2020-07-28",
+       "kind": "first-observed",
+       "version": "1.2.3"
+      }
+     ],
+     "state": "fixed"
+    },
+    "id": "GHSA-vh95-rmgr-6w4m",
+    "namespace": "github:language:javascript",
+    "risk": 1.0234300000000003,
+    "severity": "Medium"
+   }
+  },
+  {
+   "artifact": {
+    "cpes": [
+     "cpe:2.3:a:python-flask:python-flask:0.12.2:*:*:*:*:*:*:*",
+     "cpe:2.3:a:python-flask:python_flask:0.12.2:*:*:*:*:*:*:*",
+     "cpe:2.3:a:python_flask:python-flask:0.12.2:*:*:*:*:*:*:*",
+     "cpe:2.3:a:python_flask:python_flask:0.12.2:*:*:*:*:*:*:*",
+     "cpe:2.3:a:python:python-flask:0.12.2:*:*:*:*:*:*:*",
+     "cpe:2.3:a:python:python_flask:0.12.2:*:*:*:*:*:*:*",
+     "cpe:2.3:a:flask:python-flask:0.12.2:*:*:*:*:*:*:*",
+     "cpe:2.3:a:flask:python_flask:0.12.2:*:*:*:*:*:*:*",
+     "cpe:2.3:a:python-flask:flask:0.12.2:*:*:*:*:*:*:*",
+     "cpe:2.3:a:python_flask:flask:0.12.2:*:*:*:*:*:*:*",
+     "cpe:2.3:a:python:flask:0.12.2:*:*:*:*:*:*:*",
+     "cpe:2.3:a:flask:flask:0.12.2:*:*:*:*:*:*:*"
+    ],
+    "id": "299833eafc3e5576",
+    "language": "python",
+    "licenses": [],
+    "locations": [
+     {
+      "accessPath": "/api/requirements.txt",
+      "annotations": {
+       "evidence": "primary"
+      },
+      "path": "/api/requirements.txt"
+     }
+    ],
+    "name": "flask",
+    "purl": "pkg:pypi/flask@0.12.2",
+    "type": "python",
+    "upstreams": [],
+    "version": "0.12.2"
+   },
+   "relatedVulnerabilities": [
+    {
+     "cvss": [
+      {
+       "metrics": {
+        "baseScore": 7.5,
+        "exploitabilityScore": 3.9,
+        "impactScore": 3.6
+       },
+       "source": "nvd@nist.gov",
+       "type": "Primary",
+       "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
+       "vendorMetadata": {},
+       "version": "3.1"
+      },
+      {
+       "metrics": {
+        "baseScore": 7.5,
+        "exploitabilityScore": 3.9,
+        "impactScore": 3.6
+       },
+       "source": "security-advisories@github.com",
+       "type": "Secondary",
+       "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
+       "vendorMetadata": {},
+       "version": "3.1"
+      }
+     ],
+     "cwes": [
+      {
+       "cve": "CVE-2023-30861",
+       "cwe": "CWE-539",
+       "source": "security-advisories@github.com",
+       "type": "Secondary"
+      }
+     ],
+     "dataSource": "https://nvd.nist.gov/vuln/detail/CVE-2023-30861",
+     "epss": [
+      {
+       "cve": "CVE-2023-30861",
+       "date": "2026-11-13",
+       "epss": 0.0125,
+       "percentile": 0.69856
+      }
+     ],
+     "id": "CVE-2023-30861",
+     "namespace": "nvd:cpe",
+     "severity": "High"
+    }
+   ],
+   "vulnerability": {
+    "advisories": [],
+    "cvss": [
+     {
+      "metrics": {
+       "baseScore": 7.5,
+       "exploitabilityScore": 3.9,
+       "impactScore": 3.6
+      },
+      "type": "Secondary",
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
+      "vendorMetadata": {},
+      "version": "3.1"
+     },
+     {
+      "metrics": {
+       "baseScore": 8.7
+      },
+      "type": "Secondary",
+      "vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N",
+      "vendorMetadata": {},
+      "version": "4.0"
+     }
+    ],
+    "cwes": [
+     {
+      "cve": "CVE-2023-30861",
+      "cwe": "CWE-539",
+      "source": "security-advisories@github.com",
+      "type": "Secondary"
+     }
+    ],
+    "dataSource": "https://github.com/advisories/GHSA-m2qf-hxjv-5gpq",
+    "epss": [
+     {
+      "cve": "CVE-2023-30861",
+      "date": "2026-11-13",
+      "epss": 0.0125,
+      "percentile": 0.69856
+     }
+    ],
+    "fix": {
+     "available": [
+      {
+       "date": "2023-05-03",
+       "kind": "first-observed",
+       "version": "2.2.5"
+      }
+     ],
+     "state": "fixed"
+    },
+    "id": "GHSA-m2qf-hxjv-5gpq",
+    "namespace": "github:language:python",
+    "risk": 0.9750000000000002,
+    "severity": "High"
+   }
+  },
+  {
+   "artifact": {
+    "cpes": [
+     "cpe:2.3:a:gin-gonic:gin:v1.6.0:*:*:*:*:*:*:*",
+     "cpe:2.3:a:gin_gonic:gin:v1.6.0:*:*:*:*:*:*:*",
+     "cpe:2.3:a:gin:gin:v1.6.0:*:*:*:*:*:*:*"
+    ],
+    "id": "cbd836853a7eb31c",
+    "language": "go",
+    "licenses": [],
+    "locations": [
+     {
+      "accessPath": "/svc/go.mod",
+      "annotations": {
+       "evidence": "primary"
+      },
+      "path": "/svc/go.mod"
+     }
+    ],
+    "metadata": {},
+    "metadataType": "GolangModMetadata",
+    "name": "github.com/gin-gonic/gin",
+    "purl": "pkg:golang/github.com/gin-gonic/gin@v1.6.0",
+    "type": "go-module",
+    "upstreams": [],
+    "version": "v1.6.0"
+   },
+   "relatedVulnerabilities": [
+    {
+     "cvss": [
+      {
+       "metrics": {
+        "baseScore": 5.8,
+        "exploitabilityScore": 8.6,
+        "impactScore": 5
+       },
+       "source": "nvd@nist.gov",
+       "type": "Primary",
+       "vector": "AV:N/AC:M/Au:N/C:P/I:P/A:N",
+       "vendorMetadata": {},
+       "version": "2.0"
+      },
+      {
+       "metrics": {
+        "baseScore": 7.1,
+        "exploitabilityScore": 2.9,
+        "impactScore": 4.3
+       },
+       "source": "report@snyk.io",
+       "type": "Secondary",
+       "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:L/A:N",
+       "vendorMetadata": {},
+       "version": "3.1"
+      }
+     ],
+     "cwes": [
+      {
+       "cve": "CVE-2020-28483",
+       "cwe": "CWE-444",
+       "source": "nvd@nist.gov",
+       "type": "Primary"
+      }
+     ],
+     "dataSource": "https://nvd.nist.gov/vuln/detail/CVE-2020-28483",
+     "epss": [
+      {
+       "cve": "CVE-2020-28483",
+       "date": "2026-11-13",
+       "epss": 0.01332,
+       "percentile": 0.71569
+      }
+     ],
+     "id": "CVE-2020-28483",
+     "namespace": "nvd:cpe",
+     "severity": "Medium"
+    }
+   ],
+   "vulnerability": {
+    "advisories": [],
+    "cvss": [
+     {
+      "metrics": {
+       "baseScore": 7.1,
+       "exploitabilityScore": 2.9,
+       "impactScore": 4.3
+      },
+      "type": "Secondary",
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:L/A:N",
+      "vendorMetadata": {},
+      "version": "3.1"
+     }
+    ],
+    "cwes": [
+     {
+      "cve": "CVE-2020-28483",
+      "cwe": "CWE-444",
+      "source": "nvd@nist.gov",
+      "type": "Primary"
+     }
+    ],
+    "dataSource": "https://github.com/advisories/GHSA-h395-qcrw-5vmq",
+    "epss": [
+     {
+      "cve": "CVE-2020-28483",
+      "date": "2026-11-13",
+      "epss": 0.01332,
+      "percentile": 0.71569
+     }
+    ],
+    "fix": {
+     "available": [
+      {
+       "date": "2023-02-10",
+       "kind": "first-observed",
+       "version": "1.7.7"
+      }
+     ],
+     "state": "fixed"
+    },
+    "id": "GHSA-h395-qcrw-5vmq",
+    "namespace": "github:language:go",
+    "risk": 0.9723600000000001,
+    "severity": "High"
+   }
+  },
+  {
+   "artifact": {
+    "cpes": [
+     "cpe:2.3:a:apache:log4j-core:2.14.1:*:*:*:*:*:*:*",
+     "cpe:2.3:a:apache:log4j_core:2.14.1:*:*:*:*:*:*:*",
+     "cpe:2.3:a:apache:log4j:2.14.1:*:*:*:*:*:*:*"
+    ],
+    "id": "54ed79f658568eef",
+    "language": "java",
+    "licenses": [],
+    "locations": [
+     {
+      "accessPath": "/java/pom.xml",
+      "annotations": {
+       "evidence": "primary"
+      },
+      "path": "/java/pom.xml"
+     }
+    ],
+    "metadata": {
+     "archiveDigests": null,
+     "manifestName": "",
+     "pomArtifactID": "log4j-core",
+     "pomGroupID": "org.apache.logging.log4j",
+     "virtualPath": ""
+    },
+    "metadataType": "JavaMetadata",
+    "name": "log4j-core",
+    "purl": "pkg:maven/org.apache.logging.log4j/log4j-core@2.14.1",
+    "type": "java-archive",
+    "upstreams": [],
+    "version": "2.14.1"
+   },
+   "relatedVulnerabilities": [
+    {
+     "cvss": [
+      {
+       "metrics": {
+        "baseScore": 7.5,
+        "exploitabilityScore": 3.9,
+        "impactScore": 3.6
+       },
+       "source": "nvd@nist.gov",
+       "type": "Primary",
+       "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N",
+       "vendorMetadata": {},
+       "version": "3.1"
+      },
+      {
+       "metrics": {
+        "baseScore": 6.9
+       },
+       "source": "security@apache.org",
+       "type": "Secondary",
+       "vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:N/SC:N/SI:L/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+       "vendorMetadata": {},
+       "version": "4.0"
+      }
+     ],
+     "cwes": [
+      {
+       "cve": "CVE-2026-34480",
+       "cwe": "CWE-116",
+       "source": "security@apache.org",
+       "type": "Secondary"
+      }
+     ],
+     "dataSource": "https://nvd.nist.gov/vuln/detail/CVE-2026-34480",
+     "epss": [
+      {
+       "cve": "CVE-2026-34480",
+       "date": "2026-11-13",
+       "epss": 0.01064,
+       "percentile": 0.6518
+      }
+     ],
+     "id": "CVE-2026-34480",
+     "namespace": "nvd:cpe",
+     "severity": "High"
+    }
+   ],
+   "vulnerability": {
+    "advisories": [],
+    "cvss": [
+     {
+      "metrics": {
+       "baseScore": 6.9
+      },
+      "type": "Secondary",
+      "vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:N/SC:N/SI:L/SA:N",
+      "vendorMetadata": {},
+      "version": "4.0"
+     }
+    ],
+    "cwes": [
+     {
+      "cve": "CVE-2026-34480",
+      "cwe": "CWE-116",
+      "source": "security@apache.org",
+      "type": "Secondary"
+     }
+    ],
+    "dataSource": "https://github.com/advisories/GHSA-3pxv-7cmr-fjr4",
+    "epss": [
+     {
+      "cve": "CVE-2026-34480",
+      "date": "2026-11-13",
+      "epss": 0.01064,
+      "percentile": 0.6518
+     }
+    ],
+    "fix": {
+     "available": [
+      {
+       "date": "2026-04-11",
+       "kind": "first-observed",
+       "version": "2.25.4"
+      }
+     ],
+     "state": "fixed"
+    },
+    "id": "GHSA-3pxv-7cmr-fjr4",
+    "namespace": "github:language:java",
+    "risk": 0.63308,
+    "severity": "Medium"
+   }
+  },
+  {
+   "artifact": {
+    "cpes": [
+     "cpe:2.3:a:python:requests:2.19.1:*:*:*:*:*:*:*"
+    ],
+    "id": "0b9ed2e1df212aee",
+    "language": "python",
+    "licenses": [],
+    "locations": [
+     {
+      "accessPath": "/api/requirements.txt",
+      "annotations": {
+       "evidence": "primary"
+      },
+      "path": "/api/requirements.txt"
+     }
+    ],
+    "name": "requests",
+    "purl": "pkg:pypi/requests@2.19.1",
+    "type": "python",
+    "upstreams": [],
+    "version": "2.19.1"
+   },
+   "relatedVulnerabilities": [
+    {
+     "cvss": [
+      {
+       "metrics": {
+        "baseScore": 5.3,
+        "exploitabilityScore": 1.7,
+        "impactScore": 3.6
+       },
+       "source": "security-advisories@github.com",
+       "type": "Secondary",
+       "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:H/I:N/A:N",
+       "vendorMetadata": {},
+       "version": "3.1"
+      }
+     ],
+     "cwes": [
+      {
+       "cve": "CVE-2024-47081",
+       "cwe": "CWE-522",
+       "source": "security-advisories@github.com",
+       "type": "Secondary"
+      }
+     ],
+     "dataSource": "https://nvd.nist.gov/vuln/detail/CVE-2024-47081",
+     "epss": [
+      {
+       "cve": "CVE-2024-47081",
+       "date": "2026-11-13",
+       "epss": 0.01022,
+       "percentile": 0.63982
+      }
+     ],
+     "id": "CVE-2024-47081",
+     "namespace": "nvd:cpe",
+     "severity": "Medium"
+    }
+   ],
+   "vulnerability": {
+    "advisories": [],
+    "cvss": [
+     {
+      "metrics": {
+       "baseScore": 5.3,
+       "exploitabilityScore": 1.7,
+       "impactScore": 3.6
+      },
+      "type": "Secondary",
+      "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:H/I:N/A:N",
+      "vendorMetadata": {},
+      "version": "3.1"
+     }
+    ],
+    "cwes": [
+     {
+      "cve": "CVE-2024-47081",
+      "cwe": "CWE-522",
+      "source": "security-advisories@github.com",
+      "type": "Secondary"
+     }
+    ],
+    "dataSource": "https://github.com/advisories/GHSA-9hjg-9r4m-mvj7",
+    "epss": [
+     {
+      "cve": "CVE-2024-47081",
+      "date": "2026-11-13",
+      "epss": 0.01022,
+      "percentile": 0.63982
+     }
+    ],
+    "fix": {
+     "available": [
+      {
+       "date": "2025-06-10",
+       "kind": "first-observed",
+       "version": "2.32.4"
+      }
+     ],
+     "state": "fixed"
+    },
+    "id": "GHSA-9hjg-9r4m-mvj7",
+    "namespace": "github:language:python",
+    "risk": 0.5263300000000001,
+    "severity": "Medium"
+   }
+  },
+  {
+   "artifact": {
+    "cpes": [
+     "cpe:2.3:a:python-jinja2:python-jinja2:2.10:*:*:*:*:*:*:*",
+     "cpe:2.3:a:python-jinja2:python_jinja2:2.10:*:*:*:*:*:*:*",
+     "cpe:2.3:a:python_jinja2:python-jinja2:2.10:*:*:*:*:*:*:*",
+     "cpe:2.3:a:python_jinja2:python_jinja2:2.10:*:*:*:*:*:*:*",
+     "cpe:2.3:a:jinja2:python-jinja2:2.10:*:*:*:*:*:*:*",
+     "cpe:2.3:a:jinja2:python_jinja2:2.10:*:*:*:*:*:*:*",
+     "cpe:2.3:a:python-jinja2:jinja2:2.10:*:*:*:*:*:*:*",
+     "cpe:2.3:a:python:python-jinja2:2.10:*:*:*:*:*:*:*",
+     "cpe:2.3:a:python:python_jinja2:2.10:*:*:*:*:*:*:*",
+     "cpe:2.3:a:python_jinja2:jinja2:2.10:*:*:*:*:*:*:*",
+     "cpe:2.3:a:jinja2:jinja2:2.10:*:*:*:*:*:*:*",
+     "cpe:2.3:a:python:jinja2:2.10:*:*:*:*:*:*:*"
+    ],
+    "id": "cc54395109492b60",
+    "language": "python",
+    "licenses": [],
+    "locations": [
+     {
+      "accessPath": "/api/requirements.txt",
+      "annotations": {
+       "evidence": "primary"
+      },
+      "path": "/api/requirements.txt"
+     }
+    ],
+    "name": "jinja2",
+    "purl": "pkg:pypi/jinja2@2.10",
+    "type": "python",
+    "upstreams": [],
+    "version": "2.10"
+   },
+   "relatedVulnerabilities": [
+    {
+     "cvss": [
+      {
+       "metrics": {
+        "baseScore": 5.4,
+        "exploitabilityScore": 2.9,
+        "impactScore": 2.6
+       },
+       "source": "134c704f-9b21-4f2e-91b3-4a467353bcc0",
+       "type": "Secondary",
+       "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:L/I:L/A:N",
+       "vendorMetadata": {},
+       "version": "3.1"
+      },
+      {
+       "metrics": {
+        "baseScore": 5.4,
+        "exploitabilityScore": 2.9,
+        "impactScore": 2.6
+       },
+       "source": "security-advisories@github.com",
+       "type": "Secondary",
+       "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:L/I:L/A:N",
+       "vendorMetadata": {},
+       "version": "3.1"
+      }
+     ],
+     "cwes": [
+      {
+       "cve": "CVE-2024-34064",
+       "cwe": "CWE-79",
+       "source": "security-advisories@github.com",
+       "type": "Secondary"
+      }
+     ],
+     "dataSource": "https://nvd.nist.gov/vuln/detail/CVE-2024-34064",
+     "epss": [
+      {
+       "cve": "CVE-2024-34064",
+       "date": "2026-11-13",
+       "epss": 0.00979,
+       "percentile": 0.62716
+      }
+     ],
+     "id": "CVE-2024-34064",
+     "namespace": "nvd:cpe",
+     "severity": "Medium"
+    }
+   ],
+   "vulnerability": {
+    "advisories": [],
+    "cvss": [
+     {
+      "metrics": {
+       "baseScore": 5.4,
+       "exploitabilityScore": 2.9,
+       "impactScore": 2.6
+      },
+      "type": "Secondary",
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:L/I:L/A:N",
+      "vendorMetadata": {},
+      "version": "3.1"
+     }
+    ],
+    "cwes": [
+     {
+      "cve": "CVE-2024-34064",
+      "cwe": "CWE-79",
+      "source": "security-advisories@github.com",
+      "type": "Secondary"
+     }
+    ],
+    "dataSource": "https://github.com/advisories/GHSA-h75v-3vvj-5mfj",
+    "epss": [
+     {
+      "cve": "CVE-2024-34064",
+      "date": "2026-11-13",
+      "epss": 0.00979,
+      "percentile": 0.62716
+     }
+    ],
+    "fix": {
+     "available": [
+      {
+       "date": "2024-05-07",
+       "kind": "first-observed",
+       "version": "3.1.4"
+      }
+     ],
+     "state": "fixed"
+    },
+    "id": "GHSA-h75v-3vvj-5mfj",
+    "namespace": "github:language:python",
+    "risk": 0.5090800000000001,
+    "severity": "Medium"
+   }
+  },
+  {
+   "artifact": {
+    "cpes": [
+     "cpe:2.3:a:gin-gonic:gin:v1.6.0:*:*:*:*:*:*:*",
+     "cpe:2.3:a:gin_gonic:gin:v1.6.0:*:*:*:*:*:*:*",
+     "cpe:2.3:a:gin:gin:v1.6.0:*:*:*:*:*:*:*"
+    ],
+    "id": "cbd836853a7eb31c",
+    "language": "go",
+    "licenses": [],
+    "locations": [
+     {
+      "accessPath": "/svc/go.mod",
+      "annotations": {
+       "evidence": "primary"
+      },
+      "path": "/svc/go.mod"
+     }
+    ],
+    "metadata": {},
+    "metadataType": "GolangModMetadata",
+    "name": "github.com/gin-gonic/gin",
+    "purl": "pkg:golang/github.com/gin-gonic/gin@v1.6.0",
+    "type": "go-module",
+    "upstreams": [],
+    "version": "v1.6.0"
+   },
+   "relatedVulnerabilities": [
+    {
+     "cvss": [
+      {
+       "metrics": {
+        "baseScore": 7.3,
+        "exploitabilityScore": 3.9,
+        "impactScore": 3.4
+       },
+       "source": "nvd@nist.gov",
+       "type": "Primary",
+       "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:L",
+       "vendorMetadata": {},
+       "version": "3.1"
+      },
+      {
+       "metrics": {
+        "baseScore": 7.3,
+        "exploitabilityScore": 3.9,
+        "impactScore": 3.4
+       },
+       "source": "134c704f-9b21-4f2e-91b3-4a467353bcc0",
+       "type": "Secondary",
+       "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:L",
+       "vendorMetadata": {},
+       "version": "3.1"
+      },
+      {
+       "metrics": {
+        "baseScore": 5.6,
+        "exploitabilityScore": 2.3,
+        "impactScore": 3.4
+       },
+       "source": "report@snyk.io",
+       "type": "Secondary",
+       "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:L/A:L",
+       "vendorMetadata": {},
+       "version": "3.1"
+      }
+     ],
+     "cwes": [
+      {
+       "cve": "CVE-2023-26125",
+       "cwe": "CWE-20",
+       "source": "report@snyk.io",
+       "type": "Secondary"
+      },
+      {
+       "cve": "CVE-2023-26125",
+       "cwe": "CWE-20",
+       "source": "nvd@nist.gov",
+       "type": "Primary"
+      },
+      {
+       "cve": "CVE-2023-26125",
+       "cwe": "CWE-77",
+       "source": "134c704f-9b21-4f2e-91b3-4a467353bcc0",
+       "type": "Secondary"
+      }
+     ],
+     "dataSource": "https://nvd.nist.gov/vuln/detail/CVE-2023-26125",
+     "epss": [
+      {
+       "cve": "CVE-2023-26125",
+       "date": "2026-11-13",
+       "epss": 0.00905,
+       "percentile": 0.60363
+      }
+     ],
+     "id": "CVE-2023-26125",
+     "namespace": "nvd:cpe",
+     "severity": "High"
+    }
+   ],
+   "vulnerability": {
+    "advisories": [],
+    "cvss": [
+     {
+      "metrics": {
+       "baseScore": 5.6,
+       "exploitabilityScore": 2.3,
+       "impactScore": 3.4
+      },
+      "type": "Secondary",
+      "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:L/A:L",
+      "vendorMetadata": {},
+      "version": "3.1"
+     }
+    ],
+    "cwes": [
+     {
+      "cve": "CVE-2023-26125",
+      "cwe": "CWE-20",
+      "source": "report@snyk.io",
+      "type": "Secondary"
+     },
+     {
+      "cve": "CVE-2023-26125",
+      "cwe": "CWE-20",
+      "source": "nvd@nist.gov",
+      "type": "Primary"
+     },
+     {
+      "cve": "CVE-2023-26125",
+      "cwe": "CWE-77",
+      "source": "134c704f-9b21-4f2e-91b3-4a467353bcc0",
+      "type": "Secondary"
+     }
+    ],
+    "dataSource": "https://github.com/advisories/GHSA-3vp4-m3rf-835h",
+    "epss": [
+     {
+      "cve": "CVE-2023-26125",
+      "date": "2026-11-13",
+      "epss": 0.00905,
+      "percentile": 0.60363
+     }
+    ],
+    "fix": {
+     "available": [
+      {
+       "date": "2023-05-06",
+       "kind": "first-observed",
+       "version": "1.9.0"
+      }
+     ],
+     "state": "fixed"
+    },
+    "id": "GHSA-3vp4-m3rf-835h",
+    "namespace": "github:language:go",
+    "risk": 0.47965,
+    "severity": "Medium"
+   }
+  },
+  {
+   "artifact": {
+    "cpes": [
+     "cpe:2.3:a:python-jinja2:python-jinja2:2.10:*:*:*:*:*:*:*",
+     "cpe:2.3:a:python-jinja2:python_jinja2:2.10:*:*:*:*:*:*:*",
+     "cpe:2.3:a:python_jinja2:python-jinja2:2.10:*:*:*:*:*:*:*",
+     "cpe:2.3:a:python_jinja2:python_jinja2:2.10:*:*:*:*:*:*:*",
+     "cpe:2.3:a:jinja2:python-jinja2:2.10:*:*:*:*:*:*:*",
+     "cpe:2.3:a:jinja2:python_jinja2:2.10:*:*:*:*:*:*:*",
+     "cpe:2.3:a:python-jinja2:jinja2:2.10:*:*:*:*:*:*:*",
+     "cpe:2.3:a:python:python-jinja2:2.10:*:*:*:*:*:*:*",
+     "cpe:2.3:a:python:python_jinja2:2.10:*:*:*:*:*:*:*",
+     "cpe:2.3:a:python_jinja2:jinja2:2.10:*:*:*:*:*:*:*",
+     "cpe:2.3:a:jinja2:jinja2:2.10:*:*:*:*:*:*:*",
+     "cpe:2.3:a:python:jinja2:2.10:*:*:*:*:*:*:*"
+    ],
+    "id": "cc54395109492b60",
+    "language": "python",
+    "licenses": [],
+    "locations": [
+     {
+      "accessPath": "/api/requirements.txt",
+      "annotations": {
+       "evidence": "primary"
+      },
+      "path": "/api/requirements.txt"
+     }
+    ],
+    "name": "jinja2",
+    "purl": "pkg:pypi/jinja2@2.10",
+    "type": "python",
+    "upstreams": [],
+    "version": "2.10"
+   },
+   "relatedVulnerabilities": [
+    {
+     "cvss": [
+      {
+       "metrics": {
+        "baseScore": 6.1,
+        "exploitabilityScore": 2.9,
+        "impactScore": 2.8
+       },
+       "source": "nvd@nist.gov",
+       "type": "Primary",
+       "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N",
+       "vendorMetadata": {},
+       "version": "3.1"
+      },
+      {
+       "metrics": {
+        "baseScore": 5.4,
+        "exploitabilityScore": 2.9,
+        "impactScore": 2.6
+       },
+       "source": "security-advisories@github.com",
+       "type": "Secondary",
+       "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:L/I:L/A:N",
+       "vendorMetadata": {},
+       "version": "3.1"
+      }
+     ],
+     "cwes": [
+      {
+       "cve": "CVE-2024-22195",
+       "cwe": "CWE-79",
+       "source": "security-advisories@github.com",
+       "type": "Secondary"
+      },
+      {
+       "cve": "CVE-2024-22195",
+       "cwe": "CWE-79",
+       "source": "nvd@nist.gov",
+       "type": "Primary"
+      }
+     ],
+     "dataSource": "https://nvd.nist.gov/vuln/detail/CVE-2024-22195",
+     "epss": [
+      {
+       "cve": "CVE-2024-22195",
+       "date": "2026-11-13",
+       "epss": 0.00892,
+       "percentile": 0.59954
+      }
+     ],
+     "id": "CVE-2024-22195",
+     "namespace": "nvd:cpe",
+     "severity": "Medium"
+    }
+   ],
+   "vulnerability": {
+    "advisories": [],
+    "cvss": [
+     {
+      "metrics": {
+       "baseScore": 5.4,
+       "exploitabilityScore": 2.9,
+       "impactScore": 2.6
+      },
+      "type": "Secondary",
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:L/I:L/A:N",
+      "vendorMetadata": {},
+      "version": "3.1"
+     }
+    ],
+    "cwes": [
+     {
+      "cve": "CVE-2024-22195",
+      "cwe": "CWE-79",
+      "source": "security-advisories@github.com",
+      "type": "Secondary"
+     },
+     {
+      "cve": "CVE-2024-22195",
+      "cwe": "CWE-79",
+      "source": "nvd@nist.gov",
+      "type": "Primary"
+     }
+    ],
+    "dataSource": "https://github.com/advisories/GHSA-h5c8-rqwp-cp95",
+    "epss": [
+     {
+      "cve": "CVE-2024-22195",
+      "date": "2026-11-13",
+      "epss": 0.00892,
+      "percentile": 0.59954
+     }
+    ],
+    "fix": {
+     "available": [
+      {
+       "date": "2024-01-12",
+       "kind": "first-observed",
+       "version": "3.1.3"
+      }
+     ],
+     "state": "fixed"
+    },
+    "id": "GHSA-h5c8-rqwp-cp95",
+    "namespace": "github:language:python",
+    "risk": 0.4638400000000001,
+    "severity": "Medium"
+   }
+  },
+  {
+   "artifact": {
+    "cpes": [
+     "cpe:2.3:a:openjsf:express:4.16.0:*:*:*:*:node.js:*:*"
+    ],
+    "id": "c4f86b7cb4aadec2",
+    "language": "javascript",
+    "licenses": [],
+    "locations": [
+     {
+      "accessPath": "/web/package-lock.json",
+      "annotations": {
+       "evidence": "primary"
+      },
+      "path": "/web/package-lock.json"
+     }
+    ],
+    "name": "express",
+    "purl": "pkg:npm/express@4.16.0",
+    "type": "npm",
+    "upstreams": [],
+    "version": "4.16.0"
+   },
+   "relatedVulnerabilities": [
+    {
+     "cvss": [
+      {
+       "metrics": {
+        "baseScore": 6.1,
+        "exploitabilityScore": 2.9,
+        "impactScore": 2.8
+       },
+       "source": "security-advisories@github.com",
+       "type": "Secondary",
+       "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N",
+       "vendorMetadata": {},
+       "version": "3.1"
+      }
+     ],
+     "cwes": [
+      {
+       "cve": "CVE-2024-29041",
+       "cwe": "CWE-601",
+       "source": "security-advisories@github.com",
+       "type": "Secondary"
+      },
+      {
+       "cve": "CVE-2024-29041",
+       "cwe": "CWE-1286",
+       "source": "security-advisories@github.com",
+       "type": "Secondary"
+      }
+     ],
+     "dataSource": "https://nvd.nist.gov/vuln/detail/CVE-2024-29041",
+     "epss": [
+      {
+       "cve": "CVE-2024-29041",
+       "date": "2026-11-13",
+       "epss": 0.00786,
+       "percentile": 0.56666
+      }
+     ],
+     "id": "CVE-2024-29041",
+     "namespace": "nvd:cpe",
+     "severity": "Medium"
+    }
+   ],
+   "vulnerability": {
+    "advisories": [],
+    "cvss": [
+     {
+      "metrics": {
+       "baseScore": 6.1,
+       "exploitabilityScore": 2.9,
+       "impactScore": 2.8
+      },
+      "type": "Secondary",
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N",
+      "vendorMetadata": {},
+      "version": "3.1"
+     }
+    ],
+    "cwes": [
+     {
+      "cve": "CVE-2024-29041",
+      "cwe": "CWE-601",
+      "source": "security-advisories@github.com",
+      "type": "Secondary"
+     },
+     {
+      "cve": "CVE-2024-29041",
+      "cwe": "CWE-1286",
+      "source": "security-advisories@github.com",
+      "type": "Secondary"
+     }
+    ],
+    "dataSource": "https://github.com/advisories/GHSA-rv95-896h-c2vc",
+    "epss": [
+     {
+      "cve": "CVE-2024-29041",
+      "date": "2026-11-13",
+      "epss": 0.00786,
+      "percentile": 0.56666
+     }
+    ],
+    "fix": {
+     "available": [
+      {
+       "date": "2024-03-26",
+       "kind": "first-observed",
+       "version": "4.19.2"
+      }
+     ],
+     "state": "fixed"
+    },
+    "id": "GHSA-rv95-896h-c2vc",
+    "namespace": "github:language:javascript",
+    "risk": 0.43622999999999995,
+    "severity": "Medium"
+   }
+  },
+  {
+   "artifact": {
+    "cpes": [
+     "cpe:2.3:a:apache:log4j-core:2.14.1:*:*:*:*:*:*:*",
+     "cpe:2.3:a:apache:log4j_core:2.14.1:*:*:*:*:*:*:*",
+     "cpe:2.3:a:apache:log4j:2.14.1:*:*:*:*:*:*:*"
+    ],
+    "id": "54ed79f658568eef",
+    "language": "java",
+    "licenses": [],
+    "locations": [
+     {
+      "accessPath": "/java/pom.xml",
+      "annotations": {
+       "evidence": "primary"
+      },
+      "path": "/java/pom.xml"
+     }
+    ],
+    "metadata": {
+     "archiveDigests": null,
+     "manifestName": "",
+     "pomArtifactID": "log4j-core",
+     "pomGroupID": "org.apache.logging.log4j",
+     "virtualPath": ""
+    },
+    "metadataType": "JavaMetadata",
+    "name": "log4j-core",
+    "purl": "pkg:maven/org.apache.logging.log4j/log4j-core@2.14.1",
+    "type": "java-archive",
+    "upstreams": [],
+    "version": "2.14.1"
+   },
+   "relatedVulnerabilities": [
+    {
+     "cvss": [
+      {
+       "metrics": {
+        "baseScore": 4.8,
+        "exploitabilityScore": 2.3,
+        "impactScore": 2.6
+       },
+       "source": "nvd@nist.gov",
+       "type": "Primary",
+       "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:L/A:N",
+       "vendorMetadata": {},
+       "version": "3.1"
+      },
+      {
+       "metrics": {
+        "baseScore": 6.3
+       },
+       "source": "security@apache.org",
+       "type": "Secondary",
+       "vector": "CVSS:4.0/AV:N/AC:H/AT:N/PR:N/UI:N/VC:L/VI:N/VA:N/SC:N/SI:L/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+       "vendorMetadata": {},
+       "version": "4.0"
+      }
+     ],
+     "cwes": [
+      {
+       "cve": "CVE-2025-68161",
+       "cwe": "CWE-297",
+       "source": "security@apache.org",
+       "type": "Secondary"
+      },
+      {
+       "cve": "CVE-2025-68161",
+       "cwe": "CWE-295",
+       "source": "nvd@nist.gov",
+       "type": "Primary"
+      }
+     ],
+     "dataSource": "https://nvd.nist.gov/vuln/detail/CVE-2025-68161",
+     "epss": [
+      {
+       "cve": "CVE-2025-68161",
+       "date": "2026-11-13",
+       "epss": 0.00767,
+       "percentile": 0.56067
+      }
+     ],
+     "id": "CVE-2025-68161",
+     "namespace": "nvd:cpe",
+     "severity": "Medium"
+    }
+   ],
+   "vulnerability": {
+    "advisories": [],
+    "cvss": [
+     {
+      "metrics": {
+       "baseScore": 6.3
+      },
+      "type": "Secondary",
+      "vector": "CVSS:4.0/AV:N/AC:H/AT:N/PR:N/UI:N/VC:L/VI:N/VA:N/SC:N/SI:L/SA:N",
+      "vendorMetadata": {},
+      "version": "4.0"
+     }
+    ],
+    "cwes": [
+     {
+      "cve": "CVE-2025-68161",
+      "cwe": "CWE-297",
+      "source": "security@apache.org",
+      "type": "Secondary"
+     },
+     {
+      "cve": "CVE-2025-68161",
+      "cwe": "CWE-295",
+      "source": "nvd@nist.gov",
+      "type": "Primary"
+     }
+    ],
+    "dataSource": "https://github.com/advisories/GHSA-vc5p-v9hr-52mj",
+    "epss": [
+     {
+      "cve": "CVE-2025-68161",
+      "date": "2026-11-13",
+      "epss": 0.00767,
+      "percentile": 0.56067
+     }
+    ],
+    "fix": {
+     "available": [
+      {
+       "date": "2025-12-20",
+       "kind": "first-observed",
+       "version": "2.25.3"
+      }
+     ],
+     "state": "fixed"
+    },
+    "id": "GHSA-vc5p-v9hr-52mj",
+    "namespace": "github:language:java",
+    "risk": 0.43335499999999993,
+    "severity": "Medium"
+   }
+  },
+  {
+   "artifact": {
+    "cpes": [
+     "cpe:2.3:a:golang:text:v0.3.0:*:*:*:*:*:*:*"
+    ],
+    "id": "a5b5b3d30dae7010",
+    "language": "go",
+    "licenses": [],
+    "locations": [
+     {
+      "accessPath": "/svc/go.mod",
+      "annotations": {
+       "evidence": "primary"
+      },
+      "path": "/svc/go.mod"
+     }
+    ],
+    "metadata": {},
+    "metadataType": "GolangModMetadata",
+    "name": "golang.org/x/text",
+    "purl": "pkg:golang/golang.org/x/text@v0.3.0",
+    "type": "go-module",
+    "upstreams": [],
+    "version": "v0.3.0"
+   },
+   "relatedVulnerabilities": [
+    {
+     "cvss": [
+      {
+       "metrics": {
+        "baseScore": 7.5,
+        "exploitabilityScore": 3.9,
+        "impactScore": 3.6
+       },
+       "source": "134c704f-9b21-4f2e-91b3-4a467353bcc0",
+       "type": "Secondary",
+       "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+       "vendorMetadata": {},
+       "version": "3.1"
+      }
+     ],
+     "cwes": [
+      {
+       "cve": "CVE-2026-56852",
+       "cwe": "CWE-835",
+       "source": "134c704f-9b21-4f2e-91b3-4a467353bcc0",
+       "type": "Secondary"
+      }
+     ],
+     "dataSource": "https://nvd.nist.gov/vuln/detail/CVE-2026-56852",
+     "epss": [
+      {
+       "cve": "CVE-2026-56852",
+       "date": "2026-11-13",
+       "epss": 0.00475,
+       "percentile": 0.41587
+      }
+     ],
+     "id": "CVE-2026-56852",
+     "namespace": "nvd:cpe",
+     "severity": "High"
+    }
+   ],
+   "vulnerability": {
+    "advisories": [],
+    "cvss": [
+     {
+      "metrics": {
+       "baseScore": 7.5,
+       "exploitabilityScore": 3.9,
+       "impactScore": 3.6
+      },
+      "source": "134c704f-9b21-4f2e-91b3-4a467353bcc0",
+      "type": "Secondary",
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+      "vendorMetadata": {},
+      "version": "3.1"
+     }
+    ],
+    "cwes": [
+     {
+      "cve": "CVE-2026-56852",
+      "cwe": "CWE-835",
+      "source": "134c704f-9b21-4f2e-91b3-4a467353bcc0",
+      "type": "Secondary"
+     }
+    ],
+    "dataSource": "https://go.dev/issue/80142",
+    "epss": [
+     {
+      "cve": "CVE-2026-56852",
+      "date": "2026-11-13",
+      "epss": 0.00475,
+      "percentile": 0.41587
+     }
+    ],
+    "fix": {
+     "available": [
+      {
+       "date": "2026-06-30",
+       "kind": "release",
+       "version": "0.39.0"
+      }
+     ],
+     "state": "fixed"
+    },
+    "id": "GO-2026-5970",
+    "namespace": "govulndb:language:go",
+    "risk": 0.35624999999999996,
+    "severity": "High"
+   }
+  },
+  {
+   "artifact": {
+    "cpes": [
+     "cpe:2.3:a:golang:text:v0.3.0:*:*:*:*:*:*:*"
+    ],
+    "id": "a5b5b3d30dae7010",
+    "language": "go",
+    "licenses": [],
+    "locations": [
+     {
+      "accessPath": "/svc/go.mod",
+      "annotations": {
+       "evidence": "primary"
+      },
+      "path": "/svc/go.mod"
+     }
+    ],
+    "metadata": {},
+    "metadataType": "GolangModMetadata",
+    "name": "golang.org/x/text",
+    "purl": "pkg:golang/golang.org/x/text@v0.3.0",
+    "type": "go-module",
+    "upstreams": [],
+    "version": "v0.3.0"
+   },
+   "relatedVulnerabilities": [
+    {
+     "cvss": [
+      {
+       "metrics": {
+        "baseScore": 7.5,
+        "exploitabilityScore": 3.9,
+        "impactScore": 3.6
+       },
+       "source": "134c704f-9b21-4f2e-91b3-4a467353bcc0",
+       "type": "Secondary",
+       "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+       "vendorMetadata": {},
+       "version": "3.1"
+      }
+     ],
+     "cwes": [
+      {
+       "cve": "CVE-2026-56851",
+       "cwe": "CWE-787",
+       "source": "134c704f-9b21-4f2e-91b3-4a467353bcc0",
+       "type": "Secondary"
+      }
+     ],
+     "dataSource": "https://nvd.nist.gov/vuln/detail/CVE-2026-56851",
+     "epss": [
+      {
+       "cve": "CVE-2026-56851",
+       "date": "2026-11-13",
+       "epss": 0.00466,
+       "percentile": 0.40836
+      }
+     ],
+     "id": "CVE-2026-56851",
+     "namespace": "nvd:cpe",
+     "severity": "High"
+    }
+   ],
+   "vulnerability": {
+    "advisories": [],
+    "cvss": [
+     {
+      "metrics": {
+       "baseScore": 7.5,
+       "exploitabilityScore": 3.9,
+       "impactScore": 3.6
+      },
+      "source": "134c704f-9b21-4f2e-91b3-4a467353bcc0",
+      "type": "Secondary",
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+      "vendorMetadata": {},
+      "version": "3.1"
+     }
+    ],
+    "cwes": [
+     {
+      "cve": "CVE-2026-56851",
+      "cwe": "CWE-787",
+      "source": "134c704f-9b21-4f2e-91b3-4a467353bcc0",
+      "type": "Secondary"
+     }
+    ],
+    "dataSource": "https://go.dev/cl/793360",
+    "epss": [
+     {
+      "cve": "CVE-2026-56851",
+      "date": "2026-11-13",
+      "epss": 0.00466,
+      "percentile": 0.40836
+     }
+    ],
+    "fix": {
+     "available": [
+      {
+       "date": "2026-08-11",
+       "kind": "release",
+       "version": "0.41.0"
+      }
+     ],
+     "state": "fixed"
+    },
+    "id": "GO-2026-6629",
+    "namespace": "govulndb:language:go",
+    "risk": 0.3495,
+    "severity": "High"
+   }
+  },
+  {
+   "artifact": {
+    "cpes": [
+     "cpe:2.3:a:apache:log4j-core:2.14.1:*:*:*:*:*:*:*",
+     "cpe:2.3:a:apache:log4j_core:2.14.1:*:*:*:*:*:*:*",
+     "cpe:2.3:a:apache:log4j:2.14.1:*:*:*:*:*:*:*"
+    ],
+    "id": "54ed79f658568eef",
+    "language": "java",
+    "licenses": [],
+    "locations": [
+     {
+      "accessPath": "/java/pom.xml",
+      "annotations": {
+       "evidence": "primary"
+      },
+      "path": "/java/pom.xml"
+     }
+    ],
+    "metadata": {
+     "archiveDigests": null,
+     "manifestName": "",
+     "pomArtifactID": "log4j-core",
+     "pomGroupID": "org.apache.logging.log4j",
+     "virtualPath": ""
+    },
+    "metadataType": "JavaMetadata",
+    "name": "log4j-core",
+    "purl": "pkg:maven/org.apache.logging.log4j/log4j-core@2.14.1",
+    "type": "java-archive",
+    "upstreams": [],
+    "version": "2.14.1"
+   },
+   "relatedVulnerabilities": [
+    {
+     "cvss": [
+      {
+       "metrics": {
+        "baseScore": 7.5,
+        "exploitabilityScore": 3.9,
+        "impactScore": 3.6
+       },
+       "source": "nvd@nist.gov",
+       "type": "Primary",
+       "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N",
+       "vendorMetadata": {},
+       "version": "3.1"
+      },
+      {
+       "metrics": {
+        "baseScore": 6.9
+       },
+       "source": "security@apache.org",
+       "type": "Secondary",
+       "vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:N/SC:N/SI:L/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+       "vendorMetadata": {},
+       "version": "4.0"
+      }
+     ],
+     "cwes": [
+      {
+       "cve": "CVE-2026-34479",
+       "cwe": "CWE-116",
+       "source": "security@apache.org",
+       "type": "Secondary"
+      }
+     ],
+     "dataSource": "https://nvd.nist.gov/vuln/detail/CVE-2026-34479",
+     "epss": [
+      {
+       "cve": "CVE-2026-34479",
+       "date": "2026-11-13",
+       "epss": 0.00544,
+       "percentile": 0.46225
+      }
+     ],
+     "id": "CVE-2026-34479",
+     "namespace": "nvd:cpe",
+     "severity": "High"
+    }
+   ],
+   "vulnerability": {
+    "advisories": [],
+    "cvss": [
+     {
+      "metrics": {
+       "baseScore": 6.9
+      },
+      "type": "Secondary",
+      "vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:N/SC:N/SI:L/SA:N",
+      "vendorMetadata": {},
+      "version": "4.0"
+     }
+    ],
+    "cwes": [
+     {
+      "cve": "CVE-2026-34479",
+      "cwe": "CWE-116",
+      "source": "security@apache.org",
+      "type": "Secondary"
+     }
+    ],
+    "dataSource": "https://github.com/advisories/GHSA-h383-gmxw-35v2",
+    "epss": [
+     {
+      "cve": "CVE-2026-34479",
+      "date": "2026-11-13",
+      "epss": 0.00544,
+      "percentile": 0.46225
+     }
+    ],
+    "fix": {
+     "available": [
+      {
+       "date": "2026-10-26",
+       "kind": "first-observed",
+       "version": "2.25.4"
+      }
+     ],
+     "state": "fixed"
+    },
+    "id": "GHSA-h383-gmxw-35v2",
+    "namespace": "github:language:java",
+    "risk": 0.32368,
+    "severity": "Medium"
+   }
+  },
+  {
+   "artifact": {
+    "cpes": [
+     "cpe:2.3:a:apache:log4j-core:2.14.1:*:*:*:*:*:*:*",
+     "cpe:2.3:a:apache:log4j_core:2.14.1:*:*:*:*:*:*:*",
+     "cpe:2.3:a:apache:log4j:2.14.1:*:*:*:*:*:*:*"
+    ],
+    "id": "54ed79f658568eef",
+    "language": "java",
+    "licenses": [],
+    "locations": [
+     {
+      "accessPath": "/java/pom.xml",
+      "annotations": {
+       "evidence": "primary"
+      },
+      "path": "/java/pom.xml"
+     }
+    ],
+    "metadata": {
+     "archiveDigests": null,
+     "manifestName": "",
+     "pomArtifactID": "log4j-core",
+     "pomGroupID": "org.apache.logging.log4j",
+     "virtualPath": ""
+    },
+    "metadataType": "JavaMetadata",
+    "name": "log4j-core",
+    "purl": "pkg:maven/org.apache.logging.log4j/log4j-core@2.14.1",
+    "type": "java-archive",
+    "upstreams": [],
+    "version": "2.14.1"
+   },
+   "relatedVulnerabilities": [
+    {
+     "cvss": [
+      {
+       "metrics": {
+        "baseScore": 5.9,
+        "exploitabilityScore": 2.3,
+        "impactScore": 3.6
+       },
+       "source": "nvd@nist.gov",
+       "type": "Primary",
+       "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:H/A:N",
+       "vendorMetadata": {},
+       "version": "3.1"
+      },
+      {
+       "metrics": {
+        "baseScore": 6.3
+       },
+       "source": "security@apache.org",
+       "type": "Secondary",
+       "vector": "CVSS:4.0/AV:N/AC:H/AT:N/PR:N/UI:N/VC:L/VI:N/VA:N/SC:N/SI:L/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+       "vendorMetadata": {},
+       "version": "4.0"
+      }
+     ],
+     "cwes": [
+      {
+       "cve": "CVE-2026-34477",
+       "cwe": "CWE-297",
+       "source": "security@apache.org",
+       "type": "Secondary"
+      },
+      {
+       "cve": "CVE-2026-34477",
+       "cwe": "CWE-295",
+       "source": "nvd@nist.gov",
+       "type": "Primary"
+      }
+     ],
+     "dataSource": "https://nvd.nist.gov/vuln/detail/CVE-2026-34477",
+     "epss": [
+      {
+       "cve": "CVE-2026-34477",
+       "date": "2026-11-13",
+       "epss": 0.00569,
+       "percentile": 0.47695
+      }
+     ],
+     "id": "CVE-2026-34477",
+     "namespace": "nvd:cpe",
+     "severity": "Medium"
+    }
+   ],
+   "vulnerability": {
+    "advisories": [],
+    "cvss": [
+     {
+      "metrics": {
+       "baseScore": 6.3
+      },
+      "type": "Secondary",
+      "vector": "CVSS:4.0/AV:N/AC:H/AT:N/PR:N/UI:N/VC:L/VI:N/VA:N/SC:N/SI:L/SA:N",
+      "vendorMetadata": {},
+      "version": "4.0"
+     }
+    ],
+    "cwes": [
+     {
+      "cve": "CVE-2026-34477",
+      "cwe": "CWE-297",
+      "source": "security@apache.org",
+      "type": "Secondary"
+     },
+     {
+      "cve": "CVE-2026-34477",
+      "cwe": "CWE-295",
+      "source": "nvd@nist.gov",
+      "type": "Primary"
+     }
+    ],
+    "dataSource": "https://github.com/advisories/GHSA-6hg6-v5c8-fphq",
+    "epss": [
+     {
+      "cve": "CVE-2026-34477",
+      "date": "2026-11-13",
+      "epss": 0.00569,
+      "percentile": 0.47695
+     }
+    ],
+    "fix": {
+     "available": [
+      {
+       "date": "2026-04-14",
+       "kind": "first-observed",
+       "version": "2.25.4"
+      }
+     ],
+     "state": "fixed"
+    },
+    "id": "GHSA-6hg6-v5c8-fphq",
+    "namespace": "github:language:java",
+    "risk": 0.32148499999999997,
+    "severity": "Medium"
+   }
+  },
+  {
+   "artifact": {
+    "cpes": [
+     "cpe:2.3:a:python-jinja2:python-jinja2:2.10:*:*:*:*:*:*:*",
+     "cpe:2.3:a:python-jinja2:python_jinja2:2.10:*:*:*:*:*:*:*",
+     "cpe:2.3:a:python_jinja2:python-jinja2:2.10:*:*:*:*:*:*:*",
+     "cpe:2.3:a:python_jinja2:python_jinja2:2.10:*:*:*:*:*:*:*",
+     "cpe:2.3:a:jinja2:python-jinja2:2.10:*:*:*:*:*:*:*",
+     "cpe:2.3:a:jinja2:python_jinja2:2.10:*:*:*:*:*:*:*",
+     "cpe:2.3:a:python-jinja2:jinja2:2.10:*:*:*:*:*:*:*",
+     "cpe:2.3:a:python:python-jinja2:2.10:*:*:*:*:*:*:*",
+     "cpe:2.3:a:python:python_jinja2:2.10:*:*:*:*:*:*:*",
+     "cpe:2.3:a:python_jinja2:jinja2:2.10:*:*:*:*:*:*:*",
+     "cpe:2.3:a:jinja2:jinja2:2.10:*:*:*:*:*:*:*",
+     "cpe:2.3:a:python:jinja2:2.10:*:*:*:*:*:*:*"
+    ],
+    "id": "cc54395109492b60",
+    "language": "python",
+    "licenses": [],
+    "locations": [
+     {
+      "accessPath": "/api/requirements.txt",
+      "annotations": {
+       "evidence": "primary"
+      },
+      "path": "/api/requirements.txt"
+     }
+    ],
+    "name": "jinja2",
+    "purl": "pkg:pypi/jinja2@2.10",
+    "type": "python",
+    "upstreams": [],
+    "version": "2.10"
+   },
+   "relatedVulnerabilities": [
+    {
+     "cvss": [
+      {
+       "metrics": {
+        "baseScore": 7.8,
+        "exploitabilityScore": 1.9,
+        "impactScore": 5.9
+       },
+       "source": "134c704f-9b21-4f2e-91b3-4a467353bcc0",
+       "type": "Secondary",
+       "vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+       "vendorMetadata": {},
+       "version": "3.1"
+      },
+      {
+       "metrics": {
+        "baseScore": 5.4
+       },
+       "source": "security-advisories@github.com",
+       "type": "Secondary",
+       "vector": "CVSS:4.0/AV:L/AC:L/AT:P/PR:L/UI:P/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+       "vendorMetadata": {},
+       "version": "4.0"
+      }
+     ],
+     "cwes": [
+      {
+       "cve": "CVE-2024-56326",
+       "cwe": "CWE-693",
+       "source": "security-advisories@github.com",
+       "type": "Secondary"
+      },
+      {
+       "cve": "CVE-2024-56326",
+       "cwe": "CWE-1336",
+       "source": "security-advisories@github.com",
+       "type": "Secondary"
+      }
+     ],
+     "dataSource": "https://nvd.nist.gov/vuln/detail/CVE-2024-56326",
+     "epss": [
+      {
+       "cve": "CVE-2024-56326",
+       "date": "2026-11-13",
+       "epss": 0.00522,
+       "percentile": 0.44836
+      }
+     ],
+     "id": "CVE-2024-56326",
+     "namespace": "nvd:cpe",
+     "severity": "High"
+    }
+   ],
+   "vulnerability": {
+    "advisories": [],
+    "cvss": [
+     {
+      "metrics": {
+       "baseScore": 7.8,
+       "exploitabilityScore": 1.9,
+       "impactScore": 5.9
+      },
+      "type": "Secondary",
+      "vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+      "vendorMetadata": {},
+      "version": "3.1"
+     },
+     {
+      "metrics": {
+       "baseScore": 5.4
+      },
+      "type": "Secondary",
+      "vector": "CVSS:4.0/AV:L/AC:L/AT:P/PR:L/UI:P/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N",
+      "vendorMetadata": {},
+      "version": "4.0"
+     }
+    ],
+    "cwes": [
+     {
+      "cve": "CVE-2024-56326",
+      "cwe": "CWE-693",
+      "source": "security-advisories@github.com",
+      "type": "Secondary"
+     },
+     {
+      "cve": "CVE-2024-56326",
+      "cwe": "CWE-1336",
+      "source": "security-advisories@github.com",
+      "type": "Secondary"
+     }
+    ],
+    "dataSource": "https://github.com/advisories/GHSA-q2x7-8rv6-6q7h",
+    "epss": [
+     {
+      "cve": "CVE-2024-56326",
+      "date": "2026-11-13",
+      "epss": 0.00522,
+      "percentile": 0.44836
+     }
+    ],
+    "fix": {
+     "available": [
+      {
+       "date": "2024-12-24",
+       "kind": "first-observed",
+       "version": "3.1.5"
+      }
+     ],
+     "state": "fixed"
+    },
+    "id": "GHSA-q2x7-8rv6-6q7h",
+    "namespace": "github:language:python",
+    "risk": 0.30276,
+    "severity": "Medium"
+   }
+  },
+  {
+   "artifact": {
+    "cpes": [
+     "cpe:2.3:a:python-jinja2:python-jinja2:2.10:*:*:*:*:*:*:*",
+     "cpe:2.3:a:python-jinja2:python_jinja2:2.10:*:*:*:*:*:*:*",
+     "cpe:2.3:a:python_jinja2:python-jinja2:2.10:*:*:*:*:*:*:*",
+     "cpe:2.3:a:python_jinja2:python_jinja2:2.10:*:*:*:*:*:*:*",
+     "cpe:2.3:a:jinja2:python-jinja2:2.10:*:*:*:*:*:*:*",
+     "cpe:2.3:a:jinja2:python_jinja2:2.10:*:*:*:*:*:*:*",
+     "cpe:2.3:a:python-jinja2:jinja2:2.10:*:*:*:*:*:*:*",
+     "cpe:2.3:a:python:python-jinja2:2.10:*:*:*:*:*:*:*",
+     "cpe:2.3:a:python:python_jinja2:2.10:*:*:*:*:*:*:*",
+     "cpe:2.3:a:python_jinja2:jinja2:2.10:*:*:*:*:*:*:*",
+     "cpe:2.3:a:jinja2:jinja2:2.10:*:*:*:*:*:*:*",
+     "cpe:2.3:a:python:jinja2:2.10:*:*:*:*:*:*:*"
+    ],
+    "id": "cc54395109492b60",
+    "language": "python",
+    "licenses": [],
+    "locations": [
+     {
+      "accessPath": "/api/requirements.txt",
+      "annotations": {
+       "evidence": "primary"
+      },
+      "path": "/api/requirements.txt"
+     }
+    ],
+    "name": "jinja2",
+    "purl": "pkg:pypi/jinja2@2.10",
+    "type": "python",
+    "upstreams": [],
+    "version": "2.10"
+   },
+   "relatedVulnerabilities": [
+    {
+     "cvss": [
+      {
+       "metrics": {
+        "baseScore": 8.8,
+        "exploitabilityScore": 2.1,
+        "impactScore": 6.1
+       },
+       "source": "nvd@nist.gov",
+       "type": "Primary",
+       "vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
+       "vendorMetadata": {},
+       "version": "3.1"
+      },
+      {
+       "metrics": {
+        "baseScore": 5.4
+       },
+       "source": "security-advisories@github.com",
+       "type": "Secondary",
+       "vector": "CVSS:4.0/AV:L/AC:L/AT:P/PR:L/UI:P/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+       "vendorMetadata": {},
+       "version": "4.0"
+      }
+     ],
+     "cwes": [
+      {
+       "cve": "CVE-2025-27516",
+       "cwe": "CWE-1336",
+       "source": "security-advisories@github.com",
+       "type": "Secondary"
+      }
+     ],
+     "dataSource": "https://nvd.nist.gov/vuln/detail/CVE-2025-27516",
+     "epss": [
+      {
+       "cve": "CVE-2025-27516",
+       "date": "2026-11-13",
+       "epss": 0.00507,
+       "percentile": 0.4382
+      }
+     ],
+     "id": "CVE-2025-27516",
+     "namespace": "nvd:cpe",
+     "severity": "High"
+    }
+   ],
+   "vulnerability": {
+    "advisories": [],
+    "cvss": [
+     {
+      "metrics": {
+       "baseScore": 5.4
+      },
+      "type": "Secondary",
+      "vector": "CVSS:4.0/AV:L/AC:L/AT:P/PR:L/UI:P/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N",
+      "vendorMetadata": {},
+      "version": "4.0"
+     }
+    ],
+    "cwes": [
+     {
+      "cve": "CVE-2025-27516",
+      "cwe": "CWE-1336",
+      "source": "security-advisories@github.com",
+      "type": "Secondary"
+     }
+    ],
+    "dataSource": "https://github.com/advisories/GHSA-cpwx-vrp4-4pq7",
+    "epss": [
+     {
+      "cve": "CVE-2025-27516",
+      "date": "2026-11-13",
+      "epss": 0.00507,
+      "percentile": 0.4382
+     }
+    ],
+    "fix": {
+     "available": [
+      {
+       "date": "2025-03-06",
+       "kind": "first-observed",
+       "version": "3.1.6"
+      }
+     ],
+     "state": "fixed"
+    },
+    "id": "GHSA-cpwx-vrp4-4pq7",
+    "namespace": "github:language:python",
+    "risk": 0.26364,
+    "severity": "Medium"
+   }
+  },
+  {
+   "artifact": {
+    "cpes": [
+     "cpe:2.3:a:gin-gonic:gin:v1.6.0:*:*:*:*:*:*:*",
+     "cpe:2.3:a:gin_gonic:gin:v1.6.0:*:*:*:*:*:*:*",
+     "cpe:2.3:a:gin:gin:v1.6.0:*:*:*:*:*:*:*"
+    ],
+    "id": "cbd836853a7eb31c",
+    "language": "go",
+    "licenses": [],
+    "locations": [
+     {
+      "accessPath": "/svc/go.mod",
+      "annotations": {
+       "evidence": "primary"
+      },
+      "path": "/svc/go.mod"
+     }
+    ],
+    "metadata": {},
+    "metadataType": "GolangModMetadata",
+    "name": "github.com/gin-gonic/gin",
+    "purl": "pkg:golang/github.com/gin-gonic/gin@v1.6.0",
+    "type": "go-module",
+    "upstreams": [],
+    "version": "v1.6.0"
+   },
+   "relatedVulnerabilities": [
+    {
+     "cvss": [
+      {
+       "metrics": {
+        "baseScore": 4.3,
+        "exploitabilityScore": 2.9,
+        "impactScore": 1.5
+       },
+       "source": "nvd@nist.gov",
+       "type": "Primary",
+       "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:L/A:N",
+       "vendorMetadata": {},
+       "version": "3.1"
+      },
+      {
+       "metrics": {
+        "baseScore": 4.3,
+        "exploitabilityScore": 2.9,
+        "impactScore": 1.5
+       },
+       "source": "134c704f-9b21-4f2e-91b3-4a467353bcc0",
+       "type": "Secondary",
+       "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:L/A:N",
+       "vendorMetadata": {},
+       "version": "3.1"
+      }
+     ],
+     "cwes": [
+      {
+       "cve": "CVE-2023-29401",
+       "cwe": "CWE-494",
+       "source": "nvd@nist.gov",
+       "type": "Primary"
+      }
+     ],
+     "dataSource": "https://nvd.nist.gov/vuln/detail/CVE-2023-29401",
+     "epss": [
+      {
+       "cve": "CVE-2023-29401",
+       "date": "2026-11-13",
+       "epss": 0.00482,
+       "percentile": 0.42105
+      }
+     ],
+     "id": "CVE-2023-29401",
+     "namespace": "nvd:cpe",
+     "severity": "Medium"
+    }
+   ],
+   "vulnerability": {
+    "advisories": [],
+    "cvss": [
+     {
+      "metrics": {
+       "baseScore": 4.3,
+       "exploitabilityScore": 2.9,
+       "impactScore": 1.5
+      },
+      "type": "Secondary",
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:L/A:N",
+      "vendorMetadata": {},
+      "version": "3.1"
+     }
+    ],
+    "cwes": [
+     {
+      "cve": "CVE-2023-29401",
+      "cwe": "CWE-494",
+      "source": "nvd@nist.gov",
+      "type": "Primary"
+     }
+    ],
+    "dataSource": "https://github.com/advisories/GHSA-2c4m-59x9-fr2g",
+    "epss": [
+     {
+      "cve": "CVE-2023-29401",
+      "date": "2026-11-13",
+      "epss": 0.00482,
+      "percentile": 0.42105
+     }
+    ],
+    "fix": {
+     "available": [
+      {
+       "date": "2023-06-02",
+       "kind": "first-observed",
+       "version": "1.9.1"
+      }
+     ],
+     "state": "fixed"
+    },
+    "id": "GHSA-2c4m-59x9-fr2g",
+    "namespace": "github:language:go",
+    "risk": 0.22413,
+    "severity": "Medium"
+   }
+  },
+  {
+   "artifact": {
+    "cpes": [
+     "cpe:2.3:a:python:requests:2.19.1:*:*:*:*:*:*:*"
+    ],
+    "id": "0b9ed2e1df212aee",
+    "language": "python",
+    "licenses": [],
+    "locations": [
+     {
+      "accessPath": "/api/requirements.txt",
+      "annotations": {
+       "evidence": "primary"
+      },
+      "path": "/api/requirements.txt"
+     }
+    ],
+    "name": "requests",
+    "purl": "pkg:pypi/requests@2.19.1",
+    "type": "python",
+    "upstreams": [],
+    "version": "2.19.1"
+   },
+   "relatedVulnerabilities": [
+    {
+     "cvss": [
+      {
+       "metrics": {
+        "baseScore": 5.6,
+        "exploitabilityScore": 0.4,
+        "impactScore": 5.2
+       },
+       "source": "security-advisories@github.com",
+       "type": "Secondary",
+       "vector": "CVSS:3.1/AV:L/AC:H/PR:H/UI:R/S:U/C:H/I:H/A:N",
+       "vendorMetadata": {},
+       "version": "3.1"
+      }
+     ],
+     "cwes": [
+      {
+       "cve": "CVE-2024-35195",
+       "cwe": "CWE-670",
+       "source": "security-advisories@github.com",
+       "type": "Secondary"
+      }
+     ],
+     "dataSource": "https://nvd.nist.gov/vuln/detail/CVE-2024-35195",
+     "epss": [
+      {
+       "cve": "CVE-2024-35195",
+       "date": "2026-11-13",
+       "epss": 0.0034,
+       "percentile": 0.27865
+      }
+     ],
+     "id": "CVE-2024-35195",
+     "namespace": "nvd:cpe",
+     "severity": "Medium"
+    }
+   ],
+   "vulnerability": {
+    "advisories": [],
+    "cvss": [
+     {
+      "metrics": {
+       "baseScore": 5.6,
+       "exploitabilityScore": 0.4,
+       "impactScore": 5.2
+      },
+      "type": "Secondary",
+      "vector": "CVSS:3.1/AV:L/AC:H/PR:H/UI:R/S:U/C:H/I:H/A:N",
+      "vendorMetadata": {},
+      "version": "3.1"
+     }
+    ],
+    "cwes": [
+     {
+      "cve": "CVE-2024-35195",
+      "cwe": "CWE-670",
+      "source": "security-advisories@github.com",
+      "type": "Secondary"
+     }
+    ],
+    "dataSource": "https://github.com/advisories/GHSA-9wx4-h78v-vm56",
+    "epss": [
+     {
+      "cve": "CVE-2024-35195",
+      "date": "2026-11-13",
+      "epss": 0.0034,
+      "percentile": 0.27865
+     }
+    ],
+    "fix": {
+     "available": [
+      {
+       "date": "2024-05-21",
+       "kind": "first-observed",
+       "version": "2.32.0"
+      }
+     ],
+     "state": "fixed"
+    },
+    "id": "GHSA-9wx4-h78v-vm56",
+    "namespace": "github:language:python",
+    "risk": 0.1802,
+    "severity": "Medium"
+   }
+  },
+  {
+   "artifact": {
+    "cpes": [
+     "cpe:2.3:a:openjsf:express:4.16.0:*:*:*:*:node.js:*:*"
+    ],
+    "id": "c4f86b7cb4aadec2",
+    "language": "javascript",
+    "licenses": [],
+    "locations": [
+     {
+      "accessPath": "/web/package-lock.json",
+      "annotations": {
+       "evidence": "primary"
+      },
+      "path": "/web/package-lock.json"
+     }
+    ],
+    "name": "express",
+    "purl": "pkg:npm/express@4.16.0",
+    "type": "npm",
+    "upstreams": [],
+    "version": "4.16.0"
+   },
+   "relatedVulnerabilities": [
+    {
+     "cvss": [
+      {
+       "metrics": {
+        "baseScore": 4.7,
+        "exploitabilityScore": 1.7,
+        "impactScore": 2.8
+       },
+       "source": "nvd@nist.gov",
+       "type": "Primary",
+       "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:C/C:L/I:L/A:N",
+       "vendorMetadata": {},
+       "version": "3.1"
+      },
+      {
+       "metrics": {
+        "baseScore": 5,
+        "exploitabilityScore": 1.7,
+        "impactScore": 3.4
+       },
+       "source": "security-advisories@github.com",
+       "type": "Secondary",
+       "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:L/I:L/A:L",
+       "vendorMetadata": {},
+       "version": "3.1"
+      }
+     ],
+     "cwes": [
+      {
+       "cve": "CVE-2024-43796",
+       "cwe": "CWE-79",
+       "source": "security-advisories@github.com",
+       "type": "Secondary"
+      }
+     ],
+     "dataSource": "https://nvd.nist.gov/vuln/detail/CVE-2024-43796",
+     "epss": [
+      {
+       "cve": "CVE-2024-43796",
+       "date": "2026-11-13",
+       "epss": 0.00486,
+       "percentile": 0.42424
+      }
+     ],
+     "id": "CVE-2024-43796",
+     "namespace": "nvd:cpe",
+     "severity": "Medium"
+    }
+   ],
+   "vulnerability": {
+    "advisories": [],
+    "cvss": [
+     {
+      "metrics": {
+       "baseScore": 5,
+       "exploitabilityScore": 1.7,
+       "impactScore": 3.4
+      },
+      "type": "Secondary",
+      "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:L/I:L/A:L",
+      "vendorMetadata": {},
+      "version": "3.1"
+     },
+     {
+      "metrics": {
+       "baseScore": 2.3
+      },
+      "type": "Secondary",
+      "vector": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:P/VC:N/VI:N/VA:N/SC:L/SI:L/SA:L",
+      "vendorMetadata": {},
+      "version": "4.0"
+     }
+    ],
+    "cwes": [
+     {
+      "cve": "CVE-2024-43796",
+      "cwe": "CWE-79",
+      "source": "security-advisories@github.com",
+      "type": "Secondary"
+     }
+    ],
+    "dataSource": "https://github.com/advisories/GHSA-qw6h-vgh9-j6wx",
+    "epss": [
+     {
+      "cve": "CVE-2024-43796",
+      "date": "2026-11-13",
+      "epss": 0.00486,
+      "percentile": 0.42424
+     }
+    ],
+    "fix": {
+     "available": [
+      {
+       "date": "2024-09-11",
+       "kind": "first-observed",
+       "version": "4.20.0"
+      }
+     ],
+     "state": "fixed"
+    },
+    "id": "GHSA-qw6h-vgh9-j6wx",
+    "namespace": "github:language:javascript",
+    "risk": 0.161595,
+    "severity": "Low"
+   }
+  },
+  {
+   "artifact": {
+    "cpes": [
+     "cpe:2.3:a:python-flask:python-flask:0.12.2:*:*:*:*:*:*:*",
+     "cpe:2.3:a:python-flask:python_flask:0.12.2:*:*:*:*:*:*:*",
+     "cpe:2.3:a:python_flask:python-flask:0.12.2:*:*:*:*:*:*:*",
+     "cpe:2.3:a:python_flask:python_flask:0.12.2:*:*:*:*:*:*:*",
+     "cpe:2.3:a:python:python-flask:0.12.2:*:*:*:*:*:*:*",
+     "cpe:2.3:a:python:python_flask:0.12.2:*:*:*:*:*:*:*",
+     "cpe:2.3:a:flask:python-flask:0.12.2:*:*:*:*:*:*:*",
+     "cpe:2.3:a:flask:python_flask:0.12.2:*:*:*:*:*:*:*",
+     "cpe:2.3:a:python-flask:flask:0.12.2:*:*:*:*:*:*:*",
+     "cpe:2.3:a:python_flask:flask:0.12.2:*:*:*:*:*:*:*",
+     "cpe:2.3:a:python:flask:0.12.2:*:*:*:*:*:*:*",
+     "cpe:2.3:a:flask:flask:0.12.2:*:*:*:*:*:*:*"
+    ],
+    "id": "299833eafc3e5576",
+    "language": "python",
+    "licenses": [],
+    "locations": [
+     {
+      "accessPath": "/api/requirements.txt",
+      "annotations": {
+       "evidence": "primary"
+      },
+      "path": "/api/requirements.txt"
+     }
+    ],
+    "name": "flask",
+    "purl": "pkg:pypi/flask@0.12.2",
+    "type": "python",
+    "upstreams": [],
+    "version": "0.12.2"
+   },
+   "relatedVulnerabilities": [
+    {
+     "cvss": [
+      {
+       "metrics": {
+        "baseScore": 4.3,
+        "exploitabilityScore": 2.9,
+        "impactScore": 1.5
+       },
+       "source": "nvd@nist.gov",
+       "type": "Primary",
+       "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:L/I:N/A:N",
+       "vendorMetadata": {},
+       "version": "3.1"
+      },
+      {
+       "metrics": {
+        "baseScore": 2.3
+       },
+       "source": "security-advisories@github.com",
+       "type": "Secondary",
+       "vector": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:P/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+       "vendorMetadata": {},
+       "version": "4.0"
+      }
+     ],
+     "cwes": [
+      {
+       "cve": "CVE-2026-27205",
+       "cwe": "CWE-524",
+       "source": "security-advisories@github.com",
+       "type": "Secondary"
+      }
+     ],
+     "dataSource": "https://nvd.nist.gov/vuln/detail/CVE-2026-27205",
+     "epss": [
+      {
+       "cve": "CVE-2026-27205",
+       "date": "2026-11-13",
+       "epss": 0.004,
+       "percentile": 0.34812
+      }
+     ],
+     "id": "CVE-2026-27205",
+     "namespace": "nvd:cpe",
+     "severity": "Medium"
+    }
+   ],
+   "vulnerability": {
+    "advisories": [],
+    "cvss": [
+     {
+      "metrics": {
+       "baseScore": 2.3
+      },
+      "type": "Secondary",
+      "vector": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:P/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N",
+      "vendorMetadata": {},
+      "version": "4.0"
+     }
+    ],
+    "cwes": [
+     {
+      "cve": "CVE-2026-27205",
+      "cwe": "CWE-524",
+      "source": "security-advisories@github.com",
+      "type": "Secondary"
+     }
+    ],
+    "dataSource": "https://github.com/advisories/GHSA-68rp-wp8r-4726",
+    "epss": [
+     {
+      "cve": "CVE-2026-27205",
+      "date": "2026-11-13",
+      "epss": 0.004,
+      "percentile": 0.34812
+     }
+    ],
+    "fix": {
+     "available": [
+      {
+       "date": "2026-03-04",
+       "kind": "first-observed",
+       "version": "3.1.3"
+      }
+     ],
+     "state": "fixed"
+    },
+    "id": "GHSA-68rp-wp8r-4726",
+    "namespace": "github:language:python",
+    "risk": 0.10600000000000001,
+    "severity": "Low"
+   }
+  },
+  {
+   "artifact": {
+    "cpes": [
+     "cpe:2.3:a:python:requests:2.19.1:*:*:*:*:*:*:*"
+    ],
+    "id": "0b9ed2e1df212aee",
+    "language": "python",
+    "licenses": [],
+    "locations": [
+     {
+      "accessPath": "/api/requirements.txt",
+      "annotations": {
+       "evidence": "primary"
+      },
+      "path": "/api/requirements.txt"
+     }
+    ],
+    "name": "requests",
+    "purl": "pkg:pypi/requests@2.19.1",
+    "type": "python",
+    "upstreams": [],
+    "version": "2.19.1"
+   },
+   "relatedVulnerabilities": [
+    {
+     "cvss": [
+      {
+       "metrics": {
+        "baseScore": 5.5,
+        "exploitabilityScore": 1.9,
+        "impactScore": 3.6
+       },
+       "source": "nvd@nist.gov",
+       "type": "Primary",
+       "vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:H/A:N",
+       "vendorMetadata": {},
+       "version": "3.1"
+      },
+      {
+       "metrics": {
+        "baseScore": 4.4,
+        "exploitabilityScore": 0.8,
+        "impactScore": 3.6
+       },
+       "source": "security-advisories@github.com",
+       "type": "Secondary",
+       "vector": "CVSS:3.1/AV:L/AC:H/PR:L/UI:R/S:U/C:N/I:H/A:N",
+       "vendorMetadata": {},
+       "version": "3.1"
+      }
+     ],
+     "cwes": [
+      {
+       "cve": "CVE-2026-25645",
+       "cwe": "CWE-377",
+       "source": "security-advisories@github.com",
+       "type": "Secondary"
+      }
+     ],
+     "dataSource": "https://nvd.nist.gov/vuln/detail/CVE-2026-25645",
+     "epss": [
+      {
+       "cve": "CVE-2026-25645",
+       "date": "2026-11-13",
+       "epss": 0.00194,
+       "percentile": 0.09157
+      }
+     ],
+     "id": "CVE-2026-25645",
+     "namespace": "nvd:cpe",
+     "severity": "Medium"
+    }
+   ],
+   "vulnerability": {
+    "advisories": [],
+    "cvss": [
+     {
+      "metrics": {
+       "baseScore": 4.4,
+       "exploitabilityScore": 0.8,
+       "impactScore": 3.6
+      },
+      "type": "Secondary",
+      "vector": "CVSS:3.1/AV:L/AC:H/PR:L/UI:R/S:U/C:N/I:H/A:N",
+      "vendorMetadata": {},
+      "version": "3.1"
+     }
+    ],
+    "cwes": [
+     {
+      "cve": "CVE-2026-25645",
+      "cwe": "CWE-377",
+      "source": "security-advisories@github.com",
+      "type": "Secondary"
+     }
+    ],
+    "dataSource": "https://github.com/advisories/GHSA-gc5v-m9x4-r6x2",
+    "epss": [
+     {
+      "cve": "CVE-2026-25645",
+      "date": "2026-11-13",
+      "epss": 0.00194,
+      "percentile": 0.09157
+     }
+    ],
+    "fix": {
+     "available": [
+      {
+       "date": "2026-03-26",
+       "kind": "first-observed",
+       "version": "2.33.0"
+      }
+     ],
+     "state": "fixed"
+    },
+    "id": "GHSA-gc5v-m9x4-r6x2",
+    "namespace": "github:language:python",
+    "risk": 0.09118000000000001,
+    "severity": "Medium"
+   }
+  }
+ ],
+ "source": {
+  "target": "/src",
+  "type": "directory"
+ }
+}

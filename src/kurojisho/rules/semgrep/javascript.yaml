@@ -1,0 +1,54 @@
+# KuroJisho starter rules for JavaScript and TypeScript.
+rules:
+  - id: kurojisho.javascript.code-eval
+    languages: [javascript, typescript]
+    severity: ERROR
+    message: eval or the Function constructor runs a string as code.
+    metadata: {cwe: ["CWE-95"], confidence: MEDIUM, category: security}
+    patterns:
+      - pattern-either:
+          - pattern: eval($X)
+          - pattern: new Function(..., $X)
+      - pattern-not: eval("...")
+  - id: kurojisho.javascript.shell-command
+    languages: [javascript, typescript]
+    severity: ERROR
+    message: Command string is run through a shell; untrusted input leads to command injection.
+    metadata: {cwe: ["CWE-78"], confidence: MEDIUM, category: security}
+    patterns:
+      - pattern-either:
+          - pattern: $CP.exec($CMD, ...)
+          - pattern: $CP.execSync($CMD, ...)
+      - metavariable-regex: {metavariable: $CP, regex: ^(child_process|cp|childProcess)$}
+      - pattern-not: $CP.exec("...", ...)
+      - pattern-not: $CP.execSync("...", ...)
+  - id: kurojisho.javascript.sql-string-built
+    languages: [javascript, typescript]
+    severity: ERROR
+    message: SQL statement built by concatenation or interpolation is passed to a query call.
+    metadata: {cwe: ["CWE-89"], confidence: MEDIUM, category: security}
+    patterns:
+      - pattern-either:
+          - pattern: $DB.$METHOD("..." + $X, ...)
+          - pattern: $DB.$METHOD($A + $B + "...", ...)
+          - pattern: $DB.$METHOD(`...${$X}...`, ...)
+      - metavariable-regex: {metavariable: $METHOD, regex: ^(query|execute|raw|run|all|get)$}
+  - id: kurojisho.javascript.dom-html-injection
+    languages: [javascript, typescript]
+    severity: WARNING
+    message: Assigning non-constant markup to innerHTML or document.write allows script injection.
+    metadata: {cwe: ["CWE-79"], confidence: LOW, category: security}
+    patterns:
+      - pattern-either:
+          - pattern: $EL.innerHTML = $X
+          - pattern: $EL.outerHTML = $X
+          - pattern: document.write($X)
+      - pattern-not: $EL.innerHTML = "..."
+      - pattern-not: $EL.outerHTML = "..."
+      - pattern-not: document.write("...")
+  - id: kurojisho.javascript.tls-verification-disabled
+    languages: [javascript, typescript]
+    severity: WARNING
+    message: TLS certificate verification is disabled.
+    metadata: {cwe: ["CWE-295"], confidence: HIGH, category: security}
+    pattern: "{..., rejectUnauthorized: false, ...}"

@@ -1,0 +1,98 @@
+# Pinned scanners. Every image is referenced by digest, never by tag, so what runs is
+# exactly what was reviewed. Update with care: a new digest is new code with read access
+# to the scanned codebase. Versions and digests were read from the registries on 2026-11-14.
+schema = 1
+
+[[tool]]
+name = "semgrep"
+version = "1.184.0"
+image = "semgrep/semgrep"
+digest = "sha256:cc1b68266f267878b39739373ea9985b9a78e5d64497dd875c8de100b22695ed"
+licence = "LGPL-2.1-only"
+homepage = "https://github.com/semgrep/semgrep"
+
+[[tool]]
+name = "bandit"
+version = "1.9.4"
+image = "ghcr.io/pycqa/bandit/bandit"
+digest = "sha256:1f53d97d88951543c823f3835a53352c418e6f84bc80eb38f4faaa9ddb808205"
+licence = "Apache-2.0"
+homepage = "https://github.com/PyCQA/bandit"
+
+[[tool]]
+name = "gosec"
+version = "2.24.6"
+image = "securego/gosec"
+digest = "sha256:2cf71ea78210c496c65e3a987576a9c8317b68e20f2960520b3f6f8f9f539be5"
+licence = "Apache-2.0"
+homepage = "https://github.com/securego/gosec"
+
+[[tool]]
+name = "osv-scanner"
+version = "2.7.1"
+image = "ghcr.io/google/osv-scanner"
+digest = "sha256:a70ffffc2bfd33482953e5d6b64c6fcdb30239717a07b0f0d3ab2859ce3e4cde"
+licence = "Apache-2.0"
+homepage = "https://github.com/google/osv-scanner"
+
+[[tool]]
+name = "trivy"
+version = "0.76.2"
+image = "aquasec/trivy"
+digest = "sha256:8f6bb947dbc528902e11f2f5be52f7b519f6a39d5d148f41166f2040499768fb"
+licence = "Apache-2.0"
+homepage = "https://github.com/aquasecurity/trivy"
+
+[[tool]]
+name = "grype"
+version = "0.121.3"
+image = "anchore/grype"
+digest = "sha256:13113eeceab017260370cf540e1d25442c59665fd07d1b09b66d63bb0c282887"
+licence = "Apache-2.0"
+homepage = "https://github.com/anchore/grype"
+
+[[tool]]
+name = "syft"
+version = "1.57.1"
+image = "anchore/syft"
+digest = "sha256:03215d0e98b661d0ecbc8575dbc14d65be1743b5de5df6410aecb7e80f95b060"
+licence = "Apache-2.0"
+homepage = "https://github.com/anchore/syft"
+
+[[tool]]
+name = "gitleaks"
+version = "8.30.1"
+image = "ghcr.io/gitleaks/gitleaks"
+digest = "sha256:c00b6bd0aeb3071cbcb79009cb16a60dd9e0a7c60e2be9ab65d25e6bc8abbb7f"
+licence = "MIT"
+homepage = "https://github.com/gitleaks/gitleaks"
+
+[[tool]]
+name = "trufflehog"
+version = "3.99.9"
+image = "trufflesecurity/trufflehog"
+digest = "sha256:2ec535840f860aa27f11fee20222fb790326ecd66325c96bd49d02ec6af46eca"
+licence = "AGPL-3.0-only"
+homepage = "https://github.com/trufflesecurity/trufflehog"
+# The only tool that may be given network access, and only for opt-in secret verification.
+network = true
+
+[[tool]]
+name = "checkov"
+version = "3.4.5"
+image = "bridgecrew/checkov"
+digest = "sha256:122602cf32cc72286155d39f1f234b7b594818f7b8d7fdf490701620e521368b"
+licence = "Apache-2.0"
+homepage = "https://github.com/bridgecrewio/checkov"
+
+# govulncheck has no published image or binary. It is built once, at install time, inside
+# the pinned Go image, and the result must match binary_sha256 or it is refused.
+[[tool]]
+name = "govulncheck"
+version = "1.9.0"
+image = "golang"
+digest = "sha256:30b1e546a9c7fa3b747c2bdba3a0c7bdf3a02ebb4c5b8405d2f948d7e8aac4ec"
+licence = "BSD-3-Clause"
+homepage = "https://pkg.go.dev/golang.org/x/vuln/cmd/govulncheck"
+build = "golang.org/x/vuln/cmd/govulncheck@v1.9.0"
+binary_sha256 = "4857102574e6c761e98376d8045adde9a26f27edb81d95173b6a6d130c414759"

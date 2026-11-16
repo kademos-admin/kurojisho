@@ -47,3 +47,13 @@ def scan_fixture(tmp_path: Path) -> Callable[..., Scanned]:
         return Scanned(root, store, scan(root, store, CLOCK))
 
     return run
+
+
+@pytest.fixture(autouse=True)
+def isolated_user_dirs(
+    tmp_path_factory: pytest.TempPathFactory, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """Tests never read or write the real user cache (intel, built tools) or config."""
+    base = tmp_path_factory.mktemp("user")
+    monkeypatch.setenv("KUROJISHO_CACHE_DIR", str(base / "cache"))
+    monkeypatch.setenv("KUROJISHO_CONFIG_DIR", str(base / "config"))

@@ -1,0 +1,1537 @@
+{
+ "$schema": "https://raw.githubusercontent.com/oasis-tcs/sarif-spec/main/sarif-2.1/schema/sarif-schema-2.1.0.json",
+ "runs": [
+  {
+   "results": [
+    {
+     "attachments": [],
+     "level": "error",
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": "deploy/Dockerfile"
+        },
+        "region": {
+         "endLine": 1,
+         "snippet": {
+          "text": "FROM python:latest\n"
+         },
+         "startLine": 1
+        }
+       }
+      }
+     ],
+     "message": {
+      "text": "Ensure the base image uses a non latest version tag"
+     },
+     "ruleId": "CKV_DOCKER_7",
+     "ruleIndex": 0
+    },
+    {
+     "attachments": [],
+     "level": "error",
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": "deploy/Dockerfile"
+        },
+        "region": {
+         "endLine": 4,
+         "snippet": {
+          "text": "EXPOSE 22\n"
+         },
+         "startLine": 4
+        }
+       }
+      }
+     ],
+     "message": {
+      "text": "Ensure port 22 is not exposed"
+     },
+     "ruleId": "CKV_DOCKER_1",
+     "ruleIndex": 1
+    },
+    {
+     "attachments": [],
+     "level": "error",
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": "deploy/Dockerfile"
+        },
+        "region": {
+         "endLine": 2,
+         "snippet": {
+          "text": "ADD . /app\n"
+         },
+         "startLine": 2
+        }
+       }
+      }
+     ],
+     "message": {
+      "text": "Ensure that COPY is used instead of ADD in Dockerfiles"
+     },
+     "ruleId": "CKV_DOCKER_4",
+     "ruleIndex": 2
+    },
+    {
+     "attachments": [],
+     "level": "error",
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": "deploy/Dockerfile"
+        },
+        "region": {
+         "endLine": 5,
+         "snippet": {
+          "text": "FROM python:latest\nADD . /app\nRUN pip install -r /app/api/requirements.txt\nEXPOSE 22\nCMD [\"python\", \"/app/api/app.py\"]"
+         },
+         "startLine": 1
+        }
+       }
+      }
+     ],
+     "message": {
+      "text": "Ensure that HEALTHCHECK instructions have been added to container images"
+     },
+     "ruleId": "CKV_DOCKER_2",
+     "ruleIndex": 3
+    },
+    {
+     "attachments": [],
+     "level": "error",
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": "deploy/Dockerfile"
+        },
+        "region": {
+         "endLine": 5,
+         "snippet": {
+          "text": "FROM python:latest\nADD . /app\nRUN pip install -r /app/api/requirements.txt\nEXPOSE 22\nCMD [\"python\", \"/app/api/app.py\"]"
+         },
+         "startLine": 1
+        }
+       }
+      }
+     ],
+     "message": {
+      "text": "Ensure that a user for the container has been created"
+     },
+     "ruleId": "CKV_DOCKER_3",
+     "ruleIndex": 4
+    },
+    {
+     "attachments": [],
+     "level": "error",
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": "deploy/k8s.yaml"
+        },
+        "region": {
+         "endLine": 19,
+         "snippet": {
+          "text": "apiVersion: apps/v1\nkind: Deployment\nmetadata:\n  name: vuln-api\nspec:\n  replicas: 1\n  selector:\n    matchLabels: {app: vuln-api}\n  template:\n    metadata:\n      labels: {app: vuln-api}\n    spec:\n      hostNetwork: true\n      containers:\n        - name: api\n          image: vuln-api:latest\n          securityContext:\n            privileged: true\n            runAsUser: 0\n"
+         },
+         "startLine": 1
+        }
+       }
+      }
+     ],
+     "message": {
+      "text": "Use read-only filesystem for containers where possible"
+     },
+     "ruleId": "CKV_K8S_22",
+     "ruleIndex": 5
+    },
+    {
+     "attachments": [],
+     "level": "error",
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": "deploy/k8s.yaml"
+        },
+        "region": {
+         "endLine": 19,
+         "snippet": {
+          "text": "apiVersion: apps/v1\nkind: Deployment\nmetadata:\n  name: vuln-api\nspec:\n  replicas: 1\n  selector:\n    matchLabels: {app: vuln-api}\n  template:\n    metadata:\n      labels: {app: vuln-api}\n    spec:\n      hostNetwork: true\n      containers:\n        - name: api\n          image: vuln-api:latest\n          securityContext:\n            privileged: true\n            runAsUser: 0\n"
+         },
+         "startLine": 1
+        }
+       }
+      }
+     ],
+     "message": {
+      "text": "Readiness Probe Should be Configured"
+     },
+     "ruleId": "CKV_K8S_9",
+     "ruleIndex": 6
+    },
+    {
+     "attachments": [],
+     "level": "error",
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": "deploy/k8s.yaml"
+        },
+        "region": {
+         "endLine": 19,
+         "snippet": {
+          "text": "apiVersion: apps/v1\nkind: Deployment\nmetadata:\n  name: vuln-api\nspec:\n  replicas: 1\n  selector:\n    matchLabels: {app: vuln-api}\n  template:\n    metadata:\n      labels: {app: vuln-api}\n    spec:\n      hostNetwork: true\n      containers:\n        - name: api\n          image: vuln-api:latest\n          securityContext:\n            privileged: true\n            runAsUser: 0\n"
+         },
+         "startLine": 1
+        }
+       }
+      }
+     ],
+     "message": {
+      "text": "Container should not be privileged"
+     },
+     "ruleId": "CKV_K8S_16",
+     "ruleIndex": 7
+    },
+    {
+     "attachments": [],
+     "level": "error",
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": "deploy/k8s.yaml"
+        },
+        "region": {
+         "endLine": 19,
+         "snippet": {
+          "text": "apiVersion: apps/v1\nkind: Deployment\nmetadata:\n  name: vuln-api\nspec:\n  replicas: 1\n  selector:\n    matchLabels: {app: vuln-api}\n  template:\n    metadata:\n      labels: {app: vuln-api}\n    spec:\n      hostNetwork: true\n      containers:\n        - name: api\n          image: vuln-api:latest\n          securityContext:\n            privileged: true\n            runAsUser: 0\n"
+         },
+         "startLine": 1
+        }
+       }
+      }
+     ],
+     "message": {
+      "text": "CPU limits should be set"
+     },
+     "ruleId": "CKV_K8S_11",
+     "ruleIndex": 8
+    },
+    {
+     "attachments": [],
+     "level": "error",
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": "deploy/k8s.yaml"
+        },
+        "region": {
+         "endLine": 19,
+         "snippet": {
+          "text": "apiVersion: apps/v1\nkind: Deployment\nmetadata:\n  name: vuln-api\nspec:\n  replicas: 1\n  selector:\n    matchLabels: {app: vuln-api}\n  template:\n    metadata:\n      labels: {app: vuln-api}\n    spec:\n      hostNetwork: true\n      containers:\n        - name: api\n          image: vuln-api:latest\n          securityContext:\n            privileged: true\n            runAsUser: 0\n"
+         },
+         "startLine": 1
+        }
+       }
+      }
+     ],
+     "message": {
+      "text": "Memory requests should be set"
+     },
+     "ruleId": "CKV_K8S_12",
+     "ruleIndex": 9
+    },
+    {
+     "attachments": [],
+     "level": "error",
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": "deploy/k8s.yaml"
+        },
+        "region": {
+         "endLine": 19,
+         "snippet": {
+          "text": "apiVersion: apps/v1\nkind: Deployment\nmetadata:\n  name: vuln-api\nspec:\n  replicas: 1\n  selector:\n    matchLabels: {app: vuln-api}\n  template:\n    metadata:\n      labels: {app: vuln-api}\n    spec:\n      hostNetwork: true\n      containers:\n        - name: api\n          image: vuln-api:latest\n          securityContext:\n            privileged: true\n            runAsUser: 0\n"
+         },
+         "startLine": 1
+        }
+       }
+      }
+     ],
+     "message": {
+      "text": "Containers should run as a high UID to avoid host conflict"
+     },
+     "ruleId": "CKV_K8S_40",
+     "ruleIndex": 10
+    },
+    {
+     "attachments": [],
+     "level": "error",
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": "deploy/k8s.yaml"
+        },
+        "region": {
+         "endLine": 19,
+         "snippet": {
+          "text": "apiVersion: apps/v1\nkind: Deployment\nmetadata:\n  name: vuln-api\nspec:\n  replicas: 1\n  selector:\n    matchLabels: {app: vuln-api}\n  template:\n    metadata:\n      labels: {app: vuln-api}\n    spec:\n      hostNetwork: true\n      containers:\n        - name: api\n          image: vuln-api:latest\n          securityContext:\n            privileged: true\n            runAsUser: 0\n"
+         },
+         "startLine": 1
+        }
+       }
+      }
+     ],
+     "message": {
+      "text": "Minimize the admission of root containers"
+     },
+     "ruleId": "CKV_K8S_23",
+     "ruleIndex": 11
+    },
+    {
+     "attachments": [],
+     "level": "error",
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": "deploy/k8s.yaml"
+        },
+        "region": {
+         "endLine": 19,
+         "snippet": {
+          "text": "apiVersion: apps/v1\nkind: Deployment\nmetadata:\n  name: vuln-api\nspec:\n  replicas: 1\n  selector:\n    matchLabels: {app: vuln-api}\n  template:\n    metadata:\n      labels: {app: vuln-api}\n    spec:\n      hostNetwork: true\n      containers:\n        - name: api\n          image: vuln-api:latest\n          securityContext:\n            privileged: true\n            runAsUser: 0\n"
+         },
+         "startLine": 1
+        }
+       }
+      }
+     ],
+     "message": {
+      "text": "CPU requests should be set"
+     },
+     "ruleId": "CKV_K8S_10",
+     "ruleIndex": 12
+    },
+    {
+     "attachments": [],
+     "level": "error",
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": "deploy/k8s.yaml"
+        },
+        "region": {
+         "endLine": 19,
+         "snippet": {
+          "text": "apiVersion: apps/v1\nkind: Deployment\nmetadata:\n  name: vuln-api\nspec:\n  replicas: 1\n  selector:\n    matchLabels: {app: vuln-api}\n  template:\n    metadata:\n      labels: {app: vuln-api}\n    spec:\n      hostNetwork: true\n      containers:\n        - name: api\n          image: vuln-api:latest\n          securityContext:\n            privileged: true\n            runAsUser: 0\n"
+         },
+         "startLine": 1
+        }
+       }
+      }
+     ],
+     "message": {
+      "text": "Apply security context to your pods and containers"
+     },
+     "ruleId": "CKV_K8S_29",
+     "ruleIndex": 13
+    },
+    {
+     "attachments": [],
+     "level": "error",
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": "deploy/k8s.yaml"
+        },
+        "region": {
+         "endLine": 19,
+         "snippet": {
+          "text": "apiVersion: apps/v1\nkind: Deployment\nmetadata:\n  name: vuln-api\nspec:\n  replicas: 1\n  selector:\n    matchLabels: {app: vuln-api}\n  template:\n    metadata:\n      labels: {app: vuln-api}\n    spec:\n      hostNetwork: true\n      containers:\n        - name: api\n          image: vuln-api:latest\n          securityContext:\n            privileged: true\n            runAsUser: 0\n"
+         },
+         "startLine": 1
+        }
+       }
+      }
+     ],
+     "message": {
+      "text": "Image should use digest"
+     },
+     "ruleId": "CKV_K8S_43",
+     "ruleIndex": 14
+    },
+    {
+     "attachments": [],
+     "level": "error",
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": "deploy/k8s.yaml"
+        },
+        "region": {
+         "endLine": 19,
+         "snippet": {
+          "text": "apiVersion: apps/v1\nkind: Deployment\nmetadata:\n  name: vuln-api\nspec:\n  replicas: 1\n  selector:\n    matchLabels: {app: vuln-api}\n  template:\n    metadata:\n      labels: {app: vuln-api}\n    spec:\n      hostNetwork: true\n      containers:\n        - name: api\n          image: vuln-api:latest\n          securityContext:\n            privileged: true\n            runAsUser: 0\n"
+         },
+         "startLine": 1
+        }
+       }
+      }
+     ],
+     "message": {
+      "text": "Image Tag should be fixed - not latest or blank"
+     },
+     "ruleId": "CKV_K8S_14",
+     "ruleIndex": 15
+    },
+    {
+     "attachments": [],
+     "level": "error",
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": "deploy/k8s.yaml"
+        },
+        "region": {
+         "endLine": 19,
+         "snippet": {
+          "text": "apiVersion: apps/v1\nkind: Deployment\nmetadata:\n  name: vuln-api\nspec:\n  replicas: 1\n  selector:\n    matchLabels: {app: vuln-api}\n  template:\n    metadata:\n      labels: {app: vuln-api}\n    spec:\n      hostNetwork: true\n      containers:\n        - name: api\n          image: vuln-api:latest\n          securityContext:\n            privileged: true\n            runAsUser: 0\n"
+         },
+         "startLine": 1
+        }
+       }
+      }
+     ],
+     "message": {
+      "text": "Minimize the admission of containers with the NET_RAW capability"
+     },
+     "ruleId": "CKV_K8S_28",
+     "ruleIndex": 16
+    },
+    {
+     "attachments": [],
+     "level": "error",
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": "deploy/k8s.yaml"
+        },
+        "region": {
+         "endLine": 19,
+         "snippet": {
+          "text": "apiVersion: apps/v1\nkind: Deployment\nmetadata:\n  name: vuln-api\nspec:\n  replicas: 1\n  selector:\n    matchLabels: {app: vuln-api}\n  template:\n    metadata:\n      labels: {app: vuln-api}\n    spec:\n      hostNetwork: true\n      containers:\n        - name: api\n          image: vuln-api:latest\n          securityContext:\n            privileged: true\n            runAsUser: 0\n"
+         },
+         "startLine": 1
+        }
+       }
+      }
+     ],
+     "message": {
+      "text": "Memory limits should be set"
+     },
+     "ruleId": "CKV_K8S_13",
+     "ruleIndex": 17
+    },
+    {
+     "attachments": [],
+     "level": "error",
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": "deploy/k8s.yaml"
+        },
+        "region": {
+         "endLine": 19,
+         "snippet": {
+          "text": "apiVersion: apps/v1\nkind: Deployment\nmetadata:\n  name: vuln-api\nspec:\n  replicas: 1\n  selector:\n    matchLabels: {app: vuln-api}\n  template:\n    metadata:\n      labels: {app: vuln-api}\n    spec:\n      hostNetwork: true\n      containers:\n        - name: api\n          image: vuln-api:latest\n          securityContext:\n            privileged: true\n            runAsUser: 0\n"
+         },
+         "startLine": 1
+        }
+       }
+      }
+     ],
+     "message": {
+      "text": "Minimize the admission of containers with capabilities assigned"
+     },
+     "ruleId": "CKV_K8S_37",
+     "ruleIndex": 18
+    },
+    {
+     "attachments": [],
+     "level": "error",
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": "deploy/k8s.yaml"
+        },
+        "region": {
+         "endLine": 19,
+         "snippet": {
+          "text": "apiVersion: apps/v1\nkind: Deployment\nmetadata:\n  name: vuln-api\nspec:\n  replicas: 1\n  selector:\n    matchLabels: {app: vuln-api}\n  template:\n    metadata:\n      labels: {app: vuln-api}\n    spec:\n      hostNetwork: true\n      containers:\n        - name: api\n          image: vuln-api:latest\n          securityContext:\n            privileged: true\n            runAsUser: 0\n"
+         },
+         "startLine": 1
+        }
+       }
+      }
+     ],
+     "message": {
+      "text": "Ensure that Service Account Tokens are only mounted where necessary"
+     },
+     "ruleId": "CKV_K8S_38",
+     "ruleIndex": 19
+    },
+    {
+     "attachments": [],
+     "level": "error",
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": "deploy/k8s.yaml"
+        },
+        "region": {
+         "endLine": 19,
+         "snippet": {
+          "text": "apiVersion: apps/v1\nkind: Deployment\nmetadata:\n  name: vuln-api\nspec:\n  replicas: 1\n  selector:\n    matchLabels: {app: vuln-api}\n  template:\n    metadata:\n      labels: {app: vuln-api}\n    spec:\n      hostNetwork: true\n      containers:\n        - name: api\n          image: vuln-api:latest\n          securityContext:\n            privileged: true\n            runAsUser: 0\n"
+         },
+         "startLine": 1
+        }
+       }
+      }
+     ],
+     "message": {
+      "text": "Ensure that the seccomp profile is set to docker/default or runtime/default"
+     },
+     "ruleId": "CKV_K8S_31",
+     "ruleIndex": 20
+    },
+    {
+     "attachments": [],
+     "level": "error",
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": "deploy/k8s.yaml"
+        },
+        "region": {
+         "endLine": 19,
+         "snippet": {
+          "text": "apiVersion: apps/v1\nkind: Deployment\nmetadata:\n  name: vuln-api\nspec:\n  replicas: 1\n  selector:\n    matchLabels: {app: vuln-api}\n  template:\n    metadata:\n      labels: {app: vuln-api}\n    spec:\n      hostNetwork: true\n      containers:\n        - name: api\n          image: vuln-api:latest\n          securityContext:\n            privileged: true\n            runAsUser: 0\n"
+         },
+         "startLine": 1
+        }
+       }
+      }
+     ],
+     "message": {
+      "text": "The default namespace should not be used"
+     },
+     "ruleId": "CKV_K8S_21",
+     "ruleIndex": 21
+    },
+    {
+     "attachments": [],
+     "level": "error",
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": "deploy/k8s.yaml"
+        },
+        "region": {
+         "endLine": 19,
+         "snippet": {
+          "text": "apiVersion: apps/v1\nkind: Deployment\nmetadata:\n  name: vuln-api\nspec:\n  replicas: 1\n  selector:\n    matchLabels: {app: vuln-api}\n  template:\n    metadata:\n      labels: {app: vuln-api}\n    spec:\n      hostNetwork: true\n      containers:\n        - name: api\n          image: vuln-api:latest\n          securityContext:\n            privileged: true\n            runAsUser: 0\n"
+         },
+         "startLine": 1
+        }
+       }
+      }
+     ],
+     "message": {
+      "text": "Containers should not share the host network namespace"
+     },
+     "ruleId": "CKV_K8S_19",
+     "ruleIndex": 22
+    },
+    {
+     "attachments": [],
+     "level": "error",
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": "deploy/k8s.yaml"
+        },
+        "region": {
+         "endLine": 19,
+         "snippet": {
+          "text": "apiVersion: apps/v1\nkind: Deployment\nmetadata:\n  name: vuln-api\nspec:\n  replicas: 1\n  selector:\n    matchLabels: {app: vuln-api}\n  template:\n    metadata:\n      labels: {app: vuln-api}\n    spec:\n      hostNetwork: true\n      containers:\n        - name: api\n          image: vuln-api:latest\n          securityContext:\n            privileged: true\n            runAsUser: 0\n"
+         },
+         "startLine": 1
+        }
+       }
+      }
+     ],
+     "message": {
+      "text": "Liveness Probe Should be Configured"
+     },
+     "ruleId": "CKV_K8S_8",
+     "ruleIndex": 23
+    },
+    {
+     "attachments": [],
+     "level": "error",
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": "deploy/k8s.yaml"
+        },
+        "region": {
+         "endLine": 19,
+         "snippet": {
+          "text": "apiVersion: apps/v1\nkind: Deployment\nmetadata:\n  name: vuln-api\nspec:\n  replicas: 1\n  selector:\n    matchLabels: {app: vuln-api}\n  template:\n    metadata:\n      labels: {app: vuln-api}\n    spec:\n      hostNetwork: true\n      containers:\n        - name: api\n          image: vuln-api:latest\n          securityContext:\n            privileged: true\n            runAsUser: 0\n"
+         },
+         "startLine": 1
+        }
+       }
+      }
+     ],
+     "message": {
+      "text": "Containers should not run with allowPrivilegeEscalation"
+     },
+     "ruleId": "CKV_K8S_20",
+     "ruleIndex": 24
+    },
+    {
+     "attachments": [],
+     "level": "error",
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": "deploy/k8s.yaml"
+        },
+        "region": {
+         "endLine": 19,
+         "snippet": {
+          "text": "apiVersion: apps/v1\nkind: Deployment\nmetadata:\n  name: vuln-api\nspec:\n  replicas: 1\n  selector:\n    matchLabels: {app: vuln-api}\n  template:\n    metadata:\n      labels: {app: vuln-api}\n    spec:\n      hostNetwork: true\n      containers:\n        - name: api\n          image: vuln-api:latest\n          securityContext:\n            privileged: true\n            runAsUser: 0\n"
+         },
+         "startLine": 1
+        }
+       }
+      }
+     ],
+     "message": {
+      "text": "Minimize the admission of pods which lack an associated NetworkPolicy"
+     },
+     "ruleId": "CKV2_K8S_6",
+     "ruleIndex": 25
+    },
+    {
+     "attachments": [],
+     "level": "error",
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": "deploy/main.tf"
+        },
+        "region": {
+         "endLine": 14,
+         "snippet": {
+          "text": "resource \"aws_security_group\" \"open\" {\n  name = \"open\"\n  ingress {\n    from_port   = 22\n    to_port     = 22\n    protocol    = \"tcp\"\n    cidr_blocks = [\"0.0.0.0/0\"]\n  }\n}\n"
+         },
+         "startLine": 6
+        }
+       }
+      }
+     ],
+     "message": {
+      "text": "Ensure every security group and rule has a description"
+     },
+     "ruleId": "CKV_AWS_23",
+     "ruleIndex": 26
+    },
+    {
+     "attachments": [],
+     "level": "error",
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": "deploy/main.tf"
+        },
+        "region": {
+         "endLine": 14,
+         "snippet": {
+          "text": "resource \"aws_security_group\" \"open\" {\n  name = \"open\"\n  ingress {\n    from_port   = 22\n    to_port     = 22\n    protocol    = \"tcp\"\n    cidr_blocks = [\"0.0.0.0/0\"]\n  }\n}\n"
+         },
+         "startLine": 6
+        }
+       }
+      }
+     ],
+     "message": {
+      "text": "Ensure no security groups allow ingress from 0.0.0.0:0 to port 22"
+     },
+     "ruleId": "CKV_AWS_24",
+     "ruleIndex": 27
+    },
+    {
+     "attachments": [],
+     "level": "error",
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": "deploy/main.tf"
+        },
+        "region": {
+         "endLine": 4,
+         "snippet": {
+          "text": "resource \"aws_s3_bucket\" \"data\" {\n  bucket = \"vuln-app-data\"\n  acl    = \"public-read\"\n}\n"
+         },
+         "startLine": 1
+        }
+       }
+      }
+     ],
+     "message": {
+      "text": "Ensure that S3 bucket has a Public Access block"
+     },
+     "ruleId": "CKV2_AWS_6",
+     "ruleIndex": 28
+    },
+    {
+     "attachments": [],
+     "level": "error",
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": "deploy/main.tf"
+        },
+        "region": {
+         "endLine": 14,
+         "snippet": {
+          "text": "resource \"aws_security_group\" \"open\" {\n  name = \"open\"\n  ingress {\n    from_port   = 22\n    to_port     = 22\n    protocol    = \"tcp\"\n    cidr_blocks = [\"0.0.0.0/0\"]\n  }\n}\n"
+         },
+         "startLine": 6
+        }
+       }
+      }
+     ],
+     "message": {
+      "text": "Ensure that Security Groups are attached to another resource"
+     },
+     "ruleId": "CKV2_AWS_5",
+     "ruleIndex": 29
+    },
+    {
+     "attachments": [],
+     "level": "error",
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": "deploy/main.tf"
+        },
+        "region": {
+         "endLine": 4,
+         "snippet": {
+          "text": "resource \"aws_s3_bucket\" \"data\" {\n  bucket = \"vuln-app-data\"\n  acl    = \"public-read\"\n}\n"
+         },
+         "startLine": 1
+        }
+       }
+      }
+     ],
+     "message": {
+      "text": "Ensure that S3 buckets are encrypted with KMS by default"
+     },
+     "ruleId": "CKV_AWS_145",
+     "ruleIndex": 30
+    },
+    {
+     "attachments": [],
+     "level": "error",
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": "deploy/main.tf"
+        },
+        "region": {
+         "endLine": 4,
+         "snippet": {
+          "text": "resource \"aws_s3_bucket\" \"data\" {\n  bucket = \"vuln-app-data\"\n  acl    = \"public-read\"\n}\n"
+         },
+         "startLine": 1
+        }
+       }
+      }
+     ],
+     "message": {
+      "text": "Ensure that S3 bucket has cross-region replication enabled"
+     },
+     "ruleId": "CKV_AWS_144",
+     "ruleIndex": 31
+    },
+    {
+     "attachments": [],
+     "level": "error",
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": "deploy/main.tf"
+        },
+        "region": {
+         "endLine": 4,
+         "snippet": {
+          "text": "resource \"aws_s3_bucket\" \"data\" {\n  bucket = \"vuln-app-data\"\n  acl    = \"public-read\"\n}\n"
+         },
+         "startLine": 1
+        }
+       }
+      }
+     ],
+     "message": {
+      "text": "Ensure S3 buckets should have event notifications enabled"
+     },
+     "ruleId": "CKV2_AWS_62",
+     "ruleIndex": 32
+    },
+    {
+     "attachments": [],
+     "level": "error",
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": "deploy/main.tf"
+        },
+        "region": {
+         "endLine": 4,
+         "snippet": {
+          "text": "resource \"aws_s3_bucket\" \"data\" {\n  bucket = \"vuln-app-data\"\n  acl    = \"public-read\"\n}\n"
+         },
+         "startLine": 1
+        }
+       }
+      }
+     ],
+     "message": {
+      "text": "Ensure all data stored in the S3 bucket have versioning enabled"
+     },
+     "ruleId": "CKV_AWS_21",
+     "ruleIndex": 33
+    },
+    {
+     "attachments": [],
+     "level": "error",
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": "deploy/main.tf"
+        },
+        "region": {
+         "endLine": 4,
+         "snippet": {
+          "text": "resource \"aws_s3_bucket\" \"data\" {\n  bucket = \"vuln-app-data\"\n  acl    = \"public-read\"\n}\n"
+         },
+         "startLine": 1
+        }
+       }
+      }
+     ],
+     "message": {
+      "text": "Ensure the S3 bucket has access logging enabled"
+     },
+     "ruleId": "CKV_AWS_18",
+     "ruleIndex": 34
+    },
+    {
+     "attachments": [],
+     "level": "error",
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": "deploy/main.tf"
+        },
+        "region": {
+         "endLine": 4,
+         "snippet": {
+          "text": "resource \"aws_s3_bucket\" \"data\" {\n  bucket = \"vuln-app-data\"\n  acl    = \"public-read\"\n}\n"
+         },
+         "startLine": 1
+        }
+       }
+      }
+     ],
+     "message": {
+      "text": "Ensure that an S3 bucket has a lifecycle configuration"
+     },
+     "ruleId": "CKV2_AWS_61",
+     "ruleIndex": 35
+    },
+    {
+     "attachments": [],
+     "level": "error",
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": "deploy/main.tf"
+        },
+        "region": {
+         "endLine": 4,
+         "snippet": {
+          "text": "resource \"aws_s3_bucket\" \"data\" {\n  bucket = \"vuln-app-data\"\n  acl    = \"public-read\"\n}\n"
+         },
+         "startLine": 1
+        }
+       }
+      }
+     ],
+     "message": {
+      "text": "S3 Bucket has an ACL defined which allows public READ access."
+     },
+     "ruleId": "CKV_AWS_20",
+     "ruleIndex": 36
+    }
+   ],
+   "tool": {
+    "driver": {
+     "informationUri": "https://checkov.io",
+     "name": "Checkov",
+     "organization": "bridgecrew",
+     "rules": [
+      {
+       "defaultConfiguration": {
+        "level": "error"
+       },
+       "fullDescription": {
+        "text": "Ensure the base image uses a non latest version tag"
+       },
+       "help": {
+        "text": "Ensure the base image uses a non latest version tag\nResource: /deploy/Dockerfile.FROM"
+       },
+       "id": "CKV_DOCKER_7",
+       "name": "Ensure the base image uses a non latest version tag",
+       "shortDescription": {
+        "text": "Ensure the base image uses a non latest version tag"
+       }
+      },
+      {
+       "defaultConfiguration": {
+        "level": "error"
+       },
+       "fullDescription": {
+        "text": "Ensure port 22 is not exposed"
+       },
+       "help": {
+        "text": "Ensure port 22 is not exposed\nResource: /deploy/Dockerfile.EXPOSE"
+       },
+       "id": "CKV_DOCKER_1",
+       "name": "Ensure port 22 is not exposed",
+       "shortDescription": {
+        "text": "Ensure port 22 is not exposed"
+       }
+      },
+      {
+       "defaultConfiguration": {
+        "level": "error"
+       },
+       "fullDescription": {
+        "text": "Ensure that COPY is used instead of ADD in Dockerfiles"
+       },
+       "help": {
+        "text": "Ensure that COPY is used instead of ADD in Dockerfiles\nResource: /deploy/Dockerfile.ADD"
+       },
+       "id": "CKV_DOCKER_4",
+       "name": "Ensure that COPY is used instead of ADD in Dockerfiles",
+       "shortDescription": {
+        "text": "Ensure that COPY is used instead of ADD in Dockerfiles"
+       }
+      },
+      {
+       "defaultConfiguration": {
+        "level": "error"
+       },
+       "fullDescription": {
+        "text": "Ensure that HEALTHCHECK instructions have been added to container images"
+       },
+       "help": {
+        "text": "Ensure that HEALTHCHECK instructions have been added to container images\nResource: /deploy/Dockerfile."
+       },
+       "id": "CKV_DOCKER_2",
+       "name": "Ensure that HEALTHCHECK instructions have been added to container images",
+       "shortDescription": {
+        "text": "Ensure that HEALTHCHECK instructions have been added to container images"
+       }
+      },
+      {
+       "defaultConfiguration": {
+        "level": "error"
+       },
+       "fullDescription": {
+        "text": "Ensure that a user for the container has been created"
+       },
+       "help": {
+        "text": "Ensure that a user for the container has been created\nResource: /deploy/Dockerfile."
+       },
+       "id": "CKV_DOCKER_3",
+       "name": "Ensure that a user for the container has been created",
+       "shortDescription": {
+        "text": "Ensure that a user for the container has been created"
+       }
+      },
+      {
+       "defaultConfiguration": {
+        "level": "error"
+       },
+       "fullDescription": {
+        "text": "Use read-only filesystem for containers where possible"
+       },
+       "help": {
+        "text": "Use read-only filesystem for containers where possible\nResource: Deployment.default.vuln-api"
+       },
+       "id": "CKV_K8S_22",
+       "name": "Use read-only filesystem for containers where possible",
+       "shortDescription": {
+        "text": "Use read-only filesystem for containers where possible"
+       }
+      },
+      {
+       "defaultConfiguration": {
+        "level": "error"
+       },
+       "fullDescription": {
+        "text": "Readiness Probe Should be Configured"
+       },
+       "help": {
+        "text": "Readiness Probe Should be Configured\nResource: Deployment.default.vuln-api"
+       },
+       "id": "CKV_K8S_9",
+       "name": "Readiness Probe Should be Configured",
+       "shortDescription": {
+        "text": "Readiness Probe Should be Configured"
+       }
+      },
+      {
+       "defaultConfiguration": {
+        "level": "error"
+       },
+       "fullDescription": {
+        "text": "Container should not be privileged"
+       },
+       "help": {
+        "text": "Container should not be privileged\nResource: Deployment.default.vuln-api"
+       },
+       "id": "CKV_K8S_16",
+       "name": "Container should not be privileged",
+       "shortDescription": {
+        "text": "Container should not be privileged"
+       }
+      },
+      {
+       "defaultConfiguration": {
+        "level": "error"
+       },
+       "fullDescription": {
+        "text": "CPU limits should be set"
+       },
+       "help": {
+        "text": "CPU limits should be set\nResource: Deployment.default.vuln-api"
+       },
+       "id": "CKV_K8S_11",
+       "name": "CPU limits should be set",
+       "shortDescription": {
+        "text": "CPU limits should be set"
+       }
+      },
+      {
+       "defaultConfiguration": {
+        "level": "error"
+       },
+       "fullDescription": {
+        "text": "Memory requests should be set"
+       },
+       "help": {
+        "text": "Memory requests should be set\nResource: Deployment.default.vuln-api"
+       },
+       "id": "CKV_K8S_12",
+       "name": "Memory requests should be set",
+       "shortDescription": {
+        "text": "Memory requests should be set"
+       }
+      },
+      {
+       "defaultConfiguration": {
+        "level": "error"
+       },
+       "fullDescription": {
+        "text": "Containers should run as a high UID to avoid host conflict"
+       },
+       "help": {
+        "text": "Containers should run as a high UID to avoid host conflict\nResource: Deployment.default.vuln-api"
+       },
+       "id": "CKV_K8S_40",
+       "name": "Containers should run as a high UID to avoid host conflict",
+       "shortDescription": {
+        "text": "Containers should run as a high UID to avoid host conflict"
+       }
+      },
+      {
+       "defaultConfiguration": {
+        "level": "error"
+       },
+       "fullDescription": {
+        "text": "Minimize the admission of root containers"
+       },
+       "help": {
+        "text": "Minimize the admission of root containers\nResource: Deployment.default.vuln-api"
+       },
+       "id": "CKV_K8S_23",
+       "name": "Minimize the admission of root containers",
+       "shortDescription": {
+        "text": "Minimize the admission of root containers"
+       }
+      },
+      {
+       "defaultConfiguration": {
+        "level": "error"
+       },
+       "fullDescription": {
+        "text": "CPU requests should be set"
+       },
+       "help": {
+        "text": "CPU requests should be set\nResource: Deployment.default.vuln-api"
+       },
+       "id": "CKV_K8S_10",
+       "name": "CPU requests should be set",
+       "shortDescription": {
+        "text": "CPU requests should be set"
+       }
+      },
+      {
+       "defaultConfiguration": {
+        "level": "error"
+       },
+       "fullDescription": {
+        "text": "Apply security context to your pods and containers"
+       },
+       "help": {
+        "text": "Apply security context to your pods and containers\nResource: Deployment.default.vuln-api"
+       },
+       "id": "CKV_K8S_29",
+       "name": "Apply security context to your pods and containers",
+       "shortDescription": {
+        "text": "Apply security context to your pods and containers"
+       }
+      },
+      {
+       "defaultConfiguration": {
+        "level": "error"
+       },
+       "fullDescription": {
+        "text": "Image should use digest"
+       },
+       "help": {
+        "text": "Image should use digest\nResource: Deployment.default.vuln-api"
+       },
+       "id": "CKV_K8S_43",
+       "name": "Image should use digest",
+       "shortDescription": {
+        "text": "Image should use digest"
+       }
+      },
+      {
+       "defaultConfiguration": {
+        "level": "error"
+       },
+       "fullDescription": {
+        "text": "Image Tag should be fixed - not latest or blank"
+       },
+       "help": {
+        "text": "Image Tag should be fixed - not latest or blank\nResource: Deployment.default.vuln-api"
+       },
+       "id": "CKV_K8S_14",
+       "name": "Image Tag should be fixed - not latest or blank",
+       "shortDescription": {
+        "text": "Image Tag should be fixed - not latest or blank"
+       }
+      },
+      {
+       "defaultConfiguration": {
+        "level": "error"
+       },
+       "fullDescription": {
+        "text": "Minimize the admission of containers with the NET_RAW capability"
+       },
+       "help": {
+        "text": "Minimize the admission of containers with the NET_RAW capability\nResource: Deployment.default.vuln-api"
+       },
+       "id": "CKV_K8S_28",
+       "name": "Minimize the admission of containers with the NET_RAW capability",
+       "shortDescription": {
+        "text": "Minimize the admission of containers with the NET_RAW capability"
+       }
+      },
+      {
+       "defaultConfiguration": {
+        "level": "error"
+       },
+       "fullDescription": {
+        "text": "Memory limits should be set"
+       },
+       "help": {
+        "text": "Memory limits should be set\nResource: Deployment.default.vuln-api"
+       },
+       "id": "CKV_K8S_13",
+       "name": "Memory limits should be set",
+       "shortDescription": {
+        "text": "Memory limits should be set"
+       }
+      },
+      {
+       "defaultConfiguration": {
+        "level": "error"
+       },
+       "fullDescription": {
+        "text": "Minimize the admission of containers with capabilities assigned"
+       },
+       "help": {
+        "text": "Minimize the admission of containers with capabilities assigned\nResource: Deployment.default.vuln-api"
+       },
+       "id": "CKV_K8S_37",
+       "name": "Minimize the admission of containers with capabilities assigned",
+       "shortDescription": {
+        "text": "Minimize the admission of containers with capabilities assigned"
+       }
+      },
+      {
+       "defaultConfiguration": {
+        "level": "error"
+       },
+       "fullDescription": {
+        "text": "Ensure that Service Account Tokens are only mounted where necessary"
+       },
+       "help": {
+        "text": "Ensure that Service Account Tokens are only mounted where necessary\nResource: Deployment.default.vuln-api"
+       },
+       "id": "CKV_K8S_38",
+       "name": "Ensure that Service Account Tokens are only mounted where necessary",
+       "shortDescription": {
+        "text": "Ensure that Service Account Tokens are only mounted where necessary"
+       }
+      },
+      {
+       "defaultConfiguration": {
+        "level": "error"
+       },
+       "fullDescription": {
+        "text": "Ensure that the seccomp profile is set to docker/default or runtime/default"
+       },
+       "help": {
+        "text": "Ensure that the seccomp profile is set to docker/default or runtime/default\nResource: Deployment.default.vuln-api"
+       },
+       "id": "CKV_K8S_31",
+       "name": "Ensure that the seccomp profile is set to docker/default or runtime/default",
+       "shortDescription": {
+        "text": "Ensure that the seccomp profile is set to docker/default or runtime/default"
+       }
+      },
+      {
+       "defaultConfiguration": {
+        "level": "error"
+       },
+       "fullDescription": {
+        "text": "The default namespace should not be used"
+       },
+       "help": {
+        "text": "The default namespace should not be used\nResource: Deployment.default.vuln-api"
+       },
+       "id": "CKV_K8S_21",
+       "name": "The default namespace should not be used",
+       "shortDescription": {
+        "text": "The default namespace should not be used"
+       }
+      },
+      {
+       "defaultConfiguration": {
+        "level": "error"
+       },
+       "fullDescription": {
+        "text": "Containers should not share the host network namespace"
+       },
+       "help": {
+        "text": "Containers should not share the host network namespace\nResource: Deployment.default.vuln-api"
+       },
+       "id": "CKV_K8S_19",
+       "name": "Containers should not share the host network namespace",
+       "shortDescription": {
+        "text": "Containers should not share the host network namespace"
+       }
+      },
+      {
+       "defaultConfiguration": {
+        "level": "error"
+       },
+       "fullDescription": {
+        "text": "Liveness Probe Should be Configured"
+       },
+       "help": {
+        "text": "Liveness Probe Should be Configured\nResource: Deployment.default.vuln-api"
+       },
+       "id": "CKV_K8S_8",
+       "name": "Liveness Probe Should be Configured",
+       "shortDescription": {
+        "text": "Liveness Probe Should be Configured"
+       }
+      },
+      {
+       "defaultConfiguration": {
+        "level": "error"
+       },
+       "fullDescription": {
+        "text": "Containers should not run with allowPrivilegeEscalation"
+       },
+       "help": {
+        "text": "Containers should not run with allowPrivilegeEscalation\nResource: Deployment.default.vuln-api"
+       },
+       "id": "CKV_K8S_20",
+       "name": "Containers should not run with allowPrivilegeEscalation",
+       "shortDescription": {
+        "text": "Containers should not run with allowPrivilegeEscalation"
+       }
+      },
+      {
+       "defaultConfiguration": {
+        "level": "error"
+       },
+       "fullDescription": {
+        "text": "Minimize the admission of pods which lack an associated NetworkPolicy"
+       },
+       "help": {
+        "text": "Minimize the admission of pods which lack an associated NetworkPolicy\nResource: Pod.default.vuln-api.app-vuln-api"
+       },
+       "id": "CKV2_K8S_6",
+       "name": "Minimize the admission of pods which lack an associated NetworkPolicy",
+       "shortDescription": {
+        "text": "Minimize the admission of pods which lack an associated NetworkPolicy"
+       }
+      },
+      {
+       "defaultConfiguration": {
+        "level": "error"
+       },
+       "fullDescription": {
+        "text": "Ensure every security group and rule has a description"
+       },
+       "help": {
+        "text": "Ensure every security group and rule has a description\nResource: aws_security_group.open"
+       },
+       "id": "CKV_AWS_23",
+       "name": "Ensure every security group and rule has a description",
+       "shortDescription": {
+        "text": "Ensure every security group and rule has a description"
+       }
+      },
+      {
+       "defaultConfiguration": {
+        "level": "error"
+       },
+       "fullDescription": {
+        "text": "Ensure no security groups allow ingress from 0.0.0.0:0 to port 22"
+       },
+       "help": {
+        "text": "Ensure no security groups allow ingress from 0.0.0.0:0 to port 22\nResource: aws_security_group.open"
+       },
+       "id": "CKV_AWS_24",
+       "name": "Ensure no security groups allow ingress from 0.0.0.0:0 to port 22",
+       "shortDescription": {
+        "text": "Ensure no security groups allow ingress from 0.0.0.0:0 to port 22"
+       }
+      },
+      {
+       "defaultConfiguration": {
+        "level": "error"
+       },
+       "fullDescription": {
+        "text": "Ensure that S3 bucket has a Public Access block"
+       },
+       "help": {
+        "text": "Ensure that S3 bucket has a Public Access block\nResource: aws_s3_bucket.data"
+       },
+       "id": "CKV2_AWS_6",
+       "name": "Ensure that S3 bucket has a Public Access block",
+       "shortDescription": {
+        "text": "Ensure that S3 bucket has a Public Access block"
+       }
+      },
+      {
+       "defaultConfiguration": {
+        "level": "error"
+       },
+       "fullDescription": {
+        "text": "Ensure that Security Groups are attached to another resource"
+       },
+       "help": {
+        "text": "Ensure that Security Groups are attached to another resource\nResource: aws_security_group.open"
+       },
+       "id": "CKV2_AWS_5",
+       "name": "Ensure that Security Groups are attached to another resource",
+       "shortDescription": {
+        "text": "Ensure that Security Groups are attached to another resource"
+       }
+      },
+      {
+       "defaultConfiguration": {
+        "level": "error"
+       },
+       "fullDescription": {
+        "text": "Ensure that S3 buckets are encrypted with KMS by default"
+       },
+       "help": {
+        "text": "Ensure that S3 buckets are encrypted with KMS by default\nResource: aws_s3_bucket.data"
+       },
+       "id": "CKV_AWS_145",
+       "name": "Ensure that S3 buckets are encrypted with KMS by default",
+       "shortDescription": {
+        "text": "Ensure that S3 buckets are encrypted with KMS by default"
+       }
+      },
+      {
+       "defaultConfiguration": {
+        "level": "error"
+       },
+       "fullDescription": {
+        "text": "Ensure that S3 bucket has cross-region replication enabled"
+       },
+       "help": {
+        "text": "Ensure that S3 bucket has cross-region replication enabled\nResource: aws_s3_bucket.data"
+       },
+       "id": "CKV_AWS_144",
+       "name": "Ensure that S3 bucket has cross-region replication enabled",
+       "shortDescription": {
+        "text": "Ensure that S3 bucket has cross-region replication enabled"
+       }
+      },
+      {
+       "defaultConfiguration": {
+        "level": "error"
+       },
+       "fullDescription": {
+        "text": "Ensure S3 buckets should have event notifications enabled"
+       },
+       "help": {
+        "text": "Ensure S3 buckets should have event notifications enabled\nResource: aws_s3_bucket.data"
+       },
+       "id": "CKV2_AWS_62",
+       "name": "Ensure S3 buckets should have event notifications enabled",
+       "shortDescription": {
+        "text": "Ensure S3 buckets should have event notifications enabled"
+       }
+      },
+      {
+       "defaultConfiguration": {
+        "level": "error"
+       },
+       "fullDescription": {
+        "text": "Ensure all data stored in the S3 bucket have versioning enabled"
+       },
+       "help": {
+        "text": "Ensure all data stored in the S3 bucket have versioning enabled\nResource: aws_s3_bucket.data"
+       },
+       "id": "CKV_AWS_21",
+       "name": "Ensure all data stored in the S3 bucket have versioning enabled",
+       "shortDescription": {
+        "text": "Ensure all data stored in the S3 bucket have versioning enabled"
+       }
+      },
+      {
+       "defaultConfiguration": {
+        "level": "error"
+       },
+       "fullDescription": {
+        "text": "Ensure the S3 bucket has access logging enabled"
+       },
+       "help": {
+        "text": "Ensure the S3 bucket has access logging enabled\nResource: aws_s3_bucket.data"
+       },
+       "id": "CKV_AWS_18",
+       "name": "Ensure the S3 bucket has access logging enabled",
+       "shortDescription": {
+        "text": "Ensure the S3 bucket has access logging enabled"
+       }
+      },
+      {
+       "defaultConfiguration": {
+        "level": "error"
+       },
+       "fullDescription": {
+        "text": "Ensure that an S3 bucket has a lifecycle configuration"
+       },
+       "help": {
+        "text": "Ensure that an S3 bucket has a lifecycle configuration\nResource: aws_s3_bucket.data"
+       },
+       "id": "CKV2_AWS_61",
+       "name": "Ensure that an S3 bucket has a lifecycle configuration",
+       "shortDescription": {
+        "text": "Ensure that an S3 bucket has a lifecycle configuration"
+       }
+      },
+      {
+       "defaultConfiguration": {
+        "level": "error"
+       },
+       "fullDescription": {
+        "text": "S3 Bucket has an ACL defined which allows public READ access."
+       },
+       "help": {
+        "text": "S3 Bucket has an ACL defined which allows public READ access.\nResource: aws_s3_bucket.data"
+       },
+       "id": "CKV_AWS_20",
+       "name": "S3 Bucket has an ACL defined which allows public READ access.",
+       "shortDescription": {
+        "text": "S3 Bucket has an ACL defined which allows public READ access."
+       }
+      }
+     ],
+     "version": "3.4.5"
+    }
+   }
+  }
+ ],
+ "version": "2.1.0"
+}

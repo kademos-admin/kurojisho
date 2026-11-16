@@ -22,15 +22,50 @@ uv run kurojisho --help
 
 ```sh
 kurojisho init path/to/repo          # create .kurojisho/ and a starter context file
-kurojisho scan path/to/repo          # build or update the graph
+kurojisho scan path/to/repo          # build the graph and run the scanners
+kurojisho scan path/to/repo --offline    # never touch the network
+kurojisho scan path/to/repo --no-tools   # code graph only
 kurojisho query stats --repo path/to/repo
+kurojisho query nodes --type Finding --repo path/to/repo
 kurojisho query callers some_function --repo path/to/repo
-kurojisho query path handler sink --repo path/to/repo
 kurojisho query export --repo path/to/repo -o graph.json
 ```
 
-A scan only reads files. It never runs target code, install scripts or build steps, never
-invokes git, and makes no network calls. Re-scanning parses only files whose content changed.
+Requires Docker or Podman for the scanners. The first scan pulls the pinned scanner images
+and vulnerability data (several GB) and says so; `--offline` forbids that and records what
+could not run as coverage gaps.
+
+```sh
+kurojisho tools list | install | verify    # pinned scanners (by image digest)
+kurojisho intel refresh | status           # vulnerability data cache
+kurojisho import-sarif report.sarif --tool NAME --repo path/to/repo   # optional CI mode
+```
+
+### What a scan does and does not do
+
+- Target code is parsed, never executed: no install scripts, builds or tests, and git is
+  never invoked.
+- Each scanner runs in a container with the target mounted read-only, no network, a
+  non-root user, no capabilities and CPU/memory/time limits. Images are referenced by
+  digest from `src/kurojisho/tools/tools.lock`.
+- Network is used only to pull missing images and refresh vulnerability data (by the
+  host process, before scanners start), and for `--verify-secrets` (TruffleHog only).
+- Secrets are stored as a salted SHA-256 fingerprint plus a four-character preview. Raw
+  values are scrubbed from everything written.
+- A scanner that is missing, fails or times out becomes a `CoverageGap` node. No findings
+  from a gap means nothing.
+
+### Scanners
+
+| Kind | Tools |
+|---|---|
+| SAST | Semgrep CE (KuroJisho's own rules), Bandit, gosec; CodeQL is off by default behind a licence gate |
+| Dependencies | OSV-Scanner, Trivy, Grype, govulncheck; Syft for the SBOM |
+| Secrets | Gitleaks, TruffleHog |
+| IaC | Checkov, Trivy config |
+
+CodeQL is free only for open-source code and academic research. It needs `--enable codeql`
+and `kurojisho tools accept-licence codeql --yes`; this build pins no CodeQL bundle yet.
 
 ## What the graph contains
 
@@ -39,6 +74,7 @@ invokes git, and makes no network calls. Re-scanning parses only files whose con
 | Code (Python, JavaScript/TypeScript, Go, Java) | Repo, Module, File, Class, Function, Route | CONTAINS, DEFINES, IMPORTS, INHERITS, CALLS |
 | Dependencies (pypi, npm, Go modules, Maven) | Package | DEPENDS_ON (direct/transitive, scope) |
 | Business context (`kurojisho.context.yaml`) | Asset | BELONGS_TO |
+| Findings | Finding, Secret, Advisory, CoverageGap | LOCATED_IN, DUPLICATE_OF, AFFECTED_BY |
 
 ### How far to trust a CALLS edge
 
@@ -59,8 +95,8 @@ the File and Repo nodes rather than dropped.
 
 ```sh
 uv run ruff check . && uv run ruff format --check . && uv run mypy src
-uv run pytest -m "not slow"     # fast suite
-uv run pytest                   # everything
+uv run pytest -m "not slow"     # fast suite, hermetic (no Docker, no network)
+uv run pytest                   # everything, including real containers when installed
 ```
 
 `tests/fixtures/` holds small target repos with hand-labelled `expected.yaml` ground truth.

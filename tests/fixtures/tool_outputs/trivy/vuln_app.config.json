@@ -1,0 +1,690 @@
+{
+ "ArtifactName": "/src",
+ "ArtifactType": "filesystem",
+ "Results": [
+  {
+   "Class": "config",
+   "MisconfSummary": {
+    "Failures": 0,
+    "Successes": 69
+   },
+   "Target": "deploy",
+   "Type": "terraform"
+  },
+  {
+   "Class": "config",
+   "MisconfSummary": {
+    "Failures": 5,
+    "Successes": 22
+   },
+   "Misconfigurations": [
+    {
+     "CauseMetadata": {
+      "EndLine": 1,
+      "Provider": "Dockerfile",
+      "Service": "general",
+      "StartLine": 1
+     },
+     "ID": "DS-0001",
+     "Namespace": "builtin.dockerfile.DS001",
+     "PrimaryURL": "https://avd.aquasec.com/misconfig/ds-0001",
+     "Query": "data.builtin.dockerfile.DS001.deny",
+     "Severity": "MEDIUM",
+     "Status": "FAIL",
+     "Title": "':latest' tag used",
+     "Type": "Dockerfile Security Check"
+    },
+    {
+     "CauseMetadata": {
+      "Provider": "Dockerfile",
+      "Service": "general"
+     },
+     "ID": "DS-0002",
+     "Namespace": "builtin.dockerfile.DS002",
+     "PrimaryURL": "https://avd.aquasec.com/misconfig/ds-0002",
+     "Query": "data.builtin.dockerfile.DS002.deny",
+     "Severity": "HIGH",
+     "Status": "FAIL",
+     "Title": "Image user should not be 'root'",
+     "Type": "Dockerfile Security Check"
+    },
+    {
+     "CauseMetadata": {
+      "EndLine": 4,
+      "Provider": "Dockerfile",
+      "Service": "general",
+      "StartLine": 4
+     },
+     "ID": "DS-0004",
+     "Namespace": "builtin.dockerfile.DS004",
+     "PrimaryURL": "https://avd.aquasec.com/misconfig/ds-0004",
+     "Query": "data.builtin.dockerfile.DS004.deny",
+     "Severity": "MEDIUM",
+     "Status": "FAIL",
+     "Title": "Port 22 exposed",
+     "Type": "Dockerfile Security Check"
+    },
+    {
+     "CauseMetadata": {
+      "EndLine": 2,
+      "Provider": "Dockerfile",
+      "Service": "general",
+      "StartLine": 2
+     },
+     "ID": "DS-0005",
+     "Namespace": "builtin.dockerfile.DS005",
+     "PrimaryURL": "https://avd.aquasec.com/misconfig/ds-0005",
+     "Query": "data.builtin.dockerfile.DS005.deny",
+     "Severity": "LOW",
+     "Status": "FAIL",
+     "Title": "ADD instead of COPY",
+     "Type": "Dockerfile Security Check"
+    },
+    {
+     "CauseMetadata": {
+      "Provider": "Dockerfile",
+      "Service": "general"
+     },
+     "ID": "DS-0026",
+     "Namespace": "builtin.dockerfile.DS026",
+     "PrimaryURL": "https://avd.aquasec.com/misconfig/ds-0026",
+     "Query": "data.builtin.dockerfile.DS026.deny",
+     "Severity": "LOW",
+     "Status": "FAIL",
+     "Title": "No HEALTHCHECK defined",
+     "Type": "Dockerfile Security Check"
+    }
+   ],
+   "Target": "deploy/Dockerfile",
+   "Type": "dockerfile"
+  },
+  {
+   "Class": "config",
+   "MisconfSummary": {
+    "Failures": 20,
+    "Successes": 78
+   },
+   "Misconfigurations": [
+    {
+     "CauseMetadata": {
+      "EndLine": 19,
+      "Provider": "Kubernetes",
+      "Service": "general",
+      "StartLine": 15
+     },
+     "ID": "KSV-0001",
+     "Namespace": "builtin.kubernetes.KSV001",
+     "PrimaryURL": "https://avd.aquasec.com/misconfig/ksv-0001",
+     "Query": "data.builtin.kubernetes.KSV001.deny",
+     "Severity": "MEDIUM",
+     "Status": "FAIL",
+     "Title": "Can elevate its own privileges",
+     "Type": "Kubernetes Security Check"
+    },
+    {
+     "CauseMetadata": {
+      "EndLine": 19,
+      "Provider": "Kubernetes",
+      "Service": "general",
+      "StartLine": 15
+     },
+     "ID": "KSV-0003",
+     "Namespace": "builtin.kubernetes.KSV003",
+     "PrimaryURL": "https://avd.aquasec.com/misconfig/ksv-0003",
+     "Query": "data.builtin.kubernetes.KSV003.deny",
+     "Severity": "LOW",
+     "Status": "FAIL",
+     "Title": "Default capabilities: some containers do not drop all",
+     "Type": "Kubernetes Security Check"
+    },
+    {
+     "CauseMetadata": {
+      "EndLine": 19,
+      "Provider": "Kubernetes",
+      "Service": "general",
+      "StartLine": 15
+     },
+     "ID": "KSV-0004",
+     "Namespace": "builtin.kubernetes.KSV004",
+     "PrimaryURL": "https://avd.aquasec.com/misconfig/ksv-0004",
+     "Query": "data.builtin.kubernetes.KSV004.deny",
+     "Severity": "LOW",
+     "Status": "FAIL",
+     "Title": "Default capabilities: some containers do not drop any",
+     "Type": "Kubernetes Security Check"
+    },
+    {
+     "CauseMetadata": {
+      "EndLine": 19,
+      "Provider": "Kubernetes",
+      "Service": "general",
+      "StartLine": 5
+     },
+     "ID": "KSV-0009",
+     "Namespace": "builtin.kubernetes.KSV009",
+     "PrimaryURL": "https://avd.aquasec.com/misconfig/ksv-0009",
+     "Query": "data.builtin.kubernetes.KSV009.deny",
+     "Severity": "HIGH",
+     "Status": "FAIL",
+     "Title": "Access to host network",
+     "Type": "Kubernetes Security Check"
+    },
+    {
+     "CauseMetadata": {
+      "EndLine": 19,
+      "Provider": "Kubernetes",
+      "Service": "general",
+      "StartLine": 15
+     },
+     "ID": "KSV-0011",
+     "Namespace": "builtin.kubernetes.KSV011",
+     "PrimaryURL": "https://avd.aquasec.com/misconfig/ksv-0011",
+     "Query": "data.builtin.kubernetes.KSV011.deny",
+     "Severity": "LOW",
+     "Status": "FAIL",
+     "Title": "CPU not limited",
+     "Type": "Kubernetes Security Check"
+    },
+    {
+     "CauseMetadata": {
+      "EndLine": 19,
+      "Provider": "Kubernetes",
+      "Service": "general",
+      "StartLine": 15
+     },
+     "ID": "KSV-0012",
+     "Namespace": "builtin.kubernetes.KSV012",
+     "PrimaryURL": "https://avd.aquasec.com/misconfig/ksv-0012",
+     "Query": "data.builtin.kubernetes.KSV012.deny",
+     "Severity": "MEDIUM",
+     "Status": "FAIL",
+     "Title": "Runs as root user",
+     "Type": "Kubernetes Security Check"
+    },
+    {
+     "CauseMetadata": {
+      "EndLine": 19,
+      "Provider": "Kubernetes",
+      "Service": "general",
+      "StartLine": 15
+     },
+     "ID": "KSV-0013",
+     "Namespace": "builtin.kubernetes.KSV013",
+     "PrimaryURL": "https://avd.aquasec.com/misconfig/ksv-0013",
+     "Query": "data.builtin.kubernetes.KSV013.deny",
+     "Severity": "MEDIUM",
+     "Status": "FAIL",
+     "Title": "Image tag \":latest\" used",
+     "Type": "Kubernetes Security Check"
+    },
+    {
+     "CauseMetadata": {
+      "EndLine": 19,
+      "Provider": "Kubernetes",
+      "Service": "general",
+      "StartLine": 15
+     },
+     "ID": "KSV-0014",
+     "Namespace": "builtin.kubernetes.KSV014",
+     "PrimaryURL": "https://avd.aquasec.com/misconfig/ksv-0014",
+     "Query": "data.builtin.kubernetes.KSV014.deny",
+     "Severity": "HIGH",
+     "Status": "FAIL",
+     "Title": "Root file system is not read-only",
+     "Type": "Kubernetes Security Check"
+    },
+    {
+     "CauseMetadata": {
+      "EndLine": 19,
+      "Provider": "Kubernetes",
+      "Service": "general",
+      "StartLine": 15
+     },
+     "ID": "KSV-0015",
+     "Namespace": "builtin.kubernetes.KSV015",
+     "PrimaryURL": "https://avd.aquasec.com/misconfig/ksv-0015",
+     "Query": "data.builtin.kubernetes.KSV015.deny",
+     "Severity": "LOW",
+     "Status": "FAIL",
+     "Title": "CPU requests not specified",
+     "Type": "Kubernetes Security Check"
+    },
+    {
+     "CauseMetadata": {
+      "EndLine": 19,
+      "Provider": "Kubernetes",
+      "Service": "general",
+      "StartLine": 15
+     },
+     "ID": "KSV-0016",
+     "Namespace": "builtin.kubernetes.KSV016",
+     "PrimaryURL": "https://avd.aquasec.com/misconfig/ksv-0016",
+     "Query": "data.builtin.kubernetes.KSV016.deny",
+     "Severity": "LOW",
+     "Status": "FAIL",
+     "Title": "Memory requests not specified",
+     "Type": "Kubernetes Security Check"
+    },
+    {
+     "CauseMetadata": {
+      "EndLine": 19,
+      "Provider": "Kubernetes",
+      "Service": "general",
+      "StartLine": 15
+     },
+     "ID": "KSV-0017",
+     "Namespace": "builtin.kubernetes.KSV017",
+     "PrimaryURL": "https://avd.aquasec.com/misconfig/ksv-0017",
+     "Query": "data.builtin.kubernetes.KSV017.deny",
+     "Severity": "HIGH",
+     "Status": "FAIL",
+     "Title": "Privileged",
+     "Type": "Kubernetes Security Check"
+    },
+    {
+     "CauseMetadata": {
+      "EndLine": 19,
+      "Provider": "Kubernetes",
+      "Service": "general",
+      "StartLine": 15
+     },
+     "ID": "KSV-0018",
+     "Namespace": "builtin.kubernetes.KSV018",
+     "PrimaryURL": "https://avd.aquasec.com/misconfig/ksv-0018",
+     "Query": "data.builtin.kubernetes.KSV018.deny",
+     "Severity": "LOW",
+     "Status": "FAIL",
+     "Title": "Memory not limited",
+     "Type": "Kubernetes Security Check"
+    },
+    {
+     "CauseMetadata": {
+      "EndLine": 19,
+      "Provider": "Kubernetes",
+      "Service": "general",
+      "StartLine": 15
+     },
+     "ID": "KSV-0020",
+     "Namespace": "builtin.kubernetes.KSV020",
+     "PrimaryURL": "https://avd.aquasec.com/misconfig/ksv-0020",
+     "Query": "data.builtin.kubernetes.KSV020.deny",
+     "Severity": "LOW",
+     "Status": "FAIL",
+     "Title": "Runs with UID <= 10000",
+     "Type": "Kubernetes Security Check"
+    },
+    {
+     "CauseMetadata": {
+      "EndLine": 19,
+      "Provider": "Kubernetes",
+      "Service": "general",
+      "StartLine": 15
+     },
+     "ID": "KSV-0021",
+     "Namespace": "builtin.kubernetes.KSV021",
+     "PrimaryURL": "https://avd.aquasec.com/misconfig/ksv-0021",
+     "Query": "data.builtin.kubernetes.KSV021.deny",
+     "Severity": "LOW",
+     "Status": "FAIL",
+     "Title": "Runs with GID <= 10000",
+     "Type": "Kubernetes Security Check"
+    },
+    {
+     "CauseMetadata": {
+      "EndLine": 19,
+      "Provider": "Kubernetes",
+      "Service": "general",
+      "StartLine": 15
+     },
+     "ID": "KSV-0030",
+     "Namespace": "builtin.kubernetes.KSV030",
+     "PrimaryURL": "https://avd.aquasec.com/misconfig/ksv-0030",
+     "Query": "data.builtin.kubernetes.KSV030.deny",
+     "Severity": "LOW",
+     "Status": "FAIL",
+     "Title": "Runtime/Default Seccomp profile not set",
+     "Type": "Kubernetes Security Check"
+    },
+    {
+     "CauseMetadata": {
+      "EndLine": 19,
+      "Provider": "Kubernetes",
+      "Service": "general",
+      "StartLine": 15
+     },
+     "ID": "KSV-0104",
+     "Namespace": "builtin.kubernetes.KSV104",
+     "PrimaryURL": "https://avd.aquasec.com/misconfig/ksv-0104",
+     "Query": "data.builtin.kubernetes.KSV104.deny",
+     "Severity": "MEDIUM",
+     "Status": "FAIL",
+     "Title": "Seccomp policies disabled",
+     "Type": "Kubernetes Security Check"
+    },
+    {
+     "CauseMetadata": {
+      "EndLine": 19,
+      "Provider": "Kubernetes",
+      "Service": "general",
+      "StartLine": 17
+     },
+     "ID": "KSV-0105",
+     "Namespace": "builtin.kubernetes.KSV105",
+     "PrimaryURL": "https://avd.aquasec.com/misconfig/ksv-0105",
+     "Query": "data.builtin.kubernetes.KSV105.deny",
+     "Severity": "LOW",
+     "Status": "FAIL",
+     "Title": "Containers must not set runAsUser to 0",
+     "Type": "Kubernetes Security Check"
+    },
+    {
+     "CauseMetadata": {
+      "EndLine": 19,
+      "Provider": "Kubernetes",
+      "Service": "general",
+      "StartLine": 15
+     },
+     "ID": "KSV-0106",
+     "Namespace": "builtin.kubernetes.KSV106",
+     "PrimaryURL": "https://avd.aquasec.com/misconfig/ksv-0106",
+     "Query": "data.builtin.kubernetes.KSV106.deny",
+     "Severity": "LOW",
+     "Status": "FAIL",
+     "Title": "Container capabilities must only include NET_BIND_SERVICE",
+     "Type": "Kubernetes Security Check"
+    },
+    {
+     "CauseMetadata": {
+      "EndLine": 4,
+      "Provider": "Kubernetes",
+      "Service": "general",
+      "StartLine": 3
+     },
+     "ID": "KSV-0110",
+     "Namespace": "builtin.kubernetes.KSV110",
+     "PrimaryURL": "https://avd.aquasec.com/misconfig/ksv-0110",
+     "Query": "data.builtin.kubernetes.KSV110.deny",
+     "Severity": "LOW",
+     "Status": "FAIL",
+     "Title": "Workloads in the default namespace",
+     "Type": "Kubernetes Security Check"
+    },
+    {
+     "CauseMetadata": {
+      "EndLine": 19,
+      "Provider": "Kubernetes",
+      "Service": "general",
+      "StartLine": 12
+     },
+     "ID": "KSV-0118",
+     "Namespace": "builtin.kubernetes.KSV118",
+     "PrimaryURL": "https://avd.aquasec.com/misconfig/ksv-0118",
+     "Query": "data.builtin.kubernetes.KSV118.deny",
+     "Severity": "HIGH",
+     "Status": "FAIL",
+     "Title": "Default security context configured",
+     "Type": "Kubernetes Security Check"
+    }
+   ],
+   "Target": "deploy/k8s.yaml",
+   "Type": "kubernetes"
+  },
+  {
+   "Class": "config",
+   "MisconfSummary": {
+    "Failures": 12,
+    "Successes": 0
+   },
+   "Misconfigurations": [
+    {
+     "CauseMetadata": {
+      "EndLine": 4,
+      "Provider": "AWS",
+      "Resource": "aws_s3_bucket.data",
+      "Service": "s3",
+      "StartLine": 1
+     },
+     "ID": "AWS-0086",
+     "Namespace": "builtin.aws.s3.aws0086",
+     "PrimaryURL": "https://avd.aquasec.com/misconfig/aws-0086",
+     "Query": "data.builtin.aws.s3.aws0086.deny",
+     "Severity": "HIGH",
+     "Status": "FAIL",
+     "Title": "S3 Access block should block public ACL",
+     "Type": "Terraform Security Check"
+    },
+    {
+     "CauseMetadata": {
+      "EndLine": 4,
+      "Provider": "AWS",
+      "Resource": "aws_s3_bucket.data",
+      "Service": "s3",
+      "StartLine": 1
+     },
+     "ID": "AWS-0087",
+     "Namespace": "builtin.aws.s3.aws0087",
+     "PrimaryURL": "https://avd.aquasec.com/misconfig/aws-0087",
+     "Query": "data.builtin.aws.s3.aws0087.deny",
+     "Severity": "HIGH",
+     "Status": "FAIL",
+     "Title": "S3 Access block should block public policy",
+     "Type": "Terraform Security Check"
+    },
+    {
+     "CauseMetadata": {
+      "EndLine": 4,
+      "Provider": "AWS",
+      "Resource": "aws_s3_bucket.data",
+      "Service": "s3",
+      "StartLine": 1
+     },
+     "ID": "AWS-0089",
+     "Namespace": "builtin.aws.s3.aws0089",
+     "PrimaryURL": "https://avd.aquasec.com/misconfig/aws-0089",
+     "Query": "data.builtin.aws.s3.aws0089.deny",
+     "Severity": "LOW",
+     "Status": "FAIL",
+     "Title": "S3 Bucket Logging",
+     "Type": "Terraform Security Check"
+    },
+    {
+     "CauseMetadata": {
+      "EndLine": 4,
+      "Provider": "AWS",
+      "Resource": "aws_s3_bucket.data",
+      "Service": "s3",
+      "StartLine": 1
+     },
+     "ID": "AWS-0090",
+     "Namespace": "builtin.aws.s3.aws0090",
+     "PrimaryURL": "https://avd.aquasec.com/misconfig/aws-0090",
+     "Query": "data.builtin.aws.s3.aws0090.deny",
+     "Severity": "MEDIUM",
+     "Status": "FAIL",
+     "Title": "S3 Data should be versioned",
+     "Type": "Terraform Security Check"
+    },
+    {
+     "CauseMetadata": {
+      "EndLine": 4,
+      "Provider": "AWS",
+      "Resource": "aws_s3_bucket.data",
+      "Service": "s3",
+      "StartLine": 1
+     },
+     "ID": "AWS-0091",
+     "Namespace": "builtin.aws.s3.aws0091",
+     "PrimaryURL": "https://avd.aquasec.com/misconfig/aws-0091",
+     "Query": "data.builtin.aws.s3.aws0091.deny",
+     "Severity": "HIGH",
+     "Status": "FAIL",
+     "Title": "S3 Access Block should Ignore Public ACL",
+     "Type": "Terraform Security Check"
+    },
+    {
+     "CauseMetadata": {
+      "EndLine": 3,
+      "Occurrences": [
+       {
+        "Filename": "deploy/main.tf",
+        "Location": {
+         "EndLine": 4,
+         "StartLine": 1
+        },
+        "Resource": "aws_s3_bucket.data"
+       }
+      ],
+      "Provider": "AWS",
+      "Resource": "aws_s3_bucket.data",
+      "Service": "s3",
+      "StartLine": 3
+     },
+     "ID": "AWS-0092",
+     "Namespace": "builtin.aws.s3.aws0092",
+     "PrimaryURL": "https://avd.aquasec.com/misconfig/aws-0092",
+     "Query": "data.builtin.aws.s3.aws0092.deny",
+     "Severity": "HIGH",
+     "Status": "FAIL",
+     "Title": "S3 Buckets not publicly accessible through ACL.",
+     "Type": "Terraform Security Check"
+    },
+    {
+     "CauseMetadata": {
+      "EndLine": 4,
+      "Provider": "AWS",
+      "Resource": "aws_s3_bucket.data",
+      "Service": "s3",
+      "StartLine": 1
+     },
+     "ID": "AWS-0093",
+     "Namespace": "builtin.aws.s3.aws0093",
+     "PrimaryURL": "https://avd.aquasec.com/misconfig/aws-0093",
+     "Query": "data.builtin.aws.s3.aws0093.deny",
+     "Severity": "HIGH",
+     "Status": "FAIL",
+     "Title": "S3 Access block should restrict public bucket to limit access",
+     "Type": "Terraform Security Check"
+    },
+    {
+     "CauseMetadata": {
+      "EndLine": 4,
+      "Provider": "AWS",
+      "Resource": "aws_s3_bucket.data",
+      "Service": "s3",
+      "StartLine": 1
+     },
+     "ID": "AWS-0094",
+     "Namespace": "builtin.aws.s3.aws0094",
+     "PrimaryURL": "https://avd.aquasec.com/misconfig/aws-0094",
+     "Query": "data.builtin.aws.s3.aws0094.deny",
+     "Severity": "LOW",
+     "Status": "FAIL",
+     "Title": "S3 buckets should each define an aws_s3_bucket_public_access_block",
+     "Type": "Terraform Security Check"
+    },
+    {
+     "CauseMetadata": {
+      "EndLine": 14,
+      "Provider": "AWS",
+      "Resource": "aws_security_group.open",
+      "Service": "ec2",
+      "StartLine": 6
+     },
+     "ID": "AWS-0099",
+     "Namespace": "builtin.aws.ec2.aws0099",
+     "PrimaryURL": "https://avd.aquasec.com/misconfig/aws-0099",
+     "Query": "data.builtin.aws.ec2.aws0099.deny",
+     "Severity": "LOW",
+     "Status": "FAIL",
+     "Title": "Missing description for security group.",
+     "Type": "Terraform Security Check"
+    },
+    {
+     "CauseMetadata": {
+      "EndLine": 12,
+      "Occurrences": [
+       {
+        "Filename": "deploy/main.tf",
+        "Location": {
+         "EndLine": 13,
+         "StartLine": 8
+        },
+        "Resource": "ingress"
+       },
+       {
+        "Filename": "deploy/main.tf",
+        "Location": {
+         "EndLine": 14,
+         "StartLine": 6
+        },
+        "Resource": "aws_security_group.open"
+       }
+      ],
+      "Provider": "AWS",
+      "Resource": "aws_security_group.open",
+      "Service": "ec2",
+      "StartLine": 12
+     },
+     "ID": "AWS-0107",
+     "Namespace": "builtin.aws.ec2.aws0107",
+     "PrimaryURL": "https://avd.aquasec.com/misconfig/aws-0107",
+     "Query": "data.builtin.aws.ec2.aws0107.deny",
+     "Severity": "HIGH",
+     "Status": "FAIL",
+     "Title": "Security groups should not allow unrestricted ingress to SSH or RDP from any IP address.",
+     "Type": "Terraform Security Check"
+    },
+    {
+     "CauseMetadata": {
+      "EndLine": 13,
+      "Occurrences": [
+       {
+        "Filename": "deploy/main.tf",
+        "Location": {
+         "EndLine": 14,
+         "StartLine": 6
+        },
+        "Resource": "aws_security_group.open"
+       }
+      ],
+      "Provider": "AWS",
+      "Resource": "aws_security_group.open",
+      "Service": "ec2",
+      "StartLine": 8
+     },
+     "ID": "AWS-0124",
+     "Namespace": "builtin.aws.ec2.aws0124",
+     "PrimaryURL": "https://avd.aquasec.com/misconfig/aws-0124",
+     "Query": "data.builtin.aws.ec2.aws0124.deny",
+     "Severity": "LOW",
+     "Status": "FAIL",
+     "Title": "Missing description for security group rule.",
+     "Type": "Terraform Security Check"
+    },
+    {
+     "CauseMetadata": {
+      "EndLine": 4,
+      "Provider": "AWS",
+      "Resource": "aws_s3_bucket.data",
+      "Service": "s3",
+      "StartLine": 1
+     },
+     "ID": "AWS-0132",
+     "Namespace": "builtin.aws.s3.aws0132",
+     "PrimaryURL": "https://avd.aquasec.com/misconfig/aws-0132",
+     "Query": "data.builtin.aws.s3.aws0132.deny",
+     "Severity": "HIGH",
+     "Status": "FAIL",
+     "Title": "S3 encryption should use Customer Managed Keys",
+     "Type": "Terraform Security Check"
+    }
+   ],
+   "Target": "deploy/main.tf",
+   "Type": "terraform"
+  }
+ ],
+ "SchemaVersion": 2,
+ "Trivy": {
+  "Version": "0.76.2"
+ }
+}
