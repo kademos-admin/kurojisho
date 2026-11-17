@@ -15,6 +15,8 @@ from tree_sitter import Node as TSNode
 
 MAX_PARSE_ERROR_LINES = 20
 MAX_SIGNATURE = 300
+#: Names and call results one expression may read; beyond this the rest is dropped.
+MAX_ATOMS = 40
 
 
 @dataclass
@@ -55,6 +57,25 @@ class Call:
     receiver: str = ""
     argc: int = 0
     reason: str = ""
+    col: int = 0
+    #: Identity of this call expression, unique in the file (``@start:end`` byte offsets).
+    ref: str = ""
+    #: What each argument reads: dotted names, and the ``ref`` of nested calls.
+    args: list[list[str]] = field(default_factory=list)
+    #: What the receiver expression reads (``a.b`` in ``a.b.c()``).
+    base: list[str] = field(default_factory=list)
+
+
+@dataclass
+class Flow:
+    """A statement that moves values: an assignment (``targets`` receive ``atoms``) or a
+    return. Names only, no types and no order: enough for a conservative taint pass."""
+
+    func: str | None
+    kind: str  # "assign" | "return"
+    line: int
+    targets: list[str] = field(default_factory=list)
+    atoms: list[str] = field(default_factory=list)
 
 
 @dataclass
@@ -64,6 +85,8 @@ class RouteFact:
     handler: str | None
     start_line: int
     end_line: int
+    scope: str | None = None  # function the route was registered in
+    middleware: list[str] = field(default_factory=list)
 
 
 @dataclass
@@ -75,6 +98,7 @@ class FileFacts:
     imports: list[Import] = field(default_factory=list)
     calls: list[Call] = field(default_factory=list)
     routes: list[RouteFact] = field(default_factory=list)
+    flows: list[Flow] = field(default_factory=list)
     parse_error_lines: list[int] = field(default_factory=list)
     notes: list[str] = field(default_factory=list)
 
@@ -92,6 +116,7 @@ class FileFacts:
             imports=[Import(**i) for i in data["imports"]],
             calls=[Call(**c) for c in data["calls"]],
             routes=[RouteFact(**r) for r in data["routes"]],
+            flows=[Flow(**f) for f in data.get("flows", [])],
             parse_error_lines=data["parse_error_lines"],
             notes=data["notes"],
         )
@@ -124,6 +149,10 @@ def squash(value: str) -> str:
     return out if len(out) <= MAX_SIGNATURE else out[: MAX_SIGNATURE - 1] + "…"
 
 
+def _ref(node: TSNode) -> str:
+    return f"@{node.start_byte}:{node.end_byte}"
+
+
 def line(node: TSNode) -> int:
     return node.start_point.row + 1
 
@@ -151,6 +180,9 @@ class Extractor:
     SKIP: ClassVar[Ctx] = Ctx(scope="\0skip")
     #: import module -> framework label; the first imported one (sorted) wins.
     frameworks: ClassVar[dict[str, str]] = {}
+    #: node types that are calls (their result is one atom) / that hide their contents
+    call_types: ClassVar[frozenset[str]] = frozenset()
+    opaque_types: ClassVar[frozenset[str]] = frozenset()
 
     def __init__(self) -> None:
         self.facts = FileFacts(lang=self.lang)
@@ -182,10 +214,60 @@ class Extractor:
         self._by_qualname[qualname] = definition
         return definition
 
-    def add_call(self, ctx: Ctx, kind: str, name: str, node: TSNode, **extra: Any) -> None:
+    def add_call(
+        self,
+        ctx: Ctx,
+        kind: str,
+        name: str,
+        node: TSNode,
+        *,
+        arg_nodes: list[TSNode] | None = None,
+        base_node: TSNode | None = None,
+        **extra: Any,
+    ) -> None:
         self.facts.calls.append(
-            Call(caller=ctx.func, kind=kind, name=name, line=line(node), **extra)
+            Call(
+                caller=ctx.func,
+                kind=kind,
+                name=name,
+                line=line(node),
+                col=node.start_point.column,
+                ref=_ref(node),
+                args=[self.atoms(a) for a in arg_nodes or []],
+                base=self.atoms(base_node),
+                **extra,
+            )
         )
+
+    def dotted_name(self, node: TSNode) -> str:
+        """``a.b.c`` when ``node`` is a plain name chain, else empty."""
+        return ""
+
+    def atoms(self, *nodes: TSNode | None) -> list[str]:
+        """Names and call results the expressions read. Nested calls stay opaque: each is
+        a fact of its own, referred to here by position."""
+        out: set[str] = set()
+        stack = [n for n in nodes if n is not None]
+        while stack:
+            node = stack.pop()
+            if node.type in self.call_types:
+                out.add(_ref(node))
+                continue
+            if node.type in self.opaque_types:
+                continue
+            name = self.dotted_name(node)
+            if name and "(" not in name:
+                out.add(name)
+                continue
+            stack.extend(c for c in node.children if c.is_named)
+        return sorted(out)[:MAX_ATOMS]
+
+    def add_flow(
+        self, ctx: Ctx, kind: str, node: TSNode, targets: list[str], *values: TSNode | None
+    ) -> None:
+        atoms = self.atoms(*values)
+        if atoms and (targets or kind == "return"):
+            self.facts.flows.append(Flow(ctx.func, kind, line(node), sorted(set(targets)), atoms))
 
     def add_local(self, ctx: Ctx, name: str) -> None:
         owner = self._by_qualname.get(ctx.func or "")
@@ -232,7 +314,8 @@ class Extractor:
         for definition in facts.defs:
             definition.local_names.sort()
         facts.imports.sort(key=lambda i: (i.line, i.module, i.name or "", i.alias))
-        facts.calls.sort(key=lambda c: (c.line, c.kind, c.receiver, c.name, c.caller or ""))
+        facts.calls.sort(key=lambda c: (c.line, c.col, c.kind, c.receiver, c.name, c.caller or ""))
+        facts.flows.sort(key=lambda f: (f.line, f.kind, f.targets, f.atoms, f.func or ""))
         facts.routes.sort(key=lambda r: (r.start_line, r.path, r.method))
         facts.notes.sort()
         return facts

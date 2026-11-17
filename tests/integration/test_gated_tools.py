@@ -25,7 +25,7 @@ from kurojisho.tools.runners.govulncheck import decode_stream
 from kurojisho.tools.runtime import RunResult, RuntimeUnavailable
 from kurojisho.tools.sandbox import OUT, build_command
 from tests.conftest import CLOCK, copy_fixture
-from tests.helpers import PINS, TOOL_OUTPUTS, FakeRuntime, all_handlers, make_intel
+from tests.helpers import PINS, TOOL_OUTPUTS, FakeRuntime, all_handlers, make_intel, tool_gaps
 
 runner = CliRunner()
 BINARY = b"\x7fELF fake govulncheck"
@@ -182,7 +182,7 @@ def gate_scan(tmp_path: Path, **options: Any):  # type: ignore[no-untyped-def]
 def test_codeql_is_off_by_default(tmp_path: Path) -> None:
     store, _runtime, (_, outcomes) = gate_scan(tmp_path)
     assert [o.tool for o in outcomes] == ["semgrep"]
-    assert q.find_nodes(store, node_type="CoverageGap") == []
+    assert tool_gaps(store) == []
 
 
 def test_codeql_refuses_to_run_without_licence_acceptance(tmp_path: Path) -> None:
@@ -200,7 +200,7 @@ def test_codeql_with_acceptance_is_reported_as_not_installed_in_this_build(tmp_p
     statuses = {o.tool: o.status for o in outcomes}
     assert statuses == {"codeql": "not_installed", "semgrep": "ok"}
     assert [tool for tool, _, _ in runtime.runs] == ["semgrep"]
-    (gap,) = q.find_nodes(store, node_type="CoverageGap")
+    (gap,) = tool_gaps(store)
     assert (
         gap["key"] == "CoverageGap:codeql::not_installed"
         and gap["props"]["tool_version"] == "unpinned"

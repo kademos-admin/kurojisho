@@ -21,7 +21,9 @@ from kurojisho.ingest.pipeline import ScanError
 from kurojisho.intel.cache import IntelCache, cache_root
 from kurojisho.intel.fetch import HttpFetcher
 from kurojisho.intel.refresh import OSV_ECOSYSTEMS, osv_source, refresh, refresh_nvd
-from kurojisho.model import EdgeType
+from kurojisho.model import EdgeType, Severity
+from kurojisho.report.model import load_report
+from kurojisho.report.render import FORMATS, render
 from kurojisho.scanner import SelectionError, import_findings, scan_with_tools
 from kurojisho.store import Store, StoreError
 from kurojisho.store import queries as q
@@ -571,6 +573,41 @@ def path(
             label += f" ({row['props']['resolution']})"
         table.add_row(row["src"], label, row["dst"], f"{row['confidence']:.2f}")
     _emit(rows, as_json, table)
+
+
+@app.command()
+def report(
+    fmt: Annotated[
+        str, typer.Option("--format", "-f", help="md, json, sarif, openvex or cyclonedx-vex.")
+    ] = "md",
+    output: Annotated[Path | None, typer.Option("--output", "-o", help="Write to a file.")] = None,
+    min_severity: Annotated[
+        str | None,
+        typer.Option(
+            "--min-severity",
+            help="Lowest severity to list (default: Medium for md, everything otherwise).",
+        ),
+    ] = None,
+    repo: RepoOpt = Path("."),
+    db: DbOpt = None,
+) -> None:
+    """Triaged findings with reasons, evidence and fixes, from the last scan."""
+    if fmt not in FORMATS:
+        raise _fail(f"unknown format {fmt!r}; choose one of: {', '.join(FORMATS)}")
+    minimum = None
+    if min_severity is not None:
+        try:
+            minimum = Severity(min_severity.capitalize())
+        except ValueError:
+            raise _fail(f"unknown severity {min_severity!r}") from None
+    with _open(repo, db, must_exist=True) as store:
+        if store.last_scan_id() is None:
+            raise _fail("nothing has been scanned yet; run `kurojisho scan` first")
+        text = render(load_report(store), fmt, minimum)
+    if output is None:
+        typer.echo(text, nl=False)
+    else:
+        output.write_text(text, encoding="utf-8")
 
 
 @query_app.command()

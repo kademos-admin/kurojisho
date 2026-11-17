@@ -44,6 +44,9 @@ class RawFinding:
     cvss: float | None = None
     #: How far the scanner itself traced the vulnerable code: symbol | package | module.
     tool_reachability: str = ""
+    #: The vulnerable symbol the scanner saw called, and first-party ``file:line`` callers.
+    symbol: str = ""
+    callers: tuple[str, ...] = ()
     # secret findings. ``secret`` is the raw value: memory only, never serialised.
     secret: str | None = field(default=None, repr=False)
     secret_type: str = ""
@@ -78,8 +81,8 @@ class RawFinding:
     def from_json(cls, data: dict[str, Any]) -> RawFinding:
         fields = dict(data)
         fields["severity"] = Severity(fields["severity"])
-        for key in ("cwe", "advisory_ids", "fixed_versions"):
-            fields[key] = tuple(fields[key])
+        for key in ("cwe", "advisory_ids", "fixed_versions", "callers"):
+            fields[key] = tuple(fields.get(key) or ())
         return cls(**fields)
 
 

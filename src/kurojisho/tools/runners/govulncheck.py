@@ -107,6 +107,27 @@ class GovulncheckRunner(Runner):
                         advisory_ids=(osv_id, *aliases.get(osv_id, [])),
                         fixed_versions=(str(fixed),) if fixed else (),
                         tool_reachability=("module", "package", "symbol")[depth],
+                        symbol=_symbol(finding["trace"][0]) if depth == 2 else "",
+                        callers=_callers(finding["trace"], module_dir) if depth == 2 else (),
                     )
                 )
         return findings
+
+
+def _symbol(frame: dict[str, Any]) -> str:
+    receiver = str(frame.get("receiver") or "").lstrip("*")
+    name = f"{receiver}.{frame['function']}" if receiver else str(frame["function"])
+    return f"{frame.get('package') or frame.get('module')}.{name}"
+
+
+def _callers(trace: list[dict[str, Any]], module_dir: str) -> tuple[str, ...]:
+    """``file:line`` of the frames in the scanned module (they carry no version)."""
+    out = []
+    for frame in trace[1:]:
+        position = frame.get("position")
+        if frame.get("version") or not isinstance(position, dict):
+            continue
+        filename, line = str(position.get("filename") or ""), position.get("line")
+        if filename and isinstance(line, int) and not filename.startswith(("/", "..")):
+            out.append(f"{module_dir}/{filename}:{line}" if module_dir else f"{filename}:{line}")
+    return tuple(sorted(set(out)))

@@ -231,3 +231,87 @@ def make_intel(
     for source in sources:
         cache.record(source, "x" * 64, clock)
     return cache
+
+
+def tool_gaps(store: Any) -> list[dict[str, Any]]:
+    """Coverage gaps left by scanners and intel (not the ones the deploy reader records)."""
+    from kurojisho.store import queries
+
+    found = queries.find_nodes(store, node_type="CoverageGap")
+    return [g for g in found if g["props"]["tool"] != "deploy"]
+
+
+class Graph:
+    """A scanned in-memory tree, with lookups by readable key."""
+
+    def __init__(
+        self,
+        root: Path,
+        files: dict[str, str],
+        *,
+        findings: list[Any] | None = None,
+        intel: IntelCache | None = None,
+        **scan_options: Any,
+    ) -> None:
+        """``findings``: RawFinding objects, brought in the way ``import-sarif`` does."""
+        from datetime import UTC, datetime
+
+        from kurojisho.clock import FixedClock
+        from kurojisho.ingest.pipeline import scan
+        from kurojisho.scanner import import_findings, scan_with_tools
+        from kurojisho.store import Store
+        from kurojisho.tools.runners.base import ScanOptions
+
+        for name, content in files.items():
+            target = root / name
+            target.parent.mkdir(parents=True, exist_ok=True)
+            target.write_text(content)
+        self.root = root
+        self.store = Store(":memory:")
+        clock = FixedClock(datetime(2024, 1, 1, tzinfo=UTC))
+        if findings is None:
+            scan(root, self.store, clock, **scan_options)
+        else:
+            import_findings(self.store, "probe", findings)
+            scan_with_tools(
+                root, self.store, clock, runtime=None, options=ScanOptions(tools=False), intel=intel
+            )
+        rows = self.store.conn.execute("SELECT id, key FROM nodes WHERE retired = 0")
+        self.names = {r["id"]: r["key"] for r in rows}
+
+    def nodes(self, kind: str) -> dict[str, dict[str, Any]]:
+        rows = self.store.conn.execute(
+            "SELECT key, props, provenance, confidence FROM nodes "
+            "WHERE type = ? AND retired = 0 ORDER BY key",
+            (kind,),
+        )
+        return {
+            r["key"].split(":", 1)[1]: {
+                **json.loads(r["props"]),
+                "_provenance": r["provenance"],
+                "_confidence": r["confidence"],
+            }
+            for r in rows
+        }
+
+    def edges(self, kind: str) -> list[tuple[str, str, dict[str, Any]]]:
+        rows = self.store.conn.execute(
+            "SELECT src, dst, props, provenance, confidence FROM edges "
+            "WHERE type = ? AND retired = 0 ORDER BY id",
+            (kind,),
+        )
+        return sorted(
+            (
+                (
+                    self.names[r["src"]].split(":", 1)[1],
+                    self.names[r["dst"]].split(":", 1)[1],
+                    {
+                        **json.loads(r["props"]),
+                        "_provenance": r["provenance"],
+                        "_confidence": r["confidence"],
+                    },
+                )
+                for r in rows
+            ),
+            key=lambda e: (e[0], e[1]),
+        )

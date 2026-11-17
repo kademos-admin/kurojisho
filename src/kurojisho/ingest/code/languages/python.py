@@ -60,6 +60,16 @@ class PythonExtractor(Extractor):
         "starlette": "starlette",
     }
 
+    def __init__(self) -> None:
+        super().__init__()
+        self._url_patterns: list[RouteFact] = []
+
+    call_types = frozenset({"call"})
+    opaque_types = frozenset({"lambda", "function_definition", "class_definition"})
+
+    def dotted_name(self, node: TSNode) -> str:
+        return dotted(node)
+
     def visit(self, node: TSNode, ctx: Ctx) -> Ctx | None:
         kind = node.type
         if kind == "class_definition":
@@ -73,9 +83,18 @@ class PythonExtractor(Extractor):
         elif kind == "call":
             self._call(node, ctx)
         elif kind in ("assignment", "augmented_assignment", "for_statement", "named_expression"):
-            self._locals(node.child_by_field_name("left") or node.child_by_field_name("name"), ctx)
+            left = node.child_by_field_name("left") or node.child_by_field_name("name")
+            self._locals(left, ctx)
+            value = node.child_by_field_name("right") or node.child_by_field_name("value")
+            also = left if kind == "augmented_assignment" else None
+            self.add_flow(ctx, "assign", node, _targets(left), value, also)
         elif kind == "as_pattern":
-            self._locals(node.child_by_field_name("alias"), ctx)
+            alias = node.child_by_field_name("alias")
+            self._locals(alias, ctx)
+            source = named(node)[0] if named(node) else None
+            self.add_flow(ctx, "assign", node, _targets(alias), source)
+        elif kind in ("return_statement", "yield"):
+            self.add_flow(ctx, "return", node, [], *named(node))
         return None
 
     # -- definitions --------------------------------------------------------------------
@@ -201,15 +220,22 @@ class PythonExtractor(Extractor):
     # -- calls --------------------------------------------------------------------------
     def _call(self, node: TSNode, ctx: Ctx) -> None:
         target = node.child_by_field_name("function")
+        args = [
+            (a.child_by_field_name("value") or a) if a.type == "keyword_argument" else a
+            for a in named(node.child_by_field_name("arguments"))
+            if a.type != "comment"
+        ]
         argc = len(named(node.child_by_field_name("arguments")))
         if target is None:
             return
         if target.type == "identifier":
             name = text(target)
             if name in _DYNAMIC_BUILTINS:
-                self.add_call(ctx, "dynamic", name, node, reason=name)
+                self.add_call(ctx, "dynamic", name, node, reason=name, arg_nodes=args)
             elif name != "super":
-                self.add_call(ctx, "name", name, node, argc=argc)
+                self.add_call(ctx, "name", name, node, argc=argc, arg_nodes=args)
+                if name in ("path", "re_path", "url") and len(args) >= 2:
+                    self._url_pattern(node, args, ctx)
         elif target.type == "attribute":
             name = text(target.child_by_field_name("attribute"))
             obj = target.child_by_field_name("object")
@@ -220,7 +246,16 @@ class PythonExtractor(Extractor):
             if (receiver, name) == ("importlib", "import_module"):
                 self.add_call(ctx, "dynamic", name, node, reason="import_module")
             else:
-                self.add_call(ctx, "attr", name, node, receiver=receiver, argc=argc)
+                self.add_call(
+                    ctx,
+                    "attr",
+                    name,
+                    node,
+                    receiver=receiver,
+                    argc=argc,
+                    arg_nodes=args,
+                    base_node=obj,
+                )
         elif target.type == "call":
             inner = text(target.child_by_field_name("function"))
             reason = "getattr" if inner == "getattr" else "call_result"
@@ -230,6 +265,38 @@ class PythonExtractor(Extractor):
         else:
             self.add_call(ctx, "dynamic", "expression", node, reason="expression")
 
+    def _url_pattern(self, node: TSNode, args: list[TSNode], ctx: Ctx) -> None:
+        """Django ``path("orders/", views.orders)``; kept only if the file imports Django."""
+        pattern = string_literal(args[0])
+        view = args[1]
+        if view.type == "call":  # Class.as_view()
+            target = view.child_by_field_name("function")
+            view_obj = target.child_by_field_name("object") if target is not None else None
+            if (
+                target is None
+                or view_obj is None
+                or text(target.child_by_field_name("attribute")) != "as_view"
+            ):
+                return
+            view = view_obj
+        handler = dotted(view)
+        if pattern is None or not handler:
+            return
+        self._url_patterns.append(
+            RouteFact(
+                "ANY",
+                "/" + pattern.lstrip("^/"),
+                handler,
+                line(node),
+                end_line(node),
+                scope=ctx.func,
+            )
+        )
+
+    def finish(self) -> None:
+        if any(i.module.split(".")[0] == "django" for i in self.facts.imports):
+            self.facts.routes.extend(self._url_patterns)
+
     def _locals(self, target: TSNode | None, ctx: Ctx) -> None:
         if target is None or ctx.func is None:
             return
@@ -238,6 +305,18 @@ class PythonExtractor(Extractor):
         elif target.type in ("pattern_list", "tuple_pattern", "list_pattern", "as_pattern_target"):
             for child in named(target):
                 self._locals(child, ctx)
+
+
+def _targets(node: TSNode | None) -> list[str]:
+    """Names an assignment writes. ``d[k] = v`` and ``o.f = v`` write to ``d`` / ``o.f``."""
+    if node is None:
+        return []
+    if node.type in ("identifier", "attribute"):
+        name = dotted(node)
+        return [name] if name else []
+    if node.type == "subscript":
+        return _targets(node.child_by_field_name("value"))
+    return [name for child in named(node) for name in _targets(child)]
 
 
 def _visibility(name: str) -> str:

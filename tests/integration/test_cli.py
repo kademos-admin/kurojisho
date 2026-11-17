@@ -50,7 +50,7 @@ def test_init_creates_state_and_keeps_existing_context(tmp_path: Path) -> None:
 
 def test_scan_then_query_round_trip(repo: Path) -> None:
     first = json.loads(run("scan", "--no-tools", ".", "--json"))
-    assert first["scan_id"] == 1 and first["files_parsed"] == 6 and first["nodes_inserted"] == 43
+    assert first["scan_id"] == 1 and first["files_parsed"] == 6 and first["nodes_inserted"] == 50
     again = json.loads(run("scan", "--no-tools", str(repo), "--json"))
     assert again["scan_id"] == 2 and again["files_parsed"] == 0 and again["nodes_inserted"] == 0
     assert "scan #3" in run("scan", "--no-tools", ".", "--full")
@@ -106,7 +106,7 @@ def test_export_is_stable_and_can_be_written_to_a_file(repo: Path, tmp_path: Pat
     run("query", "export", "-o", str(target), "--repo", str(repo))
     assert target.read_text() == printed
     data = json.loads(printed)
-    assert len(data["nodes"]) == 43 and len(data["edges"]) == 65
+    assert len(data["nodes"]) == 50 and len(data["edges"]) == 73
     run("scan", "--no-tools", ".")
     assert run("query", "export") == printed
 

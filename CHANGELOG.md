@@ -5,6 +5,44 @@ All notable changes to this project are recorded here. The format follows
 
 ## [Unreleased]
 
+### Added (milestone 3: enrichment, reachability and triage)
+
+- Entry points: HTTP routes (Flask, FastAPI, Django, Express, NestJS, Spring, net/http,
+  gin), webhooks, CLI commands, queue consumers and cron jobs, with HANDLES edges to the
+  functions that serve them.
+- Controls (authn, authz, CSRF, rate limit) from decorators, annotations and middleware,
+  GUARDED_BY edges, and `auth_required` true / false / unknown per entry point.
+- Catalogues of sources, sinks, sanitizers, controls and entry points per language, as
+  YAML data under `enrich/catalogue/`.
+- Taint analysis across functions and files: Source, Sink and Sanitizer nodes and
+  FLOWS_TO edges with the call chain and the sanitizers on it.
+- VulnerableSymbol nodes and USES_SYMBOL edges, from govulncheck traces and from OSV
+  records that name symbols.
+- Deploy graph from Kubernetes manifests, Dockerfiles, Compose files, GitHub Actions and
+  GitLab CI: Container, Workload, Service, Ingress, NetworkPolicy and Pipeline nodes,
+  exposure and `runs_as_root`. `ContextConflict` when the context file and the
+  deployment files disagree; triage uses the worse value.
+- Triage engine: reachability R0 to R4, exploitability E0 to E3, impact I0 to I3, and the
+  rules SEC-01/02, EXP-01, AI-01 (inert until milestone 4), TRI-01 to TRI-07 in
+  `triage/rules.yaml`. GUARD-01 and GUARD-02 are enforced by the engine and cannot be
+  switched off in the file. Authentication lowers a severity by one step at most.
+- Remediation nodes and FIXED_BY edges: upgrades with fixed version and breaking risk,
+  rotate-then-purge for secrets, configuration fixes, and per-weakness code guidance with
+  verification steps.
+- `kurojisho report`: Markdown, JSON, SARIF 2.1.0, OpenVEX 0.2.0 and CycloneDX 1.5 VEX.
+- Opt-in benchmark (`pytest -m bench`) with a labelled baseline for OWASP NodeGoat.
+
+### Changed (milestone 3)
+
+- Every finding now carries `final_severity`, `triage_rule`, `reasons`, and the reach,
+  exploit and impact factors with their provenance.
+- Inline JavaScript route callbacks are named (`<GET /path>`) and become Function nodes.
+- Existing databases re-parse once (extractor version 2).
+- The JavaScript `sql-string-built` Semgrep rule no longer matches route registration
+  such as ``app.get(`/${page}`, handler)``.
+- Name-match call resolution is cached; a full scan of the 2,000-file scale fixture is
+  about three times faster than before.
+
 ### Added (milestone 2: scanner orchestration and normalisation)
 
 - `tools.lock`: eleven scanners pinned by image digest with version and licence;

@@ -65,6 +65,12 @@ class GoExtractor(Extractor):
         "net/http": "net/http",
     }
 
+    call_types = frozenset({"call_expression"})
+    opaque_types = frozenset({"func_literal"})
+
+    def dotted_name(self, node: TSNode) -> str:
+        return dotted(node)
+
     def visit(self, node: TSNode, ctx: Ctx) -> Ctx | None:
         kind = node.type
         if kind == "package_clause":
@@ -89,10 +95,23 @@ class GoExtractor(Extractor):
             for target in named(node.child_by_field_name("left")):
                 if target.type == "identifier":
                     self.add_local(ctx, text(target))
+            self._assign(node, ctx)
+        elif kind == "assignment_statement":
+            self._assign(node, ctx)
         elif kind == "var_spec":
-            for target in node.children_by_field_name("name"):
+            names = node.children_by_field_name("name")
+            for target in names:
                 self.add_local(ctx, text(target))
+            self.add_flow(
+                ctx, "assign", node, [text(n) for n in names], node.child_by_field_name("value")
+            )
+        elif kind == "return_statement":
+            self.add_flow(ctx, "return", node, [], *named(node))
         return None
+
+    def _assign(self, node: TSNode, ctx: Ctx) -> None:
+        left, right = node.child_by_field_name("left"), node.child_by_field_name("right")
+        self.add_flow(ctx, "assign", node, _targets(left), right)
 
     def _import(self, node: TSNode) -> None:
         module = string_literal(node.child_by_field_name("path"))
@@ -170,7 +189,7 @@ class GoExtractor(Extractor):
         if kind == "func_literal":
             return  # immediately-invoked literal: its body is walked in place
         if kind == "identifier":
-            self.add_call(ctx, "name", text(target), node, argc=len(args))
+            self.add_call(ctx, "name", text(target), node, argc=len(args), arg_nodes=args)
         elif kind == "selector_expression":
             name = text(target.child_by_field_name("field"))
             operand = target.child_by_field_name("operand")
@@ -182,8 +201,17 @@ class GoExtractor(Extractor):
             ):
                 self.add_call(ctx, "dynamic", name, node, reason="reflect")
                 return
-            self.add_call(ctx, "attr", name, node, receiver=receiver, argc=len(args))
-            self._route(node, name, args)
+            self.add_call(
+                ctx,
+                "attr",
+                name,
+                node,
+                receiver=receiver,
+                argc=len(args),
+                arg_nodes=args,
+                base_node=operand,
+            )
+            self._route(node, name, args, ctx)
         elif kind == "index_expression":
             self.add_call(ctx, "dynamic", "index", node, reason="index")
         elif kind == "call_expression":
@@ -191,7 +219,7 @@ class GoExtractor(Extractor):
         elif kind not in ("generic_type", "array_type", "slice_type", "map_type", "pointer_type"):
             self.add_call(ctx, "dynamic", "expression", node, reason="expression")
 
-    def _route(self, node: TSNode, name: str, args: list[TSNode]) -> None:
+    def _route(self, node: TSNode, name: str, args: list[TSNode], ctx: Ctx) -> None:
         if not args or (name not in _HANDLE and name.upper() not in _ROUTE_VERBS | {"ANY"}):
             return
         pattern = string_literal(args[0])
@@ -206,8 +234,48 @@ class GoExtractor(Extractor):
             method = name.upper()
         if not path.startswith("/") and name not in _HANDLE:
             return
-        handler = dotted(args[-1]) or None if len(args) > 1 else None
-        self.facts.routes.append(RouteFact(method, path, handler, line(node), end_line(node)))
+        handler, middleware = None, [_callee(a) for a in args[1:-1] if _callee(a)]
+        if len(args) > 1:
+            last = args[-1]
+            # auth(limit(handler)): the wrappers are middleware, the innermost is the handler
+            while last.type == "call_expression":
+                inner = named(last.child_by_field_name("arguments"))
+                wrapper = dotted(last.child_by_field_name("function"))
+                if not inner:
+                    break
+                if wrapper:
+                    middleware.append(wrapper)
+                last = inner[-1]
+            handler = dotted(last) or None
+        self.facts.routes.append(
+            RouteFact(
+                method,
+                path,
+                handler,
+                line(node),
+                end_line(node),
+                scope=ctx.func,
+                middleware=middleware,
+            )
+        )
+
+
+def _callee(node: TSNode) -> str:
+    """Name of a middleware argument: ``auth`` or the callee of ``auth()``."""
+    if node.type == "call_expression":
+        return dotted(node.child_by_field_name("function"))
+    return dotted(node)
+
+
+def _targets(node: TSNode | None) -> list[str]:
+    if node is None:
+        return []
+    if node.type in ("identifier", "selector_expression"):
+        name = dotted(node)
+        return [name] if name and name != "_" else []
+    if node.type == "index_expression":
+        return _targets(node.child_by_field_name("operand"))
+    return [name for child in named(node) for name in _targets(child)]
 
 
 def _visibility(name: str) -> str:

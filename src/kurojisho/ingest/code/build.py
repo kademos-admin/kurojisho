@@ -37,6 +37,8 @@ class CodeGraph:
     edges: list[Edge] = field(default_factory=list)
     #: extra File-node properties contributed by the code layer, per path
     file_props: dict[str, dict[str, Any]] = field(default_factory=dict)
+    #: kept for the enrichment passes, which resolve more names against the same index
+    resolver: Resolver | None = None
 
 
 def def_key(path: str, definition: Def) -> str:
@@ -347,4 +349,6 @@ def build_code_graph(
     python_roots: list[str] | None = None,
 ) -> CodeGraph:
     resolver = Resolver(facts, go_modules, python_roots)
-    return _Builder(hashes, facts, resolver).build()
+    graph = _Builder(hashes, facts, resolver).build()
+    graph.resolver = resolver
+    return graph

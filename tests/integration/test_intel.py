@@ -24,7 +24,15 @@ from kurojisho.store import queries as q
 from kurojisho.tools.runners import RUNNERS, ScanOptions
 from kurojisho.tools.runtime import RunResult
 from tests.conftest import CLOCK, copy_fixture
-from tests.helpers import PINS, FakeFetcher, FakeRuntime, all_handlers, make_intel, zip_bytes
+from tests.helpers import (
+    PINS,
+    FakeFetcher,
+    FakeRuntime,
+    all_handlers,
+    make_intel,
+    tool_gaps,
+    zip_bytes,
+)
 
 LATER = FixedClock(datetime(2024, 1, 3, tzinfo=UTC))
 SCA = {name: RUNNERS[name] for name in ("osv-scanner", "trivy", "grype")}
@@ -331,7 +339,7 @@ def test_three_dependency_scanners_merge_into_advisories(tmp_path: Path) -> None
     ]
     high = [f for f in canonical if f["props"]["purl"].startswith("pkg:maven/org.apache.logging")]
     assert any(f["props"]["group_severity"] == "Critical" for f in high)
-    assert sca.nodes("CoverageGap") == []
+    assert tool_gaps(sca.store) == []
     for command in sca.runtime.commands:
         assert "--network=none" in command
         assert any(a.startswith("--mount=") and "target=/intel,readonly" in a for a in command)
@@ -341,7 +349,7 @@ def test_without_databases_dependency_scanners_are_gaps_not_clean_results(tmp_pa
     sca = Sca(tmp_path, None)
     assert set(sca.run().values()) == {"offline_db_missing"}
     assert sca.runtime.runs == [] and sca.nodes("Finding") == []
-    assert len(sca.nodes("CoverageGap")) == 3
+    assert len(tool_gaps(sca.store)) == 3
     partial = Sca(tmp_path / "p", IntelCache(tmp_path / "empty"))
     partial.intel.record("trivy-db", "t" * 64, CLOCK)  # type: ignore[union-attr]
     partial.intel.dir("trivy")  # type: ignore[union-attr]
@@ -355,7 +363,7 @@ def test_without_databases_dependency_scanners_are_gaps_not_clean_results(tmp_pa
     advisory = partial.nodes("Advisory")[0]
     assert advisory["provenance"] == "TOOL" and advisory["props"]["kev"] is None
     assert advisory["props"]["epss"] is None
-    gaps = {g["props"]["reason"]: g["props"] for g in partial.nodes("CoverageGap")}
+    gaps = {g["props"]["reason"]: g["props"] for g in tool_gaps(partial.store)}
     assert gaps["intel_missing"]["sources"] == ["kev", "epss"]
 
 
@@ -364,7 +372,7 @@ def test_stale_intel_is_flagged_and_offline_never_fetches(tmp_path: Path) -> Non
     fetcher = FakeFetcher({})
     assert set(sca.run(clock=LATER, fetcher=fetcher, offline=True).values()) == {"ok"}
     assert fetcher.requested == [] and sca.messages == []
-    stale = next(g for g in sca.nodes("CoverageGap") if g["props"]["reason"] == "intel_stale")
+    stale = next(g for g in tool_gaps(sca.store) if g["props"]["reason"] == "intel_stale")
     assert "trivy-db" in stale["props"]["sources"] and "kev" in stale["props"]["sources"]
 
 

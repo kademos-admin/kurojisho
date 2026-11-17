@@ -72,6 +72,12 @@ class JavaExtractor(Extractor):
         "org.springframework": "spring",
     }
 
+    call_types = frozenset({"method_invocation", "object_creation_expression"})
+    opaque_types = frozenset({"lambda_expression", "class_body"})
+
+    def dotted_name(self, node: TSNode) -> str:
+        return dotted(node)
+
     def __init__(self) -> None:
         super().__init__()
         self._prefix: dict[str, str] = {}  # class qualname -> class-level route prefix
@@ -93,7 +99,41 @@ class JavaExtractor(Extractor):
             name = _type_name(node.child_by_field_name("type"))
             argc = len(named(node.child_by_field_name("arguments")))
             if name:
-                self.add_call(ctx, "new", name, node, argc=argc)
+                self.add_call(
+                    ctx,
+                    "new",
+                    name,
+                    node,
+                    argc=argc,
+                    arg_nodes=named(node.child_by_field_name("arguments")),
+                )
+        elif kind == "variable_declarator":
+            name_node = node.child_by_field_name("name")
+            self.add_flow(ctx, "assign", node, [text(name_node)], node.child_by_field_name("value"))
+        elif kind == "assignment_expression":
+            left = node.child_by_field_name("left")
+            target = dotted(left) if left is not None else ""
+            if left is not None and left.type == "array_access":
+                target = dotted(left.child_by_field_name("array"))
+            extra = left if text(node.child_by_field_name("operator")) != "=" else None
+            self.add_flow(
+                ctx,
+                "assign",
+                node,
+                [target] if target else [],
+                node.child_by_field_name("right"),
+                extra,
+            )
+        elif kind == "enhanced_for_statement":
+            self.add_flow(
+                ctx,
+                "assign",
+                node,
+                [text(node.child_by_field_name("name"))],
+                node.child_by_field_name("value"),
+            )
+        elif kind == "return_statement":
+            self.add_flow(ctx, "return", node, [], *named(node))
         elif kind == "method_reference":
             parts = named(node)
             if len(parts) == 2 and parts[1].type == "identifier":
@@ -188,15 +228,25 @@ class JavaExtractor(Extractor):
     def _call(self, node: TSNode, ctx: Ctx) -> None:
         name = text(node.child_by_field_name("name"))
         obj = node.child_by_field_name("object")
-        argc = len(named(node.child_by_field_name("arguments")))
+        args = named(node.child_by_field_name("arguments"))
+        argc = len(args)
         receiver = dotted(obj)
         if name in _REFLECT_ALWAYS or (name == "forName" and receiver == "Class"):
             self._reflective = True
             self.add_call(ctx, "dynamic", name, node, reason="reflection")
         elif obj is None:
-            self.add_call(ctx, "name", name, node, argc=argc)
+            self.add_call(ctx, "name", name, node, argc=argc, arg_nodes=args)
         else:
-            self.add_call(ctx, "attr", name, node, receiver=receiver, argc=argc)
+            self.add_call(
+                ctx,
+                "attr",
+                name,
+                node,
+                receiver=receiver,
+                argc=argc,
+                arg_nodes=args,
+                base_node=obj,
+            )
 
 
 def _params(node: TSNode | None) -> list[str]:

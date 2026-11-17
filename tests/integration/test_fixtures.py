@@ -121,3 +121,42 @@ def test_languages_do_not_bleed_into_each_other(tmp_path: Any) -> None:
     # each manifest hangs off the directory that holds it
     owners = {s for s, _, _ in edges(store, "DEPENDS_ON")}
     assert owners == set(FIXTURE_NAMES)
+
+
+@pytest.mark.parametrize("name", FIXTURE_NAMES)
+def test_entry_points_and_flows_match_ground_truth(
+    name: str, scan_fixture: Callable[..., Scanned]
+) -> None:
+    """M3-AC4/AC5: entry points, their handlers and taint flows, against hand-checked truth."""
+    want = expected(name)
+    store = scan_fixture(name).store
+    names = {
+        r["id"]: r["key"].split(":", 1)[1] for r in store.conn.execute("SELECT id, key FROM nodes")
+    }
+    got = []
+    for row in store.conn.execute(
+        "SELECT id, props FROM nodes WHERE type = 'EntryPoint' AND retired = 0 ORDER BY key"
+    ):
+        props = json.loads(row["props"])
+        handlers = sorted(
+            names[r["dst"]]
+            for r in store.conn.execute(
+                "SELECT dst FROM edges WHERE type = 'HANDLES' AND src = ?", (row["id"],)
+            )
+        )
+        got.append(
+            [
+                props["kind"],
+                props["method"] or "",
+                props["path_pattern"],
+                props["auth_required"],
+                handlers,
+            ]
+        )
+    assert got == want["entry_points"]
+    flows = sorted(
+        [names[r["src"]], names[r["dst"]].split("::")[0], props["cwe"], props["via"]]
+        for r in store.conn.execute("SELECT src, dst, props FROM edges WHERE type = 'FLOWS_TO'")
+        for props in [json.loads(r["props"])]
+    )
+    assert flows == sorted(want["flows"])

@@ -1,0 +1,78 @@
+families: [js]
+ignore_params: [this, res, response, reply, next]
+sources:
+  - {name: req.query, kind: http_param}
+  - {name: req.params, kind: http_param}
+  - {name: req.body, kind: body}
+  - {name: req.headers, kind: header}
+  - {name: req.cookies, kind: header}
+  - {name: request.query, kind: http_param}
+  - {name: request.params, kind: http_param}
+  - {name: request.body, kind: body}
+  - {name: ctx.query, kind: http_param}
+  - {name: ctx.request.body, kind: body}
+sinks:
+  - {builtin: eval, cwe: CWE-95, args: [0]}
+  - {builtin: Function, cwe: CWE-95}
+  - {api: child_process.exec, cwe: CWE-78, args: [0]}
+  - {api: child_process.execSync, cwe: CWE-78, args: [0]}
+  - {api: child_process.spawn, cwe: CWE-78, args: [0, 1]}
+  - {api: child_process.execFile, cwe: CWE-78, args: [0, 1]}
+  - {api: vm.runInNewContext, cwe: CWE-95, args: [0]}
+  - {api: vm.runInThisContext, cwe: CWE-95, args: [0]}
+  - {name: query, cwe: CWE-89, args: [0]}
+  - {name: raw, cwe: CWE-89, args: [0]}
+  - {api: fs.readFile, cwe: CWE-22, args: [0]}
+  - {api: fs.readFileSync, cwe: CWE-22, args: [0]}
+  - {api: fs.createReadStream, cwe: CWE-22, args: [0]}
+  - {name: sendFile, cwe: CWE-22, args: [0]}
+  - {name: redirect, cwe: CWE-601}
+  - {api: node-serialize.unserialize, cwe: CWE-502, args: [0]}
+  - {api: axios.get, cwe: CWE-918, args: [0]}
+  - {api: axios.post, cwe: CWE-918, args: [0]}
+  - {api: axios, cwe: CWE-918, args: [0]}
+  - {api: needle.get, cwe: CWE-918, args: [0]}
+  - {api: needle.post, cwe: CWE-918, args: [0]}
+  - {api: needle, cwe: CWE-918, args: [1]}
+  - {api: request, cwe: CWE-918, args: [0]}
+  - {api: request.get, cwe: CWE-918, args: [0]}
+  - {api: got, cwe: CWE-918, args: [0]}
+  - {api: got.get, cwe: CWE-918, args: [0]}
+  - {api: superagent.get, cwe: CWE-918, args: [0]}
+  - {api: node-fetch, cwe: CWE-918, args: [0]}
+  - {api: http.get, cwe: CWE-918, args: [0]}
+  - {api: https.get, cwe: CWE-918, args: [0]}
+  - {builtin: fetch, cwe: CWE-918, args: [0]}
+sanitizers:
+  - {builtin: parseInt, protects: [CWE-22, CWE-78, CWE-79, CWE-89, CWE-95, CWE-918], strength: strong}
+  - {builtin: Number, protects: [CWE-22, CWE-78, CWE-79, CWE-89, CWE-95, CWE-918], strength: strong}
+  - {builtin: parseFloat, protects: [CWE-22, CWE-78, CWE-79, CWE-89, CWE-95, CWE-918], strength: strong}
+  - {api: validator.escape, protects: [CWE-79], strength: strong}
+  - {api: escape-html, protects: [CWE-79], strength: strong}
+  - {api: shell-quote.quote, protects: [CWE-78], strength: strong}
+  - {api: path.basename, protects: [CWE-22], strength: partial}
+  - {builtin: encodeURIComponent, protects: [CWE-79, CWE-918], strength: partial}
+controls:
+  - {api: passport.authenticate, kind: authn}
+  - {api: express-jwt.expressjwt, kind: authn}
+  - {api: express-rate-limit, kind: rate_limit}
+  - {api: csurf, kind: csrf}
+  - {api: "@nestjs/throttler.Throttle", kind: rate_limit}
+  - {name: "*auth*", kind: authn}
+  - {name: "*loggedin*", kind: authn}
+  - {name: "*login*", kind: authn}
+  - {name: "*verifytoken*", kind: authn}
+  - {name: "*jwt*", kind: authn}
+  - {name: useguards, kind: authn}
+  - {name: "*admin*", kind: authz}
+  - {name: "*role*", kind: authz}
+  - {name: "*permission*", kind: authz}
+  - {name: "*ratelimit*", kind: rate_limit}
+  - {name: "*limiter*", kind: rate_limit}
+  - {name: "*csrf*", kind: csrf}
+  - {name: public, kind: anonymous}
+entrypoints:
+  - {api: "@nestjs/microservices.MessagePattern", kind: queue_consumer}
+  - {api: "@nestjs/microservices.EventPattern", kind: queue_consumer}
+  - {api: "@nestjs/schedule.Cron", kind: cron}
+  - {api: "@nestjs/schedule.Interval", kind: cron}

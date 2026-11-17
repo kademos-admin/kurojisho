@@ -20,7 +20,7 @@ from kurojisho.store import queries as q
 from kurojisho.store.graph import canonical_export
 from kurojisho.tools.runners import RUNNERS, RepoProfile, ScanOptions
 from tests.conftest import CLOCK, copy_fixture
-from tests.helpers import FakeFetcher, FakeRuntime, all_handlers, make_intel
+from tests.helpers import FakeFetcher, FakeRuntime, all_handlers, make_intel, tool_gaps
 
 runner = CliRunner()
 #: Everything that runs by default and needs no install-time build.
@@ -77,7 +77,7 @@ def test_every_default_tool_reports_on_the_fixture(tmp_path: Path) -> None:
     }  # fmt: skip
     stats = q.stats(store)
     assert stats["nodes"]["Advisory"] == 45 and stats["edges"]["AFFECTED_BY"] == 45
-    assert stats["edges"]["DUPLICATE_OF"] == 95 and "CoverageGap" not in stats["nodes"]
+    assert stats["edges"]["DUPLICATE_OF"] == 95 and tool_gaps(store) == []
     # every finding points at a file that exists in the graph
     located = store.conn.execute(
         "SELECT COUNT(DISTINCT e.src) FROM edges e JOIN nodes f ON f.id = e.dst "

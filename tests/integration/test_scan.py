@@ -221,7 +221,9 @@ def test_every_node_and_edge_carries_provenance_and_evidence(
     inferred = scanned.store.conn.execute(
         "SELECT DISTINCT type FROM edges WHERE provenance = 'INFERRED'"
     ).fetchall()
-    assert {r[0] for r in inferred} <= {"CALLS", "INHERITS", "DEFINES"}
+    assert {r[0] for r in inferred} <= {
+        "CALLS", "INHERITS", "DEFINES", "HANDLES", "FLOWS_TO", "LOCATED_IN", "GUARDED_BY",
+    }  # fmt: skip
     low = scanned.store.conn.execute(
         "SELECT COUNT(*) FROM edges WHERE type = 'CALLS' AND confidence NOT IN (0.9, 0.5, 0.1)"
     ).fetchone()

@@ -31,6 +31,12 @@ kurojisho query callers some_function --repo path/to/repo
 kurojisho query export --repo path/to/repo -o graph.json
 ```
 
+```sh
+kurojisho report --repo path/to/repo                    # Markdown: Critical, High, Medium
+kurojisho report -f json | sarif | openvex | cyclonedx-vex -o FILE --repo path/to/repo
+kurojisho report --min-severity critical --repo path/to/repo
+```
+
 Requires Docker or Podman for the scanners. The first scan pulls the pinned scanner images
 and vulnerability data (several GB) and says so; `--offline` forbids that and records what
 could not run as coverage gaps.
@@ -54,6 +60,33 @@ kurojisho import-sarif report.sarif --tool NAME --repo path/to/repo   # optional
   values are scrubbed from everything written.
 - A scanner that is missing, fails or times out becomes a `CoverageGap` node. No findings
   from a gap means nothing.
+
+### How findings are triaged
+
+Every finding gets a final severity, the rule that set it, and the reasons.
+
+- **Reachability** (R0 to R4): is there a path from an entry point (HTTP route, queue
+  consumer, cron job, CLI) to the weakness? For code, that is a taint path from request
+  data to the dangerous call; for dependencies, a call to the vulnerable symbol.
+- **Exploitability** (E0 to E3): CISA KEV, EPSS, and for code the scanner's own rating and
+  whether a strong sanitizer sits on every path.
+- **Business impact** (I0 to I3): asset tier, data classes and exposure from
+  `kurojisho.context.yaml`, checked against Kubernetes, Compose and Dockerfiles. If the
+  two disagree, the worse value is used and a `ContextConflict` is recorded.
+
+The rules are data, in `src/kurojisho/triage/rules.yaml`. Two guards hold whatever the
+rules say: unknown reachability never lowers a severity below the scanner's own, and a
+severity is lowered only on evidence that was extracted, reported by a tool, taken from
+intel or asserted by you, never on a low-confidence inference. "No path found" is
+reported as unknown, not as safe.
+
+Without a context file, impact is assumed and nothing is lowered; most findings will be
+High. Run `kurojisho init` and describe your assets to get a sharper result.
+
+Limits worth knowing: tree-sitter gives no types, so taint follows names only and misses
+flows through object fields, containers and callbacks; Terraform is not read for
+exposure; vulnerable-symbol data exists for few ecosystems, so most dependency findings
+outside Go have unknown reachability.
 
 ### Scanners
 

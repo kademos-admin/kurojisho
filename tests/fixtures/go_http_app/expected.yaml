@@ -1,4 +1,4 @@
-nodes: {Class: 3, File: 5, Function: 11, Module: 2, Package: 2, Repo: 1, Route: 3}
+nodes: {Class: 3, EntryPoint: 4, File: 5, Function: 11, Module: 2, Package: 2, Repo: 1, Route: 3}
 calls:
   - ["main.go::main", "internal/store/store.go::New", exact]
   - ["server.go::Server.List", "server.go::Logger.Log", exact]
@@ -22,3 +22,11 @@ packages:
   - ["pkg:golang/github.com/gin-gonic/gin@v1.10.0", true, runtime]
   - ["pkg:golang/golang.org/x/sys@v0.20.0", false, runtime]
 belongs_to: {}
+# Entry points: kind, method, pattern, auth_required, handler functions.
+entry_points:
+  - [cli, "", "main", unknown, ["main.go::main"]]
+  - [http, "ANY", "/health", unknown, ["main.go::health"]]
+  - [http, "ANY", "/items", unknown, ["server.go::Server.List"]]
+  - [http, "POST", "/items", unknown, ["server.go::Server.Create"]]
+# Taint flows: source function, sink file, CWE, functions on the way.
+flows: []

@@ -89,6 +89,23 @@ class IntelData:
         return float(max(scores)) if scores else None
 
 
+def _symbols(record: dict[str, Any]) -> list[dict[str, Any]]:
+    """Vulnerable symbols an OSV record names, as ``{module, symbols}`` per import path."""
+    found: dict[str, set[str]] = defaultdict(set)
+    for affected in record.get("affected") or []:
+        specific = affected.get("ecosystem_specific") or {}
+        if not isinstance(specific, dict):
+            continue
+        for entry in specific.get("imports") or []:
+            if isinstance(entry, dict) and entry.get("path"):
+                found[str(entry["path"])] |= {str(s) for s in entry.get("symbols") or []}
+        for name in specific.get("affected_functions") or []:
+            module, _, symbol = str(name).rpartition(".")
+            if module and symbol:
+                found[module].add(symbol)
+    return [{"module": m, "symbols": sorted(found[m])} for m in sorted(found) if found[m]]
+
+
 def _clusters(alias_sets: list[set[str]]) -> list[set[str]]:
     """Merge alias sets that share any identifier, across packages and tools."""
     merged: list[set[str]] = []
@@ -138,7 +155,9 @@ def build_advisories(
             "kev_added": None,
             "epss": None,
             "epss_percentile": None,
-            "exploit_public": None,  # TODO(M3): exploit-availability sources
+            # No exploit-availability feed is cached yet, so this stays unknown.
+            "exploit_public": None,
+            "symbols": [],
             "fixed_versions": sorted(
                 {v for n in group for v in n.props.get("fixed_versions") or []}
             ),
@@ -149,6 +168,7 @@ def build_advisories(
             record = intel.osv([i for i in ids if not i.startswith("CVE-")] + cves)
             if record is not None:
                 used.append("osv")
+                props["symbols"] = _symbols(record)
                 summary = record.get("summary")
                 props["summary"] = " ".join(str(summary).split())[:MAX_SUMMARY] if summary else None
                 for entry in record.get("severity") or []:

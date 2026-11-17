@@ -15,7 +15,7 @@ class Provenance(StrEnum):
 
 
 class NodeType(StrEnum):
-    # TODO(M3+): security, deployment, AI, standards and remediation node types.
+    # TODO(M4+): AI, standards, threat and maturity node types.
     REPO = "Repo"
     MODULE = "Module"
     FILE = "File"
@@ -29,10 +29,26 @@ class NodeType(StrEnum):
     ADVISORY = "Advisory"
     # Not in the schema table: required by "tool failures become CoverageGap records".
     COVERAGE_GAP = "CoverageGap"
+    ENTRY_POINT = "EntryPoint"
+    SOURCE = "Source"
+    SINK = "Sink"
+    SANITIZER = "Sanitizer"
+    CONTROL = "Control"
+    VULNERABLE_SYMBOL = "VulnerableSymbol"
+    CONTAINER = "Container"
+    WORKLOAD = "Workload"
+    SERVICE = "Service"
+    INGRESS = "Ingress"
+    NETWORK_POLICY = "NetworkPolicy"
+    PIPELINE = "Pipeline"
+    REMEDIATION = "Remediation"
+    # Not in the schema table: section 3.4 says a disagreement between the context file
+    # and the IaC "raises a ContextConflict".
+    CONTEXT_CONFLICT = "ContextConflict"
 
 
 class EdgeType(StrEnum):
-    # TODO(M3+): remaining edge types from the schema.
+    # TODO(M4+): READS/WRITES, SENDS_TO, CROSSES, AI and standards edges.
     CONTAINS = "CONTAINS"
     DEFINES = "DEFINES"
     IMPORTS = "IMPORTS"
@@ -43,6 +59,13 @@ class EdgeType(StrEnum):
     LOCATED_IN = "LOCATED_IN"
     DUPLICATE_OF = "DUPLICATE_OF"
     AFFECTED_BY = "AFFECTED_BY"
+    HANDLES = "HANDLES"
+    GUARDED_BY = "GUARDED_BY"
+    FLOWS_TO = "FLOWS_TO"
+    USES_SYMBOL = "USES_SYMBOL"
+    DEPLOYED_AS = "DEPLOYED_AS"
+    EXPOSED_VIA = "EXPOSED_VIA"
+    FIXED_BY = "FIXED_BY"
 
 
 class Severity(StrEnum):
@@ -59,6 +82,35 @@ class Severity(StrEnum):
     @property
     def rank(self) -> int:
         return _SEVERITY_RANK[self]
+
+
+class Reach(StrEnum):
+    """Reachability state (spec 7.1). ``R0`` is "unknown", not "lowest"."""
+
+    R0 = "R0_UNKNOWN"
+    R1 = "R1_NOT_LOADED"
+    R2 = "R2_IMPORTED_NOT_CALLED"
+    R3 = "R3_INTERNAL_REACHABLE"
+    R4 = "R4_ENTRY_REACHABLE"
+
+    @property
+    def short(self) -> str:
+        return self.value[:2]
+
+
+class Exposure(StrEnum):
+    INTERNET = "internet"
+    PARTNER = "partner"
+    INTERNAL = "internal"
+    NONE = "none"
+
+    @property
+    def rank(self) -> int:
+        return {"internet": 3, "partner": 2, "internal": 1, "none": 0}[self.value]
+
+
+#: Severity one level down, for the single step that authentication may take off.
+SEVERITY_ORDER = ("Info", "Low", "Medium", "High", "Critical")
 
 
 class Resolution(StrEnum):

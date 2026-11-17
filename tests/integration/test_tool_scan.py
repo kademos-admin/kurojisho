@@ -18,7 +18,7 @@ from kurojisho.store.graph import canonical_export
 from kurojisho.tools.runners import RUNNERS, RepoProfile, ScanOptions
 from kurojisho.tools.runtime import RunResult
 from tests.conftest import CLOCK, FIXTURES, copy_fixture
-from tests.helpers import PINS, TOOL_OUTPUTS, FakeRuntime, gitleaks_report, writes
+from tests.helpers import PINS, TOOL_OUTPUTS, FakeRuntime, gitleaks_report, tool_gaps, writes
 
 SEMGREP = (TOOL_OUTPUTS / "semgrep" / "vuln_app.sarif").read_bytes()
 #: These tests exercise the orchestrator itself, so they run a fixed pair of scanners.
@@ -94,9 +94,7 @@ def test_semgrep_findings_match_planted_ground_truth(tmp_path: Path) -> None:
             node["provenance"] == "TOOL"
             and node["props"]["tool_version"] == PINS["semgrep"].version
         )
-        assert (
-            node["props"]["final_severity"] is None and node["props"]["triage_state"] == "untriaged"
-        )
+        assert node["props"]["final_severity"] is not None and node["props"]["reasons"]
         assert node["evidence"][0]["source"] == f"semgrep@{PINS['semgrep'].version}"
         assert node["evidence"][0]["content_hash"] and node["owner_file"] == node["props"]["path"]
     files = scan.store.conn.execute(
@@ -105,7 +103,7 @@ def test_semgrep_findings_match_planted_ground_truth(tmp_path: Path) -> None:
     ).fetchone()[0]
     assert files == 19
     assert scan.outcomes["semgrep"].status == "ok" and scan.outcomes["semgrep"].findings == 19
-    assert scan.nodes("CoverageGap") == []
+    assert tool_gaps(scan.store) == []
     runs = scan.store.conn.execute("SELECT tool, status, findings FROM tool_runs ORDER BY tool")
     assert [tuple(r) for r in runs] == [("gitleaks", "ok", 0), ("semgrep", "ok", 19)]
 
@@ -226,7 +224,7 @@ def test_tool_failures_become_coverage_gaps(tmp_path: Path, handler: Any, status
     result = scan.run()
     assert result.scan_id == 1  # the scan itself still completes
     assert scan.outcomes["semgrep"].status == status and scan.outcomes["gitleaks"].status == "ok"
-    (gap,) = scan.nodes("CoverageGap")
+    (gap,) = tool_gaps(scan.store)
     assert gap["key"] == f"CoverageGap:semgrep::{status}" and gap["provenance"] == "TOOL"
     assert gap["props"]["category"] == "sast" and gap["props"]["detail"] == GAP_DETAIL[status]
     assert scan.nodes("Finding") == []
@@ -234,14 +232,14 @@ def test_tool_failures_become_coverage_gaps(tmp_path: Path, handler: Any, status
     # once the tool works again the gap is retired, not left behind
     scan.runtime = FakeRuntime(handlers())
     scan.run()
-    assert scan.nodes("CoverageGap") == [] and len(scan.nodes("Finding")) == 19
+    assert tool_gaps(scan.store) == [] and len(scan.nodes("Finding")) == 19
 
 
 def test_no_runtime_offline_and_failed_install(tmp_path: Path) -> None:
     none = Scan(tmp_path / "a", None)
     none.run()
     assert {o.status for o in none.outcomes.values()} == {"sandbox_unavailable"}
-    assert len(none.nodes("CoverageGap")) == 2
+    assert len(tool_gaps(none.store)) == 2
 
     offline_runtime = FakeRuntime(handlers(), installed=False)
     offline = Scan(tmp_path / "b", offline_runtime)
@@ -269,16 +267,14 @@ def test_user_exclusions_and_target_side_config_are_recorded(tmp_path: Path) -> 
     (scan.root / ".gitleaks.toml").write_text("[allowlist]\npaths = ['.*']\n")
     (scan.root / ".semgrepignore").write_text("*\n")
     scan.run(skip=frozenset({"semgrep"}))
-    gaps = {n["key"]: n["props"] for n in scan.nodes("CoverageGap")}
+    gaps = {n["key"]: n["props"] for n in tool_gaps(scan.store)}
     assert set(gaps) == {
         "CoverageGap:semgrep::skipped_by_user",
         "CoverageGap:gitleaks::target_config_present",
     }
     assert gaps["CoverageGap:gitleaks::target_config_present"]["files"] == [".gitleaks.toml"]
     scan.run(only=frozenset({"semgrep"}))
-    assert "CoverageGap:semgrep::target_config_present" in {
-        n["key"] for n in scan.nodes("CoverageGap")
-    }
+    assert "CoverageGap:semgrep::target_config_present" in {n["key"] for n in tool_gaps(scan.store)}
     with pytest.raises(SelectionError, match="unknown tool"):
         scan.run(only=frozenset({"nessus"}))
     assert scan.store.last_scan_id() == 2  # the rejected scan wrote nothing
@@ -289,7 +285,7 @@ def test_tools_disabled_is_a_plain_ingest(tmp_path: Path) -> None:
     scan = Scan(tmp_path, runtime)
     scan.run(tools=False)
     assert runtime.runs == [] and scan.outcomes == {}
-    assert scan.nodes("Finding") == [] and scan.nodes("CoverageGap") == []
+    assert scan.nodes("Finding") == [] and tool_gaps(scan.store) == []
 
 
 # -- selection (AC3, first half) ----------------------------------------------------------

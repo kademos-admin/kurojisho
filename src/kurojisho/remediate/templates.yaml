@@ -1,0 +1,131 @@
+# Fix guidance per weakness. Text only: kurojisho does not write patches for you, and no
+# model output is involved. `cwe` lists every identifier tools use for the weakness.
+code_patch:
+  - id: sql-injection
+    cwe: [CWE-89, CWE-564, CWE-943]
+    title: Use parameterised queries
+    guidance: >-
+      Pass user input as bound parameters (placeholders) instead of building the SQL
+      string. Where identifiers must vary (table or column names), choose them from a
+      fixed allowlist.
+    verify_steps:
+      - Confirm no query at this location is built by concatenation or string formatting.
+      - Send a quote character and a boolean payload through the entry point; the query must not change shape.
+  - id: command-injection
+    cwe: [CWE-77, CWE-78, CWE-88]
+    title: Do not pass untrusted input to a shell
+    guidance: >-
+      Call the program directly with an argument list and no shell. If a shell is
+      unavoidable, quote every argument with the platform's quoting function and
+      validate it against an allowlist first.
+    verify_steps:
+      - Confirm the call uses an argument list and no shell.
+      - Send shell metacharacters (; | $()) through the entry point; no extra command may run.
+  - id: code-injection
+    cwe: [CWE-94, CWE-95, CWE-96, CWE-1336]
+    title: Do not evaluate untrusted input as code
+    guidance: >-
+      Remove the dynamic evaluation. Parse the input as data (a literal parser, JSON, or
+      an explicit expression grammar) and map allowed operations to code yourself.
+    verify_steps:
+      - Confirm no eval/exec/template-from-string call receives request data.
+  - id: deserialization
+    cwe: [CWE-502]
+    title: Do not deserialise untrusted data into objects
+    guidance: >-
+      Use a data-only format (JSON) with schema validation. If a native format is
+      required, sign the payload and verify the signature before reading it.
+    verify_steps:
+      - Confirm the unsafe loader is gone or only ever receives authenticated, integrity-checked bytes.
+  - id: xss
+    cwe: [CWE-79, CWE-80]
+    title: Encode output for its context
+    guidance: >-
+      Insert untrusted values as text, not markup, or use the template engine's
+      auto-escaping. Encode for the exact context (HTML body, attribute, URL, script).
+    verify_steps:
+      - Render a value containing <script> and confirm it is shown as text.
+  - id: path-traversal
+    cwe: [CWE-22, CWE-23, CWE-36, CWE-73]
+    title: Constrain file paths to an allowed directory
+    guidance: >-
+      Resolve the final path and check it is inside the intended base directory, or map
+      user input to a server-side identifier instead of a file name.
+    verify_steps:
+      - Request ../ and absolute paths through the entry point; both must be refused.
+  - id: ssrf
+    cwe: [CWE-918]
+    title: Restrict outbound requests to allowed destinations
+    guidance: >-
+      Build URLs from an allowlist of hosts. Resolve the host and refuse private,
+      loopback and link-local addresses; do not follow redirects to them.
+    verify_steps:
+      - Request an internal address and a redirect to one; both must be refused.
+  - id: weak-crypto
+    cwe: [CWE-327, CWE-328, CWE-326, CWE-916]
+    title: Replace the weak algorithm
+    guidance: >-
+      Use SHA-256 or stronger for integrity, and a password hashing function (Argon2id,
+      scrypt, bcrypt) for passwords. Plan a migration for stored values.
+    verify_steps:
+      - Confirm no MD5/SHA-1/DES use remains on a security-relevant path.
+  - id: tls-verification
+    cwe: [CWE-295]
+    title: Turn certificate verification back on
+    guidance: >-
+      Remove the option that disables verification. For private CAs, configure the trust
+      store instead.
+    verify_steps:
+      - Connect to a host with an invalid certificate; the connection must fail.
+  - id: open-redirect
+    cwe: [CWE-601]
+    title: Redirect only to known locations
+    guidance: Accept a relative path or an identifier and map it to a URL on the server.
+    verify_steps:
+      - Pass an absolute external URL as the redirect target; it must be refused.
+  - id: debug-enabled
+    cwe: [CWE-489, CWE-215]
+    title: Disable debug mode outside development
+    guidance: Drive debug settings from the environment and default them to off.
+    verify_steps:
+      - Start the service with production settings and confirm debug endpoints are absent.
+default_code_patch:
+  id: review
+  title: Review and fix the reported weakness
+  guidance: >-
+    No fix template exists for this weakness. Follow the reporting tool's rule
+    documentation and remove the pattern it flags.
+  verify_steps:
+    - Re-run the scan and confirm the finding is gone.
+config:
+  id: config
+  title: Correct the configuration
+  guidance: >-
+    Change the setting the rule names in the file shown, following the reporting tool's
+    rule documentation.
+  verify_steps:
+    - Re-run the scan and confirm the finding is gone.
+    - Deploy to a non-production environment and confirm the workload still starts.
+rotate:
+  id: rotate_then_purge_history
+  title: Rotate the credential, then purge it from history
+  guidance: >-
+    Revoke and replace the credential at its provider first: removing it from the
+    repository does not make a leaked value safe. Then remove it from the working tree
+    and from git history, and load it from a secret manager at runtime.
+  verify_steps:
+    - Confirm the old credential is rejected by the provider.
+    - Re-run the scan with history enabled and confirm the fingerprint is gone.
+    - Review provider access logs for use of the old credential.
+upgrade:
+  verify_steps:
+    - Update the manifest and regenerate the lockfile.
+    - Run the test suite.
+    - Re-run the scan and confirm the advisory is no longer reported.
+no_fix:
+  title: No fixed version is published
+  guidance: >-
+    Apply a compensating control (remove or isolate the feature that uses the package,
+    restrict its inputs) and watch the advisory for a fix.
+  verify_steps:
+    - Confirm the compensating control is in place and documented.

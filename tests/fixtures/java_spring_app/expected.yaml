@@ -1,4 +1,4 @@
-nodes: {Class: 4, File: 5, Function: 11, Module: 7, Package: 2, Repo: 1, Route: 2}
+nodes: {Class: 4, EntryPoint: 2, File: 5, Function: 11, Module: 7, Package: 2, Repo: 1, Route: 2}
 calls:
   - ["src/main/java/com/demo/web/AccountController.java::<module>", "src/main/java/com/demo/core/AccountRepository.java::AccountRepository.create", exact]
   - ["src/main/java/com/demo/web/AccountController.java::AccountController.get", "src/main/java/com/demo/core/AccountRepository.java::AccountRepository.find", name_match]
@@ -23,3 +23,9 @@ packages:
   - ["pkg:maven/org.springframework/spring-webmvc@6.1.6", true, runtime]
   - ["pkg:maven/org.junit.jupiter/junit-jupiter@5.10.2", true, test]
 belongs_to: {}
+# Entry points: kind, method, pattern, auth_required, handler functions.
+entry_points:
+  - [http, "GET", "/accounts/{id}", unknown, ["src/main/java/com/demo/web/AccountController.java::AccountController.get"]]
+  - [http, "POST", "/accounts/actions", unknown, ["src/main/java/com/demo/web/AccountController.java::AccountController.action"]]
+# Taint flows: source function, sink file, CWE, functions on the way.
+flows: []

@@ -33,6 +33,8 @@ rules:
           - pattern: $DB.$METHOD($A + $B + "...", ...)
           - pattern: $DB.$METHOD(`...${$X}...`, ...)
       - metavariable-regex: {metavariable: $METHOD, regex: ^(query|execute|raw|run|all|get)$}
+      # app.get(`/${page}`, handler) registers a route; it is not a query.
+      - metavariable-regex: {metavariable: $DB, regex: '^(?!(app|api|server|routes?|\w*[Rr]outer)$).+$'}
   - id: kurojisho.javascript.dom-html-injection
     languages: [javascript, typescript]
     severity: WARNING

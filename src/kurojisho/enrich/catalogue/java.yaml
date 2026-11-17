@@ -1,0 +1,45 @@
+families: [java]
+ignore_params: [this, response, model]
+sources:
+  - {name: getParameter, kind: http_param, call: true}
+  - {name: getHeader, kind: header, call: true}
+  - {name: getQueryString, kind: http_param, call: true}
+  - {name: getInputStream, kind: body, call: true}
+sinks:
+  - {name: executeQuery, cwe: CWE-89, args: [0]}
+  - {name: executeUpdate, cwe: CWE-89, args: [0]}
+  - {name: execute, cwe: CWE-89, args: [0]}
+  - {name: prepareStatement, cwe: CWE-89, args: [0]}
+  - {name: createQuery, cwe: CWE-89, args: [0]}
+  - {name: createNativeQuery, cwe: CWE-89, args: [0]}
+  - {name: exec, cwe: CWE-78, args: [0]}
+  - {name: ProcessBuilder, cwe: CWE-78}
+  - {name: readObject, cwe: CWE-502, receiver: true}
+  - {name: sendRedirect, cwe: CWE-601, args: [0]}
+  - {api: java.nio.file.Paths.get, cwe: CWE-22}
+  - {name: FileInputStream, cwe: CWE-22, args: [0]}
+sanitizers:
+  - {api: java.lang.Integer.parseInt, protects: [CWE-22, CWE-78, CWE-79, CWE-89], strength: strong}
+  - {api: java.lang.Long.parseLong, protects: [CWE-22, CWE-78, CWE-79, CWE-89], strength: strong}
+  - {api: java.util.UUID.fromString, protects: [CWE-22, CWE-78, CWE-79, CWE-89], strength: strong}
+  - {api: org.owasp.encoder.Encode.forHtml, protects: [CWE-79], strength: strong}
+  - {api: org.springframework.web.util.HtmlUtils.htmlEscape, protects: [CWE-79], strength: strong}
+  - {name: escapeHtml4, protects: [CWE-79], strength: strong}
+controls:
+  - {api: org.springframework.security.access.prepost.PreAuthorize, kind: authz}
+  - {api: org.springframework.security.access.annotation.Secured, kind: authz}
+  - {api: jakarta.annotation.security.RolesAllowed, kind: authz}
+  - {api: javax.annotation.security.RolesAllowed, kind: authz}
+  - {api: jakarta.annotation.security.PermitAll, kind: anonymous}
+  - {api: javax.annotation.security.PermitAll, kind: anonymous}
+  - {name: preauthorize, kind: authz}
+  - {name: secured, kind: authz}
+  - {name: rolesallowed, kind: authz}
+  - {name: permitall, kind: anonymous}
+entrypoints:
+  - {api: org.springframework.kafka.annotation.KafkaListener, kind: queue_consumer}
+  - {api: org.springframework.amqp.rabbit.annotation.RabbitListener, kind: queue_consumer}
+  - {api: org.springframework.jms.annotation.JmsListener, kind: queue_consumer}
+  - {name: SqsListener, kind: queue_consumer}
+  - {api: org.springframework.scheduling.annotation.Scheduled, kind: cron}
+  - {function: main, signature: "*String*", kind: cli}

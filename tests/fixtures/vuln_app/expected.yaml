@@ -8,7 +8,7 @@ semgrep:
   - [kurojisho.python.weak-hash, api/app.py, 36, Medium, CWE-327, fingerprint]
   - [kurojisho.python.tls-verification-disabled, api/app.py, 40, Medium, CWE-295, fetch]
   - [kurojisho.python.flask-debug, api/app.py, 48, Medium, CWE-489, null]
-  - [kurojisho.javascript.shell-command, web/server.js, 7, High, CWE-78, null]
+  - [kurojisho.javascript.shell-command, web/server.js, 7, High, CWE-78, "<GET /run>"]
   - [kurojisho.javascript.code-eval, web/server.js, 11, High, CWE-95, compute]
   - [kurojisho.javascript.sql-string-built, web/server.js, 15, High, CWE-89, findOrder]
   - [kurojisho.javascript.dom-html-injection, web/server.js, 19, Medium, CWE-79, render]
@@ -23,3 +23,26 @@ semgrep:
 # Lines that look similar but are safe; no tool may report them.
 clean_lines:
   - [api/app.py, 44]
+# Hand-labelled: can an outside caller reach this planted weakness through an entry point
+# that exists in the fixture? [file, line, reachable]. A function nothing routes to is
+# "false" here; the tool must answer R0 (unknown) for those, never "safe".
+entry_reachable:
+  - [api/app.py, 16, true]    # /users -> find_user
+  - [api/app.py, 22, true]    # /calc
+  - [api/app.py, 28, true]    # /ping
+  - [api/app.py, 32, false]   # load_session: no caller
+  - [api/app.py, 36, false]
+  - [api/app.py, 40, false]
+  - [api/app.py, 48, true]    # app.run(debug=True) at module level of the served file
+  - [web/server.js, 7, true]  # GET /run
+  - [web/server.js, 11, false]
+  - [web/server.js, 15, false]
+  - [web/server.js, 19, false]
+  - [svc/main.go, 13, false]
+  - [svc/main.go, 17, true]   # /run
+  - [svc/main.go, 22, false]
+  - [svc/main.go, 26, false]
+  - [java/src/main/java/com/demo/Dao.java, 12, false]
+  - [java/src/main/java/com/demo/Dao.java, 16, false]
+  - [java/src/main/java/com/demo/Dao.java, 20, false]
+  - [java/src/main/java/com/demo/Dao.java, 24, false]

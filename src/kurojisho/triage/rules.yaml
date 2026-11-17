@@ -1,0 +1,89 @@
+# Triage rules (spec section 7.4). This file is the only place severity logic lives.
+#
+# kinds:
+#   floor   checked first, in order. The first match fixes the severity; nothing lowers it.
+#   matrix  checked next, in order. The first match sets the severity.
+#   state   every match applies; sets a triage state, never a severity.
+# Conditions use the facts listed in triage/engine.py (FACTS). Levels compare by number
+# (E2 >= E1). `unknown` is a value of its own: it never equals true or false.
+version: 1
+rules:
+  # --- Hard floors (never downgraded) ---
+  - id: SEC-01
+    kind: floor
+    applies_to: [secret]
+    when: secret.verified_live == true
+    then: {severity: Critical, reason: "Live credential", fix: rotate_then_purge_history}
+  - id: SEC-02
+    kind: floor
+    applies_to: [secret]
+    when: secret.verified_live == unknown and location in [src, ci_config] and not test_fixture_evidence
+    then: {severity: High, reason: "Unverified secret; treat as live until rotated", fix: rotate_then_purge_history}
+  - id: EXP-01
+    kind: floor
+    applies_to: [sca]
+    when: advisory.kev == true and reach in [R4, R3, R0]
+    then: {severity: Critical, reason: "Known exploited vulnerability (CISA KEV)"}
+  - id: AI-01
+    kind: floor
+    applies_to: [sast, ai]
+    # TODO(M4): ai.* facts are false until Tool nodes exist.
+    when: ai.untrusted_reaches_dangerous_tool == true and ai.human_approval == false
+    then: {severity: Critical, reason: "Untrusted input reaches a high-impact tool without human approval", map: [LLM01, LLM06]}
+
+  # --- Main matrix ---
+  - id: TRI-01
+    kind: matrix
+    applies_to: [sast, sca]
+    when: reach == R4 and exploit >= E2 and impact >= I2
+    then: {severity: Critical, reason: "Reachable from an entry point, exploitable, high business impact"}
+  - id: TRI-02
+    kind: matrix
+    applies_to: [sast, sca]
+    when: reach == R4 and (exploit >= E1 or impact >= I2)
+    then: {severity: High, reason: "Reachable from an entry point"}
+  - id: TRI-03
+    kind: matrix
+    applies_to: [sast, sca]
+    when: reach in [R3, R0] and impact >= I2
+    then: {severity: High, reason: "Internally reachable or reachability unknown, with high business impact", flag: needs_manual_review_if_R0}
+  - id: TRI-04
+    kind: matrix
+    applies_to: [sast, sca]
+    when: reach in [R3, R4] and impact <= I1
+    then: {severity: Medium, reason: "Reachable, low business impact"}
+  - id: TRI-05
+    kind: matrix
+    applies_to: [sast, sca]
+    when: reach == R2
+    then: {severity: Low, reason: "Imported, vulnerable code not called", action: "upgrade in normal cycle", vex: vulnerable_code_not_in_execute_path}
+  - id: TRI-06
+    kind: matrix
+    applies_to: [sast, sca]
+    when: reach == R1
+    then: {severity: Info, reason: "Not loaded in the shipped artefact", vex: component_not_present, requires_evidence: true}
+
+  # --- States ---
+  - id: TRI-07
+    kind: state
+    applies_to: [sast]
+    when: sanitizer.strong_all_paths == true
+    then: {state: false_positive_candidate, reason: "A strong sanitizer covers this weakness on every path", requires_evidence: true, reviewer_ack: true}
+
+# One step down, at most, when every entry point that reaches the finding requires
+# authentication. Authenticated attackers exist, so access-control weaknesses are exempt.
+adjustments:
+  - id: AUTH-01
+    applies_to: [sast, sca]
+    when: auth.all_entry_points_authenticated == true
+    lower_by: 1
+    unless_cwe: [CWE-284, CWE-285, CWE-287, CWE-306, CWE-639, CWE-862, CWE-863]
+    reason: "Every reaching entry point requires authentication"
+
+# Guards are enforced by the engine and cannot be switched off here; a rules file that
+# does not declare them is rejected.
+guards:
+  - id: GUARD-01
+    rule: "R0_UNKNOWN never lowers severity below the tool's raw severity"
+  - id: GUARD-02
+    rule: "Only EXTRACTED/TOOL/INTEL/ASSERTED evidence may lower severity; INFERRED with confidence < 0.8 and LLM_SUGGESTED may not"

@@ -1,0 +1,35 @@
+families: [go]
+ignore_params: [w, rw]
+sources: []
+sinks:
+  - {api: os/exec.Command, cwe: CWE-78}
+  - {api: os/exec.CommandContext, cwe: CWE-78}
+  - {name: Query, cwe: CWE-89}
+  - {name: QueryRow, cwe: CWE-89}
+  - {name: Exec, cwe: CWE-89}
+  - {name: QueryContext, cwe: CWE-89}
+  - {name: QueryRowContext, cwe: CWE-89}
+  - {name: ExecContext, cwe: CWE-89}
+  - {api: os.Open, cwe: CWE-22, args: [0]}
+  - {api: os.ReadFile, cwe: CWE-22, args: [0]}
+  - {api: os.OpenFile, cwe: CWE-22, args: [0]}
+  - {api: net/http.Get, cwe: CWE-918, args: [0]}
+  - {api: net/http.Redirect, cwe: CWE-601, args: [2]}
+sanitizers:
+  - {api: strconv.Atoi, protects: [CWE-22, CWE-78, CWE-79, CWE-89, CWE-918], strength: strong}
+  - {api: strconv.ParseInt, protects: [CWE-22, CWE-78, CWE-79, CWE-89, CWE-918], strength: strong}
+  - {api: html.EscapeString, protects: [CWE-79], strength: strong}
+  - {api: html/template.HTMLEscapeString, protects: [CWE-79], strength: strong}
+  - {api: path/filepath.Base, protects: [CWE-22], strength: partial}
+  - {api: net/url.QueryEscape, protects: [CWE-79, CWE-918], strength: partial}
+controls:
+  - {name: "*auth*", kind: authn}
+  - {name: "*login*", kind: authn}
+  - {name: "*jwt*", kind: authn}
+  - {name: "*admin*", kind: authz}
+  - {name: "*role*", kind: authz}
+  - {name: "*ratelimit*", kind: rate_limit}
+  - {name: "*limiter*", kind: rate_limit}
+  - {name: "*csrf*", kind: csrf}
+entrypoints:
+  - {function: main, package: main, kind: cli}

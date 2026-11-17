@@ -13,6 +13,11 @@ from typing import Any, Protocol
 from kurojisho import __version__
 from kurojisho.clock import Clock, isoformat
 from kurojisho.config.context import CONTEXT_FILENAME, Context, load_context
+from kurojisho.deploy.graph import build_deploy
+from kurojisho.deploy.parse import classify, parse_deploy
+from kurojisho.enrich import enrich
+from kurojisho.enrich.catalogue import catalogue_version
+from kurojisho.enrich.symbols import build_symbols
 from kurojisho.ingest.assets import build_assets
 from kurojisho.ingest.code.build import build_code_graph
 from kurojisho.ingest.code.extract import FileFacts
@@ -22,7 +27,9 @@ from kurojisho.ingest.deps.graph import build_packages
 from kurojisho.ingest.keys import REPO_KEY, container_id, container_key, file_id, file_key
 from kurojisho.ingest.walker import FileEntry, WalkResult, read_git_head, walk
 from kurojisho.model import Edge, EdgeType, Evidence, Node, NodeType, Provenance
+from kurojisho.remediate.build import build_remediations
 from kurojisho.store import Store, WriteStats
+from kurojisho.triage import triage
 
 WALKER = "walker"
 
@@ -289,14 +296,29 @@ def scan(
     )
     package_nodes, package_edges = build_packages(manifests.deps, hashes)
     asset_nodes, asset_edges = build_assets(context, context_label, context_hash, sorted(entries))
-    nodes += code.nodes + package_nodes + asset_nodes
-    edges += code.edges + package_edges + asset_edges
+    enriched = enrich(code, facts, hashes)
+    deploy_files = {
+        p: _read_text(entries[p], MAX_MANIFEST_BYTES) for p in sorted(entries) if classify(p)
+    }
+    code_dirs = {posixpath.dirname(p) for p, e in entries.items() if e.lang}
+    deploy_nodes, deploy_edges = build_deploy(
+        parse_deploy(deploy_files), context, sorted(entries), hashes, code_dirs
+    )
+    nodes += code.nodes + package_nodes + asset_nodes + enriched.nodes + deploy_nodes
+    edges += code.edges + package_edges + asset_edges + enriched.edges + deploy_edges
 
     extension = Extension()
     if extend is not None:
         extension = extend(IngestState(root, entries, hashes, nodes, edges, result))
         nodes += extension.nodes
         edges += extension.edges
+    symbol_nodes, symbol_edges = build_symbols(enriched.code, nodes, edges)
+    nodes += symbol_nodes
+    edges += symbol_edges
+    nodes = triage(nodes, edges, context, bool(context_label))
+    fix_nodes, fix_edges = build_remediations(nodes)
+    nodes += fix_nodes
+    edges += fix_edges
     scrub = extension.scrubber
     if scrub is not None:
         # A secret a scanner found may also sit in something ingest extracted.
@@ -328,6 +350,7 @@ def scan(
         for path in sorted(set(cache) - set(facts)):
             store.delete_file(path)
         store.set_meta("extractor_version", EXTRACTOR_VERSION)
+        store.set_meta("catalogue_version", catalogue_version())
         if extension.after_apply is not None:
             extension.after_apply(store, result.scan_id)
         store.finish_scan(result.scan_id, result.summary())

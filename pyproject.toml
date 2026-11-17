@@ -52,6 +52,7 @@ addopts = "-ra --strict-markers"
 markers = [
     "slow: long-running tests (excluded with -m 'not slow')",
     "needs_tools: requires external scanner tools (M2+)",
+    "bench: benchmark on third-party vulnerable apps (opt-in via KUROJISHO_BENCH_* variables)",
 ]
 
 [tool.ruff]

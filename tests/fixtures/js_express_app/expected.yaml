@@ -1,4 +1,4 @@
-nodes: {Class: 3, File: 6, Function: 15, Module: 2, Package: 4, Repo: 1, Route: 3}
+nodes: {Class: 3, EntryPoint: 3, File: 6, Function: 16, Module: 2, Package: 4, Repo: 1, Route: 3, Sink: 1}
 calls:
   - ["src/server.js::<module>", "src/server.js::start", exact]
   - ["src/routes/notes.ts::<module>", "src/store.ts::createStore", name_match]
@@ -16,7 +16,7 @@ min_call_precision: 0.8
 routes:
   - [GET, "/notes/:id", listNote]
   - [POST, "/notes", createNote]
-  - [DELETE, "/notes/:id", null]
+  - [DELETE, "/notes/:id", "<DELETE /notes/:id>"]
 inherits:
   - ["src/store.ts::AuditedStore", "src/store.ts::MemoryStore"]
 imports:
@@ -29,3 +29,10 @@ packages:
   - ["pkg:npm/jest@29.7.0", true, dev]
   - ["pkg:npm/jest-worker@29.7.0", false, dev]
 belongs_to: {}
+# Entry points: kind, method, pattern, auth_required, handler functions.
+entry_points:
+  - [http, "DELETE", "/notes/:id", unknown, ["src/routes/notes.ts::<DELETE /notes/:id>"]]
+  - [http, "GET", "/notes/:id", unknown, ["src/routes/notes.ts::listNote"]]
+  - [http, "POST", "/notes", unknown, ["src/routes/notes.ts::createNote"]]
+# Taint flows: source function, sink file, CWE, functions on the way.
+flows: []

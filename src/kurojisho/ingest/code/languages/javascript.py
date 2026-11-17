@@ -59,10 +59,21 @@ class JavaScriptExtractor(Extractor):
         "restify": "restify",
     }
 
+    call_types = frozenset({"call_expression", "new_expression"})
+    opaque_types = frozenset(
+        {*_FUNCTION_VALUES, "function_declaration", "generator_function_declaration", "class"}
+    )
+
+    def dotted_name(self, node: TSNode) -> str:
+        if node.type == "shorthand_property_identifier":
+            return text(node)
+        return dotted(node)
+
     def __init__(self) -> None:
         super().__init__()
         # function-expression node id -> (name, span node, is_method, visibility)
         self._named: dict[int, tuple[str, TSNode, bool, str]] = {}
+        self._prefix: dict[str, str] = {}  # class qualname -> @Controller("prefix")
 
     def visit(self, node: TSNode, ctx: Ctx) -> Ctx | None:
         kind = node.type
@@ -99,6 +110,16 @@ class JavaScriptExtractor(Extractor):
             ):
                 name = text(left.child_by_field_name("property"))
                 self._named[right.id] = (name, node, False, "public")
+            elif right is not None and right.type not in _FUNCTION_VALUES:
+                self.add_flow(ctx, "assign", node, _targets(left), right)
+        elif kind == "augmented_assignment_expression":
+            left, right = node.child_by_field_name("left"), node.child_by_field_name("right")
+            self.add_flow(ctx, "assign", node, _targets(left), right, left)
+        elif kind == "for_in_statement":
+            left, right = node.child_by_field_name("left"), node.child_by_field_name("right")
+            self.add_flow(ctx, "assign", node, _targets(left), right)
+        elif kind == "return_statement":
+            self.add_flow(ctx, "return", node, [], *named(node))
         elif kind == "import_statement":
             self._import(node)
         elif kind == "export_statement":
@@ -139,6 +160,9 @@ class JavaScriptExtractor(Extractor):
             visibility=_export_visibility(node),
             decorators=_decorators(node),
         )
+        for name_, literal in _decorator_calls(node):
+            if name_ == "Controller":
+                self._prefix[definition.qualname] = literal or ""
         return Ctx(scope=definition.qualname, func=ctx.func)
 
     def _method(self, node: TSNode, ctx: Ctx) -> Ctx | None:
@@ -176,6 +200,15 @@ class JavaScriptExtractor(Extractor):
             params=params,
             is_method=is_method,
         )
+        if is_method and ctx.scope in self._prefix:  # NestJS @Get(":id") on a controller
+            for verb, literal in _decorator_calls(span):
+                if verb.lower() in _ROUTE_VERBS and verb[:1].isupper():
+                    prefix = self._prefix[ctx.scope].strip("/")
+                    path = "/" + "/".join(p for p in (prefix, (literal or "").strip("/")) if p)
+                    method = "ANY" if verb == "All" else verb.upper()
+                    self.facts.routes.append(
+                        RouteFact(method, path, definition.qualname, line(span), line(span))
+                    )
         return Ctx(scope=definition.qualname, func=definition.qualname)
 
     def _declarator(self, node: TSNode, ctx: Ctx) -> None:
@@ -202,6 +235,7 @@ class JavaScriptExtractor(Extractor):
             return
         if target.type == "identifier":
             self.add_local(ctx, text(target))
+        self.add_flow(ctx, "assign", node, _targets(target), value)
 
     # -- imports ------------------------------------------------------------------------
     def _import(self, node: TSNode) -> None:
@@ -241,12 +275,12 @@ class JavaScriptExtractor(Extractor):
         if kind == "identifier":
             name = text(target)
             if name == "eval":
-                self.add_call(ctx, "dynamic", name, node, reason="eval")
+                self.add_call(ctx, "dynamic", name, node, reason="eval", arg_nodes=args)
             elif name == "require":
                 if not args or string_literal(args[0]) is None:
                     self.add_call(ctx, "dynamic", name, node, reason="require")
             else:
-                self.add_call(ctx, "name", name, node, argc=argc)
+                self.add_call(ctx, "name", name, node, argc=argc, arg_nodes=args)
         elif kind == "import":
             module = string_literal(args[0]) if args else None
             if module is None:
@@ -273,14 +307,38 @@ class JavaScriptExtractor(Extractor):
             head, _, last = receiver.rpartition(".")
             self.add_call(ctx, "attr" if head else "name", last, node, receiver=head)
             return
-        self.add_call(ctx, "attr", name, node, receiver=receiver, argc=len(args))
-        if name in _ROUTE_VERBS and args:
+        self.add_call(
+            ctx,
+            "attr",
+            name,
+            node,
+            receiver=receiver,
+            argc=len(args),
+            arg_nodes=args,
+            base_node=obj,
+        )
+        if name in _ROUTE_VERBS and len(args) > 1:
             path = string_literal(args[0])
             if path is not None and path.startswith("/"):
-                handler = (dotted(args[-1]) or None) if len(args) > 1 else None
                 method = "ANY" if name == "all" else name.upper()
+                final = args[-1]
+                handler = dotted(final) or None
+                if final.type in _FUNCTION_VALUES:
+                    # Give the inline callback a name, so what it does is not mixed with
+                    # every other route registered in the same scope.
+                    label = f"<{method} {path}>"
+                    self._named[final.id] = (label, final, False, "module")
+                    handler = f"{ctx.scope}.{label}" if ctx.scope else label
                 self.facts.routes.append(
-                    RouteFact(method, path, handler, line(node), end_line(node))
+                    RouteFact(
+                        method,
+                        path,
+                        handler,
+                        line(node),
+                        end_line(node),
+                        scope=ctx.func,
+                        middleware=[_callee(a) for a in args[1:-1] if _callee(a)],
+                    )
                 )
 
     def _new(self, node: TSNode, ctx: Ctx) -> None:
@@ -292,7 +350,37 @@ class JavaScriptExtractor(Extractor):
         elif name == "Function" and not receiver:
             self.add_call(ctx, "dynamic", "Function", node, reason="new_Function")
         else:
-            self.add_call(ctx, "new", name, node, receiver=receiver, argc=argc)
+            self.add_call(
+                ctx,
+                "new",
+                name,
+                node,
+                receiver=receiver,
+                argc=argc,
+                arg_nodes=named(node.child_by_field_name("arguments")),
+            )
+
+
+def _callee(node: TSNode) -> str:
+    """Name of a middleware argument: ``auth`` or the callee of ``auth(...)``."""
+    if node.type == "call_expression":
+        return dotted(node.child_by_field_name("function"))
+    return dotted(node)
+
+
+def _targets(node: TSNode | None) -> list[str]:
+    if node is None:
+        return []
+    if node.type in ("identifier", "member_expression", "shorthand_property_identifier_pattern"):
+        name = dotted(node) or text(node)
+        return [name] if name and "(" not in name and "[" not in name else []
+    if node.type == "subscript_expression":
+        return _targets(node.child_by_field_name("object"))
+    if node.type == "pair_pattern":
+        return _targets(node.child_by_field_name("value"))
+    if node.type == "assignment_pattern":
+        return _targets(node.child_by_field_name("left"))
+    return [name for child in named(node) for name in _targets(child)]
 
 
 def _require(value: TSNode | None) -> str | None:
@@ -335,6 +423,31 @@ def _decorators(node: TSNode) -> list[str]:
         found.insert(0, sibling)
         sibling = sibling.prev_named_sibling
     return [squash(text(d)[1:]) for d in found]
+
+
+def _decorator_nodes(node: TSNode) -> list[TSNode]:
+    found = [c for c in node.children if c.type == "decorator"]
+    sibling = node.prev_named_sibling
+    while sibling is not None and sibling.type == "decorator":
+        found.insert(0, sibling)
+        sibling = sibling.prev_named_sibling
+    parent = node.parent
+    if parent is not None and parent.type == "export_statement":
+        found = [c for c in parent.children if c.type == "decorator"] + found
+    return found
+
+
+def _decorator_calls(node: TSNode) -> list[tuple[str, str | None]]:
+    """``(name, first string argument)`` of each ``@Name("...")`` decorator on ``node``."""
+    out = []
+    for decorator in _decorator_nodes(node):
+        call = next((c for c in named(decorator) if c.type == "call_expression"), None)
+        if call is None:
+            continue
+        args = named(call.child_by_field_name("arguments"))
+        literal = string_literal(args[0]) if args else None
+        out.append((text(call.child_by_field_name("function")), literal))
+    return out
 
 
 def _params(node: TSNode | None) -> list[str]:

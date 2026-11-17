@@ -96,6 +96,7 @@ class Resolver:
         self.bindings: dict[str, dict[str, Binding]] = {}
         self.stars: dict[str, list[Binding]] = {}
         self._bases: dict[Target, tuple[Target, ...]] = {}
+        self._name_matches: dict[tuple[int, str, str], tuple[Target, ...]] = {}
         self._index()
         for path in sorted(facts):
             self._bind(path)
@@ -462,10 +463,16 @@ class Resolver:
     def _name_match(
         self, path: str, index: dict[tuple[str, str], list[Target]], call: Call, label: str
     ) -> Resolved:
-        candidates = index.get((self.family(path), call.name), [])
-        if not candidates:
+        key = (id(index), self.family(path), call.name)
+        cached = self._name_matches.get(key)
+        if cached is None:
+            # Sorting thousands of same-named candidates once per call site is the single
+            # most expensive thing a scan of a large repo does; the answer never changes.
+            cached = tuple(sorted(set(index.get((self.family(path), call.name), []))))
+            self._name_matches[key] = cached
+        if not cached:
             return Resolved(None, label=label)
-        return Resolved(Resolution.NAME_MATCH, tuple(sorted(set(candidates))))
+        return Resolved(Resolution.NAME_MATCH, cached)
 
     def _resolve_name(self, path: str, call: Call) -> Resolved:
         family = self.family(path)

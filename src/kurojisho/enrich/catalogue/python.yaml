@@ -1,0 +1,91 @@
+# What counts as untrusted input, a dangerous call, a sanitizer, an access control and a
+# non-HTTP entry point in Python code. Matchers:
+#   api:     fully qualified name, resolved through the file's imports (exact)
+#   name:    bare trailing name, any receiver (a guess; never enough to lower severity)
+#   builtin: a builtin called by its bare name (exact)
+families: [python]
+ignore_params: [self, cls]
+sources:
+  - {api: flask.request, kind: http_param}
+  - {api: quart.request, kind: http_param}
+  - {api: bottle.request, kind: http_param}
+  - {name: request.args, kind: http_param}
+  - {name: request.form, kind: body}
+  - {name: request.json, kind: body}
+  - {name: request.values, kind: http_param}
+  - {name: request.headers, kind: header}
+  - {name: request.cookies, kind: header}
+  - {name: request.GET, kind: http_param}
+  - {name: request.POST, kind: body}
+  - {name: request.data, kind: body}
+  - {name: request.query_params, kind: http_param}
+sinks:
+  - {builtin: eval, cwe: CWE-95, args: [0]}
+  - {builtin: exec, cwe: CWE-95, args: [0]}
+  - {api: os.system, cwe: CWE-78, args: [0]}
+  - {api: os.popen, cwe: CWE-78, args: [0]}
+  - {api: subprocess.run, cwe: CWE-78, args: [0]}
+  - {api: subprocess.call, cwe: CWE-78, args: [0]}
+  - {api: subprocess.check_call, cwe: CWE-78, args: [0]}
+  - {api: subprocess.check_output, cwe: CWE-78, args: [0]}
+  - {api: subprocess.Popen, cwe: CWE-78, args: [0]}
+  - {api: pickle.loads, cwe: CWE-502, args: [0]}
+  - {api: pickle.load, cwe: CWE-502, args: [0]}
+  - {api: marshal.loads, cwe: CWE-502, args: [0]}
+  - {api: yaml.load, cwe: CWE-502, args: [0]}
+  - {api: yaml.unsafe_load, cwe: CWE-502, args: [0]}
+  - {name: execute, cwe: CWE-89, args: [0]}
+  - {name: executemany, cwe: CWE-89, args: [0]}
+  - {name: executescript, cwe: CWE-89, args: [0]}
+  - {api: requests.get, cwe: CWE-918, args: [0]}
+  - {api: requests.post, cwe: CWE-918, args: [0]}
+  - {api: requests.request, cwe: CWE-918, args: [1]}
+  - {api: urllib.request.urlopen, cwe: CWE-918, args: [0]}
+  - {api: httpx.get, cwe: CWE-918, args: [0]}
+  - {builtin: open, cwe: CWE-22, args: [0]}
+  - {api: flask.send_file, cwe: CWE-22, args: [0]}
+  - {api: flask.render_template_string, cwe: CWE-1336, args: [0]}
+  - {api: flask.redirect, cwe: CWE-601, args: [0]}
+sanitizers:
+  - {api: shlex.quote, protects: [CWE-78], strength: strong}
+  - {api: html.escape, protects: [CWE-79], strength: strong}
+  - {api: markupsafe.escape, protects: [CWE-79], strength: strong}
+  - {builtin: int, protects: [CWE-22, CWE-78, CWE-79, CWE-89, CWE-95, CWE-918], strength: strong}
+  - {builtin: float, protects: [CWE-22, CWE-78, CWE-79, CWE-89, CWE-95, CWE-918], strength: strong}
+  - {api: uuid.UUID, protects: [CWE-22, CWE-78, CWE-79, CWE-89, CWE-95], strength: strong}
+  - {api: werkzeug.utils.secure_filename, protects: [CWE-22], strength: strong}
+  - {api: os.path.basename, protects: [CWE-22], strength: partial}
+  - {api: urllib.parse.quote, protects: [CWE-918, CWE-79], strength: partial}
+controls:
+  - {api: flask_login.login_required, kind: authn}
+  - {api: flask_jwt_extended.jwt_required, kind: authn}
+  - {api: flask_httpauth.HTTPBasicAuth.login_required, kind: authn}
+  - {api: django.contrib.auth.decorators.login_required, kind: authn}
+  - {api: django.contrib.auth.decorators.permission_required, kind: authz}
+  - {api: django.contrib.auth.decorators.user_passes_test, kind: authz}
+  - {api: rest_framework.decorators.permission_classes, kind: authz}
+  - {api: flask_limiter.Limiter.limit, kind: rate_limit}
+  - {api: django.views.decorators.csrf.csrf_protect, kind: csrf}
+  - {name: "*login_required", kind: authn}
+  - {name: "*jwt_required", kind: authn}
+  - {name: "*auth_required", kind: authn}
+  - {name: "*token_required", kind: authn}
+  - {name: "requires_auth", kind: authn}
+  - {name: "*permission_required", kind: authz}
+  - {name: "*roles_required", kind: authz}
+  - {name: "*admin_required", kind: authz}
+  - {name: "*limit", kind: rate_limit}
+  - {signature: "*Depends(*current_user*", kind: authn}
+  - {signature: "*Depends(*auth*", kind: authn}
+  - {signature: "*Security(*", kind: authz}
+entrypoints:
+  - {api: celery.shared_task, kind: queue_consumer}
+  - {api: dramatiq.actor, kind: queue_consumer}
+  - {name: "*.task", kind: queue_consumer}
+  - {name: shared_task, kind: queue_consumer}
+  - {name: "*.periodic_task", kind: cron}
+  - {name: "*.scheduled_job", kind: cron}
+  - {api: click.command, kind: cli}
+  - {api: click.group, kind: cli}
+  - {name: "*.command", kind: cli}
+  - {name: "*.callback", kind: cli}

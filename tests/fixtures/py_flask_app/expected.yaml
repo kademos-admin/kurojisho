@@ -1,5 +1,5 @@
 # Hand-labelled ground truth for py_flask_app. Keys are "<path>::<qualname>".
-nodes: {Asset: 2, Class: 3, File: 9, Function: 18, Module: 2, Package: 4, Repo: 1, Route: 4}
+nodes: {Asset: 2, Class: 3, EntryPoint: 4, File: 9, Function: 18, Module: 2, Package: 4, Repo: 1, Route: 4, Sink: 2, Source: 1}
 # Every call that really happens inside the repo, with the resolution the tool should reach.
 calls:
   - ["shop/app.py::<module>", "shop/services.py::make_service", exact]
@@ -38,3 +38,12 @@ packages:
 belongs_to:
   shop-api: ["shop/__init__.py", "shop/app.py", "shop/db.py", "shop/services.py"]
   test-suite: ["tests/test_app.py"]
+# Entry points: kind, method, pattern, auth_required, handler functions.
+entry_points:
+  - [http, "GET", "/orders/<int:order_id>", unknown, ["shop/app.py::get_order"]]
+  - [http, "GET", "/orders/search", unknown, ["shop/app.py::search_orders"]]
+  - [http, "POST", "/orders/search", unknown, ["shop/app.py::search_orders"]]
+  - [http, "POST", "/plugins/<name>", unknown, ["shop/app.py::run_plugin"]]
+# Taint flows: source function, sink file, CWE, functions on the way.
+flows:
+  - ["shop/app.py::search_orders::17::request.args", "shop/db.py", CWE-89, ["shop/app.py::search_orders", "shop/services.py::OrderService.search", "shop/db.py::Database.query"]]

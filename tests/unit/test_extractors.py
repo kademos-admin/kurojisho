@@ -191,12 +191,12 @@ def test_typescript() -> None:
         ("g", "dynamic", "", "import"),
         ("g", "dynamic", "", "Function"),
         ("g", "dynamic", "", "call_result"),
-        (None, "name", "", "render"),
+        ("<ANY /z>", "name", "", "render"),  # inline route callbacks get a name
     } <= got_calls
     assert routes(f) == {
         ("GET", "/x", "handler"),
         ("POST", "/y", "ctrl.create"),
-        ("ANY", "/z", None),
+        ("ANY", "/z", "<ANY /z>"),
     }
     assert f.framework == "express"
     assert f.notes == ["computed_method_name:12"]
@@ -243,7 +243,7 @@ def test_go() -> None:
         ("ANY", "/x", "h"),
         ("POST", "/p", "srv.Create"),
         ("GET", "/y", "h2"),
-        ("ANY", "/s", None),
+        ("ANY", "/s", "d"),  # the innermost argument of a wrapping call
     }
     assert (f.package, f.framework) == ("main", "net/http")
 

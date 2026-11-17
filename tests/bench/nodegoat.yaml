@@ -1,0 +1,26 @@
+# Labelled baseline for OWASP NodeGoat (Apache-2.0), server-side injection weaknesses only.
+# Each entry was confirmed by reading the source at the pinned commit; NodeGoat marks most
+# of them itself with "Insecure ..." / "Fix for ..." comments. Not vendored, never executed:
+#   git clone https://github.com/OWASP/NodeGoat && git -C NodeGoat checkout <commit>
+#   KUROJISHO_BENCH_NODEGOAT=/path/to/NodeGoat uv run pytest -m bench
+repo: https://github.com/OWASP/NodeGoat
+commit: c5cb68a7084e4ae7dcc60e6a98768720a81841e8
+# [file, line, CWE, what, entry point]
+weaknesses:
+  - [app/routes/contributions.js, 32, CWE-95, "eval of req.body.preTax", "POST /contributions"]
+  - [app/routes/contributions.js, 33, CWE-95, "eval of req.body.afterTax", "POST /contributions"]
+  - [app/routes/contributions.js, 34, CWE-95, "eval of req.body.roth", "POST /contributions"]
+  - [app/routes/index.js, 72, CWE-601, "redirect to req.query.url", "GET /learn"]
+  - [app/routes/research.js, 16, CWE-918, "needle.get of req.query.url", "GET /research"]
+  - [app/data/allocations-dao.js, 78, CWE-943, "$where built from threshold", "GET /allocations/:userId"]
+  - [app/routes/session.js, 64, CWE-117, "user name written to the log", "POST /login"]
+# Out of scope for this baseline (not injection sinks): ReDoS (profile.js), IDOR
+# (allocations.js), missing function-level access control (index.js), stored XSS in
+# templates, session and TLS configuration (server.js), plaintext passwords (user-dao.js).
+# What the run on 2026-11-17 recorded (asserted by the test, so a change is noticed):
+expected:
+  findings_true_positives: 3     # the three eval calls, each R4 via POST /contributions
+  findings_false_positives: 0
+  findings_recall: 0.43          # 3 of 7: no scanner rule for redirect, SSRF, NoSQL, log injection
+  flows_found: 5                 # the taint pass also traces the redirect and the SSRF
+  flows_recall: 0.71

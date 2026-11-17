@@ -215,7 +215,7 @@ def _finding_node(
         "raw_severity_native": r.severity_native,
         # Highest severity any tool gave this issue: a duplicate can raise it, never lower it.
         "group_severity": group_severity.value,
-        "final_severity": None,  # TODO(M3): set by the triage engine
+        "final_severity": None,  # set by the triage engine
         "triage_state": "untriaged",
         "reasons": [],
         "fingerprint": item.fingerprint,
@@ -232,8 +232,9 @@ def _finding_node(
             advisory_ids=list(r.advisory_ids),
             fixed_versions=list(r.fixed_versions),
             cvss=r.cvss,
-            # TODO(M3): "symbol" is the evidence for a USES_SYMBOL edge.
             tool_reachability=r.tool_reachability or None,
+            symbol=r.symbol or None,
+            callers=list(r.callers),
         )
     if r.category == "secret":
         props.update(

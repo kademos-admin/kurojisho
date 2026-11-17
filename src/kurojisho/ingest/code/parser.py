@@ -19,7 +19,7 @@ from kurojisho.ingest.code.languages.javascript import JavaScriptExtractor
 from kurojisho.ingest.code.languages.python import PythonExtractor
 
 #: Bump whenever extraction output changes, so cached facts are discarded.
-EXTRACTOR_VERSION = "1"
+EXTRACTOR_VERSION = "2"
 
 #: Source files larger than this are recorded but not parsed (noted on the File node).
 MAX_SOURCE_BYTES = 2 * 1024 * 1024
